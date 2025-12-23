@@ -13,6 +13,7 @@ import {
   Camera,
   ArrowRight,
   QrCode,
+  Trophy,
 } from 'lucide-react';
 import { useWallet } from '../contexts/WalletContext';
 import {
@@ -145,6 +146,43 @@ const Beauty = () => {
 
       {/* Quick Action Bar */}
       <QuickActionBar category="beauty" />
+
+      {/* Loyalty Hub CTA */}
+      <div className="px-4 py-4">
+        <Link
+          to="/loyalty-rewards"
+          className="block p-4 rounded-2xl bg-gradient-to-r from-pink-500/20 via-purple-500/20 to-amber-500/20 border border-pink-500/30"
+        >
+          <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 rounded-xl bg-pink-500/30 flex items-center justify-center">
+                <Trophy className="w-6 h-6 text-pink-400" />
+              </div>
+              <div>
+                <h3 className="font-semibold text-white">Beauty Loyalty Hub</h3>
+                <p className="text-xs text-gray-400">Track visits, unlock beauty rewards</p>
+              </div>
+            </div>
+            <ChevronRight className="w-5 h-5 text-gray-400" />
+          </div>
+          <div className="grid grid-cols-3 gap-2">
+            <div className="p-2 rounded-lg bg-white/10">
+              <p className="text-xs text-gray-400">Total Visits</p>
+              <p className="text-lg font-bold text-white">28</p>
+            </div>
+            <div className="p-2 rounded-lg bg-white/10">
+              <p className="text-xs text-gray-400">Active Salons</p>
+              <p className="text-lg font-bold text-pink-400">5</p>
+            </div>
+            <div className="p-2 rounded-lg bg-white/10">
+              <p className="text-xs text-gray-400">Next Reward</p>
+              <p className="text-lg font-bold text-purple-400">
+                <Gift className="w-5 h-5 inline" />
+              </p>
+            </div>
+          </div>
+        </Link>
+      </div>
 
       {/* Service Categories */}
       <div className="py-4">

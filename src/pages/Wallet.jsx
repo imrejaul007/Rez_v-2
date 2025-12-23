@@ -1,6 +1,29 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useWallet } from '../contexts/WalletContext';
-import { ArrowUpRight, ArrowDownLeft, Clock, ChevronRight, CreditCard, Smartphone } from 'lucide-react';
+import {
+  ArrowUpRight,
+  ArrowDownLeft,
+  Clock,
+  ChevronRight,
+  CreditCard,
+  Smartphone,
+  ScanLine,
+  Tag,
+  Gamepad2,
+  Upload,
+  Sparkles,
+  TrendingUp,
+  Send,
+  Gift,
+  Store,
+  Shield,
+  Download,
+  X,
+  Bell,
+  Trophy,
+  Flame
+} from 'lucide-react';
 import Card from '../components/common/Card';
 import Badge from '../components/common/Badge';
 
@@ -9,201 +32,505 @@ const Wallet = () => {
     rezCoins,
     brandedCoins,
     promoCoins,
-    totalCoins,
+    cashbackBalance,
+    pendingRewards,
+    totalCoinsValue,
+    totalWalletValue,
     transactions,
     pendingCashback,
-    paymentMethods
+    paymentMethods,
+    savingsStats,
+    alerts,
+    coinUsageOrder,
+    dismissAlert
   } = useWallet();
 
-  const [activeTab, setActiveTab] = useState('coins'); // coins | history | pending
+  const [activeTab, setActiveTab] = useState('all'); // all | earned | spent | pending
+  const [showTrustSection, setShowTrustSection] = useState(false);
+
+  // Filter transactions based on active tab
+  const filteredTransactions = transactions.filter(tx => {
+    if (activeTab === 'all') return true;
+    if (activeTab === 'earned') return tx.type === 'earned' || tx.type === 'cashback';
+    if (activeTab === 'spent') return tx.type === 'spent';
+    if (activeTab === 'pending') return tx.type === 'pending';
+    return true;
+  });
 
   return (
-    <div className="pb-4">
-      {/* Header */}
-      <div className="px-4 pt-2 pb-4">
-        <h1 className="text-2xl font-bold text-white">Your Rewards</h1>
-        <p className="text-sm text-gray-400 mt-1">One wallet. Every reward.</p>
+    <div className="min-h-screen bg-black pb-32">
+      {/* 🔝 WALLET HEADER - VALUE AT A GLANCE */}
+      <div className="px-4 pt-6 pb-4">
+        <h1 className="text-xl font-semibold text-white">Wallet</h1>
+        <p className="text-sm text-gray-400 mt-1">Your money should work harder for you</p>
       </div>
 
-      {/* Total Balance Card */}
-      <div className="mx-4 p-6 rounded-3xl bg-gradient-to-br from-emerald-500/20 via-emerald-600/10 to-amber-500/20 border border-white/10">
-        <p className="text-sm text-gray-400">Total Balance</p>
-        <div className="flex items-baseline gap-2 mt-1">
-          <span className="text-4xl font-bold text-white">{totalCoins.toLocaleString()}</span>
-          <span className="text-amber-400">🪙</span>
-        </div>
-        <p className="text-sm text-emerald-400 mt-2">≈ ₹{(totalCoins * 0.5).toLocaleString()} value</p>
-
-        {/* Coin Breakdown */}
-        <div className="grid grid-cols-3 gap-3 mt-6">
-          <div className="p-3 rounded-xl bg-white/5">
-            <p className="text-xs text-gray-400">ReZ Coins</p>
-            <p className="text-lg font-semibold text-white">{rezCoins.toLocaleString()}</p>
-          </div>
-          <div className="p-3 rounded-xl bg-white/5">
-            <p className="text-xs text-gray-400">Branded</p>
-            <p className="text-lg font-semibold text-amber-400">
-              {Object.values(brandedCoins).reduce((a, b) => a + b, 0)}
-            </p>
-          </div>
-          <div className="p-3 rounded-xl bg-white/5">
-            <p className="text-xs text-gray-400">Promo</p>
-            <p className="text-lg font-semibold text-purple-400">{promoCoins}</p>
-          </div>
-        </div>
-      </div>
-
-      {/* Promo Coins Expiry Warning */}
-      {promoCoins > 0 && (
-        <div className="mx-4 mt-4 p-3 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center gap-3">
-          <Clock className="w-5 h-5 text-purple-400" />
-          <div className="flex-1">
-            <p className="text-sm text-white">{promoCoins} promo coins expiring soon</p>
-            <p className="text-xs text-gray-400">Use before Dec 31</p>
-          </div>
-          <ChevronRight className="w-5 h-5 text-gray-400" />
-        </div>
-      )}
-
-      {/* Tabs */}
-      <div className="flex gap-2 px-4 mt-6 mb-4">
-        {[
-          { id: 'coins', label: 'Breakdown' },
-          { id: 'history', label: 'History' },
-          { id: 'pending', label: 'Pending' }
-        ].map((tab) => (
-          <button
-            key={tab.id}
-            onClick={() => setActiveTab(tab.id)}
-            className={`px-4 py-2 rounded-full transition-all ${
-              activeTab === tab.id
-                ? 'bg-white/20 text-white'
-                : 'bg-white/5 text-gray-400'
-            }`}
-          >
-            {tab.label}
-          </button>
-        ))}
-      </div>
-
-      {/* Tab Content */}
-      <div className="px-4">
-        {activeTab === 'coins' && (
-          <div className="space-y-3">
-            {/* Branded Coins List */}
-            <h3 className="text-sm font-medium text-gray-400 mb-2">Store-Specific Coins</h3>
-            {Object.entries(brandedCoins).map(([store, amount]) => (
-              <Card key={store} className="p-4 flex items-center justify-between">
-                <div>
-                  <p className="font-medium text-white">{store}</p>
-                  <p className="text-sm text-gray-400">Use only at this store</p>
-                </div>
-                <div className="text-right">
-                  <p className="font-semibold text-amber-400">{amount} 🪙</p>
-                  <p className="text-xs text-gray-400">≈ ₹{amount * 0.5}</p>
-                </div>
-              </Card>
-            ))}
-
-            {/* Payment Methods */}
-            <h3 className="text-sm font-medium text-gray-400 mt-6 mb-2">Payment Methods</h3>
-            {paymentMethods.map((method) => (
-              <Card key={method.id} className="p-4 flex items-center gap-4">
-                <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center">
-                  {method.type === 'upi' ? (
-                    <Smartphone className="w-5 h-5 text-emerald-400" />
-                  ) : (
-                    <CreditCard className="w-5 h-5 text-blue-400" />
-                  )}
-                </div>
-                <div className="flex-1">
-                  <p className="font-medium text-white">{method.name}</p>
-                  <p className="text-sm text-gray-400">{method.type.toUpperCase()}</p>
-                </div>
-                {method.default && (
-                  <Badge variant="primary" size="sm">Default</Badge>
-                )}
-              </Card>
-            ))}
-          </div>
-        )}
-
-        {activeTab === 'history' && (
-          <div className="space-y-3">
-            {transactions.map((tx) => (
-              <Card key={tx.id} className="p-4 flex items-center gap-4">
-                <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${
-                  tx.type === 'earned' || tx.type === 'cashback'
-                    ? 'bg-emerald-500/20'
-                    : 'bg-red-500/20'
-                }`}>
-                  {tx.type === 'earned' || tx.type === 'cashback' ? (
-                    <ArrowDownLeft className="w-5 h-5 text-emerald-400" />
-                  ) : (
-                    <ArrowUpRight className="w-5 h-5 text-red-400" />
-                  )}
-                </div>
-                <div className="flex-1">
-                  <p className="font-medium text-white">{tx.store}</p>
-                  <p className="text-sm text-gray-400">{tx.description}</p>
-                  <p className="text-xs text-gray-500">{tx.date}</p>
-                </div>
-                <div className="text-right">
-                  <p className={`font-semibold ${
-                    tx.type === 'earned' || tx.type === 'cashback'
-                      ? 'text-emerald-400'
-                      : 'text-red-400'
-                  }`}>
-                    {tx.type === 'earned' || tx.type === 'cashback' ? '+' : '-'}{tx.amount}
-                  </p>
-                  <p className="text-xs text-gray-400">{tx.coinType} coins</p>
-                </div>
-              </Card>
-            ))}
-          </div>
-        )}
-
-        {activeTab === 'pending' && (
-          <div className="space-y-3">
-            {pendingCashback.length === 0 ? (
-              <div className="text-center py-8">
-                <span className="text-4xl">📦</span>
-                <p className="text-gray-400 mt-2">No pending cashback</p>
+      {/* Hero Balance Card */}
+      <div className="mx-4 mb-4">
+        <div className="p-6 rounded-3xl bg-gradient-to-br from-emerald-500/20 via-emerald-600/10 to-amber-500/20 border border-emerald-500/30">
+          <div className="flex items-center justify-between mb-4">
+            <div>
+              <p className="text-sm text-gray-300 mb-1">👛 Wallet Balance</p>
+              <div className="flex items-baseline gap-2">
+                <span className="text-5xl font-bold text-white">₹{totalWalletValue.toLocaleString()}</span>
               </div>
-            ) : (
-              pendingCashback.map((item, i) => (
-                <Card key={i} className="p-4 flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-amber-500/20 flex items-center justify-center">
-                    <Clock className="w-5 h-5 text-amber-400" />
-                  </div>
-                  <div className="flex-1">
-                    <p className="font-medium text-white">{item.store}</p>
-                    <p className="text-sm text-gray-400">
-                      {item.status === 'tracking' ? 'Tracking order...' : 'Confirmed, processing'}
-                    </p>
-                    <p className="text-xs text-gray-500">Expected: {item.expectedDate}</p>
-                  </div>
-                  <div className="text-right">
-                    <p className="font-semibold text-amber-400">+₹{item.amount}</p>
-                    <Badge
-                      variant={item.status === 'confirmed' ? 'success' : 'default'}
-                      size="xs"
-                    >
-                      {item.status}
-                    </Badge>
-                  </div>
-                </Card>
-              ))
-            )}
-
-            <div className="mt-4 p-4 rounded-xl bg-white/5">
-              <p className="text-sm text-gray-400">
-                💡 Cashback from Cash Store purchases is tracked automatically
-                and credited within 7-30 days after delivery.
+              <p className="text-sm text-emerald-300 mt-1">
+                Includes cashback + ReZ Coins
               </p>
             </div>
           </div>
+
+          {/* Breakdown Row - Mini Cards */}
+          <div className="grid grid-cols-3 gap-2 mt-4">
+            <div className="p-3 rounded-xl bg-white/10 backdrop-blur">
+              <div className="flex items-center gap-1 mb-1">
+                <span className="text-lg">🟢</span>
+                <p className="text-xs text-gray-300">ReZ Coins</p>
+              </div>
+              <p className="text-sm font-bold text-white">{rezCoins.balance}</p>
+              <p className="text-xs text-gray-400">≈ ₹{rezCoins.balance}</p>
+            </div>
+
+            <div className="p-3 rounded-xl bg-white/10 backdrop-blur">
+              <div className="flex items-center gap-1 mb-1">
+                <span className="text-lg">🔵</span>
+                <p className="text-xs text-gray-300">Cashback</p>
+              </div>
+              <p className="text-sm font-bold text-blue-400">₹{cashbackBalance}</p>
+              <p className="text-xs text-gray-400">Ready to use</p>
+            </div>
+
+            <div className="p-3 rounded-xl bg-white/10 backdrop-blur">
+              <div className="flex items-center gap-1 mb-1">
+                <span className="text-lg">🟡</span>
+                <p className="text-xs text-gray-300">Pending</p>
+              </div>
+              <p className="text-sm font-bold text-amber-400">₹{pendingRewards}</p>
+              <p className="text-xs text-gray-400">Tracking</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* 🚨 SMART WALLET ALERTS */}
+      {alerts.length > 0 && (
+        <div className="mx-4 mb-4 space-y-2">
+          {alerts.map((alert) => (
+            <div
+              key={alert.id}
+              className={`p-4 rounded-2xl border flex items-start gap-3 ${
+                alert.priority === 'high'
+                  ? 'bg-red-500/10 border-red-500/30'
+                  : alert.priority === 'medium'
+                  ? 'bg-amber-500/10 border-amber-500/30'
+                  : 'bg-blue-500/10 border-blue-500/30'
+              }`}
+            >
+              <span className="text-2xl">{alert.icon}</span>
+              <div className="flex-1">
+                <p className="text-sm font-semibold text-white">{alert.title}</p>
+                <p className="text-xs text-gray-300 mt-1">{alert.message}</p>
+                <button className="text-xs font-medium text-emerald-400 mt-2">
+                  {alert.action} →
+                </button>
+              </div>
+              <button
+                onClick={() => dismissAlert(alert.id)}
+                className="text-gray-400 hover:text-white"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* 🏆 LOYALTY & REWARDS HUB LINK */}
+      <div className="mx-4 mb-6">
+        <Link
+          to="/loyalty-rewards"
+          className="block p-5 rounded-2xl bg-gradient-to-r from-emerald-500/20 via-amber-500/20 to-purple-500/20 border border-emerald-500/30"
+        >
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 rounded-xl bg-emerald-500/30 flex items-center justify-center">
+                <Trophy className="w-6 h-6 text-emerald-400" />
+              </div>
+              <div>
+                <h3 className="font-bold text-white">Loyalty & Rewards Hub</h3>
+                <p className="text-xs text-gray-400">Track progress, unlock benefits</p>
+              </div>
+            </div>
+            <ChevronRight className="w-5 h-5 text-gray-400" />
+          </div>
+
+          <div className="grid grid-cols-3 gap-2">
+            <div className="p-3 rounded-xl bg-white/10">
+              <div className="flex items-center gap-1 mb-1">
+                <Trophy className="w-4 h-4 text-emerald-400" />
+                <p className="text-xs text-gray-300">Active Brands</p>
+              </div>
+              <p className="text-lg font-bold text-white">7</p>
+            </div>
+            <div className="p-3 rounded-xl bg-white/10">
+              <div className="flex items-center gap-1 mb-1">
+                <Flame className="w-4 h-4 text-orange-400" />
+                <p className="text-xs text-gray-300">Streaks</p>
+              </div>
+              <p className="text-lg font-bold text-orange-400">4</p>
+            </div>
+            <div className="p-3 rounded-xl bg-white/10">
+              <div className="flex items-center gap-1 mb-1">
+                <Gift className="w-4 h-4 text-amber-400" />
+                <p className="text-xs text-gray-300">Unlocked</p>
+              </div>
+              <p className="text-lg font-bold text-amber-400">12</p>
+            </div>
+          </div>
+        </Link>
+      </div>
+
+      {/* 🪙 COIN TYPES SECTION */}
+      <div className="mx-4 mb-6">
+        <h2 className="text-lg font-bold text-white mb-3">Your ReZ Rewards</h2>
+
+        {/* 1️⃣ ReZ Coins (Universal) */}
+        <div className="mb-3 p-5 rounded-2xl bg-gradient-to-br from-emerald-500/20 to-emerald-600/10 border border-emerald-500/30">
+          <div className="flex items-start gap-3 mb-3">
+            <div className="w-12 h-12 rounded-full bg-emerald-500/30 flex items-center justify-center">
+              <span className="text-2xl">🟢</span>
+            </div>
+            <div className="flex-1">
+              <h3 className="text-base font-bold text-white">ReZ Coins</h3>
+              <p className="text-xs text-gray-300 mt-1">{rezCoins.description}</p>
+            </div>
+            <div className="text-right">
+              <p className="text-2xl font-bold text-emerald-400">{rezCoins.balance}</p>
+              <p className="text-xs text-gray-400">Coins</p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-2 mb-3">
+            <div className="p-2 rounded-lg bg-white/5">
+              <p className="text-xs text-gray-400">Usable at</p>
+              <p className="text-xs font-medium text-white">{rezCoins.usableAt}</p>
+            </div>
+            <div className="p-2 rounded-lg bg-white/5">
+              <p className="text-xs text-gray-400">Expiry</p>
+              <p className="text-xs font-medium text-white">{rezCoins.expiry}</p>
+            </div>
+          </div>
+
+          <div className="flex gap-2">
+            <button className="flex-1 py-2 px-3 rounded-xl bg-emerald-500/20 text-emerald-400 text-xs font-semibold flex items-center justify-center gap-1">
+              <Sparkles className="w-3 h-3" />
+              Use Coins
+            </button>
+            <button className="flex-1 py-2 px-3 rounded-xl bg-white/5 text-white text-xs font-semibold flex items-center justify-center gap-1">
+              <Send className="w-3 h-3" />
+              Send
+            </button>
+            <button className="flex-1 py-2 px-3 rounded-xl bg-white/5 text-white text-xs font-semibold flex items-center justify-center gap-1">
+              <Gift className="w-3 h-3" />
+              Gift
+            </button>
+          </div>
+        </div>
+
+        {/* 2️⃣ Branded Coins (Merchant Coins) */}
+        <div className="mb-3 p-5 rounded-2xl bg-white/5 border border-white/10">
+          <div className="flex items-center justify-between mb-3">
+            <h3 className="text-base font-bold text-white">Branded Coins</h3>
+            <Badge variant="default" size="sm">Merchant Specific</Badge>
+          </div>
+          <p className="text-xs text-gray-400 mb-4">Earned from specific stores. Use at the same store.</p>
+
+          <div className="space-y-2">
+            {brandedCoins.map((coin, index) => (
+              <div
+                key={index}
+                className="p-3 rounded-xl bg-white/5 border border-white/10 flex items-center gap-3"
+              >
+                <div
+                  className="w-10 h-10 rounded-full flex items-center justify-center text-xl"
+                  style={{ backgroundColor: `${coin.color}30` }}
+                >
+                  {coin.logo}
+                </div>
+                <div className="flex-1">
+                  <p className="text-sm font-semibold text-white">{coin.merchant}</p>
+                  <p className="text-xs text-gray-400">{coin.usableAt}</p>
+                </div>
+                <div className="text-right">
+                  <p className="text-lg font-bold" style={{ color: coin.color }}>
+                    {coin.balance}
+                  </p>
+                  <p className="text-xs text-gray-400">Coins</p>
+                </div>
+                <ChevronRight className="w-4 h-4 text-gray-400" />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* 3️⃣ Promo Coins (Limited Time) */}
+        <div className="mb-3 p-5 rounded-2xl bg-gradient-to-br from-amber-500/20 to-orange-600/10 border border-amber-500/30">
+          <div className="flex items-start gap-3 mb-3">
+            <div className="w-12 h-12 rounded-full bg-amber-500/30 flex items-center justify-center">
+              <span className="text-2xl">{promoCoins.icon}</span>
+            </div>
+            <div className="flex-1">
+              <h3 className="text-base font-bold text-white">Promo Coins</h3>
+              <p className="text-xs text-gray-300 mt-1">{promoCoins.description}</p>
+              <div className="flex items-center gap-1 mt-2">
+                <Clock className="w-3 h-3 text-amber-400" />
+                <p className="text-xs font-semibold text-amber-400">
+                  Expires in {promoCoins.expiry}
+                </p>
+              </div>
+            </div>
+            <div className="text-right">
+              <p className="text-2xl font-bold text-amber-400">{promoCoins.balance}</p>
+              <p className="text-xs text-gray-400">Coins</p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-2 mb-3">
+            <div className="p-2 rounded-lg bg-white/5">
+              <p className="text-xs text-gray-400">Campaign</p>
+              <p className="text-xs font-medium text-white">{promoCoins.campaign}</p>
+            </div>
+            <div className="p-2 rounded-lg bg-white/5">
+              <p className="text-xs text-gray-400">Max Redemption</p>
+              <p className="text-xs font-medium text-white">{promoCoins.maxRedemption}</p>
+            </div>
+          </div>
+
+          <button className="w-full py-2 px-3 rounded-xl bg-amber-500/20 text-amber-400 text-xs font-semibold flex items-center justify-center gap-1">
+            <Bell className="w-3 h-3" />
+            Use Before Expiry
+          </button>
+        </div>
+      </div>
+
+      {/* 🔄 COIN USAGE ORDER */}
+      <div className="mx-4 mb-6">
+        <div className="p-4 rounded-2xl bg-blue-500/10 border border-blue-500/20">
+          <div className="flex items-start gap-3">
+            <div className="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center flex-shrink-0">
+              <Sparkles className="w-5 h-5 text-blue-400" />
+            </div>
+            <div className="flex-1">
+              <p className="text-sm font-semibold text-white mb-2">
+                How coins are used when you pay
+              </p>
+              <div className="flex items-center gap-2 text-xs text-gray-300">
+                <span className="px-2 py-1 rounded-md bg-amber-500/20 text-amber-400 font-medium">
+                  1. Promo Coins
+                </span>
+                <span>→</span>
+                <span className="px-2 py-1 rounded-md bg-purple-500/20 text-purple-400 font-medium">
+                  2. Branded Coins
+                </span>
+                <span>→</span>
+                <span className="px-2 py-1 rounded-md bg-emerald-500/20 text-emerald-400 font-medium">
+                  3. ReZ Coins
+                </span>
+              </div>
+              <p className="text-xs text-gray-400 mt-2">
+                Automatically applied for maximum savings
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* 📊 SAVINGS INSIGHT SECTION */}
+      <div className="mx-4 mb-6">
+        <h2 className="text-lg font-bold text-white mb-3 flex items-center gap-2">
+          <TrendingUp className="w-5 h-5 text-emerald-400" />
+          Your Savings Story
+        </h2>
+
+        <div className="grid grid-cols-3 gap-3 mb-4">
+          <div className="p-4 rounded-2xl bg-gradient-to-br from-emerald-500/20 to-emerald-600/10 border border-emerald-500/30">
+            <p className="text-xs text-gray-300 mb-1">💰 Total Saved</p>
+            <p className="text-2xl font-bold text-emerald-400">
+              ₹{savingsStats.totalSaved.toLocaleString()}
+            </p>
+          </div>
+          <div className="p-4 rounded-2xl bg-gradient-to-br from-blue-500/20 to-blue-600/10 border border-blue-500/30">
+            <p className="text-xs text-gray-300 mb-1">📅 This Month</p>
+            <p className="text-2xl font-bold text-blue-400">
+              ₹{savingsStats.thisMonth}
+            </p>
+          </div>
+          <div className="p-4 rounded-2xl bg-gradient-to-br from-purple-500/20 to-purple-600/10 border border-purple-500/30">
+            <p className="text-xs text-gray-300 mb-1">🔁 Avg/Visit</p>
+            <p className="text-2xl font-bold text-purple-400">
+              ₹{savingsStats.avgPerVisit}
+            </p>
+          </div>
+        </div>
+
+        {/* Simple Trend Graph */}
+        <div className="p-4 rounded-2xl bg-white/5 border border-white/10">
+          <p className="text-xs text-gray-400 mb-3">📈 Monthly Savings Trend</p>
+          <div className="flex items-end justify-between gap-2 h-24">
+            {savingsStats.monthlyTrend.map((value, index) => (
+              <div key={index} className="flex-1 flex flex-col items-center gap-1">
+                <div
+                  className="w-full bg-gradient-to-t from-emerald-500 to-emerald-400 rounded-t-lg transition-all"
+                  style={{ height: `${(value / Math.max(...savingsStats.monthlyTrend)) * 100}%` }}
+                ></div>
+                <p className="text-xs text-gray-500">M{index + 1}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* 🧾 TRANSACTION TIMELINE */}
+      <div className="mx-4 mb-6">
+        <h2 className="text-lg font-bold text-white mb-3">Wallet Activity</h2>
+
+        {/* Filter Tabs */}
+        <div className="flex gap-2 mb-4 overflow-x-auto hide-scrollbar">
+          {[
+            { id: 'all', label: 'All' },
+            { id: 'earned', label: 'Earned' },
+            { id: 'spent', label: 'Used' },
+            { id: 'pending', label: 'Pending' }
+          ].map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-all whitespace-nowrap ${
+                activeTab === tab.id
+                  ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'
+                  : 'bg-white/5 text-gray-400 border border-white/10'
+              }`}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
+
+        {/* Transaction List */}
+        <div className="space-y-2">
+          {filteredTransactions.map((tx) => (
+            <div
+              key={tx.id}
+              className="p-4 rounded-2xl bg-white/5 border border-white/10 flex items-center gap-3"
+            >
+              <div className="w-10 h-10 rounded-xl flex items-center justify-center text-xl flex-shrink-0">
+                {tx.storeIcon}
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-sm font-semibold text-white truncate">{tx.store}</p>
+                <p className="text-xs text-gray-400">{tx.description}</p>
+                <p className="text-xs text-gray-500 mt-1">
+                  {tx.date} • {tx.time}
+                </p>
+              </div>
+              <div className="text-right">
+                <p
+                  className={`text-lg font-bold ${
+                    tx.type === 'earned' || tx.type === 'cashback'
+                      ? 'text-emerald-400'
+                      : tx.type === 'spent'
+                      ? 'text-red-400'
+                      : 'text-amber-400'
+                  }`}
+                >
+                  {tx.type === 'earned' || tx.type === 'cashback' ? '+' : tx.type === 'spent' ? '-' : ''}
+                  {tx.coinType === 'cashback' ? '₹' : ''}
+                  {tx.amount}
+                </p>
+                <p className="text-xs text-gray-400">
+                  {tx.coinType === 'cashback' ? 'cashback' : 'coins'}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* 🔐 TRUST & TRANSPARENCY */}
+      <div className="mx-4 mb-6">
+        <button
+          onClick={() => setShowTrustSection(!showTrustSection)}
+          className="w-full p-4 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-between"
+        >
+          <div className="flex items-center gap-3">
+            <Shield className="w-5 h-5 text-blue-400" />
+            <p className="text-sm font-semibold text-white">Trust & Transparency</p>
+          </div>
+          <ChevronRight
+            className={`w-5 h-5 text-gray-400 transition-transform ${
+              showTrustSection ? 'rotate-90' : ''
+            }`}
+          />
+        </button>
+
+        {showTrustSection && (
+          <div className="mt-2 p-4 rounded-2xl bg-white/5 border border-white/10 space-y-3">
+            <button className="w-full text-left text-sm text-gray-300 hover:text-white flex items-center justify-between">
+              <span>📋 Full ledger view</span>
+              <ChevronRight className="w-4 h-4" />
+            </button>
+            <button className="w-full text-left text-sm text-gray-300 hover:text-white flex items-center justify-between">
+              <span>📖 Coin rules explained</span>
+              <ChevronRight className="w-4 h-4" />
+            </button>
+            <button className="w-full text-left text-sm text-gray-300 hover:text-white flex items-center justify-between">
+              <span>⏰ Expiry logic</span>
+              <ChevronRight className="w-4 h-4" />
+            </button>
+            <button className="w-full text-left text-sm text-gray-300 hover:text-white flex items-center justify-between">
+              <span>💾 Download transaction history</span>
+              <Download className="w-4 h-4" />
+            </button>
+            <button className="w-full text-left text-sm text-gray-300 hover:text-white flex items-center justify-between">
+              <span>🔒 Privacy controls</span>
+              <ChevronRight className="w-4 h-4" />
+            </button>
+          </div>
         )}
+      </div>
+
+      {/* FINAL MESSAGE */}
+      <div className="mx-4 mb-6">
+        <div className="p-6 rounded-2xl bg-gradient-to-br from-purple-500/20 to-blue-600/10 border border-purple-500/30 text-center">
+          <p className="text-sm font-semibold text-white mb-1">
+            Your money should work harder for you.
+          </p>
+          <p className="text-xs text-gray-300">ReZ makes sure it does.</p>
+        </div>
+      </div>
+
+      {/* ⚡ QUICK ACTIONS - FLOATING BAR */}
+      <div className="fixed bottom-20 left-0 right-0 px-4 z-40">
+        <div className="glass rounded-3xl p-3 border border-white/10">
+          <div className="grid grid-cols-4 gap-2">
+            <button className="flex flex-col items-center gap-1 py-3 px-2 rounded-2xl bg-emerald-500/20 active:scale-95 transition-transform">
+              <ScanLine className="w-5 h-5 text-emerald-400" />
+              <span className="text-xs font-medium text-emerald-400">Scan</span>
+            </button>
+            <button className="flex flex-col items-center gap-1 py-3 px-2 rounded-2xl bg-white/5 active:scale-95 transition-transform">
+              <Tag className="w-5 h-5 text-gray-300" />
+              <span className="text-xs font-medium text-gray-300">Offers</span>
+            </button>
+            <button className="flex flex-col items-center gap-1 py-3 px-2 rounded-2xl bg-white/5 active:scale-95 transition-transform">
+              <Gamepad2 className="w-5 h-5 text-gray-300" />
+              <span className="text-xs font-medium text-gray-300">Play</span>
+            </button>
+            <button className="flex flex-col items-center gap-1 py-3 px-2 rounded-2xl bg-white/5 active:scale-95 transition-transform">
+              <Upload className="w-5 h-5 text-gray-300" />
+              <span className="text-xs font-medium text-gray-300">Bill</span>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -6,6 +6,8 @@ import { UserProvider } from './contexts/UserContext';
 import Layout from './components/layout/Layout';
 import Home from './pages/Home';
 import Explore from './pages/Explore';
+import Categories from './pages/Categories';
+import Onboarding from './pages/Onboarding';
 import StorePage from './pages/StorePage';
 import Wallet from './pages/Wallet';
 import Offers from './pages/Offers';
@@ -33,6 +35,12 @@ import Healthcare from './pages/Healthcare';
 import Fitness from './pages/Fitness';
 import HomeServices from './pages/HomeServices';
 import Financial from './pages/Financial';
+import ProductServicePage from './pages/ProductServicePage';
+import ServiceBookingPage from './pages/ServiceBookingPage';
+import ProductCheckout from './pages/ProductCheckout';
+import ServiceCheckout from './pages/ServiceCheckout';
+import SearchResults from './pages/SearchResults';
+import Earn from './pages/Earn';
 
 // Specialized Stores
 import LuxuryStore from './pages/stores/LuxuryStore';
@@ -50,6 +58,12 @@ import WomenExclusive from './pages/exclusive/WomenExclusive';
 import BirthdaySpecials from './pages/exclusive/BirthdaySpecials';
 import SpecialProfiles from './pages/exclusive/SpecialProfiles';
 import LoyaltyRewards from './pages/exclusive/LoyaltyRewards';
+import BrandLoyalty from './pages/BrandLoyalty';
+import LoyaltyHub from './pages/LoyaltyHub';
+import RewardsHub from './pages/RewardsHub';
+import LoyaltyRewardsHub from './pages/LoyaltyRewardsHub';
+import PayInStore from './pages/PayInStore';
+import HowRezWorks from './pages/HowRezWorks';
 
 function App() {
   return (
@@ -58,9 +72,11 @@ function App() {
         <WalletProvider>
           <AppProvider>
             <Routes>
+              <Route path="/onboarding" element={<Onboarding />} />
               <Route path="/" element={<Layout />}>
                 <Route index element={<Home />} />
                 <Route path="explore" element={<Explore />} />
+                <Route path="categories" element={<Categories />} />
                 <Route path="store/:id" element={<StorePage />} />
                 <Route path="wallet" element={<Wallet />} />
                 <Route path="offers" element={<Offers />} />
@@ -90,6 +106,29 @@ function App() {
                 <Route path="home-services" element={<HomeServices />} />
                 <Route path="financial" element={<Financial />} />
 
+                {/* Search Results */}
+                <Route path="search" element={<SearchResults />} />
+
+                {/* Earn Page */}
+                <Route path="earn" element={<Earn />} />
+
+                {/* Pay in Store */}
+                <Route path="pay-in-store" element={<PayInStore />} />
+
+                {/* How ReZ Works - Interactive Flow */}
+                <Route path="how-rez-works" element={<HowRezWorks />} />
+
+                {/* Universal Product/Service Page */}
+                <Route path="product/:id" element={<ProductServicePage />} />
+                <Route path="service/:id" element={<ProductServicePage />} />
+
+                {/* Service Booking Page */}
+                <Route path="booking/:id" element={<ServiceBookingPage />} />
+
+                {/* Checkout Pages */}
+                <Route path="checkout/product/:id" element={<ProductCheckout />} />
+                <Route path="checkout/service/:id" element={<ServiceCheckout />} />
+
                 {/* Specialized Stores */}
                 <Route path="store/luxury" element={<LuxuryStore />} />
                 <Route path="store/organic" element={<OrganicStore />} />
@@ -106,6 +145,16 @@ function App() {
                 <Route path="exclusive/birthday" element={<BirthdaySpecials />} />
                 <Route path="exclusive/loyalty" element={<LoyaltyRewards />} />
                 <Route path="exclusive/special-profiles" element={<SpecialProfiles />} />
+
+                {/* Loyalty & Rewards - Unified Hub */}
+                <Route path="loyalty-rewards" element={<LoyaltyRewardsHub />} />
+
+                {/* Legacy routes - keep for backward compatibility */}
+                <Route path="loyalty" element={<LoyaltyHub />} />
+                <Route path="rewards" element={<RewardsHub />} />
+
+                {/* Brand Pages */}
+                <Route path="brand/:brandId" element={<BrandLoyalty />} />
               </Route>
             </Routes>
           </AppProvider>

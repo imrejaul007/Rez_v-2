@@ -1,10 +1,10 @@
 import { NavLink } from 'react-router-dom';
-import { Home, Tag, Wallet, User, Compass, Percent } from 'lucide-react';
+import { Home, Tag, Wallet, User, Compass, Percent, Coins } from 'lucide-react';
 
 const navItems = [
   { path: '/', icon: Home, label: 'Discover' },
   { path: '/explore', icon: Compass, label: 'Explore' },
-  { path: '/deal-store', icon: Percent, label: 'Deals' },
+  { path: '/earn', icon: Coins, label: 'Earn' },
   { path: '/wallet', icon: Wallet, label: 'Wallet' },
   { path: '/profile', icon: User, label: 'You' },
 ];

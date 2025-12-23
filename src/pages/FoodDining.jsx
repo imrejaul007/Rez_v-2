@@ -9,6 +9,8 @@ import {
   Zap,
   TrendingUp,
   Utensils,
+  Trophy,
+  Gift,
 } from 'lucide-react';
 import { useWallet } from '../contexts/WalletContext';
 import {
@@ -158,6 +160,43 @@ const FoodDining = () => {
 
       {/* Social Proof */}
       <FoodSocialProof />
+
+      {/* Loyalty Hub CTA */}
+      <div className="px-4 py-4">
+        <Link
+          to="/loyalty-rewards"
+          className="block p-4 rounded-2xl bg-gradient-to-r from-emerald-500/20 via-teal-500/20 to-amber-500/20 border border-emerald-500/30"
+        >
+          <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 rounded-xl bg-emerald-500/30 flex items-center justify-center">
+                <Trophy className="w-6 h-6 text-emerald-400" />
+              </div>
+              <div>
+                <h3 className="font-semibold text-white">Food Loyalty Hub</h3>
+                <p className="text-xs text-gray-400">Track streaks, unlock rewards</p>
+              </div>
+            </div>
+            <ChevronRight className="w-5 h-5 text-gray-400" />
+          </div>
+          <div className="grid grid-cols-3 gap-2">
+            <div className="p-2 rounded-lg bg-white/10">
+              <p className="text-xs text-gray-400">Total Visits</p>
+              <p className="text-lg font-bold text-white">42</p>
+            </div>
+            <div className="p-2 rounded-lg bg-white/10">
+              <p className="text-xs text-gray-400">Active Brands</p>
+              <p className="text-lg font-bold text-amber-400">7</p>
+            </div>
+            <div className="p-2 rounded-lg bg-white/10">
+              <p className="text-xs text-gray-400">Next Reward</p>
+              <p className="text-lg font-bold text-emerald-400">
+                <Gift className="w-5 h-5 inline" />
+              </p>
+            </div>
+          </div>
+        </Link>
+      </div>
 
       {/* Quick Action Bar */}
       <QuickActionBar category="food" />

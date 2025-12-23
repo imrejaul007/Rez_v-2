@@ -52,7 +52,7 @@ const FashionProduct = () => {
     ((product.originalPrice - product.price) / product.originalPrice) * 100
   );
   const totalPrice = product.price * quantity;
-  const maxCoinsUsable = Math.min(rezCoins, totalPrice * 0.2);
+  const maxCoinsUsable = Math.min(rezCoins?.balance || 0, totalPrice * 0.2);
   const finalPrice = totalPrice - maxCoinsUsable;
   const totalCoinsEarned = product.coinsEarned * quantity;
 

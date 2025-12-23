@@ -38,7 +38,7 @@ const HomeHeader = () => {
               className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-amber-500/20"
             >
               <Coins className="w-4 h-4 text-amber-400" />
-              <span className="text-sm font-medium text-amber-400">{rezCoins}</span>
+              <span className="text-sm font-medium text-amber-400">{rezCoins?.balance || 0}</span>
             </Link>
 
             {/* Profile */}

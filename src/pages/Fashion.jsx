@@ -10,6 +10,8 @@ import {
   Sparkles,
   ChevronRight,
   ArrowRight,
+  Trophy,
+  Gift,
 } from 'lucide-react';
 import { useWallet } from '../contexts/WalletContext';
 import {
@@ -120,6 +122,43 @@ const Fashion = () => {
 
       {/* Quick Action Bar */}
       <QuickActionBar category="fashion" />
+
+      {/* Loyalty Hub CTA */}
+      <div className="px-4 py-4">
+        <Link
+          to="/loyalty-rewards"
+          className="block p-4 rounded-2xl bg-gradient-to-r from-purple-500/20 via-blue-500/20 to-amber-500/20 border border-purple-500/30"
+        >
+          <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 rounded-xl bg-purple-500/30 flex items-center justify-center">
+                <Trophy className="w-6 h-6 text-purple-400" />
+              </div>
+              <div>
+                <h3 className="font-semibold text-white">Fashion Loyalty Hub</h3>
+                <p className="text-xs text-gray-400">Track purchases, unlock style rewards</p>
+              </div>
+            </div>
+            <ChevronRight className="w-5 h-5 text-gray-400" />
+          </div>
+          <div className="grid grid-cols-3 gap-2">
+            <div className="p-2 rounded-lg bg-white/10">
+              <p className="text-xs text-gray-400">Total Orders</p>
+              <p className="text-lg font-bold text-white">15</p>
+            </div>
+            <div className="p-2 rounded-lg bg-white/10">
+              <p className="text-xs text-gray-400">Active Brands</p>
+              <p className="text-lg font-bold text-purple-400">4</p>
+            </div>
+            <div className="p-2 rounded-lg bg-white/10">
+              <p className="text-xs text-gray-400">Next Reward</p>
+              <p className="text-lg font-bold text-blue-400">
+                <Gift className="w-5 h-5 inline" />
+              </p>
+            </div>
+          </div>
+        </Link>
+      </div>
 
       {/* Smart Search Prompt */}
       <div className="px-4 py-4">

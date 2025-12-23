@@ -5,13 +5,13 @@ import { useWallet } from '../../contexts/WalletContext';
 const WalletPreview = () => {
   const { rezCoins, brandedCoins, promoCoins } = useWallet();
 
-  // Calculate total branded coins (it's an object)
-  const totalBrandedCoins = typeof brandedCoins === 'object'
-    ? Object.values(brandedCoins).reduce((a, b) => a + b, 0)
-    : brandedCoins || 0;
+  // Calculate total branded coins (now it's an array)
+  const totalBrandedCoins = Array.isArray(brandedCoins)
+    ? brandedCoins.reduce((sum, coin) => sum + coin.balance, 0)
+    : 0;
 
-  const expiringCoins = 150;
-  const expiryDays = 3;
+  const expiringCoins = promoCoins?.balance || 0;
+  const expiryDays = promoCoins?.expiry || '3 days';
 
   return (
     <div className="px-4 py-4">
@@ -31,7 +31,7 @@ const WalletPreview = () => {
         <div className="grid grid-cols-3 gap-3 mb-4">
           <div className="p-3 rounded-xl bg-white/5 text-center">
             <Coins className="w-5 h-5 text-amber-400 mx-auto mb-1" />
-            <p className="text-lg font-bold text-white">{rezCoins}</p>
+            <p className="text-lg font-bold text-white">{rezCoins?.balance || 0}</p>
             <p className="text-[10px] text-gray-400">ReZ Coins</p>
           </div>
           <div className="p-3 rounded-xl bg-white/5 text-center">
@@ -41,7 +41,7 @@ const WalletPreview = () => {
           </div>
           <div className="p-3 rounded-xl bg-white/5 text-center">
             <Coins className="w-5 h-5 text-pink-400 mx-auto mb-1" />
-            <p className="text-lg font-bold text-white">{promoCoins}</p>
+            <p className="text-lg font-bold text-white">{promoCoins?.balance || 0}</p>
             <p className="text-[10px] text-gray-400">Promo</p>
           </div>
         </div>

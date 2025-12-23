@@ -37,7 +37,7 @@ import Badge from '../components/common/Badge';
 
 const DealStore = () => {
   const [activeMode, setActiveMode] = useState('offers');
-  const { totalCoins } = useWallet();
+  const { totalCoinsValue } = useWallet();
   const { user } = useUser();
 
   const modes = [
@@ -78,7 +78,7 @@ const DealStore = () => {
           <div className="flex items-center gap-3">
             <div className="flex items-center gap-1 px-2.5 py-1 rounded-full bg-amber-500/20">
               <span className="text-amber-400">🪙</span>
-              <span className="text-sm font-medium text-amber-400">{totalCoins.toLocaleString()}</span>
+              <span className="text-sm font-medium text-amber-400">{totalCoinsValue?.toLocaleString() || 0}</span>
             </div>
             <button className="relative p-2 rounded-full bg-white/10">
               <Bell className="w-5 h-5 text-white" />

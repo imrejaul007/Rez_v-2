@@ -4,7 +4,7 @@ import { useWallet } from '../../contexts/WalletContext';
 
 const Header = () => {
   const { globalMode, toggleFilterSheet, toggleModeSwitcher } = useApp();
-  const { totalCoins } = useWallet();
+  const { totalCoinsValue } = useWallet();
 
   const currentMode = globalModeOptions.find(m => m.id === globalMode);
 
@@ -30,7 +30,7 @@ const Header = () => {
             {/* Coins */}
             <div className="flex items-center gap-1 px-3 py-1.5 rounded-full bg-amber-500/20">
               <span className="text-amber-400">🪙</span>
-              <span className="text-sm font-medium text-amber-400">{totalCoins.toLocaleString()}</span>
+              <span className="text-sm font-medium text-amber-400">{totalCoinsValue?.toLocaleString() || 0}</span>
             </div>
 
             {/* Notifications */}
