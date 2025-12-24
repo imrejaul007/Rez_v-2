@@ -184,6 +184,16 @@ import LoyaltyRewardsHub from './pages/LoyaltyRewardsHub';
 import PayInStore from './pages/PayInStore';
 import HowRezWorks from './pages/HowRezWorks';
 
+// ReZ Mall sub-pages
+import MallBrandDetail from './pages/mall/MallBrandDetail';
+import MallCategory from './pages/mall/MallCategory';
+import MallCollection from './pages/mall/MallCollection';
+
+// Cash Store sub-pages
+import CashStoreBrandDetail from './pages/cashstore/CashStoreBrandDetail';
+import TrackCashback from './pages/cashstore/TrackCashback';
+import HowItWorks from './pages/cashstore/HowItWorks';
+
 function App() {
   return (
     <BrowserRouter>
@@ -218,7 +228,13 @@ function App() {
                 <Route path="deal-store" element={<DealStore />} />
                 <Route path="deal/:id" element={<DealDetail />} />
                 <Route path="cash-store" element={<CashStore />} />
+                <Route path="cash-store/brand/:brandId" element={<CashStoreBrandDetail />} />
+                <Route path="cash-store/track" element={<TrackCashback />} />
+                <Route path="cash-store/how-it-works" element={<HowItWorks />} />
                 <Route path="mall" element={<RezMall />} />
+                <Route path="mall/brand/:brandId" element={<MallBrandDetail />} />
+                <Route path="mall/category/:categoryId" element={<MallCategory />} />
+                <Route path="mall/collection/:collectionId" element={<MallCollection />} />
                 <Route path="prive" element={<RezPrive />} />
                 <Route path="profile" element={<Profile />} />
                 <Route path="flea-market" element={<FleaMarket />} />
