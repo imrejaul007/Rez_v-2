@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import {
   Search, ExternalLink, TrendingUp, Gift, Tag, Clock,
   Percent, ShoppingBag, Smartphone, Plane, Home as HomeIcon,
-  Utensils, Package, Coins, ChevronRight, Info, Star, Zap
+  Utensils, Package, Coins, ChevronRight, Info, Star, Zap, Sparkles
 } from 'lucide-react';
 import { useWallet } from '../contexts/WalletContext';
 import Header from '../components/layout/Header';
@@ -22,7 +22,7 @@ const CashStore = () => {
       name: 'Amazon',
       logo: '📦',
       category: 'Shopping',
-      cashback: 'Up to 12%',
+      cashback: 'Earn up to 12% ReZ Coins',
       coupons: 145,
       trending: true,
       color: 'from-orange-500/20 to-amber-500/20'
@@ -32,7 +32,7 @@ const CashStore = () => {
       name: 'Flipkart',
       logo: '🛒',
       category: 'Shopping',
-      cashback: 'Up to 15%',
+      cashback: 'Earn up to 15% ReZ Coins',
       coupons: 98,
       trending: true,
       color: 'from-blue-500/20 to-cyan-500/20'
@@ -42,7 +42,7 @@ const CashStore = () => {
       name: 'Myntra',
       logo: '👗',
       category: 'Fashion',
-      cashback: 'Up to 20%',
+      cashback: 'Earn up to 20% ReZ Coins',
       coupons: 67,
       color: 'from-pink-500/20 to-rose-500/20'
     },
@@ -51,7 +51,7 @@ const CashStore = () => {
       name: 'Swiggy',
       logo: '🍔',
       category: 'Food',
-      cashback: 'Up to 10%',
+      cashback: 'Earn up to 10% ReZ Coins',
       coupons: 52,
       color: 'from-red-500/20 to-orange-500/20'
     },
@@ -60,7 +60,7 @@ const CashStore = () => {
       name: 'Zomato',
       logo: '🍕',
       category: 'Food',
-      cashback: 'Up to 8%',
+      cashback: 'Earn up to 8% ReZ Coins',
       coupons: 48,
       color: 'from-red-600/20 to-pink-500/20'
     },
@@ -69,28 +69,65 @@ const CashStore = () => {
       name: 'Nykaa',
       logo: '💄',
       category: 'Beauty',
-      cashback: 'Up to 18%',
+      cashback: 'Earn up to 18% ReZ Coins',
       coupons: 73,
       color: 'from-purple-500/20 to-pink-500/20'
     },
     {
       id: 7,
+      name: 'Ajio',
+      logo: '👔',
+      category: 'Fashion',
+      cashback: 'Earn up to 30% ReZ Coins',
+      coupons: 56,
+      trending: true,
+      color: 'from-yellow-500/20 to-orange-500/20'
+    },
+    {
+      id: 8,
       name: 'BookMyShow',
       logo: '🎬',
       category: 'Entertainment',
-      cashback: 'Up to 5%',
+      cashback: 'Earn up to 5% ReZ Coins',
       coupons: 24,
       color: 'from-violet-500/20 to-purple-500/20'
     },
     {
-      id: 8,
+      id: 9,
       name: 'MakeMyTrip',
       logo: '✈️',
       category: 'Travel',
-      cashback: 'Up to 25%',
+      cashback: 'Earn up to 25% ReZ Coins',
       coupons: 89,
       trending: true,
       color: 'from-cyan-500/20 to-blue-500/20'
+    },
+    {
+      id: 10,
+      name: 'Uber',
+      logo: '🚗',
+      category: 'Travel',
+      cashback: 'Earn up to 12% ReZ Coins',
+      coupons: 42,
+      color: 'from-gray-600/20 to-black/20'
+    },
+    {
+      id: 11,
+      name: 'FirstCry',
+      logo: '👶',
+      category: 'Shopping',
+      cashback: 'Earn up to 25% ReZ Coins',
+      coupons: 63,
+      color: 'from-blue-400/20 to-cyan-400/20'
+    },
+    {
+      id: 12,
+      name: 'UrbanClap',
+      logo: '🔧',
+      category: 'Home',
+      cashback: 'Earn up to 20% ReZ Coins',
+      coupons: 38,
+      color: 'from-green-500/20 to-emerald-500/20'
     }
   ];
 
@@ -99,15 +136,16 @@ const CashStore = () => {
     { id: 'Shopping', icon: ShoppingBag, label: 'Shopping' },
     { id: 'Fashion', icon: Tag, label: 'Fashion' },
     { id: 'Food', icon: Utensils, label: 'Food' },
+    { id: 'Beauty', icon: Sparkles, label: 'Beauty' },
     { id: 'Travel', icon: Plane, label: 'Travel' },
-    { id: 'Electronics', icon: Smartphone, label: 'Electronics' },
+    { id: 'Entertainment', icon: Star, label: 'Entertainment' },
     { id: 'Home', icon: HomeIcon, label: 'Home' }
   ];
 
   const trendingCashback = [
-    { id: 1, brand: 'Ajio', cashback: '30%', deal: 'Fashion Sale', badge: '🔥 Hot' },
-    { id: 2, brand: 'FirstCry', cashback: '25%', deal: 'Baby Products', badge: '⚡ Today' },
-    { id: 3, brand: 'UrbanClap', cashback: '20%', deal: 'Home Services', badge: '💎 Best' }
+    { id: 1, brand: 'Ajio', cashback: '30% Coins', deal: 'Fashion Sale', badge: '🔥 Hot' },
+    { id: 2, brand: 'FirstCry', cashback: '25% Coins', deal: 'Baby Products', badge: '⚡ Today' },
+    { id: 3, brand: 'UrbanClap', cashback: '20% Coins', deal: 'Home Services', badge: '💎 Best' }
   ];
 
   const giftCards = [
@@ -208,14 +246,14 @@ const CashStore = () => {
         <div className="relative p-6 rounded-2xl bg-gradient-to-r from-emerald-500 to-green-500 overflow-hidden">
           <div className="relative z-10">
             <div className="flex items-center gap-2 mb-2">
-              <Percent className="w-5 h-5 text-white" />
-              <span className="text-sm font-medium text-white/90">Max Cashback Guarantee</span>
+              <Coins className="w-5 h-5 text-white" />
+              <span className="text-sm font-medium text-white/90">Earn ReZ Coins on Every Order</span>
             </div>
             <h2 className="text-2xl font-bold text-white mb-2">
-              Earn cashback on every online order
+              Shop online. Get rewarded.
             </h2>
             <p className="text-white/90 text-sm mb-4">
-              Shop from 1000+ brands and earn up to 30% cashback
+              1000+ brands • Same prices • Extra ReZ Coins in your wallet
             </p>
             <Link
               to="/cash-store/how-it-works"
@@ -227,6 +265,64 @@ const CashStore = () => {
           </div>
           <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-3xl" />
           <div className="absolute bottom-0 left-0 w-40 h-40 bg-green-400/20 rounded-full blur-3xl" />
+        </div>
+      </div>
+
+      {/* How Cash Store Works */}
+      <div className="px-4 mb-8">
+        <div className="p-6 rounded-2xl bg-white dark:bg-dark-800 border border-rez-gray-200 dark:border-dark-700">
+          <h3 className="text-lg font-bold text-rez-navy dark:text-white mb-4">
+            💸 How Cash Store Works
+          </h3>
+          <div className="space-y-4">
+            <div className="flex gap-3">
+              <div className="w-8 h-8 rounded-full bg-emerald-500/20 flex items-center justify-center shrink-0">
+                <span className="text-sm font-bold text-emerald-600 dark:text-emerald-400">1</span>
+              </div>
+              <div>
+                <h4 className="font-semibold text-rez-navy dark:text-white mb-1">Find Your Brand</h4>
+                <p className="text-sm text-rez-gray-600 dark:text-gray-400">
+                  Browse 1000+ online brands. See how many ReZ Coins you'll earn.
+                </p>
+              </div>
+            </div>
+            <div className="flex gap-3">
+              <div className="w-8 h-8 rounded-full bg-emerald-500/20 flex items-center justify-center shrink-0">
+                <span className="text-sm font-bold text-emerald-600 dark:text-emerald-400">2</span>
+              </div>
+              <div>
+                <h4 className="font-semibold text-rez-navy dark:text-white mb-1">Shop Normally</h4>
+                <p className="text-sm text-rez-gray-600 dark:text-gray-400">
+                  Tap "Shop Now" → Same prices → Same checkout. We track in background.
+                </p>
+              </div>
+            </div>
+            <div className="flex gap-3">
+              <div className="w-8 h-8 rounded-full bg-emerald-500/20 flex items-center justify-center shrink-0">
+                <span className="text-sm font-bold text-emerald-600 dark:text-emerald-400">3</span>
+              </div>
+              <div>
+                <h4 className="font-semibold text-rez-navy dark:text-white mb-1">Get ReZ Coins</h4>
+                <p className="text-sm text-rez-gray-600 dark:text-gray-400">
+                  After order confirmation, ReZ Coins are added to your wallet. Use them anywhere in ReZ.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-4 p-4 rounded-xl bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800">
+            <div className="flex items-start gap-2">
+              <Zap className="w-5 h-5 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
+              <div>
+                <p className="text-sm font-semibold text-amber-800 dark:text-amber-300 mb-1">
+                  Cashback = ReZ Coins (not cash)
+                </p>
+                <p className="text-xs text-amber-700 dark:text-amber-400">
+                  All cashback is credited as ReZ Coins to your universal wallet. Use coins for offline stores, ReZ Mall, and future Privé benefits. No bank withdrawal.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
