@@ -32,6 +32,17 @@ import FashionProduct from './pages/FashionProduct';
 import Beauty from './pages/Beauty';
 import BeautyCategory from './pages/BeautyCategory';
 import BeautyService from './pages/BeautyService';
+import BeautyNearby from './pages/beauty/BeautyNearby';
+import BeautyDeals from './pages/beauty/BeautyDeals';
+import BeautyServices from './pages/beauty/BeautyServices';
+import BeautyProducts from './pages/beauty/BeautyProducts';
+import BeautyClinics from './pages/beauty/BeautyClinics';
+import BeautyAll from './pages/beauty/BeautyAll';
+import BeautyConcierge from './pages/beauty/BeautyConcierge';
+import BeautyGift from './pages/beauty/BeautyGift';
+import BeautyOffers from './pages/beauty/BeautyOffers';
+import BeautyProductDetail from './pages/beauty/BeautyProductDetail';
+import BeautyClinicDetail from './pages/beauty/BeautyClinicDetail';
 import Grocery from './pages/Grocery';
 import Healthcare from './pages/Healthcare';
 import Fitness from './pages/Fitness';
@@ -50,6 +61,15 @@ import Notifications from './pages/Notifications';
 import Settings from './pages/Settings';
 import Help from './pages/Help';
 import UniversalServicePage from './pages/UniversalServicePage';
+import Deals from './pages/Deals';
+import ScanPay from './pages/ScanPay';
+import Reels from './pages/Reels';
+import Terms from './pages/Terms';
+import SuperDeals from './pages/SuperDeals';
+import Missions from './pages/Missions';
+import NewArrivals from './pages/NewArrivals';
+import PopularStores from './pages/PopularStores';
+import Bookings from './pages/Bookings';
 
 // Explore Subpages
 import CategoryDetail from './pages/explore/CategoryDetail';
@@ -136,6 +156,17 @@ function App() {
                 <Route path="fashion/:category" element={<FashionCategory />} />
                 <Route path="fashion/product/:id" element={<FashionProduct />} />
                 <Route path="beauty" element={<Beauty />} />
+                <Route path="beauty/nearby" element={<BeautyNearby />} />
+                <Route path="beauty/deals" element={<BeautyDeals />} />
+                <Route path="beauty/services" element={<BeautyServices />} />
+                <Route path="beauty/products" element={<BeautyProducts />} />
+                <Route path="beauty/clinics" element={<BeautyClinics />} />
+                <Route path="beauty/all" element={<BeautyAll />} />
+                <Route path="beauty/concierge" element={<BeautyConcierge />} />
+                <Route path="beauty/gift" element={<BeautyGift />} />
+                <Route path="beauty/offers" element={<BeautyOffers />} />
+                <Route path="beauty/product/:id" element={<BeautyProductDetail />} />
+                <Route path="beauty/clinic/:id" element={<BeautyClinicDetail />} />
                 <Route path="beauty/:type/:category" element={<BeautyCategory />} />
                 <Route path="beauty/service/:id" element={<BeautyService />} />
                 <Route path="grocery" element={<Grocery />} />
@@ -163,12 +194,30 @@ function App() {
 
                 {/* Help & Support */}
                 <Route path="help" element={<Help />} />
+                <Route path="terms" element={<Terms />} />
+
+                {/* Deals & Shopping */}
+                <Route path="deals" element={<Deals />} />
+                <Route path="super-deals" element={<SuperDeals />} />
+                <Route path="scan" element={<ScanPay />} />
+                <Route path="reels" element={<Reels />} />
+
+                {/* Discovery */}
+                <Route path="new" element={<NewArrivals />} />
+                <Route path="popular" element={<PopularStores />} />
+
+                {/* Gamification */}
+                <Route path="missions" element={<Missions />} />
+
+                {/* Bookings */}
+                <Route path="bookings" element={<Bookings />} />
 
                 {/* Pay in Store */}
                 <Route path="pay-in-store" element={<PayInStore />} />
 
                 {/* How ReZ Works - Interactive Flow */}
                 <Route path="how-rez-works" element={<HowRezWorks />} />
+                <Route path="how-it-works" element={<HowRezWorks />} />
 
                 {/* Universal Product/Service Page */}
                 <Route path="product/:id" element={<ProductServicePage />} />
