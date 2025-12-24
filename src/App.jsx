@@ -135,7 +135,6 @@ import EventsWorkshops from './pages/events/EventsWorkshops';
 import EventsParks from './pages/events/EventsParks';
 import EventsGaming from './pages/events/EventsGaming';
 import EventsExperiences from './pages/events/EventsExperiences';
-import RezPrive from './pages/exclusive/RezPrive';
 import Deals from './pages/Deals';
 import ScanPay from './pages/ScanPay';
 import Reels from './pages/Reels';
