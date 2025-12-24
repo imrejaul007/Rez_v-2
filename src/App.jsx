@@ -43,6 +43,12 @@ import ProductCheckout from './pages/ProductCheckout';
 import ServiceCheckout from './pages/ServiceCheckout';
 import SearchResults from './pages/SearchResults';
 import Earn from './pages/Earn';
+import OrderHistory from './pages/OrderHistory';
+import OrderDetail from './pages/OrderDetail';
+import Wishlist from './pages/Wishlist';
+import Notifications from './pages/Notifications';
+import Settings from './pages/Settings';
+import Help from './pages/Help';
 
 // Explore Subpages
 import CategoryDetail from './pages/explore/CategoryDetail';
@@ -144,6 +150,18 @@ function App() {
                 <Route path="earn" element={<Earn />} />
                 <Route path="upload-bill" element={<UploadBillPage />} />
                 <Route path="refer" element={<ReferralPage />} />
+
+                {/* Orders & Wishlist */}
+                <Route path="orders" element={<OrderHistory />} />
+                <Route path="order/:orderId" element={<OrderDetail />} />
+                <Route path="wishlist" element={<Wishlist />} />
+
+                {/* Notifications & Settings */}
+                <Route path="notifications" element={<Notifications />} />
+                <Route path="settings" element={<Settings />} />
+
+                {/* Help & Support */}
+                <Route path="help" element={<Help />} />
 
                 {/* Pay in Store */}
                 <Route path="pay-in-store" element={<PayInStore />} />
