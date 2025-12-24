@@ -61,6 +61,34 @@ const DealDetail = () => {
     }
   };
 
+  const handleShare = () => {
+    // Share functionality
+    if (navigator.share) {
+      navigator.share({
+        title: deal.title,
+        text: `Check out this deal: ${deal.discount} off at ${deal.store}`,
+        url: window.location.href
+      }).catch(() => console.log('Share cancelled'));
+    } else {
+      console.log('Share not supported - implement fallback');
+    }
+  };
+
+  const handleDirections = () => {
+    // Open maps with store location
+    console.log('Opening directions to store');
+    // TODO: Implement actual directions with store coordinates
+  };
+
+  const handleCall = () => {
+    // Initiate phone call
+    if (deal.phone) {
+      window.location.href = `tel:${deal.phone}`;
+    } else {
+      console.log('Store phone number not available');
+    }
+  };
+
   const getDiscountColor = () => {
     if (deal.discountType === 'bogo') return 'from-purple-500 to-pink-500';
     if (deal.discountType === 'freebie' || deal.discount === 'FREE') return 'from-emerald-500 to-green-500';
@@ -109,7 +137,10 @@ const DealDetail = () => {
           >
             <Heart className={`w-5 h-5 ${saved ? 'fill-red-500 text-red-500' : 'text-white'}`} />
           </button>
-          <button className="p-2 rounded-full bg-white dark:bg-black/50 backdrop-blur">
+          <button
+            onClick={handleShare}
+            className="p-2 rounded-full bg-white dark:bg-black/50 backdrop-blur"
+          >
             <Share2 className="w-5 h-5 text-rez-navy dark:text-white" />
           </button>
         </div>
@@ -171,11 +202,17 @@ const DealDetail = () => {
               <MapPin className="w-4 h-4" />
               {deal.distance}
             </span>
-            <button className="flex items-center gap-1 text-emerald-400">
+            <button
+              onClick={handleDirections}
+              className="flex items-center gap-1 text-emerald-400"
+            >
               <Navigation className="w-4 h-4" />
               Directions
             </button>
-            <button className="flex items-center gap-1 text-blue-400">
+            <button
+              onClick={handleCall}
+              className="flex items-center gap-1 text-blue-400"
+            >
               <Phone className="w-4 h-4" />
               Call
             </button>

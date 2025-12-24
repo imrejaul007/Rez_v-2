@@ -128,11 +128,17 @@ const StoreHeader = ({
               {store.deliveryTime}
             </span>
           )}
-          <button className="flex items-center gap-1.5 text-emerald-500">
+          <button
+            onClick={() => window.location.href = store.phone ? `tel:${store.phone}` : 'tel:'}
+            className="flex items-center gap-1.5 text-emerald-500"
+          >
             <Phone className="w-4 h-4" />
             Call
           </button>
-          <button className="flex items-center gap-1.5 text-emerald-500">
+          <button
+            onClick={() => console.log('Opening directions to store')}
+            className="flex items-center gap-1.5 text-emerald-500"
+          >
             <ExternalLink className="w-4 h-4" />
             Directions
           </button>
@@ -153,7 +159,10 @@ const StoreHeader = ({
               ))}
             </ul>
             {store.offers.length > 2 && (
-              <button className="text-xs font-bold text-amber-600 dark:text-amber-400 mt-1">
+              <button
+                onClick={() => console.log('Show all offers')}
+                className="text-xs font-bold text-amber-600 dark:text-amber-400 mt-1"
+              >
                 +{store.offers.length - 2} more offers
               </button>
             )}
