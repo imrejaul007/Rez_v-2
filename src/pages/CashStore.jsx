@@ -6,6 +6,9 @@ import {
   Utensils, Package, Coins, ChevronRight, Info, Star, Zap
 } from 'lucide-react';
 import { useWallet } from '../contexts/WalletContext';
+import Header from '../components/layout/Header';
+import BottomNav from '../components/layout/BottomNav';
+import ModeSwitcher from '../components/home/ModeSwitcher';
 
 const CashStore = () => {
   const { rezCoins } = useWallet();
@@ -151,19 +154,24 @@ const CashStore = () => {
   return (
     <div className="min-h-screen bg-rez-gray-50 dark:bg-dark-900 pb-24">
       {/* Header */}
-      <div className="sticky top-0 z-40 glass">
-        <div className="px-4 py-4">
-          <div className="flex items-center justify-between mb-3">
-            <div>
-              <div className="flex items-center gap-2">
-                <h1 className="text-2xl font-bold text-rez-navy dark:text-white">Cash Store</h1>
-                <span className="px-2 py-0.5 rounded-full bg-emerald-500/20 text-xs font-bold text-emerald-600 dark:text-emerald-400">
-                  Cashback
-                </span>
-              </div>
-              <p className="text-sm text-rez-gray-600 dark:text-gray-400">
-                Shop online. Get paid back.
-              </p>
+      <Header />
+
+      {/* Mode Switcher */}
+      <ModeSwitcher />
+
+      {/* Page Title */}
+      <div className="px-4 py-4">
+        <div className="flex items-center justify-between mb-3">
+          <div>
+            <div className="flex items-center gap-2">
+              <h1 className="text-2xl font-bold text-rez-navy dark:text-white">Cash Store</h1>
+              <span className="px-2 py-0.5 rounded-full bg-emerald-500/20 text-xs font-bold text-emerald-600 dark:text-emerald-400">
+                Cashback
+              </span>
+            </div>
+            <p className="text-sm text-rez-gray-600 dark:text-gray-400">
+              Shop online. Get paid back.
+            </p>
             </div>
             <div className="flex items-center gap-2">
               <Link
@@ -182,17 +190,18 @@ const CashStore = () => {
             </div>
           </div>
 
-          {/* Search */}
-          <div className="relative">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-rez-gray-600 dark:text-gray-500" />
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search brands, coupons..."
-              className="w-full pl-12 pr-4 py-3 rounded-xl bg-white dark:bg-dark-800 border border-rez-gray-200 dark:border-dark-700 text-rez-navy dark:text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500"
-            />
-          </div>
+        </div>
+
+        {/* Search */}
+        <div className="relative">
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-rez-gray-600 dark:text-gray-500" />
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            placeholder="Search brands, coupons..."
+            className="w-full pl-12 pr-4 py-3 rounded-xl bg-white dark:bg-dark-800 border border-rez-gray-200 dark:border-dark-700 text-rez-navy dark:text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+          />
         </div>
       </div>
 
@@ -502,6 +511,9 @@ const CashStore = () => {
           </div>
         </Link>
       </div>
+
+      {/* Bottom Navigation */}
+      <BottomNav />
     </div>
   );
 };

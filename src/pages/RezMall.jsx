@@ -5,6 +5,9 @@ import {
   ChevronRight, Coins, Zap, Shield, Heart
 } from 'lucide-react';
 import { useWallet } from '../contexts/WalletContext';
+import Header from '../components/layout/Header';
+import BottomNav from '../components/layout/BottomNav';
+import ModeSwitcher from '../components/home/ModeSwitcher';
 
 const RezMall = () => {
   const { rezCoins } = useWallet();
@@ -115,53 +118,10 @@ const RezMall = () => {
   return (
     <div className="min-h-screen bg-rez-gray-50 dark:bg-dark-900 pb-24">
       {/* Header */}
-      <div className="sticky top-0 z-40 glass">
-        <div className="px-4 py-4">
-          <div className="flex items-center justify-between mb-3">
-            <div>
-              <div className="flex items-center gap-2">
-                <h1 className="text-2xl font-bold text-rez-navy dark:text-white">ReZ Mall</h1>
-                <span className="px-2 py-0.5 rounded-full bg-blue-500/20 text-xs font-bold text-blue-600 dark:text-blue-400">
-                  Premium
-                </span>
-              </div>
-              <p className="text-sm text-rez-gray-600 dark:text-gray-400">
-                Curated brands. Trusted offers. Extra rewards.
-              </p>
-            </div>
-            <div className="flex items-center gap-2">
-              <Link
-                to="/wallet"
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-amber-500/20"
-              >
-                <Coins className="w-4 h-4 text-amber-400" />
-                <span className="text-sm font-medium text-amber-400">{rezCoins || 0}</span>
-              </Link>
-              <Link
-                to="/cart"
-                className="p-2 rounded-full bg-rez-gray-100 dark:bg-white/10 relative"
-              >
-                <ShoppingCart className="w-5 h-5 text-rez-navy dark:text-white" />
-                <span className="absolute -top-1 -right-1 w-5 h-5 bg-emerald-500 rounded-full flex items-center justify-center text-[10px] font-bold text-white">
-                  3
-                </span>
-              </Link>
-            </div>
-          </div>
+      <Header />
 
-          {/* Search */}
-          <div className="relative">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-rez-gray-600 dark:text-gray-500" />
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search brands, products..."
-              className="w-full pl-12 pr-4 py-3 rounded-xl bg-white dark:bg-dark-800 border border-rez-gray-200 dark:border-dark-700 text-rez-navy dark:text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
-        </div>
-      </div>
+      {/* Mode Switcher */}
+      <ModeSwitcher />
 
       {/* Hero Banner */}
       <div className="px-4 py-6">
@@ -431,6 +391,9 @@ const RezMall = () => {
           </div>
         </div>
       </div>
+
+      {/* Bottom Navigation */}
+      <BottomNav />
     </div>
   );
 };

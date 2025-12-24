@@ -6,6 +6,9 @@ import {
 } from 'lucide-react';
 import { useWallet } from '../contexts/WalletContext';
 import { useUser } from '../contexts/UserContext';
+import Header from '../components/layout/Header';
+import BottomNav from '../components/layout/BottomNav';
+import ModeSwitcher from '../components/home/ModeSwitcher';
 
 const RezPrive = () => {
   const { rezCoins } = useWallet();
@@ -110,18 +113,23 @@ const RezPrive = () => {
 
   return (
     <div className="min-h-screen bg-black pb-24">
-      {/* Header with dark theme */}
-      <div className="sticky top-0 z-40 bg-black/95 backdrop-blur-lg border-b border-amber-500/20">
-        <div className="px-4 py-4">
-          <div className="flex items-center justify-between mb-3">
-            <div>
-              <div className="flex items-center gap-2 mb-1">
-                <Crown className="w-6 h-6 text-amber-400" />
-                <h1 className="text-2xl font-bold bg-gradient-to-r from-amber-400 to-yellow-500 bg-clip-text text-transparent">
-                  ReZ Privé
-                </h1>
-              </div>
-              <p className="text-sm text-gray-400">
+      {/* Header */}
+      <Header />
+
+      {/* Mode Switcher */}
+      <ModeSwitcher />
+
+      {/* Page Title */}
+      <div className="px-4 py-4 bg-black">
+        <div className="flex items-center justify-between mb-3">
+          <div>
+            <div className="flex items-center gap-2 mb-1">
+              <Crown className="w-6 h-6 text-amber-400" />
+              <h1 className="text-2xl font-bold bg-gradient-to-r from-amber-400 to-yellow-500 bg-clip-text text-transparent">
+                ReZ Privé
+              </h1>
+            </div>
+            <p className="text-sm text-gray-400">
                 Invite-only luxury experience
               </p>
             </div>
@@ -394,6 +402,9 @@ const RezPrive = () => {
           </div>
         </div>
       </div>
+
+      {/* Bottom Navigation */}
+      <BottomNav />
     </div>
   );
 };
