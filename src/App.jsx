@@ -29,6 +29,16 @@ import ElectronicsProduct from './pages/ElectronicsProduct';
 import Fashion from './pages/Fashion';
 import FashionCategory from './pages/FashionCategory';
 import FashionProduct from './pages/FashionProduct';
+import FashionVibes from './pages/fashion/FashionVibes';
+import FashionOccasions from './pages/fashion/FashionOccasions';
+import FashionBrands from './pages/fashion/FashionBrands';
+import FashionTrending from './pages/fashion/FashionTrending';
+import FashionStores from './pages/fashion/FashionStores';
+import FashionDeals from './pages/fashion/FashionDeals';
+import FashionVibeDetail from './pages/fashion/FashionVibeDetail';
+import FashionOccasionDetail from './pages/fashion/FashionOccasionDetail';
+import FashionBrandDetail from './pages/fashion/FashionBrandDetail';
+import FashionTrendDetail from './pages/fashion/FashionTrendDetail';
 import Beauty from './pages/Beauty';
 import BeautyCategory from './pages/BeautyCategory';
 import BeautyService from './pages/BeautyService';
@@ -44,6 +54,15 @@ import BeautyOffers from './pages/beauty/BeautyOffers';
 import BeautyProductDetail from './pages/beauty/BeautyProductDetail';
 import BeautyClinicDetail from './pages/beauty/BeautyClinicDetail';
 import Grocery from './pages/Grocery';
+import GroceryStores from './pages/grocery/GroceryStores';
+import GroceryFast from './pages/grocery/GroceryFast';
+import GroceryDeals from './pages/grocery/GroceryDeals';
+import GroceryProducts from './pages/grocery/GroceryProducts';
+import GroceryCompare from './pages/grocery/GroceryCompare';
+import GroceryCategory from './pages/grocery/GroceryCategory';
+import GroceryStoreDetail from './pages/grocery/GroceryStoreDetail';
+import GroceryProductDetail from './pages/grocery/GroceryProductDetail';
+import GroceryOffers from './pages/grocery/GroceryOffers';
 import Healthcare from './pages/Healthcare';
 import Fitness from './pages/Fitness';
 import HomeServices from './pages/HomeServices';
@@ -153,6 +172,16 @@ function App() {
                 <Route path="electronics/:category" element={<ElectronicsCategory />} />
                 <Route path="electronics/product/:id" element={<ElectronicsProduct />} />
                 <Route path="fashion" element={<Fashion />} />
+                <Route path="fashion/vibes" element={<FashionVibes />} />
+                <Route path="fashion/occasions" element={<FashionOccasions />} />
+                <Route path="fashion/brands" element={<FashionBrands />} />
+                <Route path="fashion/trending" element={<FashionTrending />} />
+                <Route path="fashion/stores" element={<FashionStores />} />
+                <Route path="fashion/deals" element={<FashionDeals />} />
+                <Route path="fashion/vibe/:id" element={<FashionVibeDetail />} />
+                <Route path="fashion/occasion/:id" element={<FashionOccasionDetail />} />
+                <Route path="fashion/brand/:id" element={<FashionBrandDetail />} />
+                <Route path="fashion/trend/:id" element={<FashionTrendDetail />} />
                 <Route path="fashion/:category" element={<FashionCategory />} />
                 <Route path="fashion/product/:id" element={<FashionProduct />} />
                 <Route path="beauty" element={<Beauty />} />
@@ -170,6 +199,15 @@ function App() {
                 <Route path="beauty/:type/:category" element={<BeautyCategory />} />
                 <Route path="beauty/service/:id" element={<BeautyService />} />
                 <Route path="grocery" element={<Grocery />} />
+                <Route path="grocery/stores" element={<GroceryStores />} />
+                <Route path="grocery/fast" element={<GroceryFast />} />
+                <Route path="grocery/deals" element={<GroceryDeals />} />
+                <Route path="grocery/products" element={<GroceryProducts />} />
+                <Route path="grocery/compare" element={<GroceryCompare />} />
+                <Route path="grocery/offers" element={<GroceryOffers />} />
+                <Route path="grocery/:category" element={<GroceryCategory />} />
+                <Route path="grocery/store/:id" element={<GroceryStoreDetail />} />
+                <Route path="grocery/product/:id" element={<GroceryProductDetail />} />
                 <Route path="healthcare" element={<Healthcare />} />
                 <Route path="fitness" element={<Fitness />} />
                 <Route path="home-services" element={<HomeServices />} />
