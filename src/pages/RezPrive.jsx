@@ -146,7 +146,6 @@ const RezPrive = () => {
               </Link>
             </div>
           </div>
-        </div>
       </div>
 
       {/* Premium Member Card */}
