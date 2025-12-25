@@ -67,6 +67,8 @@ import TicketDetail from './pages/TicketDetail';
 import CoinHistory from './pages/CoinHistory';
 import StudentVerification from './pages/college/StudentVerification';
 import AmbassadorDashboard from './pages/college/AmbassadorDashboard';
+import SocialFeed from './pages/SocialFeed';
+import SavingsTracker from './pages/SavingsTracker';
 import Profile from './pages/Profile';
 import DealStore from './pages/DealStore';
 import DealDetail from './pages/DealDetail';
@@ -341,6 +343,8 @@ function App() {
                 <Route path="coin-history" element={<CoinHistory />} />
                 <Route path="college/verify" element={<StudentVerification />} />
                 <Route path="college/ambassador" element={<AmbassadorDashboard />} />
+                <Route path="social-feed" element={<SocialFeed />} />
+                <Route path="savings-tracker" element={<SavingsTracker />} />
                 <Route path="profile" element={<Profile />} />
                 <Route path="flea-market" element={<FleaMarket />} />
                 <Route path="events" element={<Events />} />
