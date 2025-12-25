@@ -26,6 +26,7 @@ import {
 } from 'lucide-react';
 import { useWallet } from '../contexts/WalletContext';
 import { useState } from 'react';
+import BottomNavManager from '../components/layout/BottomNavManager';
 
 const Categories = () => {
   const { rezCoins } = useWallet();
@@ -635,6 +636,9 @@ const Categories = () => {
 
       {/* Bottom spacer */}
       <div className="h-8" />
+
+      {/* Bottom Navigation */}
+      <BottomNavManager />
     </div>
   );
 };

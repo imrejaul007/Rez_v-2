@@ -24,6 +24,7 @@ import {
   modeBoothCounts,
 } from '../data/fleaMarket';
 import { useApp } from '../contexts/AppContext';
+import BottomNavManager from '../components/layout/BottomNavManager';
 import MarketCard from '../components/fleamarket/MarketCard';
 import BoothCard from '../components/fleamarket/BoothCard';
 import FleaProductTile from '../components/fleamarket/FleaProductTile';
@@ -342,6 +343,9 @@ const FleaMarket = () => {
           </Button>
         </div>
       </div>
+
+      {/* Bottom Navigation */}
+      <BottomNavManager />
     </div>
   );
 };

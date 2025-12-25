@@ -18,6 +18,7 @@ import PlayEarn from '../components/explore/PlayEarn';
 import EarnCTA from '../components/explore/EarnCTA';
 import StoreList from '../components/store/StoreList';
 import { stores } from '../data/stores';
+import BottomNavManager from '../components/layout/BottomNavManager';
 
 const ExploreNew = () => {
   const [activeFilter, setActiveFilter] = useState(null);
@@ -148,6 +149,9 @@ const ExploreNew = () => {
           </div>
         )}
       </div>
+
+      {/* Bottom Navigation */}
+      <BottomNavManager />
     </div>
   );
 };

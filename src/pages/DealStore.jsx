@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { MapPin, Bell, ChevronDown, ChevronRight, Sparkles, Users, Clock, Zap, Bot } from 'lucide-react';
 import { useWallet } from '../contexts/WalletContext';
 import { useUser } from '../contexts/UserContext';
+import BottomNavManager from '../components/layout/BottomNavManager';
 
 // Data imports
 import {
@@ -483,6 +484,9 @@ const DealStore = () => {
           </div>
         </div>
       )}
+
+      {/* Bottom Navigation */}
+      <BottomNavManager />
     </div>
   );
 };

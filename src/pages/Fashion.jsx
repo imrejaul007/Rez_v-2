@@ -14,6 +14,7 @@ import {
   Gift,
 } from 'lucide-react';
 import { useWallet } from '../contexts/WalletContext';
+import BottomNavManager from '../components/layout/BottomNavManager';
 import {
   fashionCategories,
   fashionVibes,
@@ -461,6 +462,9 @@ const Fashion = () => {
 
       {/* Bottom spacer */}
       <div className="h-20" />
+
+      {/* Bottom Navigation */}
+      <BottomNavManager />
     </div>
   );
 };

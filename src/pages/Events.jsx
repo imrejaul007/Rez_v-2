@@ -14,6 +14,7 @@ import {
   Compass,
 } from 'lucide-react';
 import { useWallet } from '../contexts/WalletContext';
+import BottomNavManager from '../components/layout/BottomNavManager';
 import {
   eventCategories,
   eventFilters,
@@ -307,6 +308,9 @@ const Events = () => {
 
       {/* Bottom spacer */}
       <div className="h-8" />
+
+      {/* Bottom Navigation */}
+      <BottomNavManager />
     </div>
   );
 };

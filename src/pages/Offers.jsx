@@ -4,6 +4,7 @@ import { useApp } from '../contexts/AppContext';
 import Card from '../components/common/Card';
 import Badge from '../components/common/Badge';
 import { Copy, Check, Clock, Zap } from 'lucide-react';
+import BottomNavManager from '../components/layout/BottomNavManager';
 
 const Offers = () => {
   const { filters } = useApp();
@@ -109,6 +110,9 @@ const Offers = () => {
           />
         ))}
       </div>
+
+      {/* Bottom Navigation */}
+      <BottomNavManager />
     </div>
   );
 };

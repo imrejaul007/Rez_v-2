@@ -16,6 +16,7 @@ import {
   Trophy,
 } from 'lucide-react';
 import { useWallet } from '../contexts/WalletContext';
+import BottomNavManager from '../components/layout/BottomNavManager';
 import {
   beautyServiceCategories,
   beautyProductCategories,
@@ -505,6 +506,9 @@ const Beauty = () => {
 
       {/* Bottom spacer */}
       <div className="h-8" />
+
+      {/* Bottom Navigation */}
+      <BottomNavManager />
     </div>
   );
 };

@@ -12,6 +12,7 @@ import {
   TrendingUp,
 } from 'lucide-react';
 import { useWallet } from '../contexts/WalletContext';
+import BottomNavManager from '../components/layout/BottomNavManager';
 import {
   electronicsFilters,
   electronicsProducts,
@@ -393,6 +394,9 @@ const Electronics = () => {
 
       {/* Bottom spacer */}
       <div className="h-20" />
+
+      {/* Bottom Navigation */}
+      <BottomNavManager />
     </div>
   );
 };

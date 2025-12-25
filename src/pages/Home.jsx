@@ -271,6 +271,148 @@ const Home = () => {
         </Link>
       </div>
 
+      {/* 🎉 EVENTS & EXPERIENCES - FEATURED SECTION */}
+      <div className="px-4 mb-6">
+        <div className="flex items-center justify-between mb-4">
+          <div>
+            <h2 className="text-h3 font-poppins text-rez-navy dark:text-white">🎉 Events & Experiences</h2>
+            <p className="text-caption text-rez-gray-600 dark:text-gray-400">Book tickets, save money, earn rewards</p>
+          </div>
+          <Link to="/events" className="text-button text-rez-green-500 dark:text-emerald-400 font-poppins">View All →</Link>
+        </div>
+
+        <div className="grid grid-cols-2 gap-3 mb-3">
+          <Link
+            to="/events/movies"
+            className="p-4 rounded-rez-lg bg-gradient-to-br from-purple-500/20 to-pink-500/10 dark:from-purple-500/20 dark:to-pink-500/10 border border-purple-500/30 dark:border-purple-500/30 hover:border-purple-500/50 dark:hover:border-purple-500/50 transition-all active:scale-95"
+          >
+            <span className="text-3xl mb-2 block">🎬</span>
+            <h3 className="text-sm font-semibold text-rez-navy dark:text-white mb-1">Movies</h3>
+            <p className="text-xs text-rez-gray-600 dark:text-gray-400 mb-2">Latest releases</p>
+            <div className="text-xs font-semibold text-purple-600 dark:text-purple-400">Up to 20% off</div>
+          </Link>
+
+          <Link
+            to="/events/concerts"
+            className="p-4 rounded-rez-lg bg-gradient-to-br from-orange-500/20 to-red-500/10 dark:from-orange-500/20 dark:to-red-500/10 border border-orange-500/30 dark:border-orange-500/30 hover:border-orange-500/50 dark:hover:border-orange-500/50 transition-all active:scale-95"
+          >
+            <span className="text-3xl mb-2 block">🎤</span>
+            <h3 className="text-sm font-semibold text-rez-navy dark:text-white mb-1">Concerts</h3>
+            <p className="text-xs text-rez-gray-600 dark:text-gray-400 mb-2">Live music</p>
+            <div className="text-xs font-semibold text-orange-600 dark:text-orange-400">Earn 2x coins</div>
+          </Link>
+        </div>
+
+        <div className="grid grid-cols-3 gap-2">
+          <Link
+            to="/events/workshops"
+            className="p-3 rounded-rez-lg bg-white dark:bg-white/10 border border-rez-gray-200 dark:border-white/10 hover:border-blue-500 dark:hover:border-blue-500 transition-all active:scale-95"
+          >
+            <span className="text-xl mb-1 block">📚</span>
+            <p className="text-xs font-semibold text-rez-navy dark:text-white mb-0.5">Workshops</p>
+            <p className="text-[10px] text-rez-gray-500 dark:text-gray-400">Learn & grow</p>
+          </Link>
+
+          <Link
+            to="/events/parks"
+            className="p-3 rounded-rez-lg bg-white dark:bg-white/10 border border-rez-gray-200 dark:border-white/10 hover:border-green-500 dark:hover:border-green-500 transition-all active:scale-95"
+          >
+            <span className="text-xl mb-1 block">🎢</span>
+            <p className="text-xs font-semibold text-rez-navy dark:text-white mb-0.5">Parks</p>
+            <p className="text-[10px] text-rez-gray-500 dark:text-gray-400">Family fun</p>
+          </Link>
+
+          <Link
+            to="/events/gaming"
+            className="p-3 rounded-rez-lg bg-white dark:bg-white/10 border border-rez-gray-200 dark:border-white/10 hover:border-purple-500 dark:hover:border-purple-500 transition-all active:scale-95"
+          >
+            <span className="text-xl mb-1 block">🎮</span>
+            <p className="text-xs font-semibold text-rez-navy dark:text-white mb-0.5">Gaming</p>
+            <p className="text-[10px] text-rez-gray-500 dark:text-gray-400">Esports</p>
+          </Link>
+        </div>
+      </div>
+
+      {/* 🛍️ SHOP BY CATEGORY - ReZ PRINCIPLES */}
+      <div className="px-4 mb-6">
+        <div className="flex items-center justify-between mb-4">
+          <div>
+            <h2 className="text-h3 font-poppins text-rez-navy dark:text-white">🛍️ Shop by Category</h2>
+            <p className="text-caption text-rez-gray-600 dark:text-gray-400">Cashback on every purchase</p>
+          </div>
+        </div>
+
+        <div className="space-y-3">
+          {/* Electronics */}
+          <Link
+            to="/electronics"
+            className="block p-4 rounded-rez-lg bg-gradient-to-r from-blue-500/10 to-cyan-500/10 dark:from-blue-500/10 dark:to-cyan-500/10 border border-blue-500/20 dark:border-blue-500/20 hover:border-blue-500/40 dark:hover:border-blue-500/40 transition-all"
+          >
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 rounded-rez-md bg-blue-500/20 dark:bg-blue-500/20 flex items-center justify-center">
+                <span className="text-2xl">📱</span>
+              </div>
+              <div className="flex-1">
+                <h3 className="text-body font-semibold text-rez-navy dark:text-white">Electronics</h3>
+                <p className="text-caption text-rez-gray-600 dark:text-gray-400">Phones, laptops, gadgets</p>
+              </div>
+              <div className="text-right">
+                <div className="text-xs font-semibold text-blue-600 dark:text-blue-400">10-15% cashback</div>
+                <div className="text-[10px] text-rez-gray-500 dark:text-gray-400">+ 2x coins</div>
+              </div>
+            </div>
+          </Link>
+
+          {/* Fashion */}
+          <Link
+            to="/fashion"
+            className="block p-4 rounded-rez-lg bg-gradient-to-r from-pink-500/10 to-purple-500/10 dark:from-pink-500/10 dark:to-purple-500/10 border border-pink-500/20 dark:border-pink-500/20 hover:border-pink-500/40 dark:hover:border-pink-500/40 transition-all"
+          >
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 rounded-rez-md bg-pink-500/20 dark:bg-pink-500/20 flex items-center justify-center">
+                <span className="text-2xl">👗</span>
+              </div>
+              <div className="flex-1">
+                <h3 className="text-body font-semibold text-rez-navy dark:text-white">Fashion</h3>
+                <p className="text-caption text-rez-gray-600 dark:text-gray-400">Clothing, accessories, footwear</p>
+              </div>
+              <div className="text-right">
+                <div className="text-xs font-semibold text-pink-600 dark:text-pink-400">15-25% cashback</div>
+                <div className="text-[10px] text-rez-gray-500 dark:text-gray-400">Trending</div>
+              </div>
+            </div>
+          </Link>
+
+          {/* Food & Dining */}
+          <Link
+            to="/food"
+            className="block p-4 rounded-rez-lg bg-gradient-to-r from-orange-500/10 to-red-500/10 dark:from-orange-500/10 dark:to-red-500/10 border border-orange-500/20 dark:border-orange-500/20 hover:border-orange-500/40 dark:hover:border-orange-500/40 transition-all"
+          >
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 rounded-rez-md bg-orange-500/20 dark:bg-orange-500/20 flex items-center justify-center">
+                <span className="text-2xl">🍽️</span>
+              </div>
+              <div className="flex-1">
+                <h3 className="text-body font-semibold text-rez-navy dark:text-white">Food & Dining</h3>
+                <p className="text-caption text-rez-gray-600 dark:text-gray-400">Restaurants, cafes, delivery</p>
+              </div>
+              <div className="text-right">
+                <div className="text-xs font-semibold text-orange-600 dark:text-orange-400">10-20% cashback</div>
+                <div className="text-[10px] text-rez-gray-500 dark:text-gray-400">Popular</div>
+              </div>
+            </div>
+          </Link>
+
+          {/* View More Categories */}
+          <Link
+            to="/categories"
+            className="block p-3 rounded-rez-lg border-2 border-dashed border-rez-gray-300 dark:border-white/20 hover:border-rez-green-500 dark:hover:border-emerald-500 transition-all text-center"
+          >
+            <span className="text-body-sm font-semibold text-rez-gray-600 dark:text-gray-400">View All 15+ Categories →</span>
+          </Link>
+        </div>
+      </div>
+
       {/* 6️⃣ HOW ReZ WORKS */}
       <HowRezWorks />
 

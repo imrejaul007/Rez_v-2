@@ -14,6 +14,7 @@ import {
   ArrowRightLeft,
 } from 'lucide-react';
 import { useWallet } from '../contexts/WalletContext';
+import BottomNavManager from '../components/layout/BottomNavManager';
 import {
   travelTabs,
   searchPlaceholders,
@@ -367,6 +368,9 @@ const Travel = () => {
 
       {/* Bottom spacer */}
       <div className="h-8" />
+
+      {/* Bottom Navigation */}
+      <BottomNavManager />
     </div>
   );
 };

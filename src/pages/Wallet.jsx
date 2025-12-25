@@ -26,6 +26,7 @@ import {
 } from 'lucide-react';
 import Card from '../components/common/Card';
 import Badge from '../components/common/Badge';
+import BottomNavManager from '../components/layout/BottomNavManager';
 
 const Wallet = () => {
   const {
@@ -532,6 +533,9 @@ const Wallet = () => {
           </div>
         </div>
       </div>
+
+      {/* Bottom Navigation */}
+      <BottomNavManager />
     </div>
   );
 };
