@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowLeft, Heart, Share2, ShoppingCart, Bookmark } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import BottomNavManager from '../components/layout/BottomNavManager';
 
 function Reels() {
   const navigate = useNavigate();
@@ -47,6 +48,7 @@ function Reels() {
           <ShoppingCart className="w-6 h-6 text-white" />
         </button>
       </div>
+      <BottomNavManager />
     </div>
   );
 }

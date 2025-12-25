@@ -4,6 +4,7 @@ import {
   Search, ChevronRight, Package, CreditCard, RefreshCw, Shield,
   Truck, HelpCircle, MessageCircle, Phone, Mail, Clock, CheckCircle
 } from 'lucide-react';
+import BottomNavManager from '../components/layout/BottomNavManager';
 
 function Help() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -250,6 +251,7 @@ function Help() {
           </Link>
         </div>
       </div>
+      <BottomNavManager />
     </div>
   );
 }

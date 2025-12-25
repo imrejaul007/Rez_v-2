@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useUser, shoppingForOptions } from '../contexts/UserContext';
 import { useApp } from '../contexts/AppContext';
 import {
@@ -6,6 +7,7 @@ import {
 } from 'lucide-react';
 import Card from '../components/common/Card';
 import Badge from '../components/common/Badge';
+import BottomNavManager from '../components/layout/BottomNavManager';
 
 const Profile = () => {
   const { user, updatePreferences, setShoppingFor } = useUser();
@@ -175,6 +177,7 @@ const Profile = () => {
       <p className="text-center text-caption text-rez-gray-500 dark:text-gray-600 mt-6">
         ReZ v1.0.0 • Made with ❤️
       </p>
+      <BottomNavManager />
     </div>
   );
 };

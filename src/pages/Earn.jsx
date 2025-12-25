@@ -32,6 +32,7 @@ import {
   Ticket
 } from 'lucide-react';
 import { useWallet } from '../contexts/WalletContext';
+import BottomNavManager from '../components/layout/BottomNavManager';
 
 const Earn = () => {
   const { rezCoins, brandedCoins, promoCoins } = useWallet();
@@ -628,6 +629,7 @@ const Earn = () => {
           </Link>
         </div>
       </div>
+      <BottomNavManager />
     </div>
   );
 };

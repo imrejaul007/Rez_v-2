@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Target, Trophy, Zap, Gift, Calendar, CheckCircle, Lock, Flame } from 'lucide-react';
+import BottomNavManager from '../components/layout/BottomNavManager';
 
 function Missions() {
   const navigate = useNavigate();
@@ -284,6 +285,7 @@ function Missions() {
           ))}
         </div>
       </div>
+      <BottomNavManager />
     </div>
   );
 }

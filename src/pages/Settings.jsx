@@ -5,6 +5,7 @@ import {
   Shield, HelpCircle, FileText, LogOut, ChevronRight, Smartphone,
   Mail, Phone, Languages, Palette, Eye, EyeOff, Volume2, VolumeX
 } from 'lucide-react';
+import BottomNavManager from '../components/layout/BottomNavManager';
 
 function Settings() {
   const [darkMode, setDarkMode] = useState(
@@ -172,6 +173,7 @@ function Settings() {
           </button>
         </div>
       </div>
+      <BottomNavManager />
     </div>
   );
 }
