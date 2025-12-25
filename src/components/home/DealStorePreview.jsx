@@ -31,12 +31,12 @@ const DealStorePreview = () => {
   ];
 
   const exclusiveDeals = [
-    { id: 1, title: 'Students', subtitle: 'Campus Zone', icon: GraduationCap, color: 'bg-blue-500/20', iconColor: 'text-blue-400', locked: false },
-    { id: 2, title: 'Employees', subtitle: 'Corporate', icon: Briefcase, color: 'bg-gray-500/20', iconColor: 'text-rez-gray-600 dark:text-gray-400', locked: true },
-    { id: 3, title: 'Women', subtitle: 'Exclusive', icon: Heart, color: 'bg-pink-500/20', iconColor: 'text-pink-400', locked: false },
-    { id: 4, title: 'Birthday', subtitle: 'Specials', icon: Cake, color: 'bg-amber-500/20', iconColor: 'text-amber-400', locked: false },
-    { id: 5, title: 'Defence', subtitle: 'Army/Navy', icon: Shield, color: 'bg-green-500/20', iconColor: 'text-green-400', locked: true },
-    { id: 6, title: 'Healthcare', subtitle: 'Doctors/Nurses', icon: Stethoscope, color: 'bg-cyan-500/20', iconColor: 'text-cyan-400', locked: true },
+    { id: 1, title: 'Students', subtitle: 'Campus Zone', icon: GraduationCap, color: 'bg-blue-500/20', iconColor: 'text-blue-400', locked: false, path: '/exclusive/student' },
+    { id: 2, title: 'Employees', subtitle: 'Corporate', icon: Briefcase, color: 'bg-gray-500/20', iconColor: 'text-rez-gray-600 dark:text-gray-400', locked: false, path: '/exclusive/corporate' },
+    { id: 3, title: 'Women', subtitle: 'Exclusive', icon: Heart, color: 'bg-pink-500/20', iconColor: 'text-pink-400', locked: false, path: '/exclusive/women' },
+    { id: 4, title: 'Birthday', subtitle: 'Specials', icon: Cake, color: 'bg-amber-500/20', iconColor: 'text-amber-400', locked: false, path: '/exclusive/birthday' },
+    { id: 5, title: 'Defence', subtitle: 'Army/Navy', icon: Shield, color: 'bg-green-500/20', iconColor: 'text-green-400', locked: false, path: '/exclusive/special-profiles' },
+    { id: 6, title: 'Healthcare', subtitle: 'Doctors/Nurses', icon: Stethoscope, color: 'bg-cyan-500/20', iconColor: 'text-cyan-400', locked: false, path: '/exclusive/special-profiles' },
   ];
 
   return (
@@ -44,7 +44,7 @@ const DealStorePreview = () => {
       {/* Section Header */}
       <div className="flex items-center justify-between mb-3">
         <h2 className="text-lg font-bold text-rez-navy dark:text-white">💥 Deals that save you money</h2>
-        <Link to="/deals" className="flex items-center gap-1 text-xs text-emerald-400">
+        <Link to="/deal-store" className="flex items-center gap-1 text-xs text-emerald-400">
           View all <ChevronRight className="w-3 h-3" />
         </Link>
       </div>
@@ -74,7 +74,7 @@ const DealStorePreview = () => {
             return (
               <Link
                 key={offer.id}
-                to={`/offers/${offer.id}`}
+                to="/deal-store"
                 className={`min-w-[100px] p-3 rounded-2xl ${offer.color} shrink-0 active:scale-[0.98] transition-transform relative`}
               >
                 {offer.badge && (
@@ -98,7 +98,7 @@ const DealStorePreview = () => {
             return (
               <Link
                 key={deal.id}
-                to={`/cashback/${deal.id}`}
+                to="/deal-store"
                 className={`min-w-[120px] p-3 rounded-2xl ${deal.color} shrink-0 active:scale-[0.98] transition-transform relative`}
               >
                 {deal.badge && (
@@ -122,12 +122,9 @@ const DealStorePreview = () => {
             return (
               <Link
                 key={deal.id}
-                to={deal.locked ? '#' : `/exclusive/${deal.id}`}
-                className={`p-3 rounded-2xl ${deal.color} active:scale-[0.98] transition-transform relative ${deal.locked ? 'opacity-60' : ''}`}
+                to={deal.path}
+                className={`p-3 rounded-2xl ${deal.color} active:scale-[0.98] transition-transform relative`}
               >
-                {deal.locked && (
-                  <span className="absolute top-2 right-2 text-xs">🔒</span>
-                )}
                 <Icon className={`w-5 h-5 ${deal.iconColor} mb-2`} />
                 <p className="text-xs font-medium text-rez-navy dark:text-white">{deal.title}</p>
                 <p className="text-[10px] text-rez-gray-600 dark:text-gray-400">{deal.subtitle}</p>
