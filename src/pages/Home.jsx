@@ -95,6 +95,71 @@ const Home = () => {
         </Link>
       </div>
 
+      {/* 🎉 NEW FEATURES */}
+      <div className="px-4 mb-6">
+        <div className="flex items-center justify-between mb-4">
+          <div>
+            <h2 className="text-h3 font-poppins text-rez-navy dark:text-white">🎉 New on ReZ</h2>
+            <p className="text-caption text-rez-gray-600 dark:text-gray-400">Recently launched features</p>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-2 gap-3 mb-3">
+          <Link
+            to="/contests"
+            className="p-4 rounded-rez-lg bg-gradient-to-br from-amber-500/20 to-orange-500/10 dark:from-amber-500/20 dark:to-orange-500/10 border border-amber-500/30 dark:border-amber-500/30 hover:border-amber-500/50 dark:hover:border-amber-500/50 transition-all active:scale-95"
+          >
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-2xl">🏆</span>
+              <span className="px-2 py-0.5 rounded-full bg-red-500 text-white text-[10px] font-bold">NEW</span>
+            </div>
+            <h3 className="text-sm font-semibold text-rez-navy dark:text-white mb-1">Contests</h3>
+            <p className="text-xs text-rez-gray-600 dark:text-gray-400">Vote & win prizes</p>
+          </Link>
+
+          <Link
+            to="/savings-tracker"
+            className="p-4 rounded-rez-lg bg-gradient-to-br from-emerald-500/20 to-green-500/10 dark:from-emerald-500/20 dark:to-green-500/10 border border-emerald-500/30 dark:border-emerald-500/30 hover:border-emerald-500/50 dark:hover:border-emerald-500/50 transition-all active:scale-95"
+          >
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-2xl">💰</span>
+              <span className="px-2 py-0.5 rounded-full bg-red-500 text-white text-[10px] font-bold">NEW</span>
+            </div>
+            <h3 className="text-sm font-semibold text-rez-navy dark:text-white mb-1">Savings Tracker</h3>
+            <p className="text-xs text-rez-gray-600 dark:text-gray-400">Track your savings</p>
+          </Link>
+        </div>
+
+        <div className="grid grid-cols-3 gap-2">
+          <Link
+            to="/social-feed"
+            className="p-3 rounded-rez-lg bg-white dark:bg-white/10 border border-rez-gray-200 dark:border-white/10 hover:border-purple-500 dark:hover:border-purple-500 transition-all active:scale-95"
+          >
+            <span className="text-xl mb-1 block">🎭</span>
+            <p className="text-xs font-semibold text-rez-navy dark:text-white mb-0.5">Social Feed</p>
+            <p className="text-[10px] text-rez-gray-500 dark:text-gray-400">Friends activity</p>
+          </Link>
+
+          <Link
+            to="/compare"
+            className="p-3 rounded-rez-lg bg-white dark:bg-white/10 border border-rez-gray-200 dark:border-white/10 hover:border-blue-500 dark:hover:border-blue-500 transition-all active:scale-95"
+          >
+            <span className="text-xl mb-1 block">⚖️</span>
+            <p className="text-xs font-semibold text-rez-navy dark:text-white mb-0.5">Compare</p>
+            <p className="text-[10px] text-rez-gray-500 dark:text-gray-400">Products</p>
+          </Link>
+
+          <Link
+            to="/referral"
+            className="p-3 rounded-rez-lg bg-white dark:bg-white/10 border border-rez-gray-200 dark:border-white/10 hover:border-pink-500 dark:hover:border-pink-500 transition-all active:scale-95"
+          >
+            <span className="text-xl mb-1 block">🎁</span>
+            <p className="text-xs font-semibold text-rez-navy dark:text-white mb-0.5">Refer & Earn</p>
+            <p className="text-[10px] text-rez-gray-500 dark:text-gray-400">Get rewards</p>
+          </Link>
+        </div>
+      </div>
+
       {/* ⚡ FLASH SALES - LIMITED TIME OFFERS */}
       <div className="px-4 mb-6">
         <div className="flex items-center justify-between mb-4">

@@ -1,13 +1,14 @@
 import { Link } from 'react-router-dom';
-import { Search, Camera, Receipt, Gift, Flame, Gamepad2 } from 'lucide-react';
+import { Search, Camera, Receipt, Gift, Flame, Gamepad2, Trophy, TrendingUp } from 'lucide-react';
 
 const HomeQuickActions = () => {
   const actions = [
     { id: 'stores', label: 'All Stores', icon: Search, link: '/stores', color: 'bg-blue-500/20', iconColor: 'text-blue-400' },
     { id: 'scan', label: 'Scan & Pay', icon: Camera, link: '/scan', color: 'bg-emerald-500/20', iconColor: 'text-emerald-400' },
     { id: 'bill', label: 'Upload Bill', icon: Receipt, link: '/upload-bill', color: 'bg-purple-500/20', iconColor: 'text-purple-400' },
-    { id: 'drops', label: 'Coin Drops', icon: Gift, link: '/coin-drops', color: 'bg-amber-500/20', iconColor: 'text-amber-400', badge: '3' },
+    { id: 'contests', label: 'Contests', icon: Trophy, link: '/contests', color: 'bg-amber-500/20', iconColor: 'text-amber-400', badge: 'NEW' },
     { id: 'deals', label: "Today's Deals", icon: Flame, link: '/deals', color: 'bg-red-500/20', iconColor: 'text-red-400', badge: 'HOT' },
+    { id: 'savings', label: 'Savings', icon: TrendingUp, link: '/savings-tracker', color: 'bg-green-500/20', iconColor: 'text-green-400' },
     { id: 'play', label: 'Play & Earn', icon: Gamepad2, link: '/games', color: 'bg-pink-500/20', iconColor: 'text-pink-400' },
   ];
 

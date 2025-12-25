@@ -12,10 +12,12 @@ const Profile = () => {
   const { filters, toggleFilter } = useApp();
 
   const menuItems = [
-    { icon: Heart, label: 'Saved Stores', count: user.savedStores.length, link: '/saved' },
-    { icon: MapPin, label: 'My Addresses', link: '/addresses' },
-    { icon: CreditCard, label: 'Payment Methods', link: '/payments' },
-    { icon: Bell, label: 'Notifications', link: '/notifications' },
+    { icon: Heart, label: 'Wishlist', link: '/wishlist-enhanced' },
+    { icon: Bell, label: 'Notifications', link: '/notifications-center' },
+    { icon: MapPin, label: 'Track Orders', link: '/track-order' },
+    { icon: Star, label: 'Contests', link: '/contests', badge: 'NEW' },
+    { icon: Gift, label: 'Social Feed', link: '/social-feed' },
+    { icon: CreditCard, label: 'Savings Tracker', link: '/savings-tracker' },
     { icon: Shield, label: 'Privacy & Security', link: '/privacy' },
     { icon: HelpCircle, label: 'Help & Support', link: '/help' },
   ];
@@ -124,19 +126,25 @@ const Profile = () => {
       <div className="px-4 mb-6">
         <Card className="divide-y divide-rez-gray-200 dark:divide-white/5">
           {menuItems.map((item) => (
-            <button
+            <Link
               key={item.label}
+              to={item.link}
               className="w-full flex items-center gap-4 p-4 hover:bg-rez-gray-50 dark:hover:bg-white/5 active:bg-rez-gray-100 dark:active:bg-rez-gray-50 dark:bg-white/5 transition-colors"
             >
               <div className="w-10 h-10 rounded-rez-md bg-rez-gray-100 dark:bg-white/10 flex items-center justify-center">
                 <item.icon className="w-5 h-5 text-rez-gray-600 dark:text-gray-400" />
               </div>
               <span className="flex-1 text-left text-body text-rez-navy dark:text-white">{item.label}</span>
+              {item.badge && (
+                <span className="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-semibold">
+                  {item.badge}
+                </span>
+              )}
               {item.count !== undefined && (
                 <span className="text-body-sm text-rez-gray-600 dark:text-gray-400">{item.count}</span>
               )}
               <ChevronRight className="w-5 h-5 text-rez-gray-400 dark:text-gray-400" />
-            </button>
+            </Link>
           ))}
         </Card>
       </div>
