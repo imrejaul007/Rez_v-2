@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Play } from 'lucide-react';
+import FirstTimePreloader from '../components/preloader/FirstTimePreloader';
 import GlobalPreloader from '../components/preloader/GlobalPreloader';
 import ModePreloader from '../components/preloader/ModePreloader';
 
@@ -10,9 +11,15 @@ const PreloaderDemo = () => {
 
   const demos = [
     {
+      id: 'first-time',
+      name: 'First-Time User Experience',
+      description: 'Complete onboarding flow (6-8s)',
+      color: 'from-orange-500 to-pink-500',
+    },
+    {
       id: 'global',
       name: 'Global App Preloader',
-      description: 'First-time app launch experience',
+      description: 'Every app launch experience',
       color: 'from-gray-900 to-black',
     },
     {
@@ -44,9 +51,15 @@ const PreloaderDemo = () => {
   const playDemo = (demoId) => {
     setActiveDemo(demoId);
     // Auto-reset after demo completes
+    const durations = {
+      'first-time': 8000, // User controls with button, but auto-close after 8s
+      'global': 2500,
+      'prive': 1500,
+      'default': 1200
+    };
     setTimeout(() => {
       setActiveDemo(null);
-    }, demoId === 'global' ? 2500 : demoId === 'prive' ? 1500 : 1200);
+    }, durations[demoId] || durations.default);
   };
 
   return (
@@ -184,10 +197,13 @@ const PreloaderDemo = () => {
       </div>
 
       {/* Active Preloader Overlay */}
+      {activeDemo === 'first-time' && (
+        <FirstTimePreloader onComplete={() => setActiveDemo(null)} />
+      )}
       {activeDemo === 'global' && (
         <GlobalPreloader onComplete={() => setActiveDemo(null)} />
       )}
-      {activeDemo && activeDemo !== 'global' && (
+      {activeDemo && activeDemo !== 'global' && activeDemo !== 'first-time' && (
         <ModePreloader
           mode={activeDemo}
           onComplete={() => setActiveDemo(null)}

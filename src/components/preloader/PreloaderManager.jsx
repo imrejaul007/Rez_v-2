@@ -1,24 +1,31 @@
 import { useState, useEffect } from 'react';
 import { useApp } from '../../contexts/AppContext';
+import FirstTimePreloader from './FirstTimePreloader';
 import GlobalPreloader from './GlobalPreloader';
 import ModePreloader from './ModePreloader';
 
 const PreloaderManager = ({ children }) => {
   const { filters } = useApp();
+  const [showFirstTimePreloader, setShowFirstTimePreloader] = useState(false);
   const [showGlobalPreloader, setShowGlobalPreloader] = useState(false);
   const [showModePreloader, setShowModePreloader] = useState(false);
   const [currentMode, setCurrentMode] = useState(null);
 
   useEffect(() => {
-    // Check if this is the first visit
+    // Check if user has seen the first-time experience
+    const hasSeenFirstTime = localStorage.getItem('rez_has_seen_first_time');
     const hasVisited = localStorage.getItem('rez_has_visited');
 
-    if (!hasVisited) {
-      // First time visitor - show global preloader
+    if (!hasSeenFirstTime) {
+      // Brand new user - show first-time preloader
+      setShowFirstTimePreloader(true);
+      localStorage.setItem('rez_has_seen_first_time', 'true');
+    } else if (!hasVisited) {
+      // Has seen first-time but new session - show global preloader
       setShowGlobalPreloader(true);
       localStorage.setItem('rez_has_visited', 'true');
     } else {
-      // Returning user - determine mode and show mode preloader
+      // Returning user in same session - show mode preloader only
       const mode = determineCurrentMode();
       setCurrentMode(mode);
       setShowModePreloader(true);
@@ -43,6 +50,15 @@ const PreloaderManager = ({ children }) => {
     return 'rez';
   };
 
+  const handleFirstTimeComplete = () => {
+    setShowFirstTimePreloader(false);
+    localStorage.setItem('rez_has_visited', 'true');
+    // After first-time preloader, show mode preloader
+    const mode = determineCurrentMode();
+    setCurrentMode(mode);
+    setShowModePreloader(true);
+  };
+
   const handleGlobalComplete = () => {
     setShowGlobalPreloader(false);
     // After global preloader, show mode preloader
@@ -57,6 +73,10 @@ const PreloaderManager = ({ children }) => {
 
   return (
     <>
+      {showFirstTimePreloader && (
+        <FirstTimePreloader onComplete={handleFirstTimeComplete} />
+      )}
+
       {showGlobalPreloader && (
         <GlobalPreloader onComplete={handleGlobalComplete} />
       )}
@@ -65,8 +85,8 @@ const PreloaderManager = ({ children }) => {
         <ModePreloader mode={currentMode} onComplete={handleModeComplete} />
       )}
 
-      {/* Show children when preloaders are done */}
-      {!showGlobalPreloader && !showModePreloader && children}
+      {/* Show children when all preloaders are done */}
+      {!showFirstTimePreloader && !showGlobalPreloader && !showModePreloader && children}
     </>
   );
 };
