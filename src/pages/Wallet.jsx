@@ -19,23 +19,18 @@ import WalletModePrive from '../components/wallet/WalletModePrive';
  */
 const Wallet = () => {
   const { currentMode } = useWallet();
-  const { currentView } = useApp();
+  const { globalMode } = useApp();
 
   // Determine mode based on context
-  // Priority: wallet context mode > app view
-  let mode = currentMode || 'rez';
+  // Priority: globalMode from AppContext > wallet context mode
+  let mode = globalMode || currentMode || 'nearYou';
 
-  // If app view suggests a different mode, use that
-  if (currentView === 'mall') mode = 'mall';
-  if (currentView === 'cash-store') mode = 'cash-store';
-  if (currentView === 'prive') mode = 'prive';
-
-  // Render appropriate wallet experience
+  // Render appropriate wallet experience based on globalMode
   if (mode === 'mall') {
     return <WalletModeMall />;
   }
 
-  if (mode === 'cash-store') {
+  if (mode === 'cashStore') {
     return <WalletModeCashStore />;
   }
 
@@ -43,7 +38,7 @@ const Wallet = () => {
     return <WalletModePrive />;
   }
 
-  // Default to ReZ mode
+  // Default to ReZ mode (nearYou)
   return <WalletModeReZ />;
 };
 
