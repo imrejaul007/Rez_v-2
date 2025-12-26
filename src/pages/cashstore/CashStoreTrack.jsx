@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import {
   ArrowLeft, Clock, CheckCircle, AlertCircle, XCircle, Coins,
-  TrendingUp, Calendar, Filter, Search, Info, ExternalLink
+  TrendingUp, Calendar, Filter, Search, Info, ExternalLink, DollarSign, Eye, Shield
 } from 'lucide-react';
 import Header from '../../components/layout/Header';
 import BottomNavManager from '../../components/layout/BottomNavManager';
@@ -134,19 +134,26 @@ const CashStoreTrack = () => {
     <div className="min-h-screen bg-rez-gray-50 dark:bg-dark-900 pb-24">
       <Header />
 
-      {/* Header */}
-      <div className="px-4 py-4 border-b border-rez-gray-200 dark:border-dark-700">
+      {/* Money-First Header */}
+      <div className="px-4 py-6 border-b border-rez-gray-200 dark:border-dark-700">
         <button
           onClick={() => navigate(-1)}
-          className="flex items-center gap-2 text-rez-navy dark:text-white mb-3"
+          className="flex items-center gap-2 text-rez-navy dark:text-white mb-4"
         >
           <ArrowLeft className="w-5 h-5" />
           <span className="font-medium">Back</span>
         </button>
-        <h1 className="text-2xl font-bold text-rez-navy dark:text-white">Track Cashback</h1>
-        <p className="text-sm text-rez-gray-600 dark:text-gray-400 mt-1">
-          Monitor all your cashback earnings
-        </p>
+        <div className="flex items-center gap-3 mb-3">
+          <div className="p-3 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-500">
+            <Eye className="w-6 h-6 text-white" />
+          </div>
+          <div className="flex-1">
+            <h1 className="text-2xl font-bold text-rez-navy dark:text-white">Track Cashback</h1>
+            <p className="text-sm text-blue-600 dark:text-blue-400 font-semibold">
+              💯 100% Transparent • Real-time tracking
+            </p>
+          </div>
+        </div>
       </div>
 
       {/* Summary Cards */}
@@ -197,19 +204,64 @@ const CashStoreTrack = () => {
           </div>
         </div>
 
-        {/* Info Card */}
-        <div className="p-4 rounded-xl bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800">
-          <div className="flex items-start gap-2">
+        {/* Transparency Banner */}
+        <div className="p-4 rounded-2xl bg-gradient-to-r from-blue-500/10 to-cyan-500/10 border border-blue-500/20">
+          <div className="flex items-center gap-3">
+            <Shield className="w-10 h-10 text-blue-500 flex-shrink-0" />
+            <div className="flex-1">
+              <h3 className="text-sm font-bold text-rez-navy dark:text-white mb-1">
+                💯 Transparency = Trust
+              </h3>
+              <p className="text-xs text-gray-600 dark:text-gray-400">
+                Every transaction tracked. See exactly where your coins are in real-time.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* How It Works */}
+        <div className="mt-4 p-4 rounded-xl bg-white dark:bg-dark-800 border border-rez-gray-200 dark:border-dark-700">
+          <div className="flex items-start gap-2 mb-3">
             <Info className="w-5 h-5 text-blue-600 dark:text-blue-400 shrink-0 mt-0.5" />
-            <div>
-              <p className="text-sm font-semibold text-blue-800 dark:text-blue-300 mb-1">
+            <div className="flex-1">
+              <p className="text-sm font-semibold text-rez-navy dark:text-white mb-2">
                 How Cashback Tracking Works
               </p>
-              <p className="text-xs text-blue-700 dark:text-blue-400">
-                <strong>Tracking:</strong> We're monitoring your order with the store<br />
-                <strong>Confirmed:</strong> Store confirmed, coins will credit soon<br />
-                <strong>Credited:</strong> Coins added to your wallet
-              </p>
+              <div className="space-y-2">
+                <div className="flex items-start gap-2">
+                  <div className="w-6 h-6 rounded-full bg-orange-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <AlertCircle className="w-3 h-3 text-orange-600 dark:text-orange-400" />
+                  </div>
+                  <div>
+                    <p className="text-xs font-bold text-rez-navy dark:text-white">Tracking</p>
+                    <p className="text-xs text-gray-600 dark:text-gray-400">
+                      We're monitoring your order with the store (1-3 days)
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-2">
+                  <div className="w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <Clock className="w-3 h-3 text-blue-600 dark:text-blue-400" />
+                  </div>
+                  <div>
+                    <p className="text-xs font-bold text-rez-navy dark:text-white">Confirmed</p>
+                    <p className="text-xs text-gray-600 dark:text-gray-400">
+                      Store confirmed! Coins will credit within 30-45 days
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-2">
+                  <div className="w-6 h-6 rounded-full bg-emerald-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <CheckCircle className="w-3 h-3 text-emerald-600 dark:text-emerald-400" />
+                  </div>
+                  <div>
+                    <p className="text-xs font-bold text-rez-navy dark:text-white">Credited</p>
+                    <p className="text-xs text-gray-600 dark:text-gray-400">
+                      ReZ Coins added to your wallet - ready to use!
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -219,16 +271,16 @@ const CashStoreTrack = () => {
       <div className="px-4 mb-6">
         <Link
           to="/cash-store/missing-cashback"
-          className="block p-4 rounded-xl bg-gradient-to-r from-red-500/10 to-orange-500/10 border border-red-500/20 hover:border-red-500/40 transition-all"
+          className="block p-4 rounded-2xl bg-gradient-to-r from-red-500/10 to-orange-500/10 border-2 border-red-500/30 hover:border-red-500/50 transition-all"
         >
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-red-500/20 flex items-center justify-center">
-                <AlertCircle className="w-5 h-5 text-red-600 dark:text-red-400" />
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-red-500 to-orange-500 flex items-center justify-center">
+                <AlertCircle className="w-6 h-6 text-white" />
               </div>
               <div>
-                <p className="font-semibold text-rez-navy dark:text-white">Missing Cashback?</p>
-                <p className="text-xs text-rez-gray-600 dark:text-gray-400">Claim your pending coins</p>
+                <p className="font-bold text-rez-navy dark:text-white">Missing Cashback?</p>
+                <p className="text-xs text-gray-600 dark:text-gray-400">We'll help you track it down - guaranteed!</p>
               </div>
             </div>
             <ExternalLink className="w-5 h-5 text-red-600 dark:text-red-400" />
@@ -244,14 +296,14 @@ const CashStoreTrack = () => {
               key={tab}
               onClick={() => setActiveTab(tab)}
               className={`
-                px-4 py-2 rounded-full shrink-0 text-sm font-medium transition-all
+                px-4 py-2.5 rounded-full shrink-0 text-sm font-semibold transition-all whitespace-nowrap
                 ${activeTab === tab
-                  ? 'bg-emerald-500 text-white'
-                  : 'bg-white dark:bg-dark-800 border border-rez-gray-200 dark:border-dark-700 text-rez-gray-700 dark:text-gray-300'
+                  ? 'bg-gradient-to-r from-blue-600 to-cyan-600 text-white shadow-lg'
+                  : 'bg-white dark:bg-dark-800 border border-rez-gray-200 dark:border-dark-700 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-dark-700'
                 }
               `}
             >
-              {tab === 'all' ? 'All' : getStatusLabel(tab)}
+              {tab === 'all' ? 'All Transactions' : getStatusLabel(tab)}
             </button>
           ))}
         </div>
@@ -268,19 +320,19 @@ const CashStoreTrack = () => {
               {/* Store Header */}
               <div className="flex items-start justify-between mb-3">
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500/20 to-green-500/20 flex items-center justify-center text-2xl">
+                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500/20 to-cyan-500/20 flex items-center justify-center text-2xl">
                     {transaction.logo}
                   </div>
                   <div>
-                    <h3 className="font-semibold text-rez-navy dark:text-white">
+                    <h3 className="font-bold text-rez-navy dark:text-white">
                       {transaction.store}
                     </h3>
-                    <p className="text-xs text-rez-gray-600 dark:text-gray-400">
+                    <p className="text-xs text-gray-600 dark:text-gray-400">
                       Order: {transaction.orderId}
                     </p>
                   </div>
                 </div>
-                <div className={`flex items-center gap-1 px-2 py-1 rounded-full text-xs font-semibold ${getStatusColor(transaction.status)}`}>
+                <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold ${getStatusColor(transaction.status)}`}>
                   {getStatusIcon(transaction.status)}
                   <span>{getStatusLabel(transaction.status)}</span>
                 </div>
@@ -302,20 +354,20 @@ const CashStoreTrack = () => {
                 </div>
               </div>
 
-              {/* Cashback Amount */}
-              <div className="p-3 rounded-xl bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800">
+              {/* Money-First Cashback Display */}
+              <div className="p-4 rounded-xl bg-gradient-to-r from-emerald-500/10 to-green-500/10 border border-emerald-500/20">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <Coins className="w-4 h-4 text-amber-600 dark:text-amber-400" />
-                    <span className="text-sm font-semibold text-amber-800 dark:text-amber-300">
+                    <DollarSign className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
+                    <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">
                       ReZ Coins Cashback
                     </span>
                   </div>
                   <div className="text-right">
-                    <p className="text-lg font-bold text-amber-600 dark:text-amber-400">
+                    <p className="text-2xl font-bold text-emerald-600 dark:text-emerald-400">
                       {transaction.cashbackAmount}
                     </p>
-                    <p className="text-xs text-amber-600/70 dark:text-amber-400/70">
+                    <p className="text-xs text-emerald-600 dark:text-emerald-400 font-semibold">
                       {transaction.cashbackPercent}% back
                     </p>
                   </div>
