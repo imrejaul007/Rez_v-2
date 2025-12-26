@@ -100,6 +100,131 @@ const Home = () => {
         </Link>
       </div>
 
+      {/* 💰 EARN REZ COINS - FEATURED EARNING WAYS */}
+      <div className="px-4 mb-6">
+        <div className="flex items-center justify-between mb-4">
+          <div>
+            <h2 className="text-h3 font-poppins text-rez-navy dark:text-white">💰 Earn ReZ Coins</h2>
+            <p className="text-caption text-rez-gray-600 dark:text-gray-400">Multiple ways to earn rewards</p>
+          </div>
+          <Link to="/earn" className="text-button text-rez-green-500 dark:text-emerald-400 font-poppins">View All →</Link>
+        </div>
+
+        {/* Top 3 Earning Methods Grid */}
+        <div className="grid grid-cols-1 gap-3 mb-3">
+          {/* Online Shopping Cashback */}
+          <Link
+            to="/cash-store"
+            className="p-5 rounded-2xl bg-gradient-to-br from-emerald-500/20 to-green-500/10 border-2 border-emerald-500/30 hover:border-emerald-500/50 transition-all active:scale-98"
+          >
+            <div className="flex items-center gap-4">
+              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-500 to-green-500 flex items-center justify-center flex-shrink-0">
+                <span className="text-3xl">🛍️</span>
+              </div>
+              <div className="flex-1">
+                <h3 className="text-base font-bold text-rez-navy dark:text-white mb-1">Online Shopping Cashback</h3>
+                <p className="text-xs text-gray-600 dark:text-gray-400 mb-2">Shop from 1000+ brands & earn up to 25% cashback</p>
+                <div className="flex items-center gap-2">
+                  <span className="px-2 py-1 rounded-full bg-emerald-500/20 text-xs font-bold text-emerald-600 dark:text-emerald-400">
+                    Auto-tracked
+                  </span>
+                  <span className="text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+                    ₹2,500 avg/month
+                  </span>
+                </div>
+              </div>
+            </div>
+          </Link>
+
+          {/* Pay in Store */}
+          <Link
+            to="/pay-in-store"
+            className="p-5 rounded-2xl bg-gradient-to-br from-blue-500/20 to-cyan-500/10 border-2 border-blue-500/30 hover:border-blue-500/50 transition-all active:scale-98"
+          >
+            <div className="flex items-center gap-4">
+              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center flex-shrink-0">
+                <span className="text-3xl">💳</span>
+              </div>
+              <div className="flex-1">
+                <h3 className="text-base font-bold text-rez-navy dark:text-white mb-1">Pay in Store</h3>
+                <p className="text-xs text-gray-600 dark:text-gray-400 mb-2">Scan QR at offline stores & earn instant rewards</p>
+                <div className="flex items-center gap-2">
+                  <span className="px-2 py-1 rounded-full bg-blue-500/20 text-xs font-bold text-blue-600 dark:text-blue-400">
+                    Instant
+                  </span>
+                  <span className="text-xs font-semibold text-blue-600 dark:text-blue-400">
+                    Up to 10% cashback
+                  </span>
+                </div>
+              </div>
+            </div>
+          </Link>
+
+          {/* Social Impact - CSR Programs */}
+          <Link
+            to="/earn/social-impact"
+            className="p-5 rounded-2xl bg-gradient-to-br from-purple-500/20 to-blue-500/10 border-2 border-purple-500/30 hover:border-purple-500/50 transition-all active:scale-98"
+          >
+            <div className="flex items-center gap-4">
+              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center flex-shrink-0">
+                <span className="text-3xl">🤝</span>
+              </div>
+              <div className="flex-1">
+                <h3 className="text-base font-bold text-rez-navy dark:text-white mb-1">Social Impact Events</h3>
+                <p className="text-xs text-gray-600 dark:text-gray-400 mb-2">Join CSR activities & earn ReZ + Brand Coins</p>
+                <div className="flex items-center gap-2">
+                  <span className="px-2 py-1 rounded-full bg-purple-500/20 text-xs font-bold text-purple-600 dark:text-purple-400">
+                    Dual Rewards
+                  </span>
+                  <span className="text-xs font-semibold text-purple-600 dark:text-purple-400">
+                    45 CSR Partners
+                  </span>
+                </div>
+              </div>
+            </div>
+          </Link>
+        </div>
+
+        {/* More Earning Ways - Compact Grid */}
+        <div className="grid grid-cols-2 gap-2">
+          <Link
+            to="/earn/play"
+            className="p-3 rounded-xl bg-white dark:bg-white/10 border border-rez-gray-200 dark:border-white/10 hover:border-orange-500 dark:hover:border-orange-500 transition-all active:scale-95"
+          >
+            <span className="text-2xl mb-1 block">🎮</span>
+            <p className="text-xs font-bold text-rez-navy dark:text-white mb-0.5">Play Games</p>
+            <p className="text-[10px] text-gray-600 dark:text-gray-400">Win coins daily</p>
+          </Link>
+
+          <Link
+            to="/earn/refer"
+            className="p-3 rounded-xl bg-white dark:bg-white/10 border border-rez-gray-200 dark:border-white/10 hover:border-pink-500 dark:hover:border-pink-500 transition-all active:scale-95"
+          >
+            <span className="text-2xl mb-1 block">👥</span>
+            <p className="text-xs font-bold text-rez-navy dark:text-white mb-0.5">Refer Friends</p>
+            <p className="text-[10px] text-gray-600 dark:text-gray-400">₹100 per referral</p>
+          </Link>
+
+          <Link
+            to="/earn/surveys"
+            className="p-3 rounded-xl bg-white dark:bg-white/10 border border-rez-gray-200 dark:border-white/10 hover:border-indigo-500 dark:hover:border-indigo-500 transition-all active:scale-95"
+          >
+            <span className="text-2xl mb-1 block">📋</span>
+            <p className="text-xs font-bold text-rez-navy dark:text-white mb-0.5">Surveys</p>
+            <p className="text-[10px] text-gray-600 dark:text-gray-400">Quick rewards</p>
+          </Link>
+
+          <Link
+            to="/earn/reviews"
+            className="p-3 rounded-xl bg-white dark:bg-white/10 border border-rez-gray-200 dark:border-white/10 hover:border-amber-500 dark:hover:border-amber-500 transition-all active:scale-95"
+          >
+            <span className="text-2xl mb-1 block">⭐</span>
+            <p className="text-xs font-bold text-rez-navy dark:text-white mb-0.5">Write Reviews</p>
+            <p className="text-[10px] text-gray-600 dark:text-gray-400">Share experiences</p>
+          </Link>
+        </div>
+      </div>
+
       {/* 🎮 PLAY & EARN SECTION */}
       <PlayAndEarnSection />
 
