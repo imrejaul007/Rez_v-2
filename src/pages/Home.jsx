@@ -689,9 +689,9 @@ const Home = () => {
         </Link>
       </div>
 
-      {/* 🛍️ BEAUTY & WELLNESS */}
-      <div className="px-4 mb-6">
-        <div className="flex items-center justify-between mb-4">
+      {/* 💄 BEAUTY & WELLNESS - LUXURY SPA INSPIRED */}
+      <div className="mb-6">
+        <div className="px-4 flex items-center justify-between mb-4">
           <div>
             <h2 className="text-h3 font-poppins text-rez-navy dark:text-white">💄 Beauty & Wellness</h2>
             <p className="text-caption text-rez-gray-600 dark:text-gray-400">Pamper yourself, save more</p>
@@ -699,59 +699,111 @@ const Home = () => {
           <Link to="/beauty" className="text-button text-rez-green-500 dark:text-emerald-400 font-poppins">View All →</Link>
         </div>
 
-        <div className="grid grid-cols-2 gap-3 mb-3">
+        {/* Horizontal Scroll Luxury Cards */}
+        <div className="flex gap-4 overflow-x-auto hide-scrollbar snap-x snap-mandatory px-4 pb-2">
+          {/* Salon & Spa - Luxury Card */}
           <Link
             to="/beauty/services"
-            className="p-4 rounded-rez-lg bg-gradient-to-br from-pink-500/20 to-rose-500/10 dark:from-pink-500/20 dark:to-rose-500/10 border border-pink-500/30 dark:border-pink-500/30 hover:border-pink-500/50 dark:hover:border-pink-500/50 transition-all active:scale-95"
+            className="flex-shrink-0 w-80 snap-center group"
           >
-            <span className="text-3xl mb-2 block">💆</span>
-            <h3 className="text-sm font-semibold text-rez-navy dark:text-white mb-1">Salon & Spa</h3>
-            <p className="text-xs text-rez-gray-600 dark:text-gray-400 mb-2">Hair, nails, skin</p>
-            <div className="text-xs font-semibold text-pink-600 dark:text-pink-400">Up to 30% off</div>
+            <div className="relative rounded-3xl overflow-hidden h-52">
+              {/* Soft gradient background like makeup palette */}
+              <div className="absolute inset-0 bg-gradient-to-br from-pink-100 via-rose-50 to-purple-100 dark:from-pink-900/30 dark:via-rose-900/20 dark:to-purple-900/30"></div>
+
+              {/* Floating orbs like beauty products */}
+              <div className="absolute top-0 right-0 w-32 h-32 bg-pink-300/30 dark:bg-pink-500/20 rounded-full blur-3xl"></div>
+              <div className="absolute bottom-0 left-0 w-40 h-40 bg-rose-300/30 dark:bg-rose-500/20 rounded-full blur-3xl"></div>
+
+              <div className="relative h-full p-6 flex flex-col justify-between">
+                <div className="flex items-start justify-between">
+                  <div className="w-16 h-16 rounded-2xl bg-white/80 dark:bg-white/10 backdrop-blur-sm border border-white/40 dark:border-white/20 flex items-center justify-center shadow-xl">
+                    <span className="text-4xl">💆</span>
+                  </div>
+                  <div className="px-3 py-1 rounded-full bg-pink-500/20 backdrop-blur-sm border border-pink-500/30">
+                    <span className="text-xs font-bold text-pink-700 dark:text-pink-300">30% OFF</span>
+                  </div>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Salon & Spa</h3>
+                  <p className="text-sm text-gray-700 dark:text-gray-300 mb-3">Hair, nails, skin treatments</p>
+                  <div className="flex items-center gap-2">
+                    <div className="flex-1 h-px bg-gradient-to-r from-pink-300 to-transparent dark:from-pink-500/30"></div>
+                    <span className="text-xs font-semibold text-pink-600 dark:text-pink-400">350+ Partners</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </Link>
 
+          {/* Beauty Products - Cosmetic Inspired */}
           <Link
             to="/beauty/products"
-            className="p-4 rounded-rez-lg bg-gradient-to-br from-purple-500/20 to-pink-500/10 dark:from-purple-500/20 dark:to-pink-500/10 border border-purple-500/30 dark:border-purple-500/30 hover:border-purple-500/50 dark:hover:border-purple-500/50 transition-all active:scale-95"
+            className="flex-shrink-0 w-80 snap-center group"
           >
-            <span className="text-3xl mb-2 block">💄</span>
-            <h3 className="text-sm font-semibold text-rez-navy dark:text-white mb-1">Products</h3>
-            <p className="text-xs text-rez-gray-600 dark:text-gray-400 mb-2">Makeup, skincare</p>
-            <div className="text-xs font-semibold text-purple-600 dark:text-purple-400">20% cashback</div>
-          </Link>
-        </div>
+            <div className="relative rounded-3xl overflow-hidden h-52">
+              <div className="absolute inset-0 bg-gradient-to-br from-purple-100 via-pink-50 to-fuchsia-100 dark:from-purple-900/30 dark:via-pink-900/20 dark:to-fuchsia-900/30"></div>
 
-        <div className="grid grid-cols-3 gap-2">
+              <div className="absolute top-0 left-1/2 w-40 h-40 bg-purple-300/30 dark:bg-purple-500/20 rounded-full blur-3xl"></div>
+
+              <div className="relative h-full p-6 flex flex-col justify-between">
+                <div className="flex items-start justify-between">
+                  <div className="w-16 h-16 rounded-2xl bg-white/80 dark:bg-white/10 backdrop-blur-sm border border-white/40 dark:border-white/20 flex items-center justify-center shadow-xl">
+                    <span className="text-4xl">💄</span>
+                  </div>
+                  <div className="px-3 py-1 rounded-full bg-purple-500/20 backdrop-blur-sm border border-purple-500/30">
+                    <span className="text-xs font-bold text-purple-700 dark:text-purple-300">20% CASHBACK</span>
+                  </div>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Beauty Products</h3>
+                  <p className="text-sm text-gray-700 dark:text-gray-300 mb-3">Makeup, skincare, fragrances</p>
+                  <div className="flex gap-2">
+                    <span className="px-2 py-1 rounded-full bg-purple-200/50 dark:bg-purple-500/20 text-xs font-semibold text-purple-700 dark:text-purple-300">
+                      Top Brands
+                    </span>
+                    <span className="px-2 py-1 rounded-full bg-pink-200/50 dark:bg-pink-500/20 text-xs font-semibold text-pink-700 dark:text-pink-300">
+                      Verified
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Link>
+
+          {/* Clinics - Medical Aesthetic */}
           <Link
             to="/beauty/clinics"
-            className="p-3 rounded-rez-lg bg-white dark:bg-white/10 border border-rez-gray-200 dark:border-white/10 hover:border-pink-500 dark:hover:border-pink-500 transition-all active:scale-95"
+            className="flex-shrink-0 w-80 snap-center group"
           >
-            <span className="text-xl mb-1 block">🏥</span>
-            <p className="text-xs font-semibold text-rez-navy dark:text-white mb-0.5">Clinics</p>
-            <p className="text-[10px] text-rez-gray-500 dark:text-gray-400">Dermatology</p>
-          </Link>
+            <div className="relative rounded-3xl overflow-hidden h-52">
+              <div className="absolute inset-0 bg-gradient-to-br from-rose-100 via-red-50 to-pink-100 dark:from-rose-900/30 dark:via-red-900/20 dark:to-pink-900/30"></div>
 
-          <Link
-            to="/beauty/nearby"
-            className="p-3 rounded-rez-lg bg-white dark:bg-white/10 border border-rez-gray-200 dark:border-white/10 hover:border-rose-500 dark:hover:border-rose-500 transition-all active:scale-95"
-          >
-            <span className="text-xl mb-1 block">📍</span>
-            <p className="text-xs font-semibold text-rez-navy dark:text-white mb-0.5">Nearby</p>
-            <p className="text-[10px] text-rez-gray-500 dark:text-gray-400">Near you</p>
-          </Link>
+              <div className="absolute bottom-0 right-0 w-36 h-36 bg-rose-300/30 dark:bg-rose-500/20 rounded-full blur-3xl"></div>
 
-          <Link
-            to="/beauty/deals"
-            className="p-3 rounded-rez-lg bg-white dark:bg-white/10 border border-rez-gray-200 dark:border-white/10 hover:border-purple-500 dark:hover:border-purple-500 transition-all active:scale-95"
-          >
-            <span className="text-xl mb-1 block">🏷️</span>
-            <p className="text-xs font-semibold text-rez-navy dark:text-white mb-0.5">Deals</p>
-            <p className="text-[10px] text-rez-gray-500 dark:text-gray-400">Hot offers</p>
+              <div className="relative h-full p-6 flex flex-col justify-between">
+                <div className="flex items-start justify-between">
+                  <div className="w-16 h-16 rounded-2xl bg-white/80 dark:bg-white/10 backdrop-blur-sm border border-white/40 dark:border-white/20 flex items-center justify-center shadow-xl">
+                    <span className="text-4xl">🏥</span>
+                  </div>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Aesthetic Clinics</h3>
+                  <p className="text-sm text-gray-700 dark:text-gray-300 mb-3">Dermatology & skin treatments</p>
+                  <div className="flex items-center gap-2 text-xs font-semibold text-rose-600 dark:text-rose-400">
+                    <span className="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></span>
+                    Expert Specialists
+                  </div>
+                </div>
+              </div>
+            </div>
           </Link>
         </div>
       </div>
 
-      {/* 💪 FITNESS & SPORTS */}
+      {/* 💪 FITNESS & SPORTS - ATHLETIC ENERGY DESIGN */}
       <div className="px-4 mb-6">
         <div className="flex items-center justify-between mb-4">
           <div>
@@ -761,59 +813,111 @@ const Home = () => {
           <Link to="/fitness" className="text-button text-rez-green-500 dark:text-emerald-400 font-poppins">View All →</Link>
         </div>
 
-        <div className="grid grid-cols-2 gap-3 mb-3">
+        {/* Dynamic Athletic Grid */}
+        <div className="grid grid-cols-6 gap-3 h-[260px]">
+          {/* Gyms - Large Energetic */}
           <Link
             to="/fitness/gyms"
-            className="p-4 rounded-rez-lg bg-gradient-to-br from-orange-500/20 to-red-500/10 dark:from-orange-500/20 dark:to-red-500/10 border border-orange-500/30 dark:border-orange-500/30 hover:border-orange-500/50 dark:hover:border-orange-500/50 transition-all active:scale-95"
+            className="col-span-4 relative rounded-3xl overflow-hidden group"
           >
-            <span className="text-3xl mb-2 block">🏋️</span>
-            <h3 className="text-sm font-semibold text-rez-navy dark:text-white mb-1">Gyms</h3>
-            <p className="text-xs text-rez-gray-600 dark:text-gray-400 mb-2">All equipment</p>
-            <div className="text-xs font-semibold text-orange-600 dark:text-orange-400">15% off memberships</div>
+            {/* Athletic gradient with diagonal stripes */}
+            <div className="absolute inset-0 bg-gradient-to-br from-orange-500 via-red-500 to-orange-600 dark:from-orange-600 dark:via-red-600 dark:to-orange-700"></div>
+            <div className="absolute inset-0 opacity-10" style={{
+              backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,.3) 35px, rgba(255,255,255,.3) 70px)'
+            }}></div>
+
+            <div className="relative h-full p-5 flex flex-col justify-between">
+              <div className="flex items-start justify-between">
+                <div className="w-16 h-16 rounded-2xl bg-white/20 backdrop-blur-sm border-2 border-white/40 flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <span className="text-4xl">🏋️</span>
+                </div>
+                <div className="px-3 py-1.5 rounded-full bg-white/20 backdrop-blur-sm border border-white/40">
+                  <span className="text-xs font-black text-white">15% OFF</span>
+                </div>
+              </div>
+
+              <div>
+                <h3 className="text-2xl font-black text-white mb-2 tracking-tight">GYMS</h3>
+                <p className="text-sm text-white/90 mb-3 font-semibold">Premium equipment • Expert trainers</p>
+                <div className="flex gap-2">
+                  <span className="px-3 py-1 rounded-full bg-white/20 backdrop-blur-sm text-xs font-bold text-white">
+                    200+ Locations
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Animated energy pulse */}
+            <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl animate-pulse"></div>
           </Link>
 
+          {/* Studios - Zen Style */}
           <Link
             to="/fitness/studios"
-            className="p-4 rounded-rez-lg bg-gradient-to-br from-green-500/20 to-emerald-500/10 dark:from-green-500/20 dark:to-emerald-500/10 border border-green-500/30 dark:border-green-500/30 hover:border-green-500/50 dark:hover:border-green-500/50 transition-all active:scale-95"
+            className="col-span-2 relative rounded-2xl overflow-hidden group bg-gradient-to-br from-emerald-400 to-green-600 dark:from-emerald-500 dark:to-green-700"
           >
-            <span className="text-3xl mb-2 block">🧘</span>
-            <h3 className="text-sm font-semibold text-rez-navy dark:text-white mb-1">Studios</h3>
-            <p className="text-xs text-rez-gray-600 dark:text-gray-400 mb-2">Yoga, dance, pilates</p>
-            <div className="text-xs font-semibold text-green-600 dark:text-green-400">Book classes</div>
-          </Link>
-        </div>
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(255,255,255,0.2),transparent_70%)]"></div>
 
-        <div className="grid grid-cols-3 gap-2">
+            <div className="relative h-full p-4 flex flex-col justify-between">
+              <span className="text-3xl">🧘</span>
+
+              <div>
+                <h3 className="text-base font-bold text-white mb-1">Studios</h3>
+                <p className="text-xs text-white/90 mb-2">Yoga • Dance</p>
+                <span className="text-xs font-semibold text-white/80">Book Now</span>
+              </div>
+            </div>
+          </Link>
+
+          {/* Bottom Row - Three Cards */}
           <Link
             to="/fitness/trainers"
-            className="p-3 rounded-rez-lg bg-white dark:bg-white/10 border border-rez-gray-200 dark:border-white/10 hover:border-orange-500 dark:hover:border-orange-500 transition-all active:scale-95"
+            className="col-span-2 p-4 rounded-2xl bg-gradient-to-br from-red-500/20 to-orange-500/10 border-2 border-red-500/30 hover:border-red-500 transition-all"
           >
-            <span className="text-xl mb-1 block">👨‍🏫</span>
-            <p className="text-xs font-semibold text-rez-navy dark:text-white mb-0.5">Trainers</p>
-            <p className="text-[10px] text-rez-gray-500 dark:text-gray-400">Personal PT</p>
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 rounded-xl bg-red-500/20 flex items-center justify-center">
+                <span className="text-2xl">👨‍🏫</span>
+              </div>
+              <div>
+                <h3 className="text-sm font-bold text-rez-navy dark:text-white">Personal Trainers</h3>
+                <p className="text-xs text-rez-gray-600 dark:text-gray-400">1-on-1</p>
+              </div>
+            </div>
           </Link>
 
           <Link
             to="/fitness/store"
-            className="p-3 rounded-rez-lg bg-white dark:bg-white/10 border border-rez-gray-200 dark:border-white/10 hover:border-red-500 dark:hover:border-red-500 transition-all active:scale-95"
+            className="col-span-2 p-4 rounded-2xl bg-gradient-to-br from-blue-500/20 to-cyan-500/10 border-2 border-blue-500/30 hover:border-blue-500 transition-all"
           >
-            <span className="text-xl mb-1 block">👟</span>
-            <p className="text-xs font-semibold text-rez-navy dark:text-white mb-0.5">Store</p>
-            <p className="text-[10px] text-rez-gray-500 dark:text-gray-400">Gear & wear</p>
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center">
+                <span className="text-2xl">👟</span>
+              </div>
+              <div>
+                <h3 className="text-sm font-bold text-rez-navy dark:text-white">Sports Store</h3>
+                <p className="text-xs text-rez-gray-600 dark:text-gray-400">Gear up</p>
+              </div>
+            </div>
           </Link>
 
           <Link
             to="/fitness/challenges"
-            className="p-3 rounded-rez-lg bg-white dark:bg-white/10 border border-rez-gray-200 dark:border-white/10 hover:border-green-500 dark:hover:border-green-500 transition-all active:scale-95"
+            className="col-span-2 p-4 rounded-2xl bg-gradient-to-br from-yellow-500/20 to-amber-500/10 border-2 border-yellow-500/30 hover:border-yellow-500 transition-all"
           >
-            <span className="text-xl mb-1 block">🏆</span>
-            <p className="text-xs font-semibold text-rez-navy dark:text-white mb-0.5">Challenges</p>
-            <p className="text-[10px] text-rez-gray-500 dark:text-gray-400">Win prizes</p>
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 rounded-xl bg-yellow-500/20 flex items-center justify-center">
+                <span className="text-2xl">🏆</span>
+              </div>
+              <div>
+                <h3 className="text-sm font-bold text-rez-navy dark:text-white">Challenges</h3>
+                <p className="text-xs text-rez-gray-600 dark:text-gray-400">Win big</p>
+              </div>
+            </div>
           </Link>
         </div>
       </div>
 
-      {/* 🛒 GROCERY & ESSENTIALS */}
+      {/* 🛒 GROCERY & ESSENTIALS - Fresh Market Style */}
       <div className="px-4 mb-6">
         <div className="flex items-center justify-between mb-4">
           <div>
@@ -823,59 +927,123 @@ const Home = () => {
           <Link to="/grocery" className="text-button text-rez-green-500 dark:text-emerald-400 font-poppins">View All →</Link>
         </div>
 
-        <div className="grid grid-cols-2 gap-3 mb-3">
+        {/* Fresh Market Grid with Category Icons */}
+        <div className="grid grid-cols-4 gap-3 mb-3">
+          {/* Quick Delivery - Hero Card (takes 2 columns, 2 rows) */}
           <Link
             to="/grocery/fast"
-            className="p-4 rounded-rez-lg bg-gradient-to-br from-green-500/20 to-teal-500/10 dark:from-green-500/20 dark:to-teal-500/10 border border-green-500/30 dark:border-green-500/30 hover:border-green-500/50 dark:hover:border-green-500/50 transition-all active:scale-95"
+            className="col-span-2 row-span-2 relative rounded-3xl overflow-hidden group"
           >
-            <span className="text-3xl mb-2 block">⚡</span>
-            <h3 className="text-sm font-semibold text-rez-navy dark:text-white mb-1">Quick Delivery</h3>
-            <p className="text-xs text-rez-gray-600 dark:text-gray-400 mb-2">10-30 mins</p>
-            <div className="text-xs font-semibold text-green-600 dark:text-green-400">5% instant cashback</div>
+            {/* Fresh Green Gradient */}
+            <div className="absolute inset-0 bg-gradient-to-br from-lime-400 via-green-500 to-emerald-600 dark:from-lime-500/90 dark:via-green-600/90 dark:to-emerald-700/90"></div>
+
+            {/* Fresh Produce Pattern */}
+            <div className="absolute inset-0 opacity-10" style={{
+              backgroundImage: 'radial-gradient(circle at 20% 50%, rgba(255,255,255,0.3) 10%, transparent 10%), radial-gradient(circle at 80% 20%, rgba(255,255,255,0.3) 8%, transparent 8%)'
+            }}></div>
+
+            {/* Speed Lines */}
+            <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-white/20 to-transparent rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700"></div>
+
+            <div className="relative h-full flex flex-col justify-between p-6">
+              <div>
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/30 dark:bg-white/20 backdrop-blur-sm mb-3">
+                  <span className="text-xs font-bold text-white">⚡ 10-30 MIN</span>
+                </div>
+                <h3 className="text-xl font-black text-white mb-1">QUICK<br/>DELIVERY</h3>
+                <p className="text-xs text-white/90 font-medium">Groceries at your doorstep</p>
+              </div>
+
+              <div className="flex items-center justify-between">
+                <span className="text-sm font-bold text-white bg-white/20 px-3 py-1.5 rounded-full backdrop-blur-sm">5% Cashback</span>
+                <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <span className="text-2xl">🥬</span>
+                </div>
+              </div>
+            </div>
           </Link>
 
+          {/* Fresh Fruits */}
           <Link
-            to="/grocery/stores"
-            className="p-4 rounded-rez-lg bg-gradient-to-br from-blue-500/20 to-cyan-500/10 dark:from-blue-500/20 dark:to-cyan-500/10 border border-blue-500/30 dark:border-blue-500/30 hover:border-blue-500/50 dark:hover:border-blue-500/50 transition-all active:scale-95"
+            to="/grocery/fruits"
+            className="relative rounded-2xl overflow-hidden group active:scale-95 transition-transform"
           >
-            <span className="text-3xl mb-2 block">🏪</span>
-            <h3 className="text-sm font-semibold text-rez-navy dark:text-white mb-1">Stores</h3>
-            <p className="text-xs text-rez-gray-600 dark:text-gray-400 mb-2">Big Bazaar, More</p>
-            <div className="text-xs font-semibold text-blue-600 dark:text-blue-400">10% cashback</div>
+            <div className="absolute inset-0 bg-gradient-to-br from-orange-100 to-yellow-100 dark:from-orange-900/40 dark:to-yellow-900/40"></div>
+            <div className="relative p-4 h-full flex flex-col items-center justify-center">
+              <span className="text-3xl mb-2">🍎</span>
+              <p className="text-xs font-bold text-orange-900 dark:text-orange-300 text-center">Fruits</p>
+            </div>
+          </Link>
+
+          {/* Vegetables */}
+          <Link
+            to="/grocery/vegetables"
+            className="relative rounded-2xl overflow-hidden group active:scale-95 transition-transform"
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-green-100 to-lime-100 dark:from-green-900/40 dark:to-lime-900/40"></div>
+            <div className="relative p-4 h-full flex flex-col items-center justify-center">
+              <span className="text-3xl mb-2">🥕</span>
+              <p className="text-xs font-bold text-green-900 dark:text-green-300 text-center">Veggies</p>
+            </div>
+          </Link>
+
+          {/* Dairy */}
+          <Link
+            to="/grocery/dairy"
+            className="relative rounded-2xl overflow-hidden group active:scale-95 transition-transform"
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/30 dark:to-cyan-900/30"></div>
+            <div className="relative p-4 h-full flex flex-col items-center justify-center">
+              <span className="text-3xl mb-2">🥛</span>
+              <p className="text-xs font-bold text-blue-900 dark:text-blue-300 text-center">Dairy</p>
+            </div>
+          </Link>
+
+          {/* Snacks */}
+          <Link
+            to="/grocery/snacks"
+            className="relative rounded-2xl overflow-hidden group active:scale-95 transition-transform"
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-amber-100 to-orange-100 dark:from-amber-900/40 dark:to-orange-900/40"></div>
+            <div className="relative p-4 h-full flex flex-col items-center justify-center">
+              <span className="text-3xl mb-2">🍪</span>
+              <p className="text-xs font-bold text-amber-900 dark:text-amber-300 text-center">Snacks</p>
+            </div>
           </Link>
         </div>
 
+        {/* Bottom Quick Actions */}
         <div className="grid grid-cols-3 gap-2">
           <Link
             to="/grocery/deals"
-            className="p-3 rounded-rez-lg bg-white dark:bg-white/10 border border-rez-gray-200 dark:border-white/10 hover:border-green-500 dark:hover:border-green-500 transition-all active:scale-95"
+            className="p-3 rounded-xl bg-gradient-to-br from-red-500/10 to-orange-500/10 dark:from-red-500/20 dark:to-orange-500/20 border border-red-500/30 dark:border-red-500/40 hover:scale-105 transition-transform active:scale-95"
           >
             <span className="text-xl mb-1 block">🔥</span>
-            <p className="text-xs font-semibold text-rez-navy dark:text-white mb-0.5">Deals</p>
-            <p className="text-[10px] text-rez-gray-500 dark:text-gray-400">Daily offers</p>
+            <p className="text-xs font-bold text-red-700 dark:text-red-400 mb-0.5">Hot Deals</p>
+            <p className="text-[10px] text-red-600 dark:text-red-500">Save more</p>
           </Link>
 
           <Link
             to="/grocery/compare"
-            className="p-3 rounded-rez-lg bg-white dark:bg-white/10 border border-rez-gray-200 dark:border-white/10 hover:border-blue-500 dark:hover:border-blue-500 transition-all active:scale-95"
+            className="p-3 rounded-xl bg-gradient-to-br from-blue-500/10 to-cyan-500/10 dark:from-blue-500/20 dark:to-cyan-500/20 border border-blue-500/30 dark:border-blue-500/40 hover:scale-105 transition-transform active:scale-95"
           >
             <span className="text-xl mb-1 block">⚖️</span>
-            <p className="text-xs font-semibold text-rez-navy dark:text-white mb-0.5">Compare</p>
-            <p className="text-[10px] text-rez-gray-500 dark:text-gray-400">Best prices</p>
+            <p className="text-xs font-bold text-blue-700 dark:text-blue-400 mb-0.5">Compare</p>
+            <p className="text-[10px] text-blue-600 dark:text-blue-500">Best price</p>
           </Link>
 
           <Link
-            to="/grocery/products"
-            className="p-3 rounded-rez-lg bg-white dark:bg-white/10 border border-rez-gray-200 dark:border-white/10 hover:border-teal-500 dark:hover:border-teal-500 transition-all active:scale-95"
+            to="/grocery/stores"
+            className="p-3 rounded-xl bg-gradient-to-br from-green-500/10 to-emerald-500/10 dark:from-green-500/20 dark:to-emerald-500/20 border border-green-500/30 dark:border-green-500/40 hover:scale-105 transition-transform active:scale-95"
           >
-            <span className="text-xl mb-1 block">📦</span>
-            <p className="text-xs font-semibold text-rez-navy dark:text-white mb-0.5">Browse</p>
-            <p className="text-[10px] text-rez-gray-500 dark:text-gray-400">All products</p>
+            <span className="text-xl mb-1 block">🏪</span>
+            <p className="text-xs font-bold text-green-700 dark:text-green-400 mb-0.5">Stores</p>
+            <p className="text-[10px] text-green-600 dark:text-green-500">Big Bazaar+</p>
           </Link>
         </div>
       </div>
 
-      {/* ⚕️ HEALTHCARE */}
+      {/* ⚕️ HEALTHCARE - Medical/Clinical Design */}
       <div className="px-4 mb-6">
         <div className="flex items-center justify-between mb-4">
           <div>
@@ -885,59 +1053,120 @@ const Home = () => {
           <Link to="/healthcare" className="text-button text-rez-green-500 dark:text-emerald-400 font-poppins">View All →</Link>
         </div>
 
+        {/* Clean Medical Grid */}
         <div className="grid grid-cols-2 gap-3 mb-3">
+          {/* Doctors - Primary Medical Blue */}
           <Link
             to="/healthcare/doctors"
-            className="p-4 rounded-rez-lg bg-gradient-to-br from-blue-500/20 to-indigo-500/10 dark:from-blue-500/20 dark:to-indigo-500/10 border border-blue-500/30 dark:border-blue-500/30 hover:border-blue-500/50 dark:hover:border-blue-500/50 transition-all active:scale-95"
+            className="relative rounded-3xl overflow-hidden group"
           >
-            <span className="text-3xl mb-2 block">👨‍⚕️</span>
-            <h3 className="text-sm font-semibold text-rez-navy dark:text-white mb-1">Doctors</h3>
-            <p className="text-xs text-rez-gray-600 dark:text-gray-400 mb-2">Book appointments</p>
-            <div className="text-xs font-semibold text-blue-600 dark:text-blue-400">Instant booking</div>
+            {/* Clean Medical Gradient */}
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-500 via-blue-600 to-cyan-600 dark:from-blue-600/90 dark:via-blue-700/90 dark:to-cyan-700/90"></div>
+
+            {/* Medical Cross Pattern */}
+            <div className="absolute inset-0 opacity-5" style={{
+              backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 20px, rgba(255,255,255,0.3) 20px, rgba(255,255,255,0.3) 22px), repeating-linear-gradient(90deg, transparent, transparent 20px, rgba(255,255,255,0.3) 20px, rgba(255,255,255,0.3) 22px)'
+            }}></div>
+
+            {/* Pulse Effect */}
+            <div className="absolute bottom-0 left-0 w-full h-1 bg-white/30">
+              <div className="h-full bg-white/80 animate-pulse" style={{ width: '40%' }}></div>
+            </div>
+
+            <div className="relative p-5">
+              <div className="w-14 h-14 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                <span className="text-3xl">👨‍⚕️</span>
+              </div>
+              <h3 className="text-lg font-bold text-white mb-1">Consult Doctors</h3>
+              <p className="text-xs text-white/90 mb-3">Book instant appointments</p>
+              <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/20 backdrop-blur-sm">
+                <span className="text-xs font-bold text-white">24/7 Available</span>
+              </div>
+            </div>
           </Link>
 
+          {/* Pharmacy - Medicinal Green */}
           <Link
             to="/healthcare/pharmacy"
-            className="p-4 rounded-rez-lg bg-gradient-to-br from-green-500/20 to-emerald-500/10 dark:from-green-500/20 dark:to-emerald-500/10 border border-green-500/30 dark:border-green-500/30 hover:border-green-500/50 dark:hover:border-green-500/50 transition-all active:scale-95"
+            className="relative rounded-3xl overflow-hidden group"
           >
-            <span className="text-3xl mb-2 block">💊</span>
-            <h3 className="text-sm font-semibold text-rez-navy dark:text-white mb-1">Pharmacy</h3>
-            <p className="text-xs text-rez-gray-600 dark:text-gray-400 mb-2">Order medicines</p>
-            <div className="text-xs font-semibold text-green-600 dark:text-green-400">25% off</div>
+            {/* Pharmacy Gradient */}
+            <div className="absolute inset-0 bg-gradient-to-br from-teal-500 via-emerald-600 to-green-600 dark:from-teal-600/90 dark:via-emerald-700/90 dark:to-green-700/90"></div>
+
+            {/* Pill Pattern */}
+            <div className="absolute inset-0 opacity-10" style={{
+              backgroundImage: 'radial-gradient(circle at 30% 30%, rgba(255,255,255,0.4) 5%, transparent 5%), radial-gradient(circle at 70% 60%, rgba(255,255,255,0.4) 4%, transparent 4%)'
+            }}></div>
+
+            {/* Shine Effect */}
+            <div className="absolute top-0 right-0 w-20 h-20 bg-white/20 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-500"></div>
+
+            <div className="relative p-5">
+              <div className="w-14 h-14 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                <span className="text-3xl">💊</span>
+              </div>
+              <h3 className="text-lg font-bold text-white mb-1">Online Pharmacy</h3>
+              <p className="text-xs text-white/90 mb-3">Order medicines online</p>
+              <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/20 backdrop-blur-sm">
+                <span className="text-xs font-bold text-white">25% OFF</span>
+              </div>
+            </div>
           </Link>
         </div>
 
-        <div className="grid grid-cols-3 gap-2">
+        {/* Medical Services Row */}
+        <div className="grid grid-cols-4 gap-2">
+          {/* Lab Tests */}
           <Link
             to="/healthcare/diagnostics"
-            className="p-3 rounded-rez-lg bg-white dark:bg-white/10 border border-rez-gray-200 dark:border-white/10 hover:border-blue-500 dark:hover:border-blue-500 transition-all active:scale-95"
+            className="relative rounded-2xl overflow-hidden group active:scale-95 transition-transform"
           >
-            <span className="text-xl mb-1 block">🔬</span>
-            <p className="text-xs font-semibold text-rez-navy dark:text-white mb-0.5">Lab Tests</p>
-            <p className="text-[10px] text-rez-gray-500 dark:text-gray-400">Home service</p>
+            <div className="absolute inset-0 bg-gradient-to-br from-indigo-100 to-blue-100 dark:from-indigo-900/30 dark:to-blue-900/30"></div>
+            <div className="relative p-3 flex flex-col items-center justify-center h-full">
+              <span className="text-2xl mb-1.5">🔬</span>
+              <p className="text-[10px] font-bold text-indigo-900 dark:text-indigo-300 text-center leading-tight">Lab<br/>Tests</p>
+            </div>
           </Link>
 
+          {/* Dental */}
           <Link
             to="/healthcare/dental"
-            className="p-3 rounded-rez-lg bg-white dark:bg-white/10 border border-rez-gray-200 dark:border-white/10 hover:border-teal-500 dark:hover:border-teal-500 transition-all active:scale-95"
+            className="relative rounded-2xl overflow-hidden group active:scale-95 transition-transform"
           >
-            <span className="text-xl mb-1 block">🦷</span>
-            <p className="text-xs font-semibold text-rez-navy dark:text-white mb-0.5">Dental</p>
-            <p className="text-[10px] text-rez-gray-500 dark:text-gray-400">Specialists</p>
+            <div className="absolute inset-0 bg-gradient-to-br from-cyan-100 to-teal-100 dark:from-cyan-900/30 dark:to-teal-900/30"></div>
+            <div className="relative p-3 flex flex-col items-center justify-center h-full">
+              <span className="text-2xl mb-1.5">🦷</span>
+              <p className="text-[10px] font-bold text-cyan-900 dark:text-cyan-300 text-center leading-tight">Dental<br/>Care</p>
+            </div>
           </Link>
 
+          {/* Emergency */}
           <Link
             to="/healthcare/emergency"
-            className="p-3 rounded-rez-lg bg-white dark:bg-white/10 border border-rez-gray-200 dark:border-white/10 hover:border-red-500 dark:hover:border-red-500 transition-all active:scale-95"
+            className="relative rounded-2xl overflow-hidden group active:scale-95 transition-transform"
           >
-            <span className="text-xl mb-1 block">🚑</span>
-            <p className="text-xs font-semibold text-rez-navy dark:text-white mb-0.5">Emergency</p>
-            <p className="text-[10px] text-rez-gray-500 dark:text-gray-400">24x7</p>
+            <div className="absolute inset-0 bg-gradient-to-br from-red-100 to-rose-100 dark:from-red-900/30 dark:to-rose-900/30"></div>
+            <div className="relative p-3 flex flex-col items-center justify-center h-full">
+              <span className="text-2xl mb-1.5">🚑</span>
+              <p className="text-[10px] font-bold text-red-900 dark:text-red-300 text-center leading-tight">Emergency<br/>24x7</p>
+            </div>
+          </Link>
+
+          {/* Health Records */}
+          <Link
+            to="/healthcare/records"
+            className="relative rounded-2xl overflow-hidden group active:scale-95 transition-transform"
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-violet-100 to-purple-100 dark:from-violet-900/30 dark:to-purple-900/30"></div>
+            <div className="relative p-3 flex flex-col items-center justify-center h-full">
+              <span className="text-2xl mb-1.5">📋</span>
+              <p className="text-[10px] font-bold text-violet-900 dark:text-violet-300 text-center leading-tight">Health<br/>Records</p>
+            </div>
           </Link>
         </div>
       </div>
 
-      {/* 🏠 HOME SERVICES */}
+      {/* 🏠 HOME SERVICES - Professional Toolbox Style */}
       <div className="px-4 mb-6">
         <div className="flex items-center justify-between mb-4">
           <div>
@@ -947,59 +1176,132 @@ const Home = () => {
           <Link to="/home-services" className="text-button text-rez-green-500 dark:text-emerald-400 font-poppins">View All →</Link>
         </div>
 
-        <div className="grid grid-cols-2 gap-3 mb-3">
+        {/* Professional Service Grid */}
+        <div className="grid grid-cols-3 gap-3 mb-3">
+          {/* Repairs - Large Professional Card (takes 2 columns) */}
           <Link
             to="/home-services/popular"
-            className="p-4 rounded-rez-lg bg-gradient-to-br from-amber-500/20 to-orange-500/10 dark:from-amber-500/20 dark:to-orange-500/10 border border-amber-500/30 dark:border-amber-500/30 hover:border-amber-500/50 dark:hover:border-amber-500/50 transition-all active:scale-95"
+            className="col-span-2 relative rounded-3xl overflow-hidden group"
           >
-            <span className="text-3xl mb-2 block">🔧</span>
-            <h3 className="text-sm font-semibold text-rez-navy dark:text-white mb-1">Repairs</h3>
-            <p className="text-xs text-rez-gray-600 dark:text-gray-400 mb-2">AC, plumbing, electric</p>
-            <div className="text-xs font-semibold text-amber-600 dark:text-amber-400">Same day service</div>
+            {/* Toolbox Orange Gradient */}
+            <div className="absolute inset-0 bg-gradient-to-br from-orange-500 via-amber-600 to-orange-700 dark:from-orange-600/90 dark:via-amber-700/90 dark:to-orange-800/90"></div>
+
+            {/* Tool Pattern Background */}
+            <div className="absolute inset-0 opacity-10">
+              <div className="absolute top-4 right-6 w-8 h-8 border-2 border-white rotate-45"></div>
+              <div className="absolute bottom-8 left-8 w-6 h-6 border-2 border-white rounded-full"></div>
+              <div className="absolute top-12 left-1/3 w-10 h-1 bg-white"></div>
+            </div>
+
+            {/* Verified Badge Glow */}
+            <div className="absolute top-0 right-0 w-24 h-24 bg-yellow-400/30 rounded-full blur-2xl"></div>
+
+            <div className="relative p-5">
+              <div className="flex items-start justify-between mb-3">
+                <div className="w-14 h-14 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:rotate-12 transition-transform">
+                  <span className="text-3xl">🔧</span>
+                </div>
+                <div className="px-3 py-1 rounded-full bg-yellow-400/30 backdrop-blur-sm border border-yellow-400/50">
+                  <span className="text-[10px] font-bold text-white">✓ VERIFIED</span>
+                </div>
+              </div>
+
+              <h3 className="text-lg font-bold text-white mb-1">Repair Services</h3>
+              <p className="text-xs text-white/90 mb-3">AC • Plumbing • Electrical</p>
+
+              <div className="flex items-center gap-2">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/20 backdrop-blur-sm">
+                  <span className="text-xs font-bold text-white">⚡ Same Day</span>
+                </div>
+                <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/20 backdrop-blur-sm">
+                  <span className="text-xs font-bold text-white">10% OFF</span>
+                </div>
+              </div>
+            </div>
           </Link>
 
+          {/* Cleaning - Clean Blue Style */}
           <Link
             to="/home-services/cleaning"
-            className="p-4 rounded-rez-lg bg-gradient-to-br from-blue-500/20 to-cyan-500/10 dark:from-blue-500/20 dark:to-cyan-500/10 border border-blue-500/30 dark:border-blue-500/30 hover:border-blue-500/50 dark:hover:border-blue-500/50 transition-all active:scale-95"
+            className="relative rounded-3xl overflow-hidden group"
           >
-            <span className="text-3xl mb-2 block">🧹</span>
-            <h3 className="text-sm font-semibold text-rez-navy dark:text-white mb-1">Cleaning</h3>
-            <p className="text-xs text-rez-gray-600 dark:text-gray-400 mb-2">Deep clean, pest control</p>
-            <div className="text-xs font-semibold text-blue-600 dark:text-blue-400">Book now</div>
+            {/* Clean Blue Gradient */}
+            <div className="absolute inset-0 bg-gradient-to-br from-cyan-500 via-blue-600 to-cyan-700 dark:from-cyan-600/90 dark:via-blue-700/90 dark:to-cyan-800/90"></div>
+
+            {/* Sparkle Pattern */}
+            <div className="absolute inset-0 opacity-20" style={{
+              backgroundImage: 'radial-gradient(circle at 20% 30%, rgba(255,255,255,0.8) 2%, transparent 2%), radial-gradient(circle at 70% 60%, rgba(255,255,255,0.6) 1.5%, transparent 1.5%), radial-gradient(circle at 50% 80%, rgba(255,255,255,0.7) 1%, transparent 1%)'
+            }}></div>
+
+            <div className="relative p-5 h-full flex flex-col justify-between">
+              <div className="w-14 h-14 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform">
+                <span className="text-3xl">🧹</span>
+              </div>
+
+              <div>
+                <h3 className="text-base font-bold text-white mb-1">Deep Clean</h3>
+                <p className="text-xs text-white/90 mb-2">Pest control too</p>
+                <div className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white/20 backdrop-blur-sm">
+                  <span className="text-[10px] font-bold text-white">Book Now</span>
+                </div>
+              </div>
+            </div>
           </Link>
         </div>
 
-        <div className="grid grid-cols-3 gap-2">
+        {/* Service Categories Row */}
+        <div className="grid grid-cols-4 gap-2">
+          {/* Painting */}
           <Link
             to="/home-services/painting"
-            className="p-3 rounded-rez-lg bg-white dark:bg-white/10 border border-rez-gray-200 dark:border-white/10 hover:border-amber-500 dark:hover:border-amber-500 transition-all active:scale-95"
+            className="relative rounded-2xl overflow-hidden group active:scale-95 transition-transform"
           >
-            <span className="text-xl mb-1 block">🎨</span>
-            <p className="text-xs font-semibold text-rez-navy dark:text-white mb-0.5">Painting</p>
-            <p className="text-[10px] text-rez-gray-500 dark:text-gray-400">Interior</p>
+            <div className="absolute inset-0 bg-gradient-to-br from-purple-100 to-pink-100 dark:from-purple-900/30 dark:to-pink-900/30"></div>
+            <div className="relative p-3 flex flex-col items-center justify-center h-full">
+              <span className="text-2xl mb-1.5">🎨</span>
+              <p className="text-[10px] font-bold text-purple-900 dark:text-purple-300 text-center leading-tight">Painting</p>
+            </div>
           </Link>
 
+          {/* Carpentry */}
+          <Link
+            to="/home-services/carpentry"
+            className="relative rounded-2xl overflow-hidden group active:scale-95 transition-transform"
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-amber-100 to-yellow-100 dark:from-amber-900/30 dark:to-yellow-900/30"></div>
+            <div className="relative p-3 flex flex-col items-center justify-center h-full">
+              <span className="text-2xl mb-1.5">🪚</span>
+              <p className="text-[10px] font-bold text-amber-900 dark:text-amber-300 text-center leading-tight">Carpentry</p>
+            </div>
+          </Link>
+
+          {/* Available Today */}
           <Link
             to="/home-services/available-today"
-            className="p-3 rounded-rez-lg bg-white dark:bg-white/10 border border-rez-gray-200 dark:border-white/10 hover:border-green-500 dark:hover:border-green-500 transition-all active:scale-95"
+            className="relative rounded-2xl overflow-hidden group active:scale-95 transition-transform"
           >
-            <span className="text-xl mb-1 block">⚡</span>
-            <p className="text-xs font-semibold text-rez-navy dark:text-white mb-0.5">Today</p>
-            <p className="text-[10px] text-rez-gray-500 dark:text-gray-400">Available</p>
+            <div className="absolute inset-0 bg-gradient-to-br from-green-100 to-emerald-100 dark:from-green-900/30 dark:to-emerald-900/30"></div>
+            <div className="relative p-3 flex flex-col items-center justify-center h-full">
+              <span className="text-2xl mb-1.5">⚡</span>
+              <p className="text-[10px] font-bold text-green-900 dark:text-green-300 text-center leading-tight">Today</p>
+            </div>
           </Link>
 
+          {/* Verified Pros */}
           <Link
             to="/home-services/providers"
-            className="p-3 rounded-rez-lg bg-white dark:bg-white/10 border border-rez-gray-200 dark:border-white/10 hover:border-blue-500 dark:hover:border-blue-500 transition-all active:scale-95"
+            className="relative rounded-2xl overflow-hidden group active:scale-95 transition-transform"
           >
-            <span className="text-xl mb-1 block">👨‍🔧</span>
-            <p className="text-xs font-semibold text-rez-navy dark:text-white mb-0.5">Providers</p>
-            <p className="text-[10px] text-rez-gray-500 dark:text-gray-400">Verified</p>
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-100 to-indigo-100 dark:from-blue-900/30 dark:to-indigo-900/30"></div>
+            <div className="relative p-3 flex flex-col items-center justify-center h-full">
+              <span className="text-2xl mb-1.5">👨‍🔧</span>
+              <p className="text-[10px] font-bold text-blue-900 dark:text-blue-300 text-center leading-tight">Verified</p>
+            </div>
           </Link>
         </div>
       </div>
 
-      {/* 💳 FINANCIAL SERVICES */}
+      {/* 💳 FINANCIAL SERVICES - Banking/Fintech Style */}
       <div className="px-4 mb-6">
         <div className="flex items-center justify-between mb-4">
           <div>
@@ -1009,59 +1311,127 @@ const Home = () => {
           <Link to="/financial" className="text-button text-rez-green-500 dark:text-emerald-400 font-poppins">View All →</Link>
         </div>
 
+        {/* Fintech Grid with Card Design */}
         <div className="grid grid-cols-2 gap-3 mb-3">
+          {/* Pay Bills - Premium Banking Card */}
           <Link
             to="/financial/bills"
-            className="p-4 rounded-rez-lg bg-gradient-to-br from-indigo-500/20 to-purple-500/10 dark:from-indigo-500/20 dark:to-purple-500/10 border border-indigo-500/30 dark:border-indigo-500/30 hover:border-indigo-500/50 dark:hover:border-indigo-500/50 transition-all active:scale-95"
+            className="relative rounded-3xl overflow-hidden group"
           >
-            <span className="text-3xl mb-2 block">📝</span>
-            <h3 className="text-sm font-semibold text-rez-navy dark:text-white mb-1">Pay Bills</h3>
-            <p className="text-xs text-rez-gray-600 dark:text-gray-400 mb-2">Electricity, water, gas</p>
-            <div className="text-xs font-semibold text-indigo-600 dark:text-indigo-400">Earn cashback</div>
+            {/* Banking Gradient - Dark Blue */}
+            <div className="absolute inset-0 bg-gradient-to-br from-slate-700 via-blue-900 to-indigo-900 dark:from-slate-800/90 dark:via-blue-950/90 dark:to-indigo-950/90"></div>
+
+            {/* Credit Card Chip Pattern */}
+            <div className="absolute top-5 right-5 w-12 h-10 rounded-md bg-gradient-to-br from-amber-400/40 to-yellow-500/40 backdrop-blur-sm" style={{
+              backgroundImage: 'repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(255,255,255,0.1) 2px, rgba(255,255,255,0.1) 4px)'
+            }}></div>
+
+            {/* Shimmer Effect */}
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+
+            <div className="relative p-5">
+              <div className="w-12 h-12 rounded-xl bg-white/10 backdrop-blur-sm flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                <span className="text-2xl">💳</span>
+              </div>
+
+              <h3 className="text-lg font-bold text-white mb-1">Pay Bills</h3>
+              <p className="text-xs text-white/80 mb-3">Electricity • Water • Gas</p>
+
+              <div className="flex items-center justify-between">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-500/20 backdrop-blur-sm border border-emerald-400/30">
+                  <span className="text-xs font-bold text-emerald-300">3% Cashback</span>
+                </div>
+                <div className="text-white/60 text-xs font-mono">SECURE</div>
+              </div>
+            </div>
           </Link>
 
+          {/* OTT Plans - Entertainment Card */}
           <Link
             to="/financial/ott"
-            className="p-4 rounded-rez-lg bg-gradient-to-br from-purple-500/20 to-pink-500/10 dark:from-purple-500/20 dark:to-pink-500/10 border border-purple-500/30 dark:border-purple-500/30 hover:border-purple-500/50 dark:hover:border-purple-500/50 transition-all active:scale-95"
+            className="relative rounded-3xl overflow-hidden group"
           >
-            <span className="text-3xl mb-2 block">📺</span>
-            <h3 className="text-sm font-semibold text-rez-navy dark:text-white mb-1">OTT Plans</h3>
-            <p className="text-xs text-rez-gray-600 dark:text-gray-400 mb-2">Netflix, Prime, Disney+</p>
-            <div className="text-xs font-semibold text-purple-600 dark:text-purple-400">Special prices</div>
+            {/* Entertainment Gradient - Purple/Pink */}
+            <div className="absolute inset-0 bg-gradient-to-br from-purple-600 via-fuchsia-600 to-pink-600 dark:from-purple-700/90 dark:via-fuchsia-700/90 dark:to-pink-700/90"></div>
+
+            {/* Play Button Pattern */}
+            <div className="absolute inset-0 opacity-10">
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 border-4 border-white rounded-full"></div>
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/4 -translate-y-1/2 w-0 h-0 border-t-8 border-t-transparent border-l-12 border-l-white border-b-8 border-b-transparent"></div>
+            </div>
+
+            {/* Glow Effect */}
+            <div className="absolute top-0 right-0 w-24 h-24 bg-pink-400/30 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700"></div>
+
+            <div className="relative p-5">
+              <div className="w-12 h-12 rounded-xl bg-white/10 backdrop-blur-sm flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                <span className="text-2xl">📺</span>
+              </div>
+
+              <h3 className="text-lg font-bold text-white mb-1">OTT Plans</h3>
+              <p className="text-xs text-white/80 mb-3">Netflix • Prime • Disney+</p>
+
+              <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/20 backdrop-blur-sm">
+                <span className="text-xs font-bold text-white">Special Prices</span>
+              </div>
+            </div>
           </Link>
         </div>
 
-        <div className="grid grid-cols-3 gap-2">
+        {/* Quick Actions Financial Grid */}
+        <div className="grid grid-cols-4 gap-2">
+          {/* Mobile Recharge */}
           <Link
             to="/financial/recharge"
-            className="p-3 rounded-rez-lg bg-white dark:bg-white/10 border border-rez-gray-200 dark:border-white/10 hover:border-blue-500 dark:hover:border-blue-500 transition-all active:scale-95"
+            className="relative rounded-2xl overflow-hidden group active:scale-95 transition-transform"
           >
-            <span className="text-xl mb-1 block">📱</span>
-            <p className="text-xs font-semibold text-rez-navy dark:text-white mb-0.5">Recharge</p>
-            <p className="text-[10px] text-rez-gray-500 dark:text-gray-400">Mobile, DTH</p>
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-100 to-cyan-100 dark:from-blue-900/30 dark:to-cyan-900/30"></div>
+            <div className="relative p-3 flex flex-col items-center justify-center h-full">
+              <span className="text-2xl mb-1.5">📱</span>
+              <p className="text-[10px] font-bold text-blue-900 dark:text-blue-300 text-center leading-tight">Recharge</p>
+            </div>
           </Link>
 
+          {/* Digital Gold */}
           <Link
             to="/financial/gold"
-            className="p-3 rounded-rez-lg bg-white dark:bg-white/10 border border-rez-gray-200 dark:border-white/10 hover:border-yellow-500 dark:hover:border-yellow-500 transition-all active:scale-95"
+            className="relative rounded-2xl overflow-hidden group active:scale-95 transition-transform"
           >
-            <span className="text-xl mb-1 block">🪙</span>
-            <p className="text-xs font-semibold text-rez-navy dark:text-white mb-0.5">Gold</p>
-            <p className="text-[10px] text-rez-gray-500 dark:text-gray-400">Digital gold</p>
+            <div className="absolute inset-0 bg-gradient-to-br from-amber-100 to-yellow-100 dark:from-amber-900/30 dark:to-yellow-900/30"></div>
+            <div className="absolute inset-0 opacity-20 bg-gradient-to-br from-yellow-400 to-amber-400 blur-xl"></div>
+            <div className="relative p-3 flex flex-col items-center justify-center h-full">
+              <span className="text-2xl mb-1.5">🪙</span>
+              <p className="text-[10px] font-bold text-amber-900 dark:text-amber-300 text-center leading-tight">Gold</p>
+            </div>
           </Link>
 
+          {/* Insurance */}
+          <Link
+            to="/financial/insurance"
+            className="relative rounded-2xl overflow-hidden group active:scale-95 transition-transform"
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-green-100 to-emerald-100 dark:from-green-900/30 dark:to-emerald-900/30"></div>
+            <div className="relative p-3 flex flex-col items-center justify-center h-full">
+              <span className="text-2xl mb-1.5">🛡️</span>
+              <p className="text-[10px] font-bold text-green-900 dark:text-green-300 text-center leading-tight">Insurance</p>
+            </div>
+          </Link>
+
+          {/* Cashback Offers */}
           <Link
             to="/financial/offers"
-            className="p-3 rounded-rez-lg bg-white dark:bg-white/10 border border-rez-gray-200 dark:border-white/10 hover:border-green-500 dark:hover:border-green-500 transition-all active:scale-95"
+            className="relative rounded-2xl overflow-hidden group active:scale-95 transition-transform"
           >
-            <span className="text-xl mb-1 block">🎁</span>
-            <p className="text-xs font-semibold text-rez-navy dark:text-white mb-0.5">Offers</p>
-            <p className="text-[10px] text-rez-gray-500 dark:text-gray-400">Cashback</p>
+            <div className="absolute inset-0 bg-gradient-to-br from-rose-100 to-pink-100 dark:from-rose-900/30 dark:to-pink-900/30"></div>
+            <div className="relative p-3 flex flex-col items-center justify-center h-full">
+              <span className="text-2xl mb-1.5">🎁</span>
+              <p className="text-[10px] font-bold text-rose-900 dark:text-rose-300 text-center leading-tight">Offers</p>
+            </div>
           </Link>
         </div>
       </div>
 
-      {/* ✈️ TRAVEL */}
+      {/* ✈️ TRAVEL - Vacation/Journey Aesthetic */}
       <div className="px-4 mb-6">
         <div className="flex items-center justify-between mb-4">
           <div>
@@ -1071,25 +1441,135 @@ const Home = () => {
           <Link to="/travel" className="text-button text-rez-green-500 dark:text-emerald-400 font-poppins">View All →</Link>
         </div>
 
-        <div className="grid grid-cols-2 gap-3">
+        {/* Destination Inspired Grid */}
+        <div className="grid grid-cols-3 gap-3 mb-3">
+          {/* Flights - Sky Journey (takes 2 columns) */}
           <Link
-            to="/travel"
-            className="p-4 rounded-rez-lg bg-gradient-to-br from-sky-500/20 to-blue-500/10 dark:from-sky-500/20 dark:to-blue-500/10 border border-sky-500/30 dark:border-sky-500/30 hover:border-sky-500/50 dark:hover:border-sky-500/50 transition-all active:scale-95"
+            to="/travel/flights"
+            className="col-span-2 relative rounded-3xl overflow-hidden group"
           >
-            <span className="text-3xl mb-2 block">✈️</span>
-            <h3 className="text-sm font-semibold text-rez-navy dark:text-white mb-1">Flights</h3>
-            <p className="text-xs text-rez-gray-600 dark:text-gray-400 mb-2">Domestic & international</p>
-            <div className="text-xs font-semibold text-sky-600 dark:text-sky-400">Best prices guaranteed</div>
+            {/* Sky Gradient - Dawn to Dusk */}
+            <div className="absolute inset-0 bg-gradient-to-br from-sky-400 via-blue-500 to-indigo-600 dark:from-sky-500/90 dark:via-blue-600/90 dark:to-indigo-700/90"></div>
+
+            {/* Cloud Pattern */}
+            <div className="absolute inset-0 opacity-20" style={{
+              backgroundImage: 'radial-gradient(ellipse at 20% 40%, rgba(255,255,255,0.6) 20%, transparent 20%), radial-gradient(ellipse at 60% 60%, rgba(255,255,255,0.5) 15%, transparent 15%), radial-gradient(ellipse at 80% 30%, rgba(255,255,255,0.4) 18%, transparent 18%)'
+            }}></div>
+
+            {/* Airplane Trail */}
+            <div className="absolute top-6 right-12 w-16 h-0.5 bg-white/40 blur-sm rotate-45"></div>
+            <div className="absolute top-6 right-8 w-8 h-0.5 bg-white/60"></div>
+
+            {/* Sun Glow */}
+            <div className="absolute top-0 right-0 w-32 h-32 bg-yellow-300/30 rounded-full blur-3xl"></div>
+
+            <div className="relative p-5">
+              <div className="flex items-start justify-between mb-3">
+                <div className="w-14 h-14 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <span className="text-3xl">✈️</span>
+                </div>
+                <div className="px-3 py-1 rounded-full bg-white/30 backdrop-blur-sm">
+                  <span className="text-[10px] font-bold text-white">BEST PRICE</span>
+                </div>
+              </div>
+
+              <h3 className="text-lg font-bold text-white mb-1">Book Flights</h3>
+              <p className="text-xs text-white/90 mb-3">Domestic & International</p>
+
+              <div className="flex items-center gap-2">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/20 backdrop-blur-sm">
+                  <span className="text-xs font-bold text-white">Instant Booking</span>
+                </div>
+                <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-500/30 backdrop-blur-sm">
+                  <span className="text-xs font-bold text-white">5% OFF</span>
+                </div>
+              </div>
+            </div>
           </Link>
 
+          {/* Hotels - Luxury Stay */}
           <Link
-            to="/travel"
-            className="p-4 rounded-rez-lg bg-gradient-to-br from-green-500/20 to-teal-500/10 dark:from-green-500/20 dark:to-teal-500/10 border border-green-500/30 dark:border-green-500/30 hover:border-green-500/50 dark:hover:border-green-500/50 transition-all active:scale-95"
+            to="/travel/hotels"
+            className="relative rounded-3xl overflow-hidden group"
           >
-            <span className="text-3xl mb-2 block">🏨</span>
-            <h3 className="text-sm font-semibold text-rez-navy dark:text-white mb-1">Hotels</h3>
-            <p className="text-xs text-rez-gray-600 dark:text-gray-400 mb-2">Luxury to budget</p>
-            <div className="text-xs font-semibold text-green-600 dark:text-green-400">Up to 50% off</div>
+            {/* Luxury Hotel Gradient */}
+            <div className="absolute inset-0 bg-gradient-to-br from-amber-500 via-orange-600 to-rose-600 dark:from-amber-600/90 dark:via-orange-700/90 dark:to-rose-700/90"></div>
+
+            {/* Window Pattern */}
+            <div className="absolute inset-0 opacity-10" style={{
+              backgroundImage: 'repeating-linear-gradient(90deg, transparent, transparent 12px, rgba(255,255,255,0.3) 12px, rgba(255,255,255,0.3) 14px), repeating-linear-gradient(0deg, transparent, transparent 12px, rgba(255,255,255,0.3) 12px, rgba(255,255,255,0.3) 14px)'
+            }}></div>
+
+            {/* Star Glint */}
+            <div className="absolute top-4 right-4 w-3 h-3">
+              <div className="absolute inset-0 bg-white rounded-full animate-pulse"></div>
+              <div className="absolute inset-0 bg-white rotate-45 scale-150"></div>
+            </div>
+
+            <div className="relative p-5 h-full flex flex-col justify-between">
+              <div className="w-14 h-14 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform">
+                <span className="text-3xl">🏨</span>
+              </div>
+
+              <div>
+                <h3 className="text-base font-bold text-white mb-1">Hotels</h3>
+                <p className="text-xs text-white/90 mb-2">Luxury to Budget</p>
+                <div className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white/20 backdrop-blur-sm">
+                  <span className="text-[10px] font-bold text-white">50% OFF</span>
+                </div>
+              </div>
+            </div>
+          </Link>
+        </div>
+
+        {/* Travel Services Row */}
+        <div className="grid grid-cols-4 gap-2">
+          {/* Train */}
+          <Link
+            to="/travel/trains"
+            className="relative rounded-2xl overflow-hidden group active:scale-95 transition-transform"
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-green-100 to-teal-100 dark:from-green-900/30 dark:to-teal-900/30"></div>
+            <div className="relative p-3 flex flex-col items-center justify-center h-full">
+              <span className="text-2xl mb-1.5">🚄</span>
+              <p className="text-[10px] font-bold text-green-900 dark:text-green-300 text-center leading-tight">Trains</p>
+            </div>
+          </Link>
+
+          {/* Bus */}
+          <Link
+            to="/travel/bus"
+            className="relative rounded-2xl overflow-hidden group active:scale-95 transition-transform"
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-orange-100 to-red-100 dark:from-orange-900/30 dark:to-red-900/30"></div>
+            <div className="relative p-3 flex flex-col items-center justify-center h-full">
+              <span className="text-2xl mb-1.5">🚌</span>
+              <p className="text-[10px] font-bold text-orange-900 dark:text-orange-300 text-center leading-tight">Bus</p>
+            </div>
+          </Link>
+
+          {/* Cab */}
+          <Link
+            to="/travel/cab"
+            className="relative rounded-2xl overflow-hidden group active:scale-95 transition-transform"
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-yellow-100 to-amber-100 dark:from-yellow-900/30 dark:to-amber-900/30"></div>
+            <div className="relative p-3 flex flex-col items-center justify-center h-full">
+              <span className="text-2xl mb-1.5">🚕</span>
+              <p className="text-[10px] font-bold text-yellow-900 dark:text-yellow-300 text-center leading-tight">Cab</p>
+            </div>
+          </Link>
+
+          {/* Packages */}
+          <Link
+            to="/travel/packages"
+            className="relative rounded-2xl overflow-hidden group active:scale-95 transition-transform"
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-purple-100 to-pink-100 dark:from-purple-900/30 dark:to-pink-900/30"></div>
+            <div className="relative p-3 flex flex-col items-center justify-center h-full">
+              <span className="text-2xl mb-1.5">🎒</span>
+              <p className="text-[10px] font-bold text-purple-900 dark:text-purple-300 text-center leading-tight">Packages</p>
+            </div>
           </Link>
         </div>
       </div>
