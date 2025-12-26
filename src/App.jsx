@@ -270,6 +270,9 @@ import SocialActivityDetail from './pages/social/SocialActivityDetail';
 // Experience sub-pages
 import ExperienceDetail from './pages/experience/ExperienceDetail';
 
+// Category Hub (handles all main categories)
+import CategoryHub from './pages/CategoryHub';
+
 // ReZ Mall sub-pages
 import MallBrandDetail from './pages/mall/MallBrandDetail';
 import MallCategory from './pages/mall/MallCategory';
