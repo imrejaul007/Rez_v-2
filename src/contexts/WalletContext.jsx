@@ -311,14 +311,19 @@ const initialState = {
 
   // Privé Coins (Premium coin for elite users)
   priveCoins: {
-    balance: 0, // Default 0, only for Privé members
+    balance: 450, // Elite member balance
     expiry: 'No expiry',
-    usableAt: 'Anywhere - most powerful coin',
+    usableAt: 'Everywhere including gift cards',
     description: 'Premium status currency for elite users',
-    color: '#F59E0B',
+    color: '#D4AF37',
     icon: '👑',
-    exclusive: true
+    exclusive: true,
+    tier: 'elite',
+    influenceScore: 850
   },
+
+  // Current mode (determines wallet UI and auto-apply priority)
+  currentMode: 'rez', // rez | mall | cash-store | prive
 
   // Coin System Rules
   coinRules: {
@@ -408,6 +413,12 @@ const walletReducer = (state, action) => {
         alerts: state.alerts.filter(alert => alert.id !== action.payload)
       };
 
+    case 'SET_MODE':
+      return {
+        ...state,
+        currentMode: action.payload
+      };
+
     default:
       return state;
   }
@@ -429,7 +440,18 @@ export const WalletProvider = ({ children }) => {
     return brand || null;
   };
 
-  // Calculate auto-applied coins at checkout
+  // Get coin priority based on current mode
+  const getCoinPriority = (mode) => {
+    const priorities = {
+      rez: ['promo', 'branded', 'rez'],
+      mall: ['branded', 'rez', 'promo'],
+      'cash-store': ['rez', 'promo', 'branded'],
+      prive: ['prive', 'branded', 'rez', 'promo']
+    };
+    return priorities[mode] || priorities.rez;
+  };
+
+  // Calculate auto-applied coins at checkout (MODE-AWARE)
   const calculateAutoApplyCoins = (billAmount, merchantId = null, category = null) => {
     let remaining = billAmount;
     const applied = {
@@ -441,60 +463,76 @@ export const WalletProvider = ({ children }) => {
       breakdown: []
     };
 
-    // 1. Apply Promo Coins first (with restrictions)
-    if (state.promoCoins.balance > 0) {
-      const maxPromoUsage = billAmount * (state.coinRules.promoCoin.restrictions.maxPercentPerBill / 100);
-      const promoToApply = Math.min(state.promoCoins.balance, maxPromoUsage, remaining);
-      applied.promo = promoToApply;
-      remaining -= promoToApply;
-      if (promoToApply > 0) {
-        applied.breakdown.push({
-          type: 'promo',
-          amount: promoToApply,
-          name: 'Promo Coins',
-          icon: '🎁',
-          priority: 1
-        });
-      }
-    }
+    const priority = getCoinPriority(state.currentMode);
 
-    // 2. Apply Branded Coins (if merchant matches)
-    if (merchantId && remaining > 0) {
-      const brandCoin = state.brandedCoins.find(bc => bc.brandId === merchantId);
-      if (brandCoin && brandCoin.balance > 0) {
-        const brandedToApply = Math.min(brandCoin.balance, remaining);
-        applied.branded = brandedToApply;
-        remaining -= brandedToApply;
-        if (brandedToApply > 0) {
+    // Apply coins based on mode-specific priority
+    priority.forEach((coinType, index) => {
+      if (remaining <= 0) return;
+
+      if (coinType === 'promo' && state.promoCoins.balance > 0) {
+        const maxPromoUsage = billAmount * (state.coinRules.promoCoin.restrictions.maxPercentPerBill / 100);
+        const promoToApply = Math.min(state.promoCoins.balance, maxPromoUsage, remaining);
+        applied.promo = promoToApply;
+        remaining -= promoToApply;
+        if (promoToApply > 0) {
           applied.breakdown.push({
-            type: 'branded',
-            amount: brandedToApply,
-            name: `${brandCoin.merchant} Coins`,
-            icon: brandCoin.logo,
-            priority: 2
+            type: 'promo',
+            amount: promoToApply,
+            name: 'Promo Coins',
+            icon: '🔥',
+            priority: index + 1
           });
         }
       }
-    }
 
-    // 3. Apply ReZ Coins (universal)
-    if (state.rezCoins.balance > 0 && remaining > 0) {
-      const rezToApply = Math.min(state.rezCoins.balance, remaining);
-      applied.rez = rezToApply;
-      remaining -= rezToApply;
-      if (rezToApply > 0) {
-        applied.breakdown.push({
-          type: 'rez',
-          amount: rezToApply,
-          name: 'ReZ Coins',
-          icon: '💰',
-          priority: 3
-        });
+      if (coinType === 'branded' && merchantId && remaining > 0) {
+        const brandCoin = state.brandedCoins.find(bc => bc.brandId === merchantId);
+        if (brandCoin && brandCoin.balance > 0) {
+          const brandedToApply = Math.min(brandCoin.balance, remaining);
+          applied.branded = brandedToApply;
+          remaining -= brandedToApply;
+          if (brandedToApply > 0) {
+            applied.breakdown.push({
+              type: 'branded',
+              amount: brandedToApply,
+              name: `${brandCoin.merchant} Coins`,
+              icon: brandCoin.logo,
+              priority: index + 1
+            });
+          }
+        }
       }
-    }
 
-    // 4. Privé Coins are NOT auto-applied (user choice)
-    // User can manually choose to use Privé Coins
+      if (coinType === 'rez' && state.rezCoins.balance > 0 && remaining > 0) {
+        const rezToApply = Math.min(state.rezCoins.balance, remaining);
+        applied.rez = rezToApply;
+        remaining -= rezToApply;
+        if (rezToApply > 0) {
+          applied.breakdown.push({
+            type: 'rez',
+            amount: rezToApply,
+            name: 'ReZ Coins',
+            icon: '🪙',
+            priority: index + 1
+          });
+        }
+      }
+
+      if (coinType === 'prive' && state.priveCoins.balance > 0 && remaining > 0 && state.currentMode === 'prive') {
+        const priveToApply = Math.min(state.priveCoins.balance, remaining);
+        applied.prive = priveToApply;
+        remaining -= priveToApply;
+        if (priveToApply > 0) {
+          applied.breakdown.push({
+            type: 'prive',
+            amount: priveToApply,
+            name: 'Privé Coins',
+            icon: '👑',
+            priority: index + 1
+          });
+        }
+      }
+    });
 
     applied.total = applied.promo + applied.branded + applied.rez + applied.prive;
     applied.remainingBill = Math.max(0, remaining);
@@ -534,10 +572,12 @@ export const WalletProvider = ({ children }) => {
     spendRezCoins: (amount) => dispatch({ type: 'SPEND_REZ_COINS', payload: amount }),
     setDefaultPayment: (id) => dispatch({ type: 'SET_DEFAULT_PAYMENT', payload: id }),
     dismissAlert: (id) => dispatch({ type: 'DISMISS_ALERT', payload: id }),
+    setMode: (mode) => dispatch({ type: 'SET_MODE', payload: mode }),
     getBrandLoyalty,
     // New coin system functions
     calculateAutoApplyCoins,
     canUseCoinFor,
+    getCoinPriority: () => getCoinPriority(state.currentMode),
   };
 
   return <WalletContext.Provider value={value}>{children}</WalletContext.Provider>;
