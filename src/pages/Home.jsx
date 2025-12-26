@@ -123,7 +123,7 @@ const Home = () => {
               </div>
               <div className="flex-1">
                 <h3 className="text-base font-bold text-rez-navy dark:text-white mb-1">Online Shopping Cashback</h3>
-                <p className="text-xs text-gray-600 dark:text-gray-400 mb-2">Shop from 1000+ brands & earn up to 25% cashback</p>
+                <p className="text-xs text-gray-600 dark:text-gray-400 mb-2">Shop from 2500+ brands & earn up to 25% cashback</p>
                 <div className="flex items-center gap-2">
                   <span className="px-2 py-1 rounded-full bg-emerald-500/20 text-xs font-bold text-emerald-600 dark:text-emerald-400">
                     Auto-tracked
@@ -177,7 +177,7 @@ const Home = () => {
                     Dual Rewards
                   </span>
                   <span className="text-xs font-semibold text-purple-600 dark:text-purple-400">
-                    45 CSR Partners
+                    60+ CSR Partners
                   </span>
                 </div>
               </div>

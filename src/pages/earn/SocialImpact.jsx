@@ -280,6 +280,256 @@ const SocialImpact = () => {
       goal: 300,
       impact: 'Saved 900+ lives',
       status: 'completed'
+    },
+    {
+      id: 11,
+      type: 'education',
+      title: 'Tech Education for Rural Schools',
+      icon: '💻',
+      iconBg: 'bg-purple-500/20',
+      iconColor: 'text-purple-500',
+      organizer: 'Digital India Foundation',
+      logo: '🎓',
+      sponsor: 'Meesho',
+      csrActivity: true,
+      date: 'Jan 18, 2025',
+      time: '10:00 AM - 3:00 PM',
+      location: 'Rural School, Faridabad',
+      distance: '18.5 km',
+      rewards: {
+        rezCoins: 190,
+        brandCoins: 280,
+        brandName: 'Meesho Coins'
+      },
+      enrolled: 58,
+      goal: 100,
+      impact: 'Empower 80+ students',
+      status: 'upcoming'
+    },
+    {
+      id: 12,
+      type: 'skill-training',
+      title: 'Artisan Skill Development Program',
+      icon: '🎨',
+      iconBg: 'bg-amber-500/20',
+      iconColor: 'text-amber-500',
+      organizer: 'Craftsmen Welfare Society',
+      logo: '✋',
+      sponsor: 'Nykaa',
+      csrActivity: true,
+      date: 'Jan 20, 2025',
+      time: '11:00 AM - 5:00 PM',
+      location: 'Craft Village, Gurugram',
+      distance: '12.3 km',
+      rewards: {
+        rezCoins: 210,
+        brandCoins: 320,
+        brandName: 'Nykaa Coins'
+      },
+      enrolled: 42,
+      goal: 80,
+      impact: 'Train 50+ artisans',
+      status: 'upcoming'
+    },
+    {
+      id: 13,
+      type: 'food-drive',
+      title: 'Community Kitchen Initiative',
+      icon: '🍛',
+      iconBg: 'bg-rose-500/20',
+      iconColor: 'text-rose-500',
+      organizer: 'Annamrita Foundation',
+      logo: '🤲',
+      sponsor: 'Swiggy',
+      csrActivity: true,
+      date: 'Every Saturday',
+      time: '12:00 PM - 3:00 PM',
+      location: 'Community Center, Dwarka',
+      distance: '7.8 km',
+      rewards: {
+        rezCoins: 140,
+        brandCoins: 200,
+        brandName: 'Swiggy Coins'
+      },
+      enrolled: 167,
+      goal: 220,
+      impact: 'Serve 400+ meals',
+      status: 'ongoing'
+    },
+    {
+      id: 14,
+      type: 'health-camp',
+      title: 'Women & Child Health Camp',
+      icon: '👶',
+      iconBg: 'bg-pink-500/20',
+      iconColor: 'text-pink-500',
+      organizer: 'Mother & Child Care Trust',
+      logo: '🏥',
+      sponsor: 'Mamaearth',
+      csrActivity: true,
+      date: 'Jan 22, 2025',
+      time: '9:00 AM - 2:00 PM',
+      location: 'Community Hospital, Rohini',
+      distance: '9.6 km',
+      rewards: {
+        rezCoins: 175,
+        brandCoins: 260,
+        brandName: 'Mamaearth Coins'
+      },
+      enrolled: 93,
+      goal: 150,
+      impact: 'Health checks for 200+ families',
+      status: 'upcoming'
+    },
+    {
+      id: 15,
+      type: 'education',
+      title: 'Career Counseling for Underprivileged Youth',
+      icon: '🎯',
+      iconBg: 'bg-indigo-500/20',
+      iconColor: 'text-indigo-500',
+      organizer: 'Future Leaders Foundation',
+      logo: '🌟',
+      sponsor: 'upGrad',
+      csrActivity: true,
+      date: 'Jan 25, 2025',
+      time: '1:00 PM - 6:00 PM',
+      location: 'Youth Center, Nehru Place',
+      distance: '6.2 km',
+      rewards: {
+        rezCoins: 200,
+        brandCoins: 300,
+        brandName: 'upGrad Coins'
+      },
+      enrolled: 71,
+      goal: 120,
+      impact: 'Guide 100+ students',
+      status: 'upcoming'
+    },
+    {
+      id: 16,
+      type: 'cleanup',
+      title: 'Park Rejuvenation Drive',
+      icon: '🌸',
+      iconBg: 'bg-lime-500/20',
+      iconColor: 'text-lime-500',
+      organizer: 'Green Parks Initiative',
+      logo: '🌳',
+      sponsor: 'Myntra',
+      csrActivity: true,
+      date: 'Jan 28, 2025',
+      time: '7:00 AM - 10:00 AM',
+      location: 'Lodhi Garden, Delhi',
+      distance: '5.4 km',
+      rewards: {
+        rezCoins: 130,
+        brandCoins: 190,
+        brandName: 'Myntra Coins'
+      },
+      enrolled: 118,
+      goal: 180,
+      impact: 'Restore 2 parks',
+      status: 'upcoming'
+    },
+    {
+      id: 17,
+      type: 'cloth-donation',
+      title: 'School Uniform Distribution',
+      icon: '🎒',
+      iconBg: 'bg-sky-500/20',
+      iconColor: 'text-sky-500',
+      organizer: 'Education for All',
+      logo: '📚',
+      sponsor: 'Flipkart',
+      csrActivity: true,
+      date: 'Feb 1, 2025',
+      time: '10:00 AM - 2:00 PM',
+      location: 'Government School, Noida Sector 62',
+      distance: '11.2 km',
+      rewards: {
+        rezCoins: 165,
+        brandCoins: 245,
+        brandName: 'Flipkart Coins'
+      },
+      enrolled: 104,
+      goal: 160,
+      impact: 'Support 300+ students',
+      status: 'upcoming'
+    },
+    {
+      id: 18,
+      type: 'skill-training',
+      title: 'Digital Marketing Workshop for SMBs',
+      icon: '📱',
+      iconBg: 'bg-violet-500/20',
+      iconColor: 'text-violet-500',
+      organizer: 'Small Business Connect',
+      logo: '💼',
+      sponsor: 'Amazon',
+      csrActivity: true,
+      date: 'Feb 3, 2025',
+      time: '2:00 PM - 6:00 PM',
+      location: 'Business Hub, Cyber City',
+      distance: '13.7 km',
+      rewards: {
+        rezCoins: 195,
+        brandCoins: 290,
+        brandName: 'Amazon Coins'
+      },
+      enrolled: 64,
+      goal: 100,
+      impact: 'Train 60+ entrepreneurs',
+      status: 'upcoming'
+    },
+    {
+      id: 19,
+      type: 'health-camp',
+      title: 'Mental Health Awareness Workshop',
+      icon: '🧠',
+      iconBg: 'bg-teal-500/20',
+      iconColor: 'text-teal-500',
+      organizer: 'Mind Matters India',
+      logo: '💚',
+      sponsor: 'Cred',
+      csrActivity: true,
+      date: 'Feb 5, 2025',
+      time: '4:00 PM - 7:00 PM',
+      location: 'Wellness Center, Hauz Khas',
+      distance: '8.1 km',
+      rewards: {
+        rezCoins: 155,
+        brandCoins: 230,
+        brandName: 'Cred Coins'
+      },
+      enrolled: 87,
+      goal: 140,
+      impact: 'Support 100+ participants',
+      status: 'upcoming'
+    },
+    {
+      id: 20,
+      type: 'tree-plantation',
+      title: 'Urban Forestry Initiative',
+      icon: '🌲',
+      iconBg: 'bg-emerald-500/20',
+      iconColor: 'text-emerald-500',
+      organizer: 'City Green Foundation',
+      logo: '🏙️',
+      sponsor: 'Zomato',
+      csrActivity: true,
+      date: 'Feb 8, 2025',
+      time: '6:30 AM - 10:00 AM',
+      location: 'Ridge Forest Area, Delhi',
+      distance: '14.9 km',
+      rewards: {
+        rezCoins: 180,
+        brandCoins: 270,
+        brandName: 'Zomato Coins'
+      },
+      enrolled: 142,
+      goal: 200,
+      impact: 'Plant 2000+ trees',
+      status: 'upcoming'
     }
   ];
 
@@ -552,7 +802,7 @@ const SocialImpact = () => {
             </div>
             <div className="flex items-center gap-1">
               <Building2 className="w-4 h-4" />
-              <span>45 CSR Partners</span>
+              <span>60+ CSR Partners</span>
             </div>
           </div>
         </div>
