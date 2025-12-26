@@ -262,6 +262,13 @@ import MemoryMatch from './pages/earn/MemoryMatch';
 import LuckyDraw from './pages/earn/LuckyDraw';
 import GuessPrice from './pages/earn/GuessPrice';
 import TournamentDetail from './pages/earn/TournamentDetail';
+import SocialImpactEventDetail from './pages/earn/SocialImpactEventDetail';
+
+// Social & Community sub-pages
+import SocialActivityDetail from './pages/social/SocialActivityDetail';
+
+// Experience sub-pages
+import ExperienceDetail from './pages/experience/ExperienceDetail';
 
 // ReZ Mall sub-pages
 import MallBrandDetail from './pages/mall/MallBrandDetail';
@@ -559,7 +566,9 @@ function App() {
 
                 {/* Social & Community */}
                 <Route path="social" element={<SocialHub />} />
+                <Route path="social/:type/:id" element={<SocialActivityDetail />} />
                 <Route path="earn/social-impact" element={<SocialImpact />} />
+                <Route path="earn/social-impact/:id" element={<SocialImpactEventDetail />} />
                 <Route path="earn/brand-tasks" element={<BrandTasks />} />
                 <Route path="earn/ugc-creator" element={<UGCCreator />} />
                 <Route path="earn/college-ambassador" element={<CollegeAmbassador />} />

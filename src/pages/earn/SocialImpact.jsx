@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import {
   ArrowLeft,
   Heart,
@@ -330,16 +330,21 @@ const SocialImpact = () => {
             </div>
 
             {/* CTA */}
-            <button
-              className={`w-full py-3 rounded-rez-lg font-semibold transition-all ${
-                activity.status === 'completed'
-                  ? 'bg-rez-gray-200 dark:bg-white/10 text-rez-gray-600 dark:text-gray-400 cursor-not-allowed'
-                  : 'bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white'
-              }`}
-              disabled={activity.status === 'completed'}
-            >
-              {activity.status === 'completed' ? '✓ Completed' : 'Register Now'}
-            </button>
+            {activity.status === 'completed' ? (
+              <button
+                className="w-full py-3 rounded-rez-lg font-semibold bg-rez-gray-200 dark:bg-white/10 text-rez-gray-600 dark:text-gray-400 cursor-not-allowed"
+                disabled
+              >
+                ✓ Completed
+              </button>
+            ) : (
+              <Link
+                to={`/earn/social-impact/${activity.id}`}
+                className="block w-full py-3 rounded-rez-lg font-semibold bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white text-center transition-all"
+              >
+                Register Now
+              </Link>
+            )}
           </div>
         ))}
       </div>

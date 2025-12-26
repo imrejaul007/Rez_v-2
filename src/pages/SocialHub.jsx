@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import {
   ArrowLeft,
   Share2,
@@ -371,16 +371,21 @@ const SocialHub = () => {
                   </div>
                 )}
               </div>
-              <button
-                className={`px-5 py-2 rounded-rez-lg font-semibold transition-all ${
-                  activity.completed
-                    ? 'bg-rez-gray-200 dark:bg-white/10 text-rez-gray-600 dark:text-gray-400 cursor-not-allowed'
-                    : 'bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 text-white'
-                }`}
-                disabled={activity.completed}
-              >
-                {activity.completed ? '✓ Done' : 'Start'}
-              </button>
+              {activity.completed ? (
+                <button
+                  className="px-5 py-2 rounded-rez-lg font-semibold bg-rez-gray-200 dark:bg-white/10 text-rez-gray-600 dark:text-gray-400 cursor-not-allowed"
+                  disabled
+                >
+                  ✓ Done
+                </button>
+              ) : (
+                <Link
+                  to={`/social/${activity.type}/${activity.id}`}
+                  className="px-5 py-2 rounded-rez-lg font-semibold bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 text-white transition-all"
+                >
+                  Start
+                </Link>
+              )}
             </div>
           </div>
         ))}
