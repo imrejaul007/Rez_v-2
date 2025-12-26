@@ -88,6 +88,10 @@ import NotificationsCenter from './pages/NotificationsCenter';
 import ProductComparison from './pages/ProductComparison';
 import OrderTracking from './pages/OrderTracking';
 import Profile from './pages/Profile';
+import WishlistPage from './pages/WishlistPage';
+import SavingsDashboard from './pages/SavingsDashboard';
+import GamificationHub from './pages/GamificationHub';
+import NotificationCenterPage from './pages/NotificationCenterPage';
 import DealStore from './pages/DealStore';
 import DealDetail from './pages/DealDetail';
 import FleaMarket from './pages/FleaMarket';
@@ -615,6 +619,12 @@ function App() {
                 {/* Discovery */}
                 <Route path="new" element={<NewArrivals />} />
                 <Route path="popular" element={<PopularStores />} />
+
+                {/* New Feature Pages */}
+                <Route path="my-wishlist" element={<WishlistPage />} />
+                <Route path="savings" element={<SavingsDashboard />} />
+                <Route path="achievements" element={<GamificationHub />} />
+                <Route path="notifications" element={<NotificationCenterPage />} />
 
                 {/* Gamification */}
                 <Route path="missions" element={<Missions />} />
