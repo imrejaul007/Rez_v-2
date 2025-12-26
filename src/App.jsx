@@ -257,6 +257,11 @@ import BrandTasks from './pages/earn/BrandTasks';
 import UGCCreator from './pages/earn/UGCCreator';
 import CollegeAmbassador from './pages/earn/CollegeAmbassador';
 import CorporateEmployee from './pages/earn/CorporateEmployee';
+import Quiz from './pages/earn/Quiz';
+import MemoryMatch from './pages/earn/MemoryMatch';
+import LuckyDraw from './pages/earn/LuckyDraw';
+import GuessPrice from './pages/earn/GuessPrice';
+import TournamentDetail from './pages/earn/TournamentDetail';
 
 // ReZ Mall sub-pages
 import MallBrandDetail from './pages/mall/MallBrandDetail';
@@ -559,6 +564,13 @@ function App() {
                 <Route path="earn/ugc-creator" element={<UGCCreator />} />
                 <Route path="earn/college-ambassador" element={<CollegeAmbassador />} />
                 <Route path="earn/corporate-employee" element={<CorporateEmployee />} />
+
+                {/* Earn Games */}
+                <Route path="earn/quiz" element={<Quiz />} />
+                <Route path="earn/memory-match" element={<MemoryMatch />} />
+                <Route path="earn/lucky-draw" element={<LuckyDraw />} />
+                <Route path="earn/guess-price" element={<GuessPrice />} />
+                <Route path="earn/tournaments/:id" element={<TournamentDetail />} />
 
                 {/* Universal Product/Service Page */}
                 <Route path="product/:id" element={<ProductServicePage />} />
