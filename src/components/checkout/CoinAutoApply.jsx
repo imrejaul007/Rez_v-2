@@ -2,9 +2,11 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Info, ChevronDown, ChevronUp, Check, AlertCircle } from 'lucide-react';
 import { useWallet } from '../../contexts/WalletContext';
+import { useUser } from '../../contexts/UserContext';
 
 const CoinAutoApply = ({ billAmount, merchantId = null, category = null, onCoinsApplied }) => {
   const { calculateAutoApplyCoins, rezCoins, brandedCoins, promoCoins, priveCoins, coinRules } = useWallet();
+  const { user } = useUser();
   const [expanded, setExpanded] = useState(false);
   const [manualMode, setManualMode] = useState(false);
   const [appliedCoins, setAppliedCoins] = useState(null);
@@ -166,13 +168,15 @@ const CoinAutoApply = ({ billAmount, merchantId = null, category = null, onCoins
                 </p>
               </div>
             )}
-            {priveCoins?.balance > 0 && (
-              <div className="p-3 rounded-lg bg-white dark:bg-white/5">
+            {/* IMPORTANT: Only show Privé Coins if user is a Privé member */}
+            {user?.isPriveMember && priveCoins?.balance > 0 && (
+              <div className="p-3 rounded-lg bg-gradient-to-br from-[#D4AF37]/10 to-amber-500/10 border border-[#D4AF37]/30">
                 <div className="flex items-center gap-2 mb-1">
                   <span>👑</span>
-                  <span className="text-caption text-rez-gray-600 dark:text-gray-400">Privé</span>
+                  <span className="text-caption text-[#D4AF37]">Privé</span>
                 </div>
                 <p className="text-body font-bold text-rez-navy dark:text-white">{priveCoins.balance}</p>
+                <p className="text-[10px] text-[#D4AF37] mt-1">Elite member exclusive</p>
               </div>
             )}
           </div>

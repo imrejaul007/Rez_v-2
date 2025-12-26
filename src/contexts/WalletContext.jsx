@@ -1,4 +1,5 @@
 import { createContext, useContext, useReducer } from 'react';
+import { useUser } from './UserContext';
 
 const WalletContext = createContext();
 
@@ -426,6 +427,7 @@ const walletReducer = (state, action) => {
 
 export const WalletProvider = ({ children }) => {
   const [state, dispatch] = useReducer(walletReducer, initialState);
+  const { user } = useUser();
 
   // Calculate total coins value
   const totalCoinsValue = state.rezCoins.balance + state.promoCoins.balance +
@@ -518,7 +520,8 @@ export const WalletProvider = ({ children }) => {
         }
       }
 
-      if (coinType === 'prive' && state.priveCoins.balance > 0 && remaining > 0 && state.currentMode === 'prive') {
+      // IMPORTANT: Privé Coins only available for Privé members
+      if (coinType === 'prive' && user?.isPriveMember && state.priveCoins.balance > 0 && remaining > 0) {
         const priveToApply = Math.min(state.priveCoins.balance, remaining);
         applied.prive = priveToApply;
         remaining -= priveToApply;
