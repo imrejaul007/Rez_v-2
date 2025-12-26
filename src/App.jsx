@@ -292,6 +292,9 @@ import TrackCashback from './pages/cashstore/TrackCashback';
 import HowItWorks from './pages/cashstore/HowItWorks';
 import CashStoreStores from './pages/cashstore/CashStoreStores';
 import CashStoreCoupons from './pages/cashstore/CashStoreCoupons';
+import CashStoreGiftCards from './pages/cashstore/CashStoreGiftCards';
+import CashStoreMissingCashback from './pages/cashstore/CashStoreMissingCashback';
+import CashStoreCategory from './pages/cashstore/CashStoreCategory';
 import CreatorStoreHome from './pages/creator/CreatorStoreHome';
 import CreatorProfile from './pages/creator/CreatorProfile';
 import CreatorPickDetail from './pages/creator/CreatorPickDetail';
@@ -346,6 +349,9 @@ function App() {
                 <Route path="cash-store/stores" element={<CashStoreStores />} />
                 <Route path="cash-store/coupons" element={<CashStoreCoupons />} />
                 <Route path="cash-store/track" element={<CashStoreTrack />} />
+                <Route path="cash-store/gift-cards" element={<CashStoreGiftCards />} />
+                <Route path="cash-store/missing-cashback" element={<CashStoreMissingCashback />} />
+                <Route path="cash-store/category/:category" element={<CashStoreCategory />} />
                 <Route path="mall" element={<RezMall />} />
                 <Route path="mall/brand/:brandId" element={<MallBrandDetail />} />
                 <Route path="mall/brands" element={<MallBrands />} />
