@@ -67,6 +67,21 @@ export default {
         'bg-secondary': '#1C1C1E',
         'bg-card': '#2C2C2E',
         'bg-elevated': '#3A3A3C',
+
+        // Dark mode color scale
+        'dark': {
+          DEFAULT: '#000000',
+          50: '#F7F7F7',
+          100: '#E3E3E3',
+          200: '#C8C8C8',
+          300: '#A4A4A4',
+          400: '#818181',
+          500: '#666666',
+          600: '#515151',
+          700: '#434343',
+          800: '#1A1A1A',
+          900: '#0A0A0A',
+        },
       },
       fontFamily: {
         'poppins': ['Poppins', 'sans-serif'],

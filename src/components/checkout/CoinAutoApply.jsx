@@ -168,8 +168,9 @@ const CoinAutoApply = ({ billAmount, merchantId = null, category = null, onCoins
                 </p>
               </div>
             )}
-            {/* IMPORTANT: Only show Privé Coins if user is a Privé member */}
-            {user?.isPriveMember && priveCoins?.balance > 0 && (
+            {/* Privé Coins - Show different UI based on membership status */}
+            {user?.isPriveMember && priveCoins?.balance > 0 ? (
+              // UNLOCKED - For Privé Members
               <div className="p-3 rounded-lg bg-gradient-to-br from-[#D4AF37]/10 to-amber-500/10 border border-[#D4AF37]/30">
                 <div className="flex items-center gap-2 mb-1">
                   <span>👑</span>
@@ -178,6 +179,33 @@ const CoinAutoApply = ({ billAmount, merchantId = null, category = null, onCoins
                 <p className="text-body font-bold text-rez-navy dark:text-white">{priveCoins.balance}</p>
                 <p className="text-[10px] text-[#D4AF37] mt-1">Elite member exclusive</p>
               </div>
+            ) : (
+              // LOCKED - For Non-Members (Aspirational)
+              <Link
+                to="/prive/unlock"
+                className="p-3 rounded-lg bg-gradient-to-br from-gray-900 to-black border border-[#D4AF37]/20 hover:border-[#D4AF37]/40 transition-all cursor-pointer"
+              >
+                <div className="flex items-center justify-between mb-2">
+                  <div className="flex items-center gap-2">
+                    <span className="text-xl opacity-50">👑</span>
+                    <span className="text-caption text-gray-400">Privé</span>
+                  </div>
+                  <div className="px-2 py-0.5 rounded-full bg-[#D4AF37]/20 border border-[#D4AF37]/30">
+                    <span className="text-[10px] text-[#D4AF37] font-medium">🔒 Locked</span>
+                  </div>
+                </div>
+                <p className="text-caption text-gray-500 mb-1">Most powerful coin</p>
+                <div className="flex items-center gap-1">
+                  <div className="flex-1 h-1 bg-gray-800 rounded-full overflow-hidden">
+                    <div
+                      className="h-full bg-gradient-to-r from-[#D4AF37] to-yellow-500"
+                      style={{ width: `${user?.priveScore || 0}%` }}
+                    ></div>
+                  </div>
+                  <span className="text-[10px] text-[#D4AF37] font-medium">{user?.priveScore || 0}%</span>
+                </div>
+                <p className="text-[10px] text-gray-500 mt-1">Tap to see how to unlock →</p>
+              </Link>
             )}
           </div>
         </div>

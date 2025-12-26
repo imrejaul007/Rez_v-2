@@ -24,12 +24,14 @@ import {
   Sparkles
 } from 'lucide-react';
 import { useWallet } from '../contexts/WalletContext';
+import { useUser } from '../contexts/UserContext';
 import Badge from '../components/common/Badge';
 
 const ProductCheckout = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { rezCoinsData, promoCoins, brandedCoins, totalCoinsValue } = useWallet();
+  const { rezCoinsData, promoCoins, brandedCoins, priveCoins, totalCoinsValue } = useWallet();
+  const { user } = useUser();
 
   // State
   const [deliveryOption, setDeliveryOption] = useState('delivery'); // 'delivery', 'pickup', 'later'
@@ -37,6 +39,7 @@ const ProductCheckout = () => {
   const [usePromoCoins, setUsePromoCoins] = useState(true);
   const [useBrandedCoins, setUseBrandedCoins] = useState(true);
   const [useRezCoins, setUseRezCoins] = useState(true);
+  const [usePriveCoins, setUsePriveCoins] = useState(true);
   const [showCoinDetails, setShowCoinDetails] = useState(false);
   const [orderPlaced, setOrderPlaced] = useState(false);
   const [showWalletBreakdown, setShowWalletBreakdown] = useState(false);
@@ -109,6 +112,7 @@ const ProductCheckout = () => {
   const calculateCoinsToUse = () => {
     let coinsUsed = 0;
 
+    // Priority 1: Promo Coins (expiring soon)
     if (usePromoCoins && promoCoins?.balance) {
       const promoUsable = Math.min(
         promoCoins.balance,
@@ -117,15 +121,23 @@ const ProductCheckout = () => {
       coinsUsed += promoUsable;
     }
 
+    // Priority 2: Branded Coins (brand-specific)
     if (useBrandedCoins && Array.isArray(brandedCoins)) {
       const brandedTotal = brandedCoins.reduce((sum, coin) => sum + coin.balance, 0);
       const remaining = maxCoinsUsable - coinsUsed;
       coinsUsed += Math.min(brandedTotal, remaining);
     }
 
+    // Priority 3: ReZ Coins (universal)
     if (useRezCoins && rezCoinsData?.balance) {
       const remaining = maxCoinsUsable - coinsUsed;
       coinsUsed += Math.min(rezCoinsData.balance, remaining);
+    }
+
+    // Priority 4: Privé Coins (most powerful, applied last - members only)
+    if (usePriveCoins && user?.isPriveMember && priveCoins?.balance) {
+      const remaining = maxCoinsUsable - coinsUsed;
+      coinsUsed += Math.min(priveCoins.balance, remaining);
     }
 
     return Math.min(coinsUsed, maxCoinsUsable);
@@ -236,6 +248,7 @@ const ProductCheckout = () => {
               ReZ: {rezCoinsData?.balance || 0}
               {promoCoins?.balance > 0 && ` | Promo: ${promoCoins.balance}`}
               {Array.isArray(brandedCoins) && brandedCoins.length > 0 && ` | Brand: ${brandedCoins.reduce((sum, coin) => sum + coin.balance, 0)}`}
+              {user?.isPriveMember && priveCoins?.balance > 0 && ` | 👑: ${priveCoins.balance}`}
             </span>
           </button>
         </div>
@@ -269,6 +282,15 @@ const ProductCheckout = () => {
                   <span className="text-sm font-semibold text-purple-400">{coin.balance}</span>
                 </div>
               ))}
+              {user?.isPriveMember && priveCoins?.balance > 0 && (
+                <div className="flex items-center justify-between p-2 rounded-xl bg-gradient-to-r from-[#D4AF37]/20 to-amber-500/20 border border-[#D4AF37]/30">
+                  <div className="flex items-center gap-1">
+                    <span className="text-xl">👑</span>
+                    <span className="text-xs text-[#D4AF37] font-semibold">Privé Coins</span>
+                  </div>
+                  <span className="text-sm font-bold text-[#D4AF37]">{priveCoins.balance}</span>
+                </div>
+              )}
             </div>
             <div className="mt-3 pt-3 border-t border-rez-gray-200 dark:border-white/10 flex items-center justify-between">
               <span className="text-xs text-rez-gray-600 dark:text-gray-400">Total Value</span>

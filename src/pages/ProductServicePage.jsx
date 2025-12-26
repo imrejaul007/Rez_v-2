@@ -187,15 +187,28 @@ const ProductServicePage = () => {
   };
 
   const handlePurchaseOption = (option) => {
-    navigate(`/checkout/product/${id}`, {
-      state: {
-        product,
-        purchaseOption: option,
-        isLocked,
-        lockPrice: isLocked ? lockPrice : 0,
-        remainingPrice: isLocked ? remainingPrice : product.rezPrice
-      }
-    });
+    console.log('Purchase option clicked:', option);
+    console.log('Product ID:', id);
+    console.log('Is Locked:', isLocked);
+
+    // Create product object with all checkout-required fields
+    const checkoutProduct = {
+      ...product,
+      purchaseOption: option,
+      isLocked,
+      lockPrice: isLocked ? lockPrice : 0,
+      remainingPrice: isLocked ? remainingPrice : product.rezPrice,
+      timeRemaining
+    };
+
+    try {
+      navigate(`/checkout/product/${id}`, {
+        state: checkoutProduct
+      });
+    } catch (error) {
+      console.error('Navigation error:', error);
+      alert(`Error navigating to checkout: ${error.message}`);
+    }
   };
 
   return (

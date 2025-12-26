@@ -10,8 +10,8 @@ const initialUser = {
   avatar: null,
 
   // Privé status
-  isPriveMember: false,
-  priveScore: 65, // out of 100 to unlock
+  isPriveMember: true, // Set to true to test Privé features
+  priveScore: 100, // out of 100 to unlock
 
   // Age verification
   isAdultVerified: false,

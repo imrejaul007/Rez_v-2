@@ -143,8 +143,9 @@ const WalletModeMall = () => {
             </div>
           </div>
 
-          {/* Privé Coin (subtle highlight) - Only show if user is Privé member */}
-          {user?.isPriveMember && wallet.priveCoins.balance > 0 && (
+          {/* Privé Coin - Show different UI based on membership status */}
+          {user?.isPriveMember && wallet.priveCoins.balance > 0 ? (
+            // UNLOCKED - For Privé Members
             <div className="p-4 rounded-2xl bg-gradient-to-br from-gray-900 to-black border border-[#D4AF37]/30 shadow-lg">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
@@ -167,6 +168,53 @@ const WalletModeMall = () => {
                 </div>
               </div>
             </div>
+          ) : (
+            // LOCKED - For Non-Members (Aspirational)
+            <Link
+              to="/prive/unlock"
+              className="p-4 rounded-2xl bg-gradient-to-br from-gray-900 to-black border border-[#D4AF37]/20 hover:border-[#D4AF37]/40 transition-all shadow-lg cursor-pointer"
+            >
+              <div className="flex items-center justify-between mb-3">
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 rounded-xl bg-gray-800 flex items-center justify-center">
+                    <span className="text-2xl opacity-50">👑</span>
+                  </div>
+                  <div>
+                    <h3 className="text-body font-semibold text-gray-400">
+                      Privé Coin
+                    </h3>
+                    <p className="text-caption text-gray-500">
+                      Most powerful coin
+                    </p>
+                  </div>
+                </div>
+                <div className="px-3 py-1 rounded-full bg-[#D4AF37]/20 border border-[#D4AF37]/30">
+                  <span className="text-xs text-[#D4AF37] font-medium">🔒 Locked</span>
+                </div>
+              </div>
+
+              {/* Progress Bar */}
+              <div className="mb-2">
+                <div className="flex items-center justify-between mb-1">
+                  <span className="text-xs text-gray-500">Your progress to unlock</span>
+                  <span className="text-xs text-[#D4AF37] font-bold">{user?.priveScore || 0}%</span>
+                </div>
+                <div className="w-full h-2 bg-gray-800 rounded-full overflow-hidden">
+                  <div
+                    className="h-full bg-gradient-to-r from-[#D4AF37] to-yellow-500 transition-all"
+                    style={{ width: `${user?.priveScore || 0}%` }}
+                  ></div>
+                </div>
+              </div>
+
+              {/* CTA */}
+              <div className="flex items-center justify-between mt-3">
+                <p className="text-xs text-gray-500">
+                  Only coin that works on gift cards
+                </p>
+                <ChevronRight className="w-4 h-4 text-[#D4AF37]" />
+              </div>
+            </Link>
           )}
         </div>
 

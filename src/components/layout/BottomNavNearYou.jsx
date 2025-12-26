@@ -5,7 +5,7 @@ const navItems = [
   { path: '/', icon: Home, label: 'Home' },
   { path: '/explore', icon: Compass, label: 'Explore' },
   { path: '/scan', icon: ScanLine, label: 'Pay', highlight: true },
-  { path: '/offers', icon: Tag, label: 'Offers' },
+  { path: '/deal-store', icon: Tag, label: 'Deals' },
   { path: '/wallet', icon: Wallet, label: 'Wallet' },
 ];
 

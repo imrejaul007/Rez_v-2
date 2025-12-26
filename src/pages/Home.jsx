@@ -41,42 +41,102 @@ const Home = () => {
       <div className="px-4 mb-6">
         <Link
           to="/pay-in-store"
-          className="block p-6 rounded-rez-2xl bg-gradient-to-r from-rez-green-500 via-rez-teal-500 to-rez-gold relative overflow-hidden shadow-rez-green"
+          className="block relative group"
         >
-          <div className="relative z-10">
-            <div className="flex items-center justify-between mb-3">
-              <div className="flex items-center gap-3">
-                <div className="w-14 h-14 rounded-rez-lg bg-white/20 backdrop-blur-sm flex items-center justify-center">
-                  <span className="text-3xl">💳</span>
+          {/* Outer Glow */}
+          <div className="absolute -inset-1 bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 rounded-3xl blur-xl opacity-60 group-hover:opacity-100 transition-opacity"></div>
+
+          {/* Main Card */}
+          <div className="relative rounded-3xl overflow-hidden">
+            {/* Glass Background */}
+            <div className="absolute inset-0 bg-gradient-to-br from-emerald-500 via-teal-500 to-cyan-600 dark:from-emerald-600 dark:via-teal-600 dark:to-cyan-700"></div>
+
+            {/* Animated Gradient Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-shimmer"></div>
+
+            {/* Content */}
+            <div className="relative p-6">
+              {/* Header */}
+              <div className="flex items-start justify-between mb-4">
+                <div className="flex items-center gap-3">
+                  {/* Icon with Glow */}
+                  <div className="relative">
+                    <div className="absolute inset-0 bg-white/40 rounded-2xl blur-lg"></div>
+                    <div className="relative w-16 h-16 rounded-2xl bg-white/20 backdrop-blur-xl border border-white/30 flex items-center justify-center shadow-2xl">
+                      <span className="text-4xl">💳</span>
+                    </div>
+                  </div>
+
+                  <div>
+                    <h3 className="text-xl font-bold text-white mb-1 flex items-center gap-2">
+                      Pay in Store
+                      <span className="px-2 py-0.5 rounded-full bg-white/20 backdrop-blur-sm text-[10px] font-bold border border-white/30">
+                        NEW
+                      </span>
+                    </h3>
+                    <p className="text-sm text-white/90 font-medium">Scan QR & earn instant rewards</p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="text-h3 font-poppins text-rez-navy dark:text-white">Pay in Store</h3>
-                  <p className="text-body-sm text-white/90">Scan QR & earn instant rewards</p>
+
+                {/* Arrow with Animation */}
+                <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-xl border border-white/30 flex items-center justify-center group-hover:scale-110 group-hover:rotate-12 transition-all">
+                  <span className="text-white text-xl">→</span>
                 </div>
               </div>
-              <span className="text-rez-navy dark:text-white text-2xl">→</span>
+
+              {/* Benefits Grid */}
+              <div className="grid grid-cols-3 gap-2">
+                {/* Cashback */}
+                <div className="relative">
+                  <div className="absolute inset-0 bg-white/10 rounded-xl blur"></div>
+                  <div className="relative p-3 rounded-xl bg-white/20 backdrop-blur-xl border border-white/30 text-center transform group-hover:scale-105 transition-transform">
+                    <div className="w-8 h-8 mx-auto mb-1.5 rounded-full bg-emerald-400/30 flex items-center justify-center">
+                      <span className="text-lg">💰</span>
+                    </div>
+                    <p className="text-xl font-bold text-white mb-0.5">10%</p>
+                    <p className="text-[10px] text-white/80 font-semibold">Cashback</p>
+                  </div>
+                </div>
+
+                {/* Earn Coins */}
+                <div className="relative">
+                  <div className="absolute inset-0 bg-white/10 rounded-xl blur"></div>
+                  <div className="relative p-3 rounded-xl bg-white/20 backdrop-blur-xl border border-white/30 text-center transform group-hover:scale-105 transition-transform delay-75">
+                    <div className="w-8 h-8 mx-auto mb-1.5 rounded-full bg-amber-400/30 flex items-center justify-center">
+                      <span className="text-lg">🪙</span>
+                    </div>
+                    <p className="text-xl font-bold text-white mb-0.5">2x</p>
+                    <p className="text-[10px] text-white/80 font-semibold">Earn Coins</p>
+                  </div>
+                </div>
+
+                {/* Instant */}
+                <div className="relative">
+                  <div className="absolute inset-0 bg-white/10 rounded-xl blur"></div>
+                  <div className="relative p-3 rounded-xl bg-white/20 backdrop-blur-xl border border-white/30 text-center transform group-hover:scale-105 transition-transform delay-150">
+                    <div className="w-8 h-8 mx-auto mb-1.5 rounded-full bg-yellow-400/30 flex items-center justify-center">
+                      <span className="text-lg">⚡</span>
+                    </div>
+                    <p className="text-xl font-bold text-white mb-0.5">1s</p>
+                    <p className="text-[10px] text-white/80 font-semibold">Instant</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Bottom Badge */}
+              <div className="mt-4 flex items-center justify-center gap-2">
+                <div className="h-px flex-1 bg-gradient-to-r from-transparent to-white/20"></div>
+                <p className="text-xs text-white/70 font-semibold">Accepted at 10,000+ stores</p>
+                <div className="h-px flex-1 bg-gradient-to-l from-transparent to-white/20"></div>
+              </div>
             </div>
 
-            <div className="grid grid-cols-3 gap-2">
-              <div className="p-2 rounded-lg bg-white/20 backdrop-blur-sm text-center">
-                <p className="text-xl font-bold text-rez-navy dark:text-white">10%</p>
-                <p className="text-[10px] text-white/80">Cashback</p>
-              </div>
-              <div className="p-2 rounded-lg bg-white/20 backdrop-blur-sm text-center">
-                <p className="text-xl font-bold text-rez-navy dark:text-white">🪙</p>
-                <p className="text-[10px] text-white/80">Earn Coins</p>
-              </div>
-              <div className="p-2 rounded-lg bg-white/20 backdrop-blur-sm text-center">
-                <p className="text-xl font-bold text-rez-navy dark:text-white">⚡</p>
-                <p className="text-[10px] text-white/80">Instant</p>
-              </div>
-            </div>
-          </div>
+            {/* Animated Orbs */}
+            <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-3xl animate-pulse"></div>
+            <div className="absolute bottom-0 left-0 w-40 h-40 bg-cyan-300/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
 
-          {/* Animated background pattern */}
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-white rounded-full blur-3xl animate-pulse" />
-            <div className="absolute bottom-0 left-0 w-40 h-40 bg-white rounded-full blur-3xl animate-pulse animation-delay-1000" />
+            {/* Shine Effect */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
           </div>
         </Link>
       </div>
@@ -100,7 +160,7 @@ const Home = () => {
         </Link>
       </div>
 
-      {/* 💰 EARN REZ COINS - FEATURED EARNING WAYS */}
+      {/* 💰 EARN REZ COINS - FEATURED EARNING WAYS (Bento Box Layout) */}
       <div className="px-4 mb-6">
         <div className="flex items-center justify-between mb-4">
           <div>
@@ -110,117 +170,101 @@ const Home = () => {
           <Link to="/earn" className="text-button text-rez-green-500 dark:text-emerald-400 font-poppins">View All →</Link>
         </div>
 
-        {/* Top 3 Earning Methods Grid */}
-        <div className="grid grid-cols-1 gap-3 mb-3">
-          {/* Online Shopping Cashback */}
+        {/* Bento Box Grid - Asymmetric Layout */}
+        <div className="grid grid-cols-4 grid-rows-4 gap-3 h-[400px]">
+          {/* Large: Online Shopping - Takes 2x2 */}
           <Link
             to="/cash-store"
-            className="p-5 rounded-2xl bg-gradient-to-br from-emerald-500/20 to-green-500/10 border-2 border-emerald-500/30 hover:border-emerald-500/50 transition-all active:scale-98"
+            className="col-span-2 row-span-2 relative group rounded-3xl overflow-hidden"
           >
-            <div className="flex items-center gap-4">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-500 to-green-500 flex items-center justify-center flex-shrink-0">
-                <span className="text-3xl">🛍️</span>
+            <div className="absolute inset-0 bg-gradient-to-br from-emerald-500 via-green-500 to-teal-600 dark:from-emerald-600 dark:via-green-600 dark:to-teal-700"></div>
+            <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0iZ3JpZCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aCBkPSJNIDQwIDAgTCAwIDAgMCA0MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLW9wYWNpdHk9IjAuMSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+')] opacity-30"></div>
+            <div className="relative p-5 h-full flex flex-col justify-between">
+              <div className="flex items-start justify-between">
+                <span className="text-5xl">🛍️</span>
+                <span className="px-3 py-1 rounded-full bg-white/20 backdrop-blur-sm text-xs font-bold text-white border border-white/30">
+                  Most Popular
+                </span>
               </div>
-              <div className="flex-1">
-                <h3 className="text-base font-bold text-rez-navy dark:text-white mb-1">Online Shopping Cashback</h3>
-                <p className="text-xs text-gray-600 dark:text-gray-400 mb-2">Shop from 2500+ brands & earn up to 25% cashback</p>
-                <div className="flex items-center gap-2">
-                  <span className="px-2 py-1 rounded-full bg-emerald-500/20 text-xs font-bold text-emerald-600 dark:text-emerald-400">
-                    Auto-tracked
-                  </span>
-                  <span className="text-xs font-semibold text-emerald-600 dark:text-emerald-400">
-                    ₹2,500 avg/month
-                  </span>
+              <div>
+                <h3 className="text-lg font-bold text-white mb-2">Online Shopping</h3>
+                <p className="text-sm text-white/90 mb-3">2500+ brands • Up to 25% cashback</p>
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/20 backdrop-blur-xl border border-white/30">
+                  <span className="text-xs font-bold text-white">₹2,500 avg/month</span>
                 </div>
               </div>
             </div>
           </Link>
 
-          {/* Pay in Store */}
+          {/* Medium: Pay in Store - Takes 2x1 */}
           <Link
             to="/pay-in-store"
-            className="p-5 rounded-2xl bg-gradient-to-br from-blue-500/20 to-cyan-500/10 border-2 border-blue-500/30 hover:border-blue-500/50 transition-all active:scale-98"
+            className="col-span-2 row-span-1 relative overflow-hidden rounded-2xl bg-gradient-to-r from-blue-500 to-cyan-500 dark:from-blue-600 dark:to-cyan-600 group"
           >
-            <div className="flex items-center gap-4">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center flex-shrink-0">
-                <span className="text-3xl">💳</span>
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+            <div className="relative p-4 flex items-center gap-3">
+              <div className="w-12 h-12 rounded-xl bg-white/20 backdrop-blur-sm border border-white/30 flex items-center justify-center flex-shrink-0">
+                <span className="text-2xl">💳</span>
               </div>
               <div className="flex-1">
-                <h3 className="text-base font-bold text-rez-navy dark:text-white mb-1">Pay in Store</h3>
-                <p className="text-xs text-gray-600 dark:text-gray-400 mb-2">Scan QR at offline stores & earn instant rewards</p>
-                <div className="flex items-center gap-2">
-                  <span className="px-2 py-1 rounded-full bg-blue-500/20 text-xs font-bold text-blue-600 dark:text-blue-400">
-                    Instant
-                  </span>
-                  <span className="text-xs font-semibold text-blue-600 dark:text-blue-400">
-                    Up to 10% cashback
-                  </span>
-                </div>
+                <h3 className="text-sm font-bold text-white mb-1">Pay in Store</h3>
+                <p className="text-xs text-white/80">QR scan • Instant rewards</p>
               </div>
+              <span className="text-white text-xl group-hover:translate-x-1 transition-transform">→</span>
             </div>
           </Link>
 
-          {/* Social Impact - CSR Programs */}
-          <Link
-            to="/earn/social-impact"
-            className="p-5 rounded-2xl bg-gradient-to-br from-purple-500/20 to-blue-500/10 border-2 border-purple-500/30 hover:border-purple-500/50 transition-all active:scale-98"
-          >
-            <div className="flex items-center gap-4">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center flex-shrink-0">
-                <span className="text-3xl">🤝</span>
-              </div>
-              <div className="flex-1">
-                <h3 className="text-base font-bold text-rez-navy dark:text-white mb-1">Social Impact Events</h3>
-                <p className="text-xs text-gray-600 dark:text-gray-400 mb-2">Join CSR activities & earn ReZ + Brand Coins</p>
-                <div className="flex items-center gap-2">
-                  <span className="px-2 py-1 rounded-full bg-purple-500/20 text-xs font-bold text-purple-600 dark:text-purple-400">
-                    Dual Rewards
-                  </span>
-                  <span className="text-xs font-semibold text-purple-600 dark:text-purple-400">
-                    60+ CSR Partners
-                  </span>
-                </div>
-              </div>
-            </div>
-          </Link>
-        </div>
-
-        {/* More Earning Ways - Compact Grid */}
-        <div className="grid grid-cols-2 gap-2">
+          {/* Small: Play Games */}
           <Link
             to="/earn/play"
-            className="p-3 rounded-xl bg-white dark:bg-white/10 border border-rez-gray-200 dark:border-white/10 hover:border-orange-500 dark:hover:border-orange-500 transition-all active:scale-95"
+            className="col-span-1 row-span-1 p-4 rounded-2xl bg-gradient-to-br from-orange-500/30 to-red-500/20 dark:from-orange-500/30 dark:to-red-500/20 border-2 border-orange-500/40 dark:border-orange-500/40 hover:border-orange-500 dark:hover:border-orange-500 transition-all group"
           >
-            <span className="text-2xl mb-1 block">🎮</span>
-            <p className="text-xs font-bold text-rez-navy dark:text-white mb-0.5">Play Games</p>
-            <p className="text-[10px] text-gray-600 dark:text-gray-400">Win coins daily</p>
+            <span className="text-3xl mb-2 block group-hover:scale-110 transition-transform">🎮</span>
+            <p className="text-xs font-bold text-rez-navy dark:text-white">Play Games</p>
           </Link>
 
+          {/* Small: Refer Friends */}
           <Link
             to="/earn/refer"
-            className="p-3 rounded-xl bg-white dark:bg-white/10 border border-rez-gray-200 dark:border-white/10 hover:border-pink-500 dark:hover:border-pink-500 transition-all active:scale-95"
+            className="col-span-1 row-span-1 p-4 rounded-2xl bg-gradient-to-br from-pink-500/30 to-purple-500/20 dark:from-pink-500/30 dark:to-purple-500/20 border-2 border-pink-500/40 dark:border-pink-500/40 hover:border-pink-500 dark:hover:border-pink-500 transition-all group"
           >
-            <span className="text-2xl mb-1 block">👥</span>
-            <p className="text-xs font-bold text-rez-navy dark:text-white mb-0.5">Refer Friends</p>
-            <p className="text-[10px] text-gray-600 dark:text-gray-400">₹100 per referral</p>
+            <span className="text-3xl mb-2 block group-hover:scale-110 transition-transform">👥</span>
+            <p className="text-xs font-bold text-rez-navy dark:text-white">Refer</p>
           </Link>
 
+          {/* Medium: Social Impact - Takes 2x1 */}
+          <Link
+            to="/earn/social-impact"
+            className="col-span-2 row-span-1 relative overflow-hidden rounded-2xl bg-gradient-to-r from-purple-500 to-indigo-500 dark:from-purple-600 dark:to-indigo-600"
+          >
+            <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
+            <div className="relative p-4 flex items-center gap-3">
+              <div className="w-12 h-12 rounded-xl bg-white/20 backdrop-blur-sm border border-white/30 flex items-center justify-center flex-shrink-0">
+                <span className="text-2xl">🤝</span>
+              </div>
+              <div className="flex-1">
+                <h3 className="text-sm font-bold text-white mb-1">Social Impact</h3>
+                <p className="text-xs text-white/80">CSR events • Dual rewards</p>
+              </div>
+            </div>
+          </Link>
+
+          {/* Small: Surveys */}
           <Link
             to="/earn/surveys"
-            className="p-3 rounded-xl bg-white dark:bg-white/10 border border-rez-gray-200 dark:border-white/10 hover:border-indigo-500 dark:hover:border-indigo-500 transition-all active:scale-95"
+            className="col-span-1 row-span-1 p-4 rounded-2xl bg-gradient-to-br from-indigo-500/30 to-blue-500/20 dark:from-indigo-500/30 dark:to-blue-500/20 border-2 border-indigo-500/40 dark:border-indigo-500/40 hover:border-indigo-500 dark:hover:border-indigo-500 transition-all group"
           >
-            <span className="text-2xl mb-1 block">📋</span>
-            <p className="text-xs font-bold text-rez-navy dark:text-white mb-0.5">Surveys</p>
-            <p className="text-[10px] text-gray-600 dark:text-gray-400">Quick rewards</p>
+            <span className="text-3xl mb-2 block group-hover:scale-110 transition-transform">📋</span>
+            <p className="text-xs font-bold text-rez-navy dark:text-white">Surveys</p>
           </Link>
 
+          {/* Small: Reviews */}
           <Link
             to="/earn/reviews"
-            className="p-3 rounded-xl bg-white dark:bg-white/10 border border-rez-gray-200 dark:border-white/10 hover:border-amber-500 dark:hover:border-amber-500 transition-all active:scale-95"
+            className="col-span-1 row-span-1 p-4 rounded-2xl bg-gradient-to-br from-amber-500/30 to-yellow-500/20 dark:from-amber-500/30 dark:to-yellow-500/20 border-2 border-amber-500/40 dark:border-amber-500/40 hover:border-amber-500 dark:hover:border-amber-500 transition-all group"
           >
-            <span className="text-2xl mb-1 block">⭐</span>
-            <p className="text-xs font-bold text-rez-navy dark:text-white mb-0.5">Write Reviews</p>
-            <p className="text-[10px] text-gray-600 dark:text-gray-400">Share experiences</p>
+            <span className="text-3xl mb-2 block group-hover:scale-110 transition-transform">⭐</span>
+            <p className="text-xs font-bold text-rez-navy dark:text-white">Reviews</p>
           </Link>
         </div>
       </div>
@@ -231,9 +275,9 @@ const Home = () => {
       {/* 🎉 UGC FEED - NEW ON REZ */}
       <UGCFeedSection />
 
-      {/* ⚡ FLASH SALES - LIMITED TIME OFFERS */}
-      <div className="px-4 mb-6">
-        <div className="flex items-center justify-between mb-4">
+      {/* ⚡ FLASH SALES - URGENT CARD STYLE */}
+      <div className="mb-6">
+        <div className="px-4 flex items-center justify-between mb-4">
           <div>
             <h2 className="text-h3 font-poppins text-rez-navy dark:text-white">⚡ Flash Sales</h2>
             <p className="text-caption text-rez-gray-600 dark:text-gray-400">Ending soon • Limited stock</p>
@@ -244,41 +288,86 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="flex gap-3 overflow-x-auto hide-scrollbar pb-2">
+        {/* Horizontal Scroll with Snap */}
+        <div className="flex gap-4 overflow-x-auto hide-scrollbar snap-x snap-mandatory px-4 pb-2">
           {[
             { id: 1, name: 'iPhone 15 Pro', image: 'https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=400', price: 124999, was: 134900, stock: 3 },
             { id: 2, name: 'Samsung TV 55"', image: 'https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=400', price: 39999, was: 54999, stock: 7 },
             { id: 3, name: 'Nike Air Max', image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400', price: 5999, was: 12999, stock: 12 }
-          ].map((item) => (
+          ].map((item, idx) => (
             <Link
               key={item.id}
               to={`/product/${item.id}`}
-              className="flex-shrink-0 w-44 p-3 rounded-2xl bg-white dark:bg-white/10 border border-rez-gray-200 dark:border-white/10 hover:border-red-500 dark:hover:border-red-500 transition-all active:scale-95"
+              className="flex-shrink-0 w-72 snap-center group"
             >
-              <div className="relative mb-3">
-                <img src={item.image} alt={item.name} className="w-full h-32 object-cover rounded-xl" />
-                <div className="absolute top-2 right-2 px-2 py-1 rounded-full bg-red-500 text-white text-xs font-bold">
-                  {Math.round(((item.was - item.price) / item.was) * 100)}% OFF
+              {/* Outer Urgency Glow */}
+              <div className="relative">
+                <div className="absolute -inset-1 bg-gradient-to-r from-red-500 via-orange-500 to-red-500 rounded-3xl blur-lg opacity-40 group-hover:opacity-70 transition-opacity"></div>
+
+                {/* Main Card */}
+                <div className="relative rounded-3xl overflow-hidden bg-white dark:bg-gray-900 border-2 border-red-500/40">
+                  {/* Image Section */}
+                  <div className="relative h-48 overflow-hidden bg-gradient-to-br from-red-50 to-orange-50 dark:from-red-950/30 dark:to-orange-950/30">
+                    <img src={item.image} alt={item.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+
+                    {/* Discount Badge - Top Right */}
+                    <div className="absolute top-3 right-3">
+                      <div className="relative">
+                        <div className="absolute inset-0 bg-red-500 rounded-full blur"></div>
+                        <div className="relative px-3 py-1.5 rounded-full bg-red-500 text-white text-sm font-black shadow-2xl">
+                          {Math.round(((item.was - item.price) / item.was) * 100)}% OFF
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Stock Warning - Bottom */}
+                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-3">
+                      <div className="flex items-center gap-2">
+                        <div className="flex-1 h-1.5 bg-white/20 rounded-full overflow-hidden">
+                          <div
+                            className="h-full bg-gradient-to-r from-red-500 to-orange-500 rounded-full"
+                            style={{ width: `${(item.stock / 15) * 100}%` }}
+                          ></div>
+                        </div>
+                        <span className="text-xs font-bold text-white">Only {item.stock} left!</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Content Section */}
+                  <div className="p-4 bg-white dark:bg-gray-900">
+                    <h3 className="text-base font-bold text-rez-navy dark:text-white mb-3 line-clamp-1">{item.name}</h3>
+
+                    {/* Price Row */}
+                    <div className="flex items-baseline gap-2 mb-3">
+                      <span className="text-2xl font-black bg-gradient-to-r from-red-600 to-orange-600 dark:from-red-400 dark:to-orange-400 bg-clip-text text-transparent">
+                        ₹{item.price.toLocaleString()}
+                      </span>
+                      <span className="text-sm text-rez-gray-500 dark:text-gray-500 line-through">₹{item.was.toLocaleString()}</span>
+                    </div>
+
+                    {/* Savings & Coins */}
+                    <div className="flex items-center gap-3">
+                      <div className="flex-1 px-3 py-2 rounded-xl bg-emerald-500/10 border border-emerald-500/30">
+                        <p className="text-xs text-emerald-600 dark:text-emerald-400 font-semibold">
+                          Save ₹{(item.was - item.price).toLocaleString()}
+                        </p>
+                      </div>
+                      <div className="px-3 py-2 rounded-xl bg-amber-500/10 border border-amber-500/30">
+                        <p className="text-xs text-amber-600 dark:text-amber-400 font-semibold whitespace-nowrap">
+                          🪙 {Math.round(item.price * 0.1)}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div className="absolute bottom-2 left-2 px-2 py-0.5 rounded-full bg-white/90 dark:bg-black/90 text-xs font-semibold text-red-500">
-                  {item.stock} left
-                </div>
-              </div>
-              <h3 className="text-sm font-semibold text-rez-navy dark:text-white mb-1 line-clamp-1">{item.name}</h3>
-              <div className="flex items-center gap-2 mb-2">
-                <span className="text-base font-bold text-rez-navy dark:text-white">₹{item.price.toLocaleString()}</span>
-                <span className="text-xs text-rez-gray-500 dark:text-gray-500 line-through">₹{item.was.toLocaleString()}</span>
-              </div>
-              <div className="flex items-center justify-between text-xs">
-                <span className="text-emerald-500 font-semibold">Save ₹{(item.was - item.price).toLocaleString()}</span>
-                <span className="text-amber-400">🪙 {Math.round(item.price * 0.1)} coins</span>
               </div>
             </Link>
           ))}
         </div>
       </div>
 
-      {/* 🔥 TRENDING NEAR YOU */}
+      {/* 🔥 TRENDING NEAR YOU - SPLIT HERO + GRID */}
       <div className="px-4 mb-6">
         <div className="flex items-center justify-between mb-4">
           <div>
@@ -288,33 +377,112 @@ const Home = () => {
           <Link to="/explore/trending" className="text-button text-rez-green-500 dark:text-emerald-400 font-poppins">View All →</Link>
         </div>
 
+        {/* Hero + Small Grid Split Layout */}
         <div className="grid grid-cols-2 gap-3">
+          {/* Large Featured Card - Takes Full Left Column */}
+          <Link
+            to="/store/1"
+            className="relative row-span-2 rounded-3xl overflow-hidden group"
+          >
+            {/* Background Image */}
+            <div className="absolute inset-0">
+              <img
+                src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400"
+                alt="Starbucks Coffee"
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+            </div>
+
+            {/* Trending Badge */}
+            <div className="absolute top-3 left-3 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gradient-to-r from-orange-500 to-red-500 shadow-xl">
+              <span className="text-sm">🔥</span>
+              <span className="text-xs font-bold text-white">324 people</span>
+            </div>
+
+            {/* Cashback Badge */}
+            <div className="absolute top-3 right-3 px-3 py-1.5 rounded-full bg-emerald-500/90 backdrop-blur-sm shadow-xl">
+              <span className="text-xs font-bold text-white">15% cashback</span>
+            </div>
+
+            {/* Content */}
+            <div className="absolute bottom-0 left-0 right-0 p-5">
+              <div className="mb-2">
+                <span className="px-2 py-1 rounded-full bg-white/20 backdrop-blur-sm text-xs font-semibold text-white border border-white/30">
+                  Food & Dining
+                </span>
+              </div>
+              <h3 className="text-xl font-bold text-white mb-2">Starbucks Coffee</h3>
+              <div className="flex items-center gap-2">
+                <span className="text-sm text-white/90">Earn rewards</span>
+                <span className="text-amber-400 text-sm">🪙 Coins</span>
+              </div>
+            </div>
+          </Link>
+
+          {/* Small Cards - Right Column */}
           {[
-            { id: 1, name: 'Starbucks Coffee', image: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400', category: 'Food & Dining', trending: '324 people', cashback: '15%' },
-            { id: 2, name: 'Zara Fashion', image: 'https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=400', category: 'Fashion', trending: '198 people', cashback: '20%' },
-            { id: 3, name: 'Glowzy Salon', image: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?w=400', category: 'Beauty', trending: '156 people', cashback: '25%' },
-            { id: 4, name: 'FitClub Gym', image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=400', category: 'Fitness', trending: '89 people', cashback: '10%' }
+            { id: 2, name: 'Zara Fashion', image: 'https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=400', category: 'Fashion', trending: '198', cashback: '20%' },
+            { id: 3, name: 'Glowzy Salon', image: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?w=400', category: 'Beauty', trending: '156', cashback: '25%' }
           ].map((item) => (
             <Link
               key={item.id}
               to={`/store/${item.id}`}
-              className="p-3 rounded-2xl bg-white dark:bg-white/10 border border-rez-gray-200 dark:border-white/10 hover:border-rez-green-500 dark:hover:border-emerald-500 transition-all active:scale-95"
+              className="relative rounded-2xl overflow-hidden group bg-white dark:bg-gray-900 border border-rez-gray-200 dark:border-white/10 hover:border-emerald-500 dark:hover:border-emerald-500 transition-all"
             >
-              <div className="relative mb-3">
-                <img src={item.image} alt={item.name} className="w-full h-24 object-cover rounded-xl" />
-                <div className="absolute top-2 left-2 px-2 py-0.5 rounded-full bg-orange-500/90 backdrop-blur-sm flex items-center gap-1">
+              {/* Mini Image */}
+              <div className="relative h-20 overflow-hidden">
+                <img src={item.image} alt={item.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+
+                {/* Trending Count */}
+                <div className="absolute top-2 left-2 flex items-center gap-1 px-2 py-0.5 rounded-full bg-orange-500/90 backdrop-blur-sm">
                   <span className="text-xs">🔥</span>
                   <span className="text-xs font-semibold text-white">{item.trending}</span>
                 </div>
               </div>
-              <h3 className="text-sm font-semibold text-rez-navy dark:text-white mb-1 line-clamp-1">{item.name}</h3>
-              <p className="text-xs text-rez-gray-600 dark:text-gray-400 mb-2">{item.category}</p>
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-semibold text-emerald-500">{item.cashback} cashback</span>
-                <span className="text-xs text-amber-400">🪙 Coins</span>
+
+              {/* Content */}
+              <div className="p-3">
+                <p className="text-xs text-rez-gray-600 dark:text-gray-400 mb-1">{item.category}</p>
+                <h3 className="text-sm font-bold text-rez-navy dark:text-white mb-2 line-clamp-1">{item.name}</h3>
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-semibold text-emerald-500">{item.cashback}</span>
+                  <span className="text-xs text-amber-400">🪙</span>
+                </div>
               </div>
             </Link>
           ))}
+
+          {/* Fourth Item - Full Width at Bottom */}
+          <Link
+            to="/store/4"
+            className="col-span-2 p-4 rounded-2xl bg-gradient-to-r from-orange-500/10 via-red-500/10 to-pink-500/10 border border-orange-500/30 hover:border-orange-500 transition-all group"
+          >
+            <div className="flex items-center gap-4">
+              <div className="w-16 h-16 rounded-2xl overflow-hidden flex-shrink-0">
+                <img
+                  src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=400"
+                  alt="FitClub Gym"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+              </div>
+              <div className="flex-1">
+                <div className="flex items-center gap-2 mb-1">
+                  <h3 className="text-sm font-bold text-rez-navy dark:text-white">FitClub Gym</h3>
+                  <span className="flex items-center gap-1 px-2 py-0.5 rounded-full bg-orange-500/20">
+                    <span className="text-xs">🔥</span>
+                    <span className="text-xs font-semibold text-orange-600 dark:text-orange-400">89</span>
+                  </span>
+                </div>
+                <p className="text-xs text-rez-gray-600 dark:text-gray-400">Fitness</p>
+              </div>
+              <div className="text-right">
+                <p className="text-xs font-semibold text-emerald-500">10% cashback</p>
+                <p className="text-xs text-amber-400 mt-1">🪙 Earn coins</p>
+              </div>
+            </div>
+          </Link>
         </div>
       </div>
 
@@ -342,7 +510,7 @@ const Home = () => {
         </Link>
       </div>
 
-      {/* 🎉 EVENTS & EXPERIENCES - FEATURED SECTION */}
+      {/* 🎉 EVENTS & EXPERIENCES - MAGAZINE LAYOUT */}
       <div className="px-4 mb-6">
         <div className="flex items-center justify-between mb-4">
           <div>
@@ -352,59 +520,85 @@ const Home = () => {
           <Link to="/events" className="text-button text-rez-green-500 dark:text-emerald-400 font-poppins">View All →</Link>
         </div>
 
-        <div className="grid grid-cols-2 gap-3 mb-3">
+        {/* Magazine Grid */}
+        <div className="grid grid-cols-3 grid-rows-3 gap-2 h-[320px]">
+          {/* Movies - Large vertical */}
           <Link
             to="/events/movies"
-            className="p-4 rounded-rez-lg bg-gradient-to-br from-purple-500/20 to-pink-500/10 dark:from-purple-500/20 dark:to-pink-500/10 border border-purple-500/30 dark:border-purple-500/30 hover:border-purple-500/50 dark:hover:border-purple-500/50 transition-all active:scale-95"
+            className="col-span-2 row-span-2 relative rounded-3xl overflow-hidden group"
           >
-            <span className="text-3xl mb-2 block">🎬</span>
-            <h3 className="text-sm font-semibold text-rez-navy dark:text-white mb-1">Movies</h3>
-            <p className="text-xs text-rez-gray-600 dark:text-gray-400 mb-2">Latest releases</p>
-            <div className="text-xs font-semibold text-purple-600 dark:text-purple-400">Up to 20% off</div>
+            <div className="absolute inset-0 bg-gradient-to-br from-purple-600 via-pink-600 to-purple-800 dark:from-purple-700 dark:via-pink-700 dark:to-purple-900"></div>
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"></div>
+
+            <div className="relative h-full p-5 flex flex-col justify-between">
+              <div>
+                <span className="text-5xl mb-3 block">🎬</span>
+                <div className="inline-flex px-2 py-1 rounded-full bg-white/20 backdrop-blur-sm border border-white/30">
+                  <span className="text-xs font-bold text-white">Up to 20% off</span>
+                </div>
+              </div>
+              <div>
+                <h3 className="text-lg font-bold text-white mb-1">Movies</h3>
+                <p className="text-sm text-white/80">Latest blockbusters</p>
+              </div>
+            </div>
           </Link>
 
+          {/* Concerts - Square */}
           <Link
             to="/events/concerts"
-            className="p-4 rounded-rez-lg bg-gradient-to-br from-orange-500/20 to-red-500/10 dark:from-orange-500/20 dark:to-red-500/10 border border-orange-500/30 dark:border-orange-500/30 hover:border-orange-500/50 dark:hover:border-orange-500/50 transition-all active:scale-95"
+            className="row-span-2 relative rounded-2xl overflow-hidden group bg-gradient-to-br from-orange-500 to-red-600 dark:from-orange-600 dark:to-red-700"
           >
-            <span className="text-3xl mb-2 block">🎤</span>
-            <h3 className="text-sm font-semibold text-rez-navy dark:text-white mb-1">Concerts</h3>
-            <p className="text-xs text-rez-gray-600 dark:text-gray-400 mb-2">Live music</p>
-            <div className="text-xs font-semibold text-orange-600 dark:text-orange-400">Earn 2x coins</div>
-          </Link>
-        </div>
+            <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,.1)_50%,transparent_75%,transparent_100%)] bg-[length:250%_250%] animate-shimmer"></div>
 
-        <div className="grid grid-cols-3 gap-2">
+            <div className="relative h-full p-4 flex flex-col justify-between">
+              <span className="text-3xl">🎤</span>
+              <div>
+                <h3 className="text-sm font-bold text-white mb-1">Concerts</h3>
+                <p className="text-xs text-white/80 mb-2">Live music</p>
+                <span className="text-xs font-semibold text-white">2x coins</span>
+              </div>
+            </div>
+          </Link>
+
+          {/* Workshops - Wide */}
           <Link
             to="/events/workshops"
-            className="p-3 rounded-rez-lg bg-white dark:bg-white/10 border border-rez-gray-200 dark:border-white/10 hover:border-blue-500 dark:hover:border-blue-500 transition-all active:scale-95"
+            className="col-span-2 p-3 rounded-2xl bg-gradient-to-r from-blue-500/20 to-indigo-500/10 border-2 border-blue-500/30 hover:border-blue-500 transition-all group"
           >
-            <span className="text-xl mb-1 block">📚</span>
-            <p className="text-xs font-semibold text-rez-navy dark:text-white mb-0.5">Workshops</p>
-            <p className="text-[10px] text-rez-gray-500 dark:text-gray-400">Learn & grow</p>
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 rounded-xl bg-blue-500/30 flex items-center justify-center flex-shrink-0">
+                <span className="text-2xl">📚</span>
+              </div>
+              <div className="flex-1">
+                <h3 className="text-sm font-bold text-rez-navy dark:text-white mb-0.5">Workshops</h3>
+                <p className="text-xs text-rez-gray-600 dark:text-gray-400">Learn & grow</p>
+              </div>
+              <span className="text-blue-500 group-hover:translate-x-1 transition-transform">→</span>
+            </div>
           </Link>
 
+          {/* Parks - Small */}
           <Link
             to="/events/parks"
-            className="p-3 rounded-rez-lg bg-white dark:bg-white/10 border border-rez-gray-200 dark:border-white/10 hover:border-green-500 dark:hover:border-green-500 transition-all active:scale-95"
+            className="p-3 rounded-2xl bg-gradient-to-br from-green-500/30 to-emerald-500/20 border-2 border-green-500/40 hover:border-green-500 transition-all group"
           >
-            <span className="text-xl mb-1 block">🎢</span>
-            <p className="text-xs font-semibold text-rez-navy dark:text-white mb-0.5">Parks</p>
-            <p className="text-[10px] text-rez-gray-500 dark:text-gray-400">Family fun</p>
+            <span className="text-2xl mb-1 block group-hover:scale-110 transition-transform">🎢</span>
+            <p className="text-xs font-bold text-rez-navy dark:text-white">Parks</p>
           </Link>
 
+          {/* Gaming - Small */}
           <Link
             to="/events/gaming"
-            className="p-3 rounded-rez-lg bg-white dark:bg-white/10 border border-rez-gray-200 dark:border-white/10 hover:border-purple-500 dark:hover:border-purple-500 transition-all active:scale-95"
+            className="p-3 rounded-2xl bg-gradient-to-br from-purple-500/30 to-pink-500/20 border-2 border-purple-500/40 hover:border-purple-500 transition-all group"
           >
-            <span className="text-xl mb-1 block">🎮</span>
-            <p className="text-xs font-semibold text-rez-navy dark:text-white mb-0.5">Gaming</p>
-            <p className="text-[10px] text-rez-gray-500 dark:text-gray-400">Esports</p>
+            <span className="text-2xl mb-1 block group-hover:scale-110 transition-transform">🎮</span>
+            <p className="text-xs font-bold text-rez-navy dark:text-white">Gaming</p>
           </Link>
         </div>
       </div>
 
-      {/* 🛍️ SHOP BY CATEGORY - ReZ PRINCIPLES */}
+      {/* 🛍️ SHOP BY CATEGORY - ICON CARD GRID */}
       <div className="px-4 mb-6">
         <div className="flex items-center justify-between mb-4">
           <div>
@@ -413,43 +607,51 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="space-y-3">
-          {/* Electronics */}
+        {/* Icon Grid */}
+        <div className="grid grid-cols-2 gap-3 mb-3">
+          {/* Electronics - Featured Large */}
           <Link
             to="/electronics"
-            className="block p-4 rounded-rez-lg bg-gradient-to-r from-blue-500/10 to-cyan-500/10 dark:from-blue-500/10 dark:to-cyan-500/10 border border-blue-500/20 dark:border-blue-500/20 hover:border-blue-500/40 dark:hover:border-blue-500/40 transition-all"
+            className="relative col-span-2 p-6 rounded-3xl overflow-hidden group"
           >
-            <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-rez-md bg-blue-500/20 dark:bg-blue-500/20 flex items-center justify-center">
-                <span className="text-2xl">📱</span>
+            {/* Animated gradient background */}
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-500 via-cyan-500 to-blue-600 dark:from-blue-600 dark:via-cyan-600 dark:to-blue-700"></div>
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.2),transparent_70%)]"></div>
+
+            <div className="relative flex items-center gap-4">
+              <div className="w-20 h-20 rounded-2xl bg-white/20 backdrop-blur-sm border border-white/30 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                <span className="text-4xl">📱</span>
               </div>
               <div className="flex-1">
-                <h3 className="text-body font-semibold text-rez-navy dark:text-white">Electronics</h3>
-                <p className="text-caption text-rez-gray-600 dark:text-gray-400">Phones, laptops, gadgets</p>
+                <h3 className="text-lg font-bold text-white mb-1">Electronics</h3>
+                <p className="text-sm text-white/90 mb-2">Phones, laptops, gadgets</p>
+                <div className="flex items-center gap-3">
+                  <span className="px-3 py-1 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 text-xs font-bold text-white">
+                    10-15% cashback
+                  </span>
+                  <span className="text-xs font-semibold text-white/90">+ 2x coins</span>
+                </div>
               </div>
-              <div className="text-right">
-                <div className="text-xs font-semibold text-blue-600 dark:text-blue-400">10-15% cashback</div>
-                <div className="text-[10px] text-rez-gray-500 dark:text-gray-400">+ 2x coins</div>
-              </div>
+              <span className="text-white text-2xl group-hover:translate-x-2 transition-transform">→</span>
             </div>
           </Link>
 
           {/* Fashion */}
           <Link
             to="/fashion"
-            className="block p-4 rounded-rez-lg bg-gradient-to-r from-pink-500/10 to-purple-500/10 dark:from-pink-500/10 dark:to-purple-500/10 border border-pink-500/20 dark:border-pink-500/20 hover:border-pink-500/40 dark:hover:border-pink-500/40 transition-all"
+            className="relative p-5 rounded-2xl overflow-hidden group bg-gradient-to-br from-pink-500 to-purple-600 dark:from-pink-600 dark:to-purple-700"
           >
-            <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-rez-md bg-pink-500/20 dark:bg-pink-500/20 flex items-center justify-center">
-                <span className="text-2xl">👗</span>
+            <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full blur-2xl"></div>
+
+            <div className="relative">
+              <div className="w-14 h-14 rounded-xl bg-white/20 backdrop-blur-sm border border-white/30 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                <span className="text-3xl">👗</span>
               </div>
-              <div className="flex-1">
-                <h3 className="text-body font-semibold text-rez-navy dark:text-white">Fashion</h3>
-                <p className="text-caption text-rez-gray-600 dark:text-gray-400">Clothing, accessories, footwear</p>
-              </div>
-              <div className="text-right">
-                <div className="text-xs font-semibold text-pink-600 dark:text-pink-400">15-25% cashback</div>
-                <div className="text-[10px] text-rez-gray-500 dark:text-gray-400">Trending</div>
+              <h3 className="text-base font-bold text-white mb-1">Fashion</h3>
+              <p className="text-xs text-white/80 mb-3">Clothing & accessories</p>
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-semibold text-white">15-25%</span>
+                <span className="px-2 py-0.5 rounded-full bg-white/20 text-xs font-semibold text-white">Trending</span>
               </div>
             </div>
           </Link>
@@ -457,31 +659,34 @@ const Home = () => {
           {/* Food & Dining */}
           <Link
             to="/food"
-            className="block p-4 rounded-rez-lg bg-gradient-to-r from-orange-500/10 to-red-500/10 dark:from-orange-500/10 dark:to-red-500/10 border border-orange-500/20 dark:border-orange-500/20 hover:border-orange-500/40 dark:hover:border-orange-500/40 transition-all"
+            className="relative p-5 rounded-2xl overflow-hidden group bg-gradient-to-br from-orange-500 to-red-600 dark:from-orange-600 dark:to-red-700"
           >
-            <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-rez-md bg-orange-500/20 dark:bg-orange-500/20 flex items-center justify-center">
-                <span className="text-2xl">🍽️</span>
+            <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/10 rounded-full blur-2xl"></div>
+
+            <div className="relative">
+              <div className="w-14 h-14 rounded-xl bg-white/20 backdrop-blur-sm border border-white/30 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                <span className="text-3xl">🍽️</span>
               </div>
-              <div className="flex-1">
-                <h3 className="text-body font-semibold text-rez-navy dark:text-white">Food & Dining</h3>
-                <p className="text-caption text-rez-gray-600 dark:text-gray-400">Restaurants, cafes, delivery</p>
-              </div>
-              <div className="text-right">
-                <div className="text-xs font-semibold text-orange-600 dark:text-orange-400">10-20% cashback</div>
-                <div className="text-[10px] text-rez-gray-500 dark:text-gray-400">Popular</div>
+              <h3 className="text-base font-bold text-white mb-1">Food & Dining</h3>
+              <p className="text-xs text-white/80 mb-3">Restaurants & cafes</p>
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-semibold text-white">10-20%</span>
+                <span className="px-2 py-0.5 rounded-full bg-white/20 text-xs font-semibold text-white">Popular</span>
               </div>
             </div>
           </Link>
-
-          {/* View More Categories */}
-          <Link
-            to="/categories"
-            className="block p-3 rounded-rez-lg border-2 border-dashed border-rez-gray-300 dark:border-white/20 hover:border-rez-green-500 dark:hover:border-emerald-500 transition-all text-center"
-          >
-            <span className="text-body-sm font-semibold text-rez-gray-600 dark:text-gray-400">View All 15+ Categories →</span>
-          </Link>
         </div>
+
+        {/* View More Categories - Horizontal Scroll */}
+        <Link
+          to="/categories"
+          className="flex items-center justify-center gap-2 p-4 rounded-2xl border-2 border-dashed border-rez-gray-300 dark:border-white/20 hover:border-emerald-500 dark:hover:border-emerald-500 hover:bg-emerald-500/5 transition-all group"
+        >
+          <span className="text-body-sm font-semibold text-rez-gray-600 dark:text-gray-400 group-hover:text-emerald-500 dark:group-hover:text-emerald-400">
+            View All 15+ Categories
+          </span>
+          <span className="text-rez-gray-600 dark:text-gray-400 group-hover:text-emerald-500 dark:group-hover:text-emerald-400 group-hover:translate-x-1 transition-transform">→</span>
+        </Link>
       </div>
 
       {/* 🛍️ BEAUTY & WELLNESS */}
