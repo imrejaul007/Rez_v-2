@@ -308,6 +308,9 @@ import PartnerSuccess from './pages/partner/PartnerSuccess';
 // Cart
 import Cart from './pages/Cart';
 
+// Preloader Demo
+import PreloaderDemo from './pages/PreloaderDemo';
+
 function App() {
   return (
     <BrowserRouter>
@@ -382,6 +385,9 @@ function App() {
                 {/* Partner Routes */}
                 <Route path="partner/:type" element={<PartnerSignup />} />
                 <Route path="partner/success" element={<PartnerSuccess />} />
+
+                {/* Preloader Demo */}
+                <Route path="preloader-demo" element={<PreloaderDemo />} />
 
                 <Route path="prive" element={<PriveHome />} />
                 <Route path="prive/privileges" element={<PrivePrivileges />} />
