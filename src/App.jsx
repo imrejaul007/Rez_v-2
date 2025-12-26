@@ -3,6 +3,7 @@ import { AppProvider } from './contexts/AppContext';
 import { WalletProvider } from './contexts/WalletContext';
 import { UserProvider } from './contexts/UserContext';
 import { ThemeProvider } from './contexts/ThemeContext';
+import { CreatorProvider } from './contexts/CreatorContext';
 
 import Layout from './components/layout/Layout';
 import Home from './pages/Home';
@@ -287,6 +288,8 @@ import TrackCashback from './pages/cashstore/TrackCashback';
 import HowItWorks from './pages/cashstore/HowItWorks';
 import CashStoreStores from './pages/cashstore/CashStoreStores';
 import CashStoreCoupons from './pages/cashstore/CashStoreCoupons';
+import CreatorStoreHome from './pages/creator/CreatorStoreHome';
+import CreatorProfile from './pages/creator/CreatorProfile';
 
 function App() {
   return (
@@ -294,7 +297,8 @@ function App() {
       <ThemeProvider>
         <UserProvider>
           <WalletProvider>
-            <AppProvider>
+            <CreatorProvider>
+              <AppProvider>
             <Routes>
               {/* Auth & Onboarding Routes (No Layout) */}
               <Route path="/splash" element={<Splash />} />
@@ -343,6 +347,11 @@ function App() {
                 <Route path="mall/categories" element={<MallCategories />} />
                 <Route path="mall/collection/:collectionId" element={<MallCollection />} />
                 <Route path="mall/cart" element={<MallCart />} />
+
+                {/* Creator Store Routes */}
+                <Route path="creators" element={<CreatorStoreHome />} />
+                <Route path="creators/:username" element={<CreatorProfile />} />
+
                 <Route path="prive" element={<PriveHome />} />
                 <Route path="prive/privileges" element={<PrivePrivileges />} />
                 <Route path="prive/explore" element={<PriveExplore />} />
@@ -625,9 +634,10 @@ function App() {
                 <Route path="brand/:brandId" element={<BrandLoyalty />} />
               </Route>
             </Routes>
-          </AppProvider>
-        </WalletProvider>
-      </UserProvider>
+              </AppProvider>
+            </CreatorProvider>
+          </WalletProvider>
+        </UserProvider>
       </ThemeProvider>
     </BrowserRouter>
   );
