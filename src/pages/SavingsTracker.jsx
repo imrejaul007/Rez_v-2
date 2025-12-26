@@ -5,7 +5,7 @@
  */
 
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 const SavingsTracker = () => {
   const navigate = useNavigate();
@@ -370,6 +370,7 @@ const SavingsTracker = () => {
           padding: '20px',
           borderRadius: '12px',
           border: '1px solid #E5E7EB',
+          marginBottom: '20px',
         }}>
           <h2 style={{ fontSize: '16px', fontWeight: '600', color: '#1F2937', marginBottom: '16px' }}>
             Achievements
@@ -405,6 +406,186 @@ const SavingsTracker = () => {
               </div>
             ))}
           </div>
+        </div>
+
+        {/* CTAs Section */}
+        <div style={{
+          backgroundColor: '#FFFFFF',
+          padding: '20px',
+          borderRadius: '12px',
+          border: '1px solid #E5E7EB',
+          marginBottom: '20px',
+        }}>
+          <h2 style={{ fontSize: '16px', fontWeight: '600', color: '#1F2937', marginBottom: '16px' }}>
+            Save More & Earn More
+          </h2>
+
+          {/* Discover Deals CTA */}
+          <Link
+            to="/mall"
+            style={{
+              display: 'block',
+              padding: '16px',
+              background: 'linear-gradient(135deg, #EC4899 0%, #BE185D 100%)',
+              borderRadius: '12px',
+              marginBottom: '12px',
+              textDecoration: 'none',
+              transition: 'transform 0.2s',
+            }}
+            onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.02)'}
+            onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+              <div style={{
+                width: '48px',
+                height: '48px',
+                backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                borderRadius: '12px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontSize: '24px',
+              }}>
+                🛍️
+              </div>
+              <div style={{ flex: 1 }}>
+                <div style={{ fontSize: '15px', fontWeight: '600', color: '#FFFFFF', marginBottom: '4px' }}>
+                  Discover Super Deals
+                </div>
+                <div style={{ fontSize: '12px', color: 'rgba(255, 255, 255, 0.9)' }}>
+                  Shop exclusive offers & save up to 80%
+                </div>
+              </div>
+              <div style={{ fontSize: '20px', color: '#FFFFFF' }}>
+                →
+              </div>
+            </div>
+          </Link>
+
+          {/* Refer & Earn CTA */}
+          <Link
+            to="/refer"
+            style={{
+              display: 'block',
+              padding: '16px',
+              background: 'linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%)',
+              borderRadius: '12px',
+              marginBottom: '12px',
+              textDecoration: 'none',
+              transition: 'transform 0.2s',
+            }}
+            onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.02)'}
+            onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+              <div style={{
+                width: '48px',
+                height: '48px',
+                backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                borderRadius: '12px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontSize: '24px',
+              }}>
+                👥
+              </div>
+              <div style={{ flex: 1 }}>
+                <div style={{ fontSize: '15px', fontWeight: '600', color: '#FFFFFF', marginBottom: '4px' }}>
+                  Refer Friends & Earn
+                </div>
+                <div style={{ fontSize: '12px', color: 'rgba(255, 255, 255, 0.9)' }}>
+                  Get ₹500 for each friend you refer
+                </div>
+              </div>
+              <div style={{ fontSize: '20px', color: '#FFFFFF' }}>
+                →
+              </div>
+            </div>
+          </Link>
+
+          {/* Creator Store CTA */}
+          <Link
+            to="/creators"
+            style={{
+              display: 'block',
+              padding: '16px',
+              background: 'linear-gradient(135deg, #F59E0B 0%, #D97706 100%)',
+              borderRadius: '12px',
+              marginBottom: '12px',
+              textDecoration: 'none',
+              transition: 'transform 0.2s',
+            }}
+            onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.02)'}
+            onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+              <div style={{
+                width: '48px',
+                height: '48px',
+                backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                borderRadius: '12px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontSize: '24px',
+              }}>
+                ✨
+              </div>
+              <div style={{ flex: 1 }}>
+                <div style={{ fontSize: '15px', fontWeight: '600', color: '#FFFFFF', marginBottom: '4px' }}>
+                  Shop Creator Picks
+                </div>
+                <div style={{ fontSize: '12px', color: 'rgba(255, 255, 255, 0.9)' }}>
+                  Curated products from trusted creators
+                </div>
+              </div>
+              <div style={{ fontSize: '20px', color: '#FFFFFF' }}>
+                →
+              </div>
+            </div>
+          </Link>
+
+          {/* Play & Win CTA */}
+          <Link
+            to="/games"
+            style={{
+              display: 'block',
+              padding: '16px',
+              background: 'linear-gradient(135deg, #10B981 0%, #059669 100%)',
+              borderRadius: '12px',
+              textDecoration: 'none',
+              transition: 'transform 0.2s',
+            }}
+            onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.02)'}
+            onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+              <div style={{
+                width: '48px',
+                height: '48px',
+                backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                borderRadius: '12px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontSize: '24px',
+              }}>
+                🎮
+              </div>
+              <div style={{ flex: 1 }}>
+                <div style={{ fontSize: '15px', fontWeight: '600', color: '#FFFFFF', marginBottom: '4px' }}>
+                  Play Games & Win
+                </div>
+                <div style={{ fontSize: '12px', color: 'rgba(255, 255, 255, 0.9)' }}>
+                  Earn coins and rewards while having fun
+                </div>
+              </div>
+              <div style={{ fontSize: '20px', color: '#FFFFFF' }}>
+                →
+              </div>
+            </div>
+          </Link>
         </div>
       </div>
     </div>

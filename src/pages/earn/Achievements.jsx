@@ -1,5 +1,6 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Award, Lock } from 'lucide-react';
+import { ArrowLeft, Award, Lock, ShoppingBag, Users, Gamepad2, TrendingUp } from 'lucide-react';
 import BottomNavManager from '../../components/layout/BottomNavManager';
 
 const Achievements = () => {
@@ -125,12 +126,81 @@ const Achievements = () => {
         </div>
       </div>
 
+      {/* CTAs Section */}
+      <div className="px-4 py-6 space-y-4">
+        <h2 className="text-lg font-bold text-rez-navy dark:text-white mb-4">Quick Actions to Unlock More</h2>
+
+        {/* Shopping CTA */}
+        <Link
+          to="/mall"
+          className="block p-4 rounded-2xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 border border-purple-500/30 hover:scale-[1.02] active:scale-95 transition-all"
+        >
+          <div className="flex items-center gap-3">
+            <div className="p-3 rounded-xl bg-purple-500/20">
+              <ShoppingBag className="w-5 h-5 text-purple-600 dark:text-purple-400" />
+            </div>
+            <div className="flex-1">
+              <h3 className="text-sm font-bold text-rez-navy dark:text-white mb-1">Shop & Unlock Deals</h3>
+              <p className="text-xs text-rez-gray-600 dark:text-gray-400">Complete shopping achievements</p>
+            </div>
+            <TrendingUp className="w-5 h-5 text-purple-600 dark:text-purple-400" />
+          </div>
+        </Link>
+
+        {/* Referral CTA */}
+        <Link
+          to="/refer"
+          className="block p-4 rounded-2xl bg-gradient-to-br from-blue-500/20 to-cyan-500/20 border border-blue-500/30 hover:scale-[1.02] active:scale-95 transition-all"
+        >
+          <div className="flex items-center gap-3">
+            <div className="p-3 rounded-xl bg-blue-500/20">
+              <Users className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+            </div>
+            <div className="flex-1">
+              <h3 className="text-sm font-bold text-rez-navy dark:text-white mb-1">Refer Friends</h3>
+              <p className="text-xs text-rez-gray-600 dark:text-gray-400">Unlock social achievements & earn</p>
+            </div>
+            <TrendingUp className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+          </div>
+        </Link>
+
+        {/* Games CTA */}
+        <Link
+          to="/games"
+          className="block p-4 rounded-2xl bg-gradient-to-br from-green-500/20 to-emerald-500/20 border border-green-500/30 hover:scale-[1.02] active:scale-95 transition-all"
+        >
+          <div className="flex items-center gap-3">
+            <div className="p-3 rounded-xl bg-green-500/20">
+              <Gamepad2 className="w-5 h-5 text-green-600 dark:text-green-400" />
+            </div>
+            <div className="flex-1">
+              <h3 className="text-sm font-bold text-rez-navy dark:text-white mb-1">Play Games</h3>
+              <p className="text-xs text-rez-gray-600 dark:text-gray-400">Complete gaming challenges</p>
+            </div>
+            <TrendingUp className="w-5 h-5 text-green-600 dark:text-green-400" />
+          </div>
+        </Link>
+
+        {/* Daily Check-in CTA */}
+        <div className="p-4 rounded-2xl bg-gradient-to-br from-amber-500/20 to-yellow-500/20 border border-amber-500/30">
+          <div className="flex items-center gap-3">
+            <div className="p-3 rounded-xl bg-amber-500/20">
+              <Award className="w-5 h-5 text-amber-600 dark:text-amber-400" />
+            </div>
+            <div className="flex-1">
+              <h3 className="text-sm font-bold text-rez-navy dark:text-white mb-1">Daily Check-in</h3>
+              <p className="text-xs text-rez-gray-600 dark:text-gray-400">Build streaks & unlock rewards</p>
+            </div>
+            <button className="px-4 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-500 text-white text-xs font-semibold hover:scale-105 active:scale-95 transition-all">
+              Check In
+            </button>
+          </div>
+        </div>
+      </div>
+
       <BottomNavManager />
     </div>
   );
 };
-
-// Add useState import
-import { useState } from 'react';
 
 export default Achievements;

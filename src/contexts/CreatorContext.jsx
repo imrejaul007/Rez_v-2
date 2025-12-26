@@ -209,10 +209,126 @@ const mockCollections = [
   }
 ];
 
+// Mock UGC (User Generated Content)
+const mockUGC = [
+  {
+    id: 'ugc-1',
+    creatorId: 'creator-1',
+    type: 'photo',
+    title: 'My Summer OOTD',
+    image: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=500',
+    caption: 'Loving this floral dress for summer events! 🌸',
+    likes: 1240,
+    comments: 89,
+    createdAt: '2024-06-22',
+    tags: ['fashion', 'summer', 'ootd']
+  },
+  {
+    id: 'ugc-2',
+    creatorId: 'creator-1',
+    type: 'video',
+    title: 'How I Style This Dress',
+    thumbnail: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=500',
+    videoUrl: 'https://example.com/video.mp4',
+    duration: '2:45',
+    views: 5420,
+    likes: 892,
+    comments: 124,
+    createdAt: '2024-06-20',
+    tags: ['styling', 'tutorial', 'fashion']
+  },
+  {
+    id: 'ugc-3',
+    creatorId: 'creator-2',
+    type: 'review',
+    title: 'Sony WH-1000XM5 - 1 Month Review',
+    image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500',
+    rating: 5,
+    content: 'After 1 month of daily use, these headphones are still amazing. Battery life is incredible!',
+    likes: 2340,
+    helpful: 456,
+    createdAt: '2024-06-15',
+    tags: ['review', 'tech', 'headphones']
+  },
+  {
+    id: 'ugc-4',
+    creatorId: 'creator-3',
+    type: 'photo',
+    title: 'Glass Skin Results',
+    image: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?w=500',
+    caption: 'My skin after 4 weeks of this routine! ✨',
+    likes: 3240,
+    comments: 456,
+    createdAt: '2024-06-18',
+    tags: ['skincare', 'glowup', 'results']
+  }
+];
+
+// Mock Products/Services offered by creators
+const mockCreatorProducts = [
+  {
+    id: 'cp-1',
+    creatorId: 'creator-1',
+    type: 'product',
+    name: "Sarah's Style Guide E-Book",
+    description: 'Complete guide to building a capsule wardrobe',
+    price: 499,
+    image: 'https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=500',
+    sales: 342,
+    rating: 4.9
+  },
+  {
+    id: 'cp-2',
+    creatorId: 'creator-1',
+    type: 'service',
+    name: 'Personal Styling Session',
+    description: '1-hour video consultation for wardrobe planning',
+    price: 2999,
+    image: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=500',
+    bookings: 45,
+    rating: 5.0
+  },
+  {
+    id: 'cp-3',
+    creatorId: 'creator-2',
+    type: 'product',
+    name: 'Tech Setup Guide 2024',
+    description: 'Ultimate guide to building the perfect WFH setup',
+    price: 799,
+    image: 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=500',
+    sales: 567,
+    rating: 4.8
+  },
+  {
+    id: 'cp-4',
+    creatorId: 'creator-3',
+    type: 'service',
+    name: 'Skin Analysis & Routine',
+    description: 'Personalized skincare routine based on your skin type',
+    price: 1499,
+    image: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?w=500',
+    bookings: 234,
+    rating: 4.9
+  },
+  {
+    id: 'cp-5',
+    creatorId: 'creator-3',
+    type: 'product',
+    name: 'Glass Skin Blueprint',
+    description: 'Step-by-step guide + product recommendations',
+    price: 599,
+    image: 'https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=500',
+    sales: 890,
+    rating: 5.0
+  }
+];
+
 export const CreatorProvider = ({ children }) => {
   const [creators] = useState(mockCreators);
   const [picks] = useState(mockPicks);
   const [collections] = useState(mockCollections);
+  const [ugcContent] = useState(mockUGC);
+  const [creatorProducts] = useState(mockCreatorProducts);
   const [followedCreators, setFollowedCreators] = useState([]);
   const [savedPicks, setSavedPicks] = useState([]);
 
@@ -303,10 +419,32 @@ export const CreatorProvider = ({ children }) => {
     );
   };
 
+  // Get UGC by creator
+  const getUGCByCreator = (creatorId) => {
+    return ugcContent.filter(u => u.creatorId === creatorId);
+  };
+
+  // Get products/services by creator
+  const getProductsByCreator = (creatorId) => {
+    return creatorProducts.filter(p => p.creatorId === creatorId);
+  };
+
+  // Get products only
+  const getCreatorProductsOnly = (creatorId) => {
+    return creatorProducts.filter(p => p.creatorId === creatorId && p.type === 'product');
+  };
+
+  // Get services only
+  const getCreatorServicesOnly = (creatorId) => {
+    return creatorProducts.filter(p => p.creatorId === creatorId && p.type === 'service');
+  };
+
   const value = {
     creators,
     picks,
     collections,
+    ugcContent,
+    creatorProducts,
     followedCreators,
     savedPicks,
     getCreator,
@@ -322,7 +460,11 @@ export const CreatorProvider = ({ children }) => {
     getTrendingPicks,
     getFeaturedCreators,
     getFeaturedCollections,
-    searchCreators
+    searchCreators,
+    getUGCByCreator,
+    getProductsByCreator,
+    getCreatorProductsOnly,
+    getCreatorServicesOnly
   };
 
   return (

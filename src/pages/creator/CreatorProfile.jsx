@@ -12,7 +12,15 @@ import {
   Youtube,
   Globe,
   Grid3x3,
-  LayoutGrid
+  LayoutGrid,
+  Image,
+  Video,
+  Package,
+  Heart,
+  MessageCircle,
+  Play,
+  ThumbsUp,
+  Briefcase
 } from 'lucide-react';
 import { useCreator } from '../../contexts/CreatorContext';
 import { useApp } from '../../contexts/AppContext';
@@ -28,17 +36,21 @@ const CreatorProfile = () => {
     getCreatorByUsername,
     getPicksByCreator,
     getCollectionsByCreator,
+    getUGCByCreator,
+    getProductsByCreator,
     toggleFollow,
     isFollowing
   } = useCreator();
   const { theme } = useApp();
   const isDark = theme === 'dark';
 
-  const [activeTab, setActiveTab] = useState('picks'); // picks | collections
+  const [activeTab, setActiveTab] = useState('picks'); // picks | collections | ugc | products
 
   const creator = getCreatorByUsername(username);
   const picks = getPicksByCreator(creator?.id);
   const collections = getCollectionsByCreator(creator?.id);
+  const ugcContent = getUGCByCreator(creator?.id);
+  const creatorProducts = getProductsByCreator(creator?.id);
   const following = isFollowing(creator?.id);
 
   if (!creator) {
@@ -227,10 +239,10 @@ const CreatorProfile = () => {
 
       {/* Tabs */}
       <div className={`border-b ${isDark ? 'border-gray-800' : 'border-gray-200'} mb-6`}>
-        <div className="flex">
+        <div className="flex overflow-x-auto">
           <button
             onClick={() => setActiveTab('picks')}
-            className={`flex-1 py-3 text-sm font-medium transition-colors relative ${
+            className={`flex-1 py-3 text-sm font-medium transition-colors relative whitespace-nowrap ${
               activeTab === 'picks'
                 ? 'text-purple-600 dark:text-purple-400'
                 : 'text-gray-600 dark:text-gray-400'
@@ -246,7 +258,7 @@ const CreatorProfile = () => {
           </button>
           <button
             onClick={() => setActiveTab('collections')}
-            className={`flex-1 py-3 text-sm font-medium transition-colors relative ${
+            className={`flex-1 py-3 text-sm font-medium transition-colors relative whitespace-nowrap ${
               activeTab === 'collections'
                 ? 'text-purple-600 dark:text-purple-400'
                 : 'text-gray-600 dark:text-gray-400'
@@ -257,6 +269,38 @@ const CreatorProfile = () => {
               Collections ({collections.length})
             </div>
             {activeTab === 'collections' && (
+              <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-purple-600 dark:bg-purple-400"></div>
+            )}
+          </button>
+          <button
+            onClick={() => setActiveTab('ugc')}
+            className={`flex-1 py-3 text-sm font-medium transition-colors relative whitespace-nowrap ${
+              activeTab === 'ugc'
+                ? 'text-purple-600 dark:text-purple-400'
+                : 'text-gray-600 dark:text-gray-400'
+            }`}
+          >
+            <div className="flex items-center justify-center gap-2">
+              <Image className="w-4 h-4" />
+              UGC ({ugcContent.length})
+            </div>
+            {activeTab === 'ugc' && (
+              <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-purple-600 dark:bg-purple-400"></div>
+            )}
+          </button>
+          <button
+            onClick={() => setActiveTab('products')}
+            className={`flex-1 py-3 text-sm font-medium transition-colors relative whitespace-nowrap ${
+              activeTab === 'products'
+                ? 'text-purple-600 dark:text-purple-400'
+                : 'text-gray-600 dark:text-gray-400'
+            }`}
+          >
+            <div className="flex items-center justify-center gap-2">
+              <Package className="w-4 h-4" />
+              Products ({creatorProducts.length})
+            </div>
+            {activeTab === 'products' && (
               <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-purple-600 dark:bg-purple-400"></div>
             )}
           </button>
@@ -323,6 +367,199 @@ const CreatorProfile = () => {
                   <div className="flex items-center justify-between text-xs text-gray-600 dark:text-gray-400">
                     <span>{collection.picks.length} products</span>
                     <span>{collection.stats.totalViews.toLocaleString()} views</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {activeTab === 'ugc' && (
+          <div className="space-y-4">
+            {ugcContent.map(content => (
+              <div
+                key={content.id}
+                className={`rounded-2xl overflow-hidden ${
+                  isDark ? 'bg-gray-800' : 'bg-white'
+                } shadow-md hover:shadow-lg transition-all`}
+              >
+                {content.type === 'photo' && (
+                  <>
+                    <div className="aspect-square relative overflow-hidden">
+                      <img
+                        src={content.image}
+                        alt={content.title}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div className="p-4">
+                      <h3 className="font-medium text-gray-900 dark:text-white mb-2">
+                        {content.title}
+                      </h3>
+                      <p className="text-sm text-gray-700 dark:text-gray-300 mb-3">
+                        {content.caption}
+                      </p>
+                      <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400">
+                        <div className="flex items-center gap-1">
+                          <Heart className="w-4 h-4" />
+                          <span>{content.likes.toLocaleString()}</span>
+                        </div>
+                        <div className="flex items-center gap-1">
+                          <MessageCircle className="w-4 h-4" />
+                          <span>{content.comments}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </>
+                )}
+
+                {content.type === 'video' && (
+                  <>
+                    <div className="aspect-video relative overflow-hidden bg-gray-200 dark:bg-gray-700">
+                      <img
+                        src={content.thumbnail}
+                        alt={content.title}
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="bg-black/60 backdrop-blur-sm rounded-full p-4">
+                          <Play className="w-8 h-8 text-white fill-white" />
+                        </div>
+                      </div>
+                      <div className="absolute bottom-2 right-2 bg-black/60 backdrop-blur-sm px-2 py-1 rounded text-xs text-white">
+                        {content.duration}
+                      </div>
+                    </div>
+                    <div className="p-4">
+                      <h3 className="font-medium text-gray-900 dark:text-white mb-2">
+                        {content.title}
+                      </h3>
+                      <p className="text-sm text-gray-700 dark:text-gray-300 mb-3">
+                        {content.description}
+                      </p>
+                      <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400">
+                        <div className="flex items-center gap-1">
+                          <Eye className="w-4 h-4" />
+                          <span>{(content.views / 1000).toFixed(1)}k</span>
+                        </div>
+                        <div className="flex items-center gap-1">
+                          <ThumbsUp className="w-4 h-4" />
+                          <span>{content.likes.toLocaleString()}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </>
+                )}
+
+                {content.type === 'review' && (
+                  <div className="p-4">
+                    <div className="flex items-center gap-3 mb-3">
+                      <img
+                        src={content.productImage}
+                        alt={content.productName}
+                        className="w-16 h-16 rounded-lg object-cover"
+                      />
+                      <div className="flex-1 min-w-0">
+                        <h3 className="font-medium text-gray-900 dark:text-white mb-1">
+                          {content.productName}
+                        </h3>
+                        <div className="flex items-center gap-1">
+                          {[...Array(5)].map((_, i) => (
+                            <Star
+                              key={i}
+                              className={`w-4 h-4 ${
+                                i < content.rating
+                                  ? 'text-yellow-500 fill-yellow-500'
+                                  : 'text-gray-300 dark:text-gray-600'
+                              }`}
+                            />
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                    <p className="text-sm text-gray-700 dark:text-gray-300 mb-3">
+                      {content.review}
+                    </p>
+                    <div className="flex items-center gap-4 text-xs text-gray-600 dark:text-gray-400">
+                      <span>{new Date(content.createdAt).toLocaleDateString()}</span>
+                      <span>•</span>
+                      <span>{content.helpful} found helpful</span>
+                    </div>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        )}
+
+        {activeTab === 'products' && (
+          <div className="space-y-4">
+            {creatorProducts.map(product => (
+              <div
+                key={product.id}
+                className={`rounded-2xl overflow-hidden ${
+                  isDark ? 'bg-gray-800' : 'bg-white'
+                } shadow-md hover:shadow-lg transition-all cursor-pointer`}
+              >
+                <div className="flex gap-4 p-4">
+                  {/* Product Image */}
+                  <div className="w-24 h-24 rounded-lg overflow-hidden flex-shrink-0">
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+
+                  {/* Product Info */}
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-start justify-between gap-2 mb-2">
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-2 mb-1">
+                          <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${
+                            product.type === 'product'
+                              ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300'
+                              : 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300'
+                          }`}>
+                            {product.type === 'product' ? (
+                              <span className="flex items-center gap-1">
+                                <Package className="w-3 h-3" />
+                                Product
+                              </span>
+                            ) : (
+                              <span className="flex items-center gap-1">
+                                <Briefcase className="w-3 h-3" />
+                                Service
+                              </span>
+                            )}
+                          </span>
+                        </div>
+                        <h3 className="font-medium text-gray-900 dark:text-white mb-1 line-clamp-1">
+                          {product.name}
+                        </h3>
+                        <p className="text-sm text-gray-600 dark:text-gray-400 line-clamp-2">
+                          {product.description}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center justify-between">
+                      <span className="text-lg font-bold text-gray-900 dark:text-white">
+                        ₹{product.price.toLocaleString()}
+                      </span>
+                      <div className="flex items-center gap-3 text-xs text-gray-600 dark:text-gray-400">
+                        <div className="flex items-center gap-1">
+                          <Star className="w-3 h-3 text-yellow-500 fill-yellow-500" />
+                          <span>{product.rating}</span>
+                        </div>
+                        <span>•</span>
+                        <span>
+                          {product.type === 'product'
+                            ? `${product.sales} sold`
+                            : `${product.bookings} bookings`}
+                        </span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

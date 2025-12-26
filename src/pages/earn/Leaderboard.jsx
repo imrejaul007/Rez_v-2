@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Trophy, Medal, Crown, TrendingUp } from 'lucide-react';
+import { ArrowLeft, Trophy, Medal, Crown, TrendingUp, Zap, Gift, Target, Rocket } from 'lucide-react';
 import BottomNavManager from '../../components/layout/BottomNavManager';
 
 const Leaderboard = () => {
@@ -131,7 +131,7 @@ const Leaderboard = () => {
       </div>
 
       {/* Your Rank */}
-      <div className="px-4 py-4 sticky bottom-24">
+      <div className="px-4 py-4">
         <div className="p-4 rounded-2xl bg-gradient-to-r from-rez-green-500 to-rez-teal-500 flex items-center gap-4 shadow-lg">
           <div className="w-10 flex items-center justify-center">
             <span className="text-sm font-bold text-white">#{myRank.rank}</span>
@@ -149,6 +149,103 @@ const Leaderboard = () => {
         <p className="text-xs text-center text-rez-gray-600 dark:text-gray-400 mt-2">
           Earn {(11280 - myRank.coins).toLocaleString()} more to reach Top 100!
         </p>
+      </div>
+
+      {/* Motivational CTAs */}
+      <div className="px-4 py-6 space-y-4">
+        <div className="text-center mb-4">
+          <h2 className="text-lg font-bold text-rez-navy dark:text-white mb-2">Climb the Leaderboard!</h2>
+          <p className="text-sm text-rez-gray-600 dark:text-gray-400">Complete these actions to earn more coins</p>
+        </div>
+
+        {/* Daily Challenges CTA */}
+        <Link
+          to="/earn"
+          className="block p-4 rounded-2xl bg-gradient-to-br from-amber-500/20 to-yellow-500/20 border border-amber-500/30 hover:scale-[1.02] active:scale-95 transition-all"
+        >
+          <div className="flex items-center gap-3">
+            <div className="p-3 rounded-xl bg-amber-500/20">
+              <Target className="w-5 h-5 text-amber-600 dark:text-amber-400" />
+            </div>
+            <div className="flex-1">
+              <h3 className="text-sm font-bold text-rez-navy dark:text-white mb-1">Daily Challenges</h3>
+              <p className="text-xs text-rez-gray-600 dark:text-gray-400">Complete tasks & earn up to 500 coins/day</p>
+            </div>
+            <div className="px-3 py-1 rounded-full bg-amber-500 text-white text-xs font-bold">
+              +500
+            </div>
+          </div>
+        </Link>
+
+        {/* Referral Boost CTA */}
+        <Link
+          to="/refer"
+          className="block p-4 rounded-2xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 border border-purple-500/30 hover:scale-[1.02] active:scale-95 transition-all"
+        >
+          <div className="flex items-center gap-3">
+            <div className="p-3 rounded-xl bg-purple-500/20">
+              <Gift className="w-5 h-5 text-purple-600 dark:text-purple-400" />
+            </div>
+            <div className="flex-1">
+              <h3 className="text-sm font-bold text-rez-navy dark:text-white mb-1">Refer & Earn Big</h3>
+              <p className="text-xs text-rez-gray-600 dark:text-gray-400">Get 1000 coins for each friend you invite</p>
+            </div>
+            <div className="px-3 py-1 rounded-full bg-purple-500 text-white text-xs font-bold">
+              +1000
+            </div>
+          </div>
+        </Link>
+
+        {/* Shopping Spree CTA */}
+        <Link
+          to="/mall"
+          className="block p-4 rounded-2xl bg-gradient-to-br from-blue-500/20 to-cyan-500/20 border border-blue-500/30 hover:scale-[1.02] active:scale-95 transition-all"
+        >
+          <div className="flex items-center gap-3">
+            <div className="p-3 rounded-xl bg-blue-500/20">
+              <Rocket className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+            </div>
+            <div className="flex-1">
+              <h3 className="text-sm font-bold text-rez-navy dark:text-white mb-1">Shop & Earn</h3>
+              <p className="text-xs text-rez-gray-600 dark:text-gray-400">Earn coins on every purchase you make</p>
+            </div>
+            <div className="px-3 py-1 rounded-full bg-blue-500 text-white text-xs font-bold">
+              Up to 10%
+            </div>
+          </div>
+        </Link>
+
+        {/* Bonus Activities CTA */}
+        <Link
+          to="/games"
+          className="block p-4 rounded-2xl bg-gradient-to-br from-green-500/20 to-emerald-500/20 border border-green-500/30 hover:scale-[1.02] active:scale-95 transition-all"
+        >
+          <div className="flex items-center gap-3">
+            <div className="p-3 rounded-xl bg-green-500/20">
+              <Zap className="w-5 h-5 text-green-600 dark:text-green-400" />
+            </div>
+            <div className="flex-1">
+              <h3 className="text-sm font-bold text-rez-navy dark:text-white mb-1">Play & Win</h3>
+              <p className="text-xs text-rez-gray-600 dark:text-gray-400">Bonus coins from games & mini challenges</p>
+            </div>
+            <div className="px-3 py-1 rounded-full bg-green-500 text-white text-xs font-bold">
+              +300
+            </div>
+          </div>
+        </Link>
+
+        {/* Motivational Message */}
+        <div className="p-6 rounded-2xl bg-gradient-to-br from-rez-green-500/10 to-rez-teal-500/10 border border-rez-green-500/20 text-center">
+          <Trophy className="w-12 h-12 text-amber-400 mx-auto mb-3" />
+          <h3 className="text-base font-bold text-rez-navy dark:text-white mb-2">You're on Your Way! 🚀</h3>
+          <p className="text-sm text-rez-gray-700 dark:text-gray-300 mb-3">
+            Complete daily tasks, refer friends, and shop smart to climb the ranks!
+          </p>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-rez-green-500 to-rez-teal-500 text-white text-sm font-semibold">
+            <span>Keep Going!</span>
+            <TrendingUp className="w-4 h-4" />
+          </div>
+        </div>
       </div>
 
       <BottomNavManager />
