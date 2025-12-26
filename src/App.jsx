@@ -258,6 +258,7 @@ import BrandTasks from './pages/earn/BrandTasks';
 import UGCCreator from './pages/earn/UGCCreator';
 import CollegeAmbassador from './pages/earn/CollegeAmbassador';
 import CorporateEmployee from './pages/earn/CorporateEmployee';
+import Surveys from './pages/earn/Surveys';
 import Quiz from './pages/earn/Quiz';
 import MemoryMatch from './pages/earn/MemoryMatch';
 import LuckyDraw from './pages/earn/LuckyDraw';
@@ -523,6 +524,7 @@ function App() {
                 <Route path="earn/leaderboard" element={<Leaderboard />} />
                 <Route path="earn/coin-hunt" element={<CoinHunt />} />
                 <Route path="earn/scratch-card" element={<ScratchCard />} />
+                <Route path="earn/surveys" element={<Surveys />} />
                 <Route path="upload-bill" element={<UploadBillPage />} />
                 <Route path="refer" element={<ReferralPage />} />
 
