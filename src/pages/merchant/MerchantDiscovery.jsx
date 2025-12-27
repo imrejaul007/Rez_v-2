@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Compass, MapPin, Eye, Users, TrendingUp, Search, MousePointer, ShoppingBag, Heart, Share2, Navigation, Building2, Sparkles, Target, TrendingDown, ArrowRight } from 'lucide-react';
-import MerchantNav from '../../components/MerchantNav';
+import MerchantNav from '../../components/merchant/MerchantNav';
 
 const MerchantDiscovery = () => {
   const [timeframe, setTimeframe] = useState('week');

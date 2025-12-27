@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Store, Zap, TrendingUp, TrendingDown, AlertCircle, CheckCircle, Users, DollarSign, Globe, MapPin, Package, ShoppingCart, Heart, Trophy, Target, Filter } from 'lucide-react';
-import AdminNav from '../../components/AdminNav';
+import AdminNav from '../../components/admin/AdminNav';
 
 const AdminMerchantSuperOS = () => {
   const [adminType, setAdminType] = useState('hq'); // hq, regional, category

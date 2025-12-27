@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { DollarSign, TrendingUp, Clock, CheckCircle, AlertCircle, XCircle, Download, Filter, Calendar, Building2, CreditCard, ArrowRight, FileText, Eye } from 'lucide-react';
-import AdminNav from '../../components/AdminNav';
+import AdminNav from '../../components/admin/AdminNav';
 
 const AdminSettlementCommission = () => {
   const [adminType, setAdminType] = useState('hq');

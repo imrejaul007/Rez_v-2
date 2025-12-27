@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Store, MapPin, Users, DollarSign, TrendingUp, TrendingDown, CheckCircle, AlertCircle, Clock, Plus, Edit, Settings, BarChart3, Package, ShoppingCart, Star, Navigation } from 'lucide-react';
-import MerchantNav from '../../components/MerchantNav';
+import MerchantNav from '../../components/merchant/MerchantNav';
 
 const MerchantBranchManager = () => {
   const [selectedBranch, setSelectedBranch] = useState('all');

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Globe, Users, Store, Coins, TrendingUp, MapPin, Target, Zap, Heart, Eye, MousePointer, ShoppingBag, ArrowRight, Filter, BarChart3, Activity } from 'lucide-react';
-import AdminNav from '../../components/AdminNav';
+import AdminNav from '../../components/admin/AdminNav';
 
 const AdminEcosystemAnalytics = () => {
   const [adminType, setAdminType] = useState('hq');

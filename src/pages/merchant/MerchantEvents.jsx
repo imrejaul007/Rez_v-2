@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Calendar, MapPin, Users, Trophy, Zap, Clock, DollarSign, TrendingUp, Plus, Edit, Trash2, Play, Pause, CheckCircle, AlertCircle, Target, Gift, Sparkles } from 'lucide-react';
-import MerchantNav from '../../components/MerchantNav';
+import MerchantNav from '../../components/merchant/MerchantNav';
 
 const MerchantEvents = () => {
   const [activeTab, setActiveTab] = useState('active');
