@@ -117,6 +117,9 @@ import MerchantEvents from './pages/merchant/MerchantEvents';
 import MerchantBranchManager from './pages/merchant/MerchantBranchManager';
 import MerchantDiscovery from './pages/merchant/MerchantDiscovery';
 import MerchantPriveModule from './pages/merchant/MerchantPriveModule';
+import MerchantKDS from './pages/merchant/MerchantKDS';
+import MerchantTableManagement from './pages/merchant/MerchantTableManagement';
+import MerchantRecipeCosting from './pages/merchant/MerchantRecipeCosting';
 import CreateOffer from './pages/merchant/CreateOffer';
 import MerchantOffers from './pages/merchant/MerchantOffers';
 import MerchantCustomers from './pages/merchant/MerchantCustomers';
@@ -927,6 +930,9 @@ function App() {
                 <Route path="merchant/branches" element={<MerchantBranchManager />} />
                 <Route path="merchant/discovery" element={<MerchantDiscovery />} />
                 <Route path="merchant/prive-module" element={<MerchantPriveModule />} />
+                <Route path="merchant/kds" element={<MerchantKDS />} />
+                <Route path="merchant/tables" element={<MerchantTableManagement />} />
+                <Route path="merchant/recipe-costing" element={<MerchantRecipeCosting />} />
                 <Route path="merchant/profile" element={<MerchantProfile />} />
                 <Route path="merchant/orders" element={<MerchantOrders />} />
                 <Route path="merchant/products" element={<MerchantProducts />} />

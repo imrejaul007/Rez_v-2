@@ -5,7 +5,8 @@ import {
   Tag, Zap, Crown, Megaphone, Camera, Users, CreditCard, Wallet, Star,
   BarChart3, LineChart, TrendingUp, DollarSign, Image, Gift, Award,
   UserPlus, FileText, FolderOpen, Bell, Headphones, Settings, MapPin,
-  Clock, Cake, Coins, ShoppingCart, Layers, Lock, Box, ChevronDown, Menu, X
+  Clock, Cake, Coins, ShoppingCart, Layers, Lock, Box, ChevronDown, Menu, X,
+  Monitor, ChefHat, Grid3x3
 } from 'lucide-react';
 
 export default function MerchantNav() {
@@ -20,7 +21,11 @@ export default function MerchantNav() {
       icon: LayoutDashboard,
       items: [
         { path: '/merchant/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
-        { path: '/merchant/profile', icon: Store, label: 'Profile' }
+        { path: '/merchant/profile', icon: Store, label: 'Profile' },
+        { path: '/merchant/pos', icon: ShoppingCart, label: 'POS System' },
+        { path: '/merchant/kds', icon: Monitor, label: 'Kitchen Display' },
+        { path: '/merchant/tables', icon: Grid3x3, label: 'Table Management' },
+        { path: '/merchant/recipe-costing', icon: ChefHat, label: 'Recipe Costing' }
       ]
     },
     {
