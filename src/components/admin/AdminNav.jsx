@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { LayoutDashboard, Users, Store, Tag, BarChart3, Send } from 'lucide-react';
+import { LayoutDashboard, Users, Store, Tag, BarChart3, Send, Folder, FileText, Gamepad2, UserPlus, Calendar, Heart, Settings, Headphones } from 'lucide-react';
 
 export default function AdminNav() {
   const location = useLocation();
@@ -10,7 +10,15 @@ export default function AdminNav() {
     { path: '/admin/merchants', icon: Store, label: 'Merchants' },
     { path: '/admin/offers', icon: Tag, label: 'Offers' },
     { path: '/admin/analytics', icon: BarChart3, label: 'Analytics' },
-    { path: '/admin/campaigns', icon: Send, label: 'Campaigns' }
+    { path: '/admin/campaigns', icon: Send, label: 'Campaigns' },
+    { path: '/admin/categories', icon: Folder, label: 'Categories' },
+    { path: '/admin/content', icon: FileText, label: 'Content' },
+    { path: '/admin/gamification', icon: Gamepad2, label: 'Gamification' },
+    { path: '/admin/referrals', icon: UserPlus, label: 'Referrals' },
+    { path: '/admin/events', icon: Calendar, label: 'Events' },
+    { path: '/admin/social-impact', icon: Heart, label: 'Social Impact' },
+    { path: '/admin/settings', icon: Settings, label: 'Settings' },
+    { path: '/admin/support', icon: Headphones, label: 'Support' }
   ];
 
   return (

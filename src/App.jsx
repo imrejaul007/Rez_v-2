@@ -56,6 +56,14 @@ import AdminMerchants from './pages/admin/AdminMerchants';
 import AdminOffers from './pages/admin/AdminOffers';
 import AdminAnalytics from './pages/admin/AdminAnalytics';
 import AdminCampaigns from './pages/admin/AdminCampaigns';
+import AdminCategories from './pages/admin/AdminCategories';
+import AdminContent from './pages/admin/AdminContent';
+import AdminGamification from './pages/admin/AdminGamification';
+import AdminReferrals from './pages/admin/AdminReferrals';
+import AdminEvents from './pages/admin/AdminEvents';
+import AdminSocialImpact from './pages/admin/AdminSocialImpact';
+import AdminSettings from './pages/admin/AdminSettings';
+import AdminSupport from './pages/admin/AdminSupport';
 
 // Merchant Pages
 import MerchantDashboard from './pages/merchant/MerchantDashboard';
@@ -65,6 +73,10 @@ import MerchantCustomers from './pages/merchant/MerchantCustomers';
 import MerchantTransactions from './pages/merchant/MerchantTransactions';
 import MerchantReviews from './pages/merchant/MerchantReviews';
 import MerchantAnalytics from './pages/merchant/MerchantAnalytics';
+import MerchantFinancials from './pages/merchant/MerchantFinancials';
+import MerchantMarketing from './pages/merchant/MerchantMarketing';
+import MerchantSupport from './pages/merchant/MerchantSupport';
+import MerchantSettings from './pages/merchant/MerchantSettings';
 import PriveExit from './pages/prive/PriveExit';
 import PriveInvitations from './pages/prive/PriveInvitations';
 import PriveSettings from './pages/prive/PriveSettings';
@@ -713,6 +725,14 @@ function App() {
                 <Route path="admin/offers" element={<AdminOffers />} />
                 <Route path="admin/analytics" element={<AdminAnalytics />} />
                 <Route path="admin/campaigns" element={<AdminCampaigns />} />
+                <Route path="admin/categories" element={<AdminCategories />} />
+                <Route path="admin/content" element={<AdminContent />} />
+                <Route path="admin/gamification" element={<AdminGamification />} />
+                <Route path="admin/referrals" element={<AdminReferrals />} />
+                <Route path="admin/events" element={<AdminEvents />} />
+                <Route path="admin/social-impact" element={<AdminSocialImpact />} />
+                <Route path="admin/settings" element={<AdminSettings />} />
+                <Route path="admin/support" element={<AdminSupport />} />
 
                 {/* Merchant Routes */}
                 <Route path="merchant" element={<MerchantDashboard />} />
@@ -723,6 +743,10 @@ function App() {
                 <Route path="merchant/transactions" element={<MerchantTransactions />} />
                 <Route path="merchant/reviews" element={<MerchantReviews />} />
                 <Route path="merchant/analytics" element={<MerchantAnalytics />} />
+                <Route path="merchant/financials" element={<MerchantFinancials />} />
+                <Route path="merchant/marketing" element={<MerchantMarketing />} />
+                <Route path="merchant/support" element={<MerchantSupport />} />
+                <Route path="merchant/settings" element={<MerchantSettings />} />
 
                 {/* Loyalty & Rewards - Unified Hub */}
                 <Route path="loyalty-rewards" element={<LoyaltyRewardsHub />} />
