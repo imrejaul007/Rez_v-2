@@ -81,6 +81,14 @@ import AdminFlashSales from './pages/admin/AdminFlashSales';
 import AdminBankOffers from './pages/admin/AdminBankOffers';
 import AdminHeroBanners from './pages/admin/AdminHeroBanners';
 import AdminEmailMarketing from './pages/admin/AdminEmailMarketing';
+import AdminBackgroundJobs from './pages/admin/AdminBackgroundJobs';
+import AdminTournaments from './pages/admin/AdminTournaments';
+import AdminSMSCampaigns from './pages/admin/AdminSMSCampaigns';
+import AdminPriceTracking from './pages/admin/AdminPriceTracking';
+import AdminProductComparison from './pages/admin/AdminProductComparison';
+import AdminSocialIntegration from './pages/admin/AdminSocialIntegration';
+import AdminUGCManagement from './pages/admin/AdminUGCManagement';
+import AdminRecommendations from './pages/admin/AdminRecommendations';
 
 // Merchant Pages
 import MerchantDashboard from './pages/merchant/MerchantDashboard';
@@ -753,10 +761,15 @@ function App() {
                 <Route path="admin/campaigns" element={<AdminCampaigns />} />
                 <Route path="admin/categories" element={<AdminCategories />} />
                 <Route path="admin/content" element={<AdminContent />} />
+                <Route path="admin/ugc-management" element={<AdminUGCManagement />} />
                 <Route path="admin/gamification" element={<AdminGamification />} />
                 <Route path="admin/referrals" element={<AdminReferrals />} />
+                <Route path="admin/tournaments" element={<AdminTournaments />} />
                 <Route path="admin/events" element={<AdminEvents />} />
                 <Route path="admin/social-impact" element={<AdminSocialImpact />} />
+                <Route path="admin/price-tracking" element={<AdminPriceTracking />} />
+                <Route path="admin/product-comparison" element={<AdminProductComparison />} />
+                <Route path="admin/recommendations" element={<AdminRecommendations />} />
                 <Route path="admin/transactions" element={<AdminTransactions />} />
                 <Route path="admin/wallet" element={<AdminWallet />} />
                 <Route path="admin/cashback" element={<AdminCashback />} />
@@ -767,10 +780,13 @@ function App() {
                 <Route path="admin/marketing" element={<AdminMarketing />} />
                 <Route path="admin/hero-banners" element={<AdminHeroBanners />} />
                 <Route path="admin/email-marketing" element={<AdminEmailMarketing />} />
+                <Route path="admin/sms-campaigns" element={<AdminSMSCampaigns />} />
+                <Route path="admin/social-integration" element={<AdminSocialIntegration />} />
                 <Route path="admin/fraud" element={<AdminFraud />} />
                 <Route path="admin/special-programs" element={<AdminSpecialPrograms />} />
                 <Route path="admin/integrations" element={<AdminIntegrations />} />
                 <Route path="admin/api" element={<AdminAPI />} />
+                <Route path="admin/background-jobs" element={<AdminBackgroundJobs />} />
                 <Route path="admin/user-management" element={<AdminUserManagement />} />
                 <Route path="admin/notifications" element={<AdminNotifications />} />
                 <Route path="admin/logs" element={<AdminLogs />} />

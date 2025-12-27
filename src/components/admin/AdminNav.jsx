@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { LayoutDashboard, Users, Store, Tag, BarChart3, Send, Folder, FileText, Gamepad2, UserPlus, Calendar, Heart, Settings, Headphones, CreditCard, Coins, Wallet, Megaphone, Shield, Award, Plug, Activity, Bell, UserCog, Code, Image, Mail, Ticket, Zap, Building2 } from 'lucide-react';
+import { LayoutDashboard, Users, Store, Tag, BarChart3, Send, Folder, FileText, Gamepad2, UserPlus, Calendar, Heart, Settings, Headphones, CreditCard, Coins, Wallet, Megaphone, Shield, Award, Plug, Activity, Bell, UserCog, Code, Image, Mail, Ticket, Zap, Building2, Trophy, MessageSquare, Server, TrendingDown, GitCompare, Share2, ImagePlus, Brain } from 'lucide-react';
 
 export default function AdminNav() {
   const location = useLocation();
@@ -17,20 +17,28 @@ export default function AdminNav() {
     { path: '/admin/bank-offers', icon: Building2, label: 'Bank Offers' },
     { path: '/admin/categories', icon: Folder, label: 'Categories' },
     { path: '/admin/content', icon: FileText, label: 'Content' },
+    { path: '/admin/ugc-management', icon: ImagePlus, label: 'UGC' },
     { path: '/admin/analytics', icon: BarChart3, label: 'Analytics' },
     { path: '/admin/campaigns', icon: Send, label: 'Campaigns' },
     { path: '/admin/gamification', icon: Gamepad2, label: 'Gamification' },
     { path: '/admin/referrals', icon: UserPlus, label: 'Referrals' },
+    { path: '/admin/tournaments', icon: Trophy, label: 'Tournaments' },
     { path: '/admin/events', icon: Calendar, label: 'Events' },
     { path: '/admin/social-impact', icon: Heart, label: 'Social Impact' },
+    { path: '/admin/price-tracking', icon: TrendingDown, label: 'Price Tracking' },
+    { path: '/admin/product-comparison', icon: GitCompare, label: 'Comparison' },
+    { path: '/admin/recommendations', icon: Brain, label: 'Recommendations' },
     { path: '/admin/payments', icon: CreditCard, label: 'Payments' },
     { path: '/admin/marketing', icon: Megaphone, label: 'Marketing' },
     { path: '/admin/hero-banners', icon: Image, label: 'Hero Banners' },
     { path: '/admin/email-marketing', icon: Mail, label: 'Email Marketing' },
+    { path: '/admin/sms-campaigns', icon: MessageSquare, label: 'SMS Campaigns' },
+    { path: '/admin/social-integration', icon: Share2, label: 'Social' },
     { path: '/admin/fraud', icon: Shield, label: 'Fraud' },
     { path: '/admin/special-programs', icon: Award, label: 'Programs' },
     { path: '/admin/integrations', icon: Plug, label: 'Integrations' },
     { path: '/admin/api', icon: Code, label: 'API' },
+    { path: '/admin/background-jobs', icon: Server, label: 'Jobs' },
     { path: '/admin/user-management', icon: UserCog, label: 'Admins' },
     { path: '/admin/notifications', icon: Bell, label: 'Notifications' },
     { path: '/admin/logs', icon: Activity, label: 'Logs' },
