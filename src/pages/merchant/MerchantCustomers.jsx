@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Search, Star, TrendingUp, AlertCircle, Mail, Gift } from 'lucide-react';
+import MerchantNav from '../../components/merchant/MerchantNav';
 
 export default function MerchantCustomers() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -110,6 +111,8 @@ export default function MerchantCustomers() {
           <p className="text-gray-600 mt-1">Understand and engage with your customers</p>
         </div>
       </div>
+
+      <MerchantNav />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">

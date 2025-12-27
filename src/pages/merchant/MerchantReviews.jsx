@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Star, ThumbsUp, MessageSquare, Search } from 'lucide-react';
+import MerchantNav from '../../components/merchant/MerchantNav';
 
 export default function MerchantReviews() {
   const [filterRating, setFilterRating] = useState('all');
@@ -120,6 +121,8 @@ export default function MerchantReviews() {
           <p className="text-gray-600 mt-1">Manage customer feedback and build your reputation</p>
         </div>
       </div>
+
+      <MerchantNav />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">

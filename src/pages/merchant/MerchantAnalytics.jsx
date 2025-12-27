@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { TrendingUp, Users, ShoppingCart, DollarSign, Star, Clock, Calendar, Download } from 'lucide-react';
+import MerchantNav from '../../components/merchant/MerchantNav';
 
 export default function MerchantAnalytics() {
   const [dateRange, setDateRange] = useState('30days');
@@ -94,6 +95,8 @@ export default function MerchantAnalytics() {
           </div>
         </div>
       </div>
+
+      <MerchantNav />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Overview Stats */}
