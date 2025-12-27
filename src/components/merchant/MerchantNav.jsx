@@ -6,7 +6,7 @@ import {
   BarChart3, LineChart, TrendingUp, DollarSign, Image, Gift, Award,
   UserPlus, FileText, FolderOpen, Bell, Headphones, Settings, MapPin,
   Clock, Cake, Coins, ShoppingCart, Layers, Lock, Box, ChevronDown, Menu, X,
-  Monitor, ChefHat, Grid3x3, Scan, Calendar, Scissors
+  Monitor, ChefHat, Grid3x3, Scan, Calendar, Scissors, ClipboardList, Repeat, Globe
 } from 'lucide-react';
 
 export default function MerchantNav() {
@@ -29,7 +29,9 @@ export default function MerchantNav() {
         { path: '/merchant/tables', icon: Grid3x3, label: 'Table Management (Restaurant)' },
         { path: '/merchant/recipe-costing', icon: ChefHat, label: 'Recipe Costing (Restaurant)' },
         { path: '/merchant/appointments', icon: Calendar, label: 'Appointments (Salon/Service)' },
-        { path: '/merchant/service-catalog', icon: Scissors, label: 'Service Catalog (Salon)' }
+        { path: '/merchant/service-catalog', icon: Scissors, label: 'Service Catalog (Salon)' },
+        { path: '/merchant/marketplace', icon: Globe, label: 'D2C Marketplace (Brand)' },
+        { path: '/merchant/subscriptions', icon: Repeat, label: 'Subscriptions (D2C)' }
       ]
     },
     {
@@ -116,6 +118,7 @@ export default function MerchantNav() {
       icon: Settings,
       items: [
         { path: '/merchant/staff', icon: UserPlus, label: 'Staff Management' },
+        { path: '/merchant/staff-roster', icon: ClipboardList, label: 'Staff Roster & Shifts' },
         { path: '/merchant/compliance', icon: FileText, label: 'Compliance' },
         { path: '/merchant/documents', icon: FolderOpen, label: 'Documents' },
         { path: '/merchant/notifications', icon: Bell, label: 'Notifications' },

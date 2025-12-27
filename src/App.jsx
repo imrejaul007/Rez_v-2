@@ -124,6 +124,9 @@ import MerchantBarcodeScanner from './pages/merchant/MerchantBarcodeScanner';
 import MerchantProductVariants from './pages/merchant/MerchantProductVariants';
 import MerchantAppointments from './pages/merchant/MerchantAppointments';
 import MerchantServiceCatalog from './pages/merchant/MerchantServiceCatalog';
+import MerchantStaffRoster from './pages/merchant/MerchantStaffRoster';
+import MerchantMarketplace from './pages/merchant/MerchantMarketplace';
+import MerchantSubscriptions from './pages/merchant/MerchantSubscriptions';
 import CreateOffer from './pages/merchant/CreateOffer';
 import MerchantOffers from './pages/merchant/MerchantOffers';
 import MerchantCustomers from './pages/merchant/MerchantCustomers';
@@ -941,6 +944,9 @@ function App() {
                 <Route path="merchant/product-variants" element={<MerchantProductVariants />} />
                 <Route path="merchant/appointments" element={<MerchantAppointments />} />
                 <Route path="merchant/service-catalog" element={<MerchantServiceCatalog />} />
+                <Route path="merchant/staff-roster" element={<MerchantStaffRoster />} />
+                <Route path="merchant/marketplace" element={<MerchantMarketplace />} />
+                <Route path="merchant/subscriptions" element={<MerchantSubscriptions />} />
                 <Route path="merchant/profile" element={<MerchantProfile />} />
                 <Route path="merchant/orders" element={<MerchantOrders />} />
                 <Route path="merchant/products" element={<MerchantProducts />} />
