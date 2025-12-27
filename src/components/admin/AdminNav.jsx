@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { LayoutDashboard, Users, Store, Tag, BarChart3, Send, Folder, FileText, Gamepad2, UserPlus, Calendar, Heart, Settings, Headphones, CreditCard, Coins, Wallet, Megaphone, Shield, Award, Plug, Activity, Bell, UserCog, Code } from 'lucide-react';
+import { LayoutDashboard, Users, Store, Tag, BarChart3, Send, Folder, FileText, Gamepad2, UserPlus, Calendar, Heart, Settings, Headphones, CreditCard, Coins, Wallet, Megaphone, Shield, Award, Plug, Activity, Bell, UserCog, Code, Image, Mail, Ticket, Zap, Building2 } from 'lucide-react';
 
 export default function AdminNav() {
   const location = useLocation();
@@ -9,8 +9,12 @@ export default function AdminNav() {
     { path: '/admin/users', icon: Users, label: 'Users' },
     { path: '/admin/merchants', icon: Store, label: 'Merchants' },
     { path: '/admin/transactions', icon: CreditCard, label: 'Transactions' },
+    { path: '/admin/wallet', icon: Wallet, label: 'Wallet' },
     { path: '/admin/cashback', icon: Coins, label: 'Cashback' },
     { path: '/admin/offers', icon: Tag, label: 'Offers' },
+    { path: '/admin/vouchers', icon: Ticket, label: 'Vouchers' },
+    { path: '/admin/flash-sales', icon: Zap, label: 'Flash Sales' },
+    { path: '/admin/bank-offers', icon: Building2, label: 'Bank Offers' },
     { path: '/admin/categories', icon: Folder, label: 'Categories' },
     { path: '/admin/content', icon: FileText, label: 'Content' },
     { path: '/admin/analytics', icon: BarChart3, label: 'Analytics' },
@@ -19,8 +23,10 @@ export default function AdminNav() {
     { path: '/admin/referrals', icon: UserPlus, label: 'Referrals' },
     { path: '/admin/events', icon: Calendar, label: 'Events' },
     { path: '/admin/social-impact', icon: Heart, label: 'Social Impact' },
-    { path: '/admin/payments', icon: Wallet, label: 'Payments' },
+    { path: '/admin/payments', icon: CreditCard, label: 'Payments' },
     { path: '/admin/marketing', icon: Megaphone, label: 'Marketing' },
+    { path: '/admin/hero-banners', icon: Image, label: 'Hero Banners' },
+    { path: '/admin/email-marketing', icon: Mail, label: 'Email Marketing' },
     { path: '/admin/fraud', icon: Shield, label: 'Fraud' },
     { path: '/admin/special-programs', icon: Award, label: 'Programs' },
     { path: '/admin/integrations', icon: Plug, label: 'Integrations' },
