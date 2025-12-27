@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { LayoutDashboard, Users, Store, Tag, BarChart3, Send, Folder, FileText, Gamepad2, UserPlus, Calendar, Heart, Settings, Headphones, CreditCard, Coins, Wallet, Megaphone, Shield, Award, Plug, Activity } from 'lucide-react';
+import { LayoutDashboard, Users, Store, Tag, BarChart3, Send, Folder, FileText, Gamepad2, UserPlus, Calendar, Heart, Settings, Headphones, CreditCard, Coins, Wallet, Megaphone, Shield, Award, Plug, Activity, Bell, UserCog, Code } from 'lucide-react';
 
 export default function AdminNav() {
   const location = useLocation();
@@ -12,9 +12,9 @@ export default function AdminNav() {
     { path: '/admin/cashback', icon: Coins, label: 'Cashback' },
     { path: '/admin/offers', icon: Tag, label: 'Offers' },
     { path: '/admin/categories', icon: Folder, label: 'Categories' },
+    { path: '/admin/content', icon: FileText, label: 'Content' },
     { path: '/admin/analytics', icon: BarChart3, label: 'Analytics' },
     { path: '/admin/campaigns', icon: Send, label: 'Campaigns' },
-    { path: '/admin/content', icon: FileText, label: 'Content' },
     { path: '/admin/gamification', icon: Gamepad2, label: 'Gamification' },
     { path: '/admin/referrals', icon: UserPlus, label: 'Referrals' },
     { path: '/admin/events', icon: Calendar, label: 'Events' },
@@ -24,6 +24,9 @@ export default function AdminNav() {
     { path: '/admin/fraud', icon: Shield, label: 'Fraud' },
     { path: '/admin/special-programs', icon: Award, label: 'Programs' },
     { path: '/admin/integrations', icon: Plug, label: 'Integrations' },
+    { path: '/admin/api', icon: Code, label: 'API' },
+    { path: '/admin/user-management', icon: UserCog, label: 'Admins' },
+    { path: '/admin/notifications', icon: Bell, label: 'Notifications' },
     { path: '/admin/logs', icon: Activity, label: 'Logs' },
     { path: '/admin/settings', icon: Settings, label: 'Settings' },
     { path: '/admin/support', icon: Headphones, label: 'Support' }
