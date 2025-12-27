@@ -6,7 +6,7 @@ import {
   MessageSquare, ChevronDown, ChevronUp, Search,
   Filter, Download, BarChart3, Activity, RefreshCw
 } from 'lucide-react';
-import AdminNav from '../../components/AdminNav';
+import AdminNav from '../../components/admin/AdminNav';
 
 const AdminCampaignApproval = () => {
   const [activeTab, setActiveTab] = useState('pending');

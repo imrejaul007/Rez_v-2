@@ -7,7 +7,7 @@ import {
   Target, Calendar, AlertCircle, Award, Crown,
   BarChart3, TrendingDown, RefreshCw, Flag
 } from 'lucide-react';
-import MerchantNav from '../../components/MerchantNav';
+import MerchantNav from '../../components/merchant/MerchantNav';
 
 const MerchantUGCCampaigns = () => {
   const [activeTab, setActiveTab] = useState('campaigns');

@@ -1,11 +1,21 @@
 import { useState } from 'react';
-import { Search, Filter, Download, MoreVertical, Eye, CheckCircle, XCircle, Clock, Store, MapPin, Phone, Mail, Star, TrendingUp } from 'lucide-react';
+import { Search, Filter, Download, MoreVertical, Eye, CheckCircle, XCircle, Clock, Store, MapPin, Phone, Mail, Star, TrendingUp, Edit2, X, Save, Coins } from 'lucide-react';
 import AdminNav from '../../components/admin/AdminNav';
 
 export default function AdminMerchants() {
   const [searchQuery, setSearchQuery] = useState('');
   const [filterStatus, setFilterStatus] = useState('all');
   const [filterPackage, setFilterPackage] = useState('all');
+  const [showCommissionModal, setShowCommissionModal] = useState(false);
+  const [selectedMerchant, setSelectedMerchant] = useState(null);
+  const [customCommission, setCustomCommission] = useState({
+    useCustom: false,
+    total: 20,
+    rezCoin: 7,
+    brandedCoin: 5,
+    priveCoin: 10,
+    toReZ: 8
+  });
 
   const [merchants, setMerchants] = useState([
     {
@@ -19,13 +29,15 @@ export default function AdminMerchants() {
       address: '123 Main Street, Bandra',
       status: 'active',
       packageTier: 'premium',
+      tier: 'basic',
       verified: true,
       rating: 4.5,
       totalReviews: 230,
       activeOffers: 8,
       totalRedemptions: 1234,
       revenue: 45678,
-      joinedDate: '2024-01-15'
+      joinedDate: '2024-01-15',
+      customCommission: null
     },
     {
       id: 2,
@@ -38,13 +50,15 @@ export default function AdminMerchants() {
       address: '456 Park Avenue, CP',
       status: 'pending',
       packageTier: 'plus',
+      tier: 'free',
       verified: false,
       rating: 0,
       totalReviews: 0,
       activeOffers: 0,
       totalRedemptions: 0,
       revenue: 0,
-      joinedDate: '2024-01-20'
+      joinedDate: '2024-01-20',
+      customCommission: null
     },
     {
       id: 3,
@@ -57,13 +71,22 @@ export default function AdminMerchants() {
       address: '789 MG Road',
       status: 'active',
       packageTier: 'premium',
+      tier: 'golden',
       verified: true,
       rating: 4.3,
       totalReviews: 189,
       activeOffers: 12,
       totalRedemptions: 2345,
       revenue: 67890,
-      joinedDate: '2024-01-10'
+      joinedDate: '2024-01-10',
+      customCommission: {
+        useCustom: true,
+        total: 16,
+        rezCoin: 6,
+        brandedCoin: 5,
+        priveCoin: 12,
+        toReZ: 5
+      }
     },
     {
       id: 4,
@@ -76,13 +99,15 @@ export default function AdminMerchants() {
       address: '321 Fashion Street',
       status: 'suspended',
       packageTier: 'basic',
+      tier: 'diamond',
       verified: true,
       rating: 3.8,
       totalReviews: 145,
       activeOffers: 0,
       totalRedemptions: 567,
       revenue: 23456,
-      joinedDate: '2024-01-05'
+      joinedDate: '2024-01-05',
+      customCommission: null
     }
   ]);
 
@@ -112,6 +137,60 @@ export default function AdminMerchants() {
     setMerchants(prev => prev.map(m =>
       m.id === id ? { ...m, status: 'suspended' } : m
     ));
+  };
+
+  const handleOpenCommissionModal = (merchant) => {
+    setSelectedMerchant(merchant);
+    if (merchant.customCommission) {
+      setCustomCommission(merchant.customCommission);
+    } else {
+      // Set tier defaults
+      const tierDefaults = {
+        free: { total: 20, rezCoin: 7, brandedCoin: 5, priveCoin: 10, toReZ: 8 },
+        basic: { total: 18, rezCoin: 8, brandedCoin: 6, priveCoin: 12, toReZ: 4 },
+        golden: { total: 17, rezCoin: 9, brandedCoin: 6, priveCoin: 15, toReZ: 2 },
+        diamond: { total: 15, rezCoin: 10, brandedCoin: 7, priveCoin: 20, toReZ: -2 }
+      };
+      const defaults = tierDefaults[merchant.tier] || tierDefaults.free;
+      setCustomCommission({
+        useCustom: false,
+        ...defaults
+      });
+    }
+    setShowCommissionModal(true);
+  };
+
+  const handleSaveCommission = () => {
+    setMerchants(prev => prev.map(m =>
+      m.id === selectedMerchant.id
+        ? { ...m, customCommission: customCommission.useCustom ? customCommission : null }
+        : m
+    ));
+    setShowCommissionModal(false);
+  };
+
+  const handleCommissionChange = (field, value) => {
+    const parsedValue = parseFloat(value);
+    setCustomCommission(prev => {
+      const updated = { ...prev, [field]: parsedValue };
+
+      // Recalculate toReZ
+      if (field === 'total' || field === 'rezCoin' || field === 'brandedCoin') {
+        updated.toReZ = updated.total - updated.rezCoin - updated.brandedCoin;
+      }
+
+      return updated;
+    });
+  };
+
+  const getTierBadge = (tier) => {
+    const colors = {
+      free: 'bg-gray-100 text-gray-700',
+      basic: 'bg-blue-100 text-blue-700',
+      golden: 'bg-yellow-100 text-yellow-700',
+      diamond: 'bg-purple-100 text-purple-700'
+    };
+    return colors[tier] || colors.free;
   };
 
   return (
@@ -210,7 +289,8 @@ export default function AdminMerchants() {
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Merchant</th>
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Contact</th>
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Location</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Package</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Tier</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Commission</th>
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Performance</th>
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Status</th>
                   <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">Actions</th>
@@ -253,14 +333,23 @@ export default function AdminMerchants() {
                       </div>
                     </td>
                     <td className="px-6 py-4">
-                      <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${
-                        merchant.packageTier === 'premium' ? 'bg-purple-100 text-purple-700' :
-                        merchant.packageTier === 'plus' ? 'bg-blue-100 text-blue-700' :
-                        merchant.packageTier === 'enterprise' ? 'bg-indigo-100 text-indigo-700' :
-                        'bg-gray-100 text-gray-700'
-                      }`}>
-                        {merchant.packageTier}
+                      <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${getTierBadge(merchant.tier)}`}>
+                        {merchant.tier}
                       </span>
+                    </td>
+                    <td className="px-6 py-4">
+                      <div className="flex items-center gap-2">
+                        <button
+                          onClick={() => handleOpenCommissionModal(merchant)}
+                          className="flex items-center gap-1 px-2 py-1 text-xs bg-indigo-50 text-indigo-600 rounded-lg hover:bg-indigo-100 transition-colors"
+                        >
+                          <Coins className="w-3 h-3" />
+                          {merchant.customCommission ? `${merchant.customCommission.total}%` : 'Default'}
+                        </button>
+                        {merchant.customCommission?.useCustom && (
+                          <span className="px-1.5 py-0.5 bg-orange-100 text-orange-700 text-xs rounded">Custom</span>
+                        )}
+                      </div>
                     </td>
                     <td className="px-6 py-4">
                       {merchant.status === 'active' ? (
@@ -354,6 +443,170 @@ export default function AdminMerchants() {
             </div>
           </div>
         </div>
+
+        {/* Commission Override Modal */}
+        {showCommissionModal && selectedMerchant && (
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+            <div className="bg-white rounded-xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+              {/* Modal Header */}
+              <div className="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between">
+                <div>
+                  <h2 className="text-xl font-bold text-gray-900">Commission Configuration</h2>
+                  <p className="text-sm text-gray-600 mt-1">{selectedMerchant.businessName}</p>
+                </div>
+                <button
+                  onClick={() => setShowCommissionModal(false)}
+                  className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                >
+                  <X className="w-5 h-5 text-gray-500" />
+                </button>
+              </div>
+
+              {/* Modal Content */}
+              <div className="p-6">
+                {/* Tier Info */}
+                <div className="bg-gray-50 rounded-lg p-4 mb-6">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="text-sm text-gray-600">Current Tier</p>
+                      <p className="text-lg font-bold text-gray-900 capitalize">{selectedMerchant.tier} Tier</p>
+                    </div>
+                    <span className={`px-3 py-1 rounded-full text-sm font-medium ${getTierBadge(selectedMerchant.tier)}`}>
+                      {selectedMerchant.tier}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Custom Commission Toggle */}
+                <div className="mb-6">
+                  <label className="flex items-center gap-3 cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked={customCommission.useCustom}
+                      onChange={(e) => setCustomCommission(prev => ({ ...prev, useCustom: e.target.checked }))}
+                      className="w-5 h-5 text-indigo-600 rounded focus:ring-2 focus:ring-indigo-500"
+                    />
+                    <div>
+                      <p className="font-medium text-gray-900">Use Custom Commission</p>
+                      <p className="text-sm text-gray-600">Override tier defaults with merchant-specific rates</p>
+                    </div>
+                  </label>
+                </div>
+
+                {/* Commission Breakdown */}
+                <div className="space-y-4">
+                  {/* Total Commission */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Total Commission (%)
+                    </label>
+                    <input
+                      type="number"
+                      value={customCommission.total}
+                      onChange={(e) => handleCommissionChange('total', e.target.value)}
+                      disabled={!customCommission.useCustom}
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 disabled:bg-gray-100 disabled:cursor-not-allowed"
+                      step="0.1"
+                      min="0"
+                      max="30"
+                    />
+                  </div>
+
+                  {/* ReZ Coin % */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      💚 ReZ Coin Distribution (%)
+                    </label>
+                    <input
+                      type="number"
+                      value={customCommission.rezCoin}
+                      onChange={(e) => handleCommissionChange('rezCoin', e.target.value)}
+                      disabled={!customCommission.useCustom}
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 disabled:bg-gray-100 disabled:cursor-not-allowed"
+                      step="0.1"
+                      min="0"
+                      max="20"
+                    />
+                  </div>
+
+                  {/* Branded Coin % */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      🔵 Branded Coin Distribution (%)
+                    </label>
+                    <input
+                      type="number"
+                      value={customCommission.brandedCoin}
+                      onChange={(e) => handleCommissionChange('brandedCoin', e.target.value)}
+                      disabled={!customCommission.useCustom}
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 disabled:bg-gray-100 disabled:cursor-not-allowed"
+                      step="0.1"
+                      min="0"
+                      max="20"
+                    />
+                  </div>
+
+                  {/* Privé Coin % */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      👑 Privé Coin Eligibility (% merchant pays)
+                    </label>
+                    <input
+                      type="number"
+                      value={customCommission.priveCoin}
+                      onChange={(e) => setCustomCommission(prev => ({ ...prev, priveCoin: parseFloat(e.target.value) }))}
+                      disabled={!customCommission.useCustom}
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 disabled:bg-gray-100 disabled:cursor-not-allowed"
+                      step="0.1"
+                      min="5"
+                      max="100"
+                    />
+                    <p className="text-xs text-gray-500 mt-1">Merchant contribution for Privé coin rewards (5-100%)</p>
+                  </div>
+
+                  {/* Platform Revenue (Auto-calculated) */}
+                  <div className="bg-green-50 rounded-lg p-4">
+                    <label className="block text-sm font-medium text-green-900 mb-2">
+                      Platform Revenue (toReZ) - Auto-calculated
+                    </label>
+                    <div className="text-2xl font-bold text-green-700">
+                      {customCommission.toReZ.toFixed(1)}%
+                    </div>
+                    <p className="text-xs text-green-700 mt-1">
+                      = Total ({customCommission.total}%) - ReZ Coin ({customCommission.rezCoin}%) - Branded Coin ({customCommission.brandedCoin}%)
+                    </p>
+                  </div>
+                </div>
+
+                {/* Warning */}
+                {customCommission.useCustom && (
+                  <div className="mt-6 bg-orange-50 border border-orange-200 rounded-lg p-4">
+                    <p className="text-sm text-orange-800">
+                      <strong>Warning:</strong> Custom commission rates will override the tier defaults. This merchant will maintain these rates even if tier configuration changes.
+                    </p>
+                  </div>
+                )}
+              </div>
+
+              {/* Modal Footer */}
+              <div className="sticky bottom-0 bg-gray-50 border-t border-gray-200 px-6 py-4 flex items-center justify-end gap-3">
+                <button
+                  onClick={() => setShowCommissionModal(false)}
+                  className="px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={handleSaveCommission}
+                  className="flex items-center gap-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
+                >
+                  <Save className="w-4 h-4" />
+                  Save Commission
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

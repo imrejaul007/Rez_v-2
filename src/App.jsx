@@ -113,11 +113,57 @@ import MerchantDocuments from './pages/merchant/MerchantDocuments';
 import MerchantWallet from './pages/merchant/MerchantWallet';
 import MerchantOrders from './pages/merchant/MerchantOrders';
 import MerchantProducts from './pages/merchant/MerchantProducts';
+import MerchantInventory from './pages/merchant/MerchantInventory';
+import MerchantReturns from './pages/merchant/MerchantReturns';
+import MerchantPayments from './pages/merchant/MerchantPayments';
+import MerchantPerformance from './pages/merchant/MerchantPerformance';
+import MerchantShipping from './pages/merchant/MerchantShipping';
 import MerchantCampaigns from './pages/merchant/MerchantCampaigns';
 import MerchantUGCCampaigns from './pages/merchant/MerchantUGCCampaigns';
 import MerchantLoyaltyOffers from './pages/merchant/MerchantLoyaltyOffers';
 import MerchantPriceEngineering from './pages/merchant/MerchantPriceEngineering';
+import MerchantFlashDeals from './pages/merchant/MerchantFlashDeals';
+import MerchantDealAnalytics from './pages/merchant/MerchantDealAnalytics';
+import MerchantExclusiveDeals from './pages/merchant/MerchantExclusiveDeals';
 import AdminCampaignApproval from './pages/admin/AdminCampaignApproval';
+import AdminLightningDeals from './pages/admin/AdminLightningDeals';
+import AdminCoinEvents from './pages/admin/AdminCoinEvents';
+import AdminExclusivePrograms from './pages/admin/AdminExclusivePrograms';
+import AdminDiscountBuckets from './pages/admin/AdminDiscountBuckets';
+import AdminSponsoredDeals from './pages/admin/AdminSponsoredDeals';
+import AdminNearbyOffers from './pages/admin/AdminNearbyOffers';
+import AdminTodaysOffers from './pages/admin/AdminTodaysOffers';
+import AdminBOGOManagement from './pages/admin/AdminBOGOManagement';
+import AdminTrendingAlgorithm from './pages/admin/AdminTrendingAlgorithm';
+import AdminAIRecommendations from './pages/admin/AdminAIRecommendations';
+import AdminHotspotManagement from './pages/admin/AdminHotspotManagement';
+import AdminUploadBillSettings from './pages/admin/AdminUploadBillSettings';
+import AdminProfileVerification from './pages/admin/AdminProfileVerification';
+import AdminFriendNetworkSettings from './pages/admin/AdminFriendNetworkSettings';
+import MerchantNearbyOffers from './pages/merchant/MerchantNearbyOffers';
+import MerchantTodaysOffers from './pages/merchant/MerchantTodaysOffers';
+import MerchantBOGOOffers from './pages/merchant/MerchantBOGOOffers';
+import MerchantBirthdayOffers from './pages/merchant/MerchantBirthdayOffers';
+import MerchantCashbackPrograms from './pages/merchant/MerchantCashbackPrograms';
+import MerchantClearanceSales from './pages/merchant/MerchantClearanceSales';
+import MerchantLoyaltyTiers from './pages/merchant/MerchantLoyaltyTiers';
+import AdminFreeDeliveryManagement from './pages/admin/AdminFreeDeliveryManagement';
+import AdminNewDealsSettings from './pages/admin/AdminNewDealsSettings';
+import AdminScanPaySettings from './pages/admin/AdminScanPaySettings';
+import AdminDailyCheckin from './pages/admin/AdminDailyCheckin';
+import AdminLockPriceDeals from './pages/admin/AdminLockPriceDeals';
+import MerchantFreeDelivery from './pages/merchant/MerchantFreeDelivery';
+import MerchantLockPriceDeals from './pages/merchant/MerchantLockPriceDeals';
+import MerchantExclusivePrograms from './pages/merchant/MerchantExclusivePrograms';
+import MerchantBrandedCoinConfig from './pages/merchant/MerchantBrandedCoinConfig';
+import AdminPromoCoinManager from './pages/admin/AdminPromoCoinManager';
+import AdminRedemptionRules from './pages/admin/AdminRedemptionRules';
+import AdminCheckoutPriority from './pages/admin/AdminCheckoutPriority';
+import AdminEarningRuleMatrix from './pages/admin/AdminEarningRuleMatrix';
+import AdminCoinSystemOverview from './pages/admin/AdminCoinSystemOverview';
+import AdminMerchantTierConfig from './pages/admin/AdminMerchantTierConfig';
+import AdminCoPartnerBrands from './pages/admin/AdminCoPartnerBrands';
+import AdminPartnerships from './pages/admin/AdminPartnerships';
 import PriveExit from './pages/prive/PriveExit';
 import PriveInvitations from './pages/prive/PriveInvitations';
 import PriveSettings from './pages/prive/PriveSettings';
@@ -783,6 +829,11 @@ function App() {
                 <Route path="admin/cashback" element={<AdminCashback />} />
                 <Route path="admin/vouchers" element={<AdminVouchers />} />
                 <Route path="admin/flash-sales" element={<AdminFlashSales />} />
+                <Route path="admin/lightning-deals" element={<AdminLightningDeals />} />
+                <Route path="admin/coin-events" element={<AdminCoinEvents />} />
+                <Route path="admin/exclusive-programs" element={<AdminExclusivePrograms />} />
+                <Route path="admin/discount-buckets" element={<AdminDiscountBuckets />} />
+                <Route path="admin/sponsored-deals" element={<AdminSponsoredDeals />} />
                 <Route path="admin/bank-offers" element={<AdminBankOffers />} />
                 <Route path="admin/payments" element={<AdminPayments />} />
                 <Route path="admin/marketing" element={<AdminMarketing />} />
@@ -800,6 +851,28 @@ function App() {
                 <Route path="admin/logs" element={<AdminLogs />} />
                 <Route path="admin/settings" element={<AdminSettings />} />
                 <Route path="admin/support" element={<AdminSupport />} />
+                <Route path="admin/nearby-offers" element={<AdminNearbyOffers />} />
+                <Route path="admin/todays-offers" element={<AdminTodaysOffers />} />
+                <Route path="admin/bogo-management" element={<AdminBOGOManagement />} />
+                <Route path="admin/trending-algorithm" element={<AdminTrendingAlgorithm />} />
+                <Route path="admin/ai-recommendations" element={<AdminAIRecommendations />} />
+                <Route path="admin/hotspot-management" element={<AdminHotspotManagement />} />
+                <Route path="admin/upload-bill-settings" element={<AdminUploadBillSettings />} />
+                <Route path="admin/profile-verification" element={<AdminProfileVerification />} />
+                <Route path="admin/friend-network-settings" element={<AdminFriendNetworkSettings />} />
+                <Route path="admin/free-delivery" element={<AdminFreeDeliveryManagement />} />
+                <Route path="admin/new-deals-settings" element={<AdminNewDealsSettings />} />
+                <Route path="admin/scan-pay-settings" element={<AdminScanPaySettings />} />
+                <Route path="admin/daily-checkin" element={<AdminDailyCheckin />} />
+                <Route path="admin/lock-price-deals" element={<AdminLockPriceDeals />} />
+                <Route path="admin/promo-coin-manager" element={<AdminPromoCoinManager />} />
+                <Route path="admin/redemption-rules" element={<AdminRedemptionRules />} />
+                <Route path="admin/checkout-priority" element={<AdminCheckoutPriority />} />
+                <Route path="admin/earning-rule-matrix" element={<AdminEarningRuleMatrix />} />
+                <Route path="admin/coin-system-overview" element={<AdminCoinSystemOverview />} />
+                <Route path="admin/merchant-tier-config" element={<AdminMerchantTierConfig />} />
+                <Route path="admin/co-partner-brands" element={<AdminCoPartnerBrands />} />
+                <Route path="admin/partnerships" element={<AdminPartnerships />} />
 
                 {/* Merchant Routes */}
                 <Route path="merchant" element={<MerchantDashboard />} />
@@ -807,10 +880,18 @@ function App() {
                 <Route path="merchant/profile" element={<MerchantProfile />} />
                 <Route path="merchant/orders" element={<MerchantOrders />} />
                 <Route path="merchant/products" element={<MerchantProducts />} />
+                <Route path="merchant/inventory" element={<MerchantInventory />} />
+                <Route path="merchant/returns" element={<MerchantReturns />} />
+                <Route path="merchant/payments" element={<MerchantPayments />} />
+                <Route path="merchant/performance" element={<MerchantPerformance />} />
+                <Route path="merchant/shipping" element={<MerchantShipping />} />
                 <Route path="merchant/offers" element={<MerchantOffers />} />
                 <Route path="merchant/offers/create" element={<CreateOffer />} />
                 <Route path="merchant/campaigns" element={<MerchantCampaigns />} />
                 <Route path="merchant/ugc-campaigns" element={<MerchantUGCCampaigns />} />
+                <Route path="merchant/flash-deals" element={<MerchantFlashDeals />} />
+                <Route path="merchant/deal-analytics" element={<MerchantDealAnalytics />} />
+                <Route path="merchant/exclusive-deals" element={<MerchantExclusiveDeals />} />
                 <Route path="merchant/customers" element={<MerchantCustomers />} />
                 <Route path="merchant/transactions" element={<MerchantTransactions />} />
                 <Route path="merchant/wallet" element={<MerchantWallet />} />
@@ -829,6 +910,17 @@ function App() {
                 <Route path="merchant/notifications" element={<MerchantNotifications />} />
                 <Route path="merchant/support" element={<MerchantSupport />} />
                 <Route path="merchant/settings" element={<MerchantSettings />} />
+                <Route path="merchant/nearby-offers" element={<MerchantNearbyOffers />} />
+                <Route path="merchant/todays-offers" element={<MerchantTodaysOffers />} />
+                <Route path="merchant/bogo-offers" element={<MerchantBOGOOffers />} />
+                <Route path="merchant/birthday-offers" element={<MerchantBirthdayOffers />} />
+                <Route path="merchant/cashback-programs" element={<MerchantCashbackPrograms />} />
+                <Route path="merchant/branded-coin-config" element={<MerchantBrandedCoinConfig />} />
+                <Route path="merchant/clearance-sales" element={<MerchantClearanceSales />} />
+                <Route path="merchant/loyalty-tiers" element={<MerchantLoyaltyTiers />} />
+                <Route path="merchant/free-delivery" element={<MerchantFreeDelivery />} />
+                <Route path="merchant/lock-price-deals" element={<MerchantLockPriceDeals />} />
+                <Route path="merchant/exclusive-programs" element={<MerchantExclusivePrograms />} />
 
                 {/* Loyalty & Rewards - Unified Hub */}
                 <Route path="loyalty-rewards" element={<LoyaltyRewardsHub />} />

@@ -11,12 +11,34 @@ export default function AdminWallet() {
   const [showBulkModal, setShowBulkModal] = useState(false);
 
   const [walletStats] = useState({
-    totalCoinsIssued: 15750000,
-    activeUsersWithBalance: 45234,
-    totalValueLocked: 1575000,
-    avgBalancePerUser: 348,
-    coinsExpiringSoon: 125000,
-    frozenWallets: 23
+    rezCoin: {
+      totalIssued: 12500000,
+      activeUsers: 45234,
+      totalValueLocked: 1250000
+    },
+    brandedCoin: {
+      totalIssued: 5400000,
+      activeUsers: 38910,
+      totalValueLocked: 540000
+    },
+    priveCoin: {
+      totalIssued: 850000,
+      activeUsers: 12456,
+      totalValueLocked: 85000
+    },
+    promoCoin: {
+      totalIssued: 2100000,
+      activeUsers: 28900,
+      totalValueLocked: 210000
+    },
+    overall: {
+      totalCoinsIssued: 20850000,
+      activeUsersWithBalance: 45234,
+      totalValueLocked: 2085000,
+      avgBalancePerUser: 461,
+      coinsExpiringSoon: 125000,
+      frozenWallets: 23
+    }
   });
 
   const [userWallets, setUserWallets] = useState([
@@ -27,6 +49,12 @@ export default function AdminWallet() {
       email: 'john@example.com',
       phone: '+91-9876543210',
       balance: 2450,
+      coinBalances: {
+        rezCoin: 1200,
+        brandedCoin: 800,
+        priveCoin: 150,
+        promoCoin: 300
+      },
       valueInRupees: 2450,
       totalEarned: 8900,
       totalRedeemed: 6450,
@@ -43,6 +71,12 @@ export default function AdminWallet() {
       email: 'jane@example.com',
       phone: '+91-9876543211',
       balance: 5670,
+      coinBalances: {
+        rezCoin: 3200,
+        brandedCoin: 1870,
+        priveCoin: 600,
+        promoCoin: 0
+      },
       valueInRupees: 5670,
       totalEarned: 12340,
       totalRedeemed: 6670,
@@ -59,6 +93,12 @@ export default function AdminWallet() {
       email: 'mike@example.com',
       phone: '+91-9876543212',
       balance: 890,
+      coinBalances: {
+        rezCoin: 600,
+        brandedCoin: 290,
+        priveCoin: 0,
+        promoCoin: 0
+      },
       valueInRupees: 890,
       totalEarned: 4560,
       totalRedeemed: 3670,
@@ -75,6 +115,12 @@ export default function AdminWallet() {
       email: 'sarah@example.com',
       phone: '+91-9876543213',
       balance: 12450,
+      coinBalances: {
+        rezCoin: 5600,
+        brandedCoin: 3200,
+        priveCoin: 2150,
+        promoCoin: 1500
+      },
       valueInRupees: 12450,
       totalEarned: 23450,
       totalRedeemed: 11000,
@@ -91,6 +137,12 @@ export default function AdminWallet() {
       email: 'david@example.com',
       phone: '+91-9876543214',
       balance: 0,
+      coinBalances: {
+        rezCoin: 0,
+        brandedCoin: 0,
+        priveCoin: 0,
+        promoCoin: 0
+      },
       valueInRupees: 0,
       totalEarned: 5600,
       totalRedeemed: 5600,
@@ -259,7 +311,7 @@ export default function AdminWallet() {
           <div className="flex justify-between items-center">
             <div>
               <h1 className="text-3xl font-bold text-gray-900">Wallet Management</h1>
-              <p className="text-gray-600 mt-1">Manage user wallets and ReZ Coins distribution</p>
+              <p className="text-gray-600 mt-1">Manage user wallets and 4-Coin System distribution</p>
             </div>
             <div className="flex gap-3">
               <button
@@ -281,14 +333,113 @@ export default function AdminWallet() {
       <AdminNav />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Stats Overview */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+        {/* 4-Coin System Stats */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          <div className="bg-gradient-to-br from-emerald-50 to-emerald-100 rounded-xl shadow-sm p-6 border-2 border-emerald-300">
+            <div className="mb-3">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-2xl">💚</span>
+                <p className="text-emerald-900 font-bold text-lg">ReZ Coin</p>
+              </div>
+              <p className="text-emerald-700 text-sm">Universal utility coin</p>
+            </div>
+            <div className="space-y-2">
+              <div>
+                <p className="text-xs text-emerald-700">Total Issued</p>
+                <p className="text-2xl font-bold text-emerald-900">{(walletStats.rezCoin.totalIssued / 1000000).toFixed(1)}M</p>
+              </div>
+              <div className="flex justify-between text-sm">
+                <span className="text-emerald-700">Active Users:</span>
+                <span className="font-semibold text-emerald-900">{walletStats.rezCoin.activeUsers.toLocaleString()}</span>
+              </div>
+              <div className="flex justify-between text-sm">
+                <span className="text-emerald-700">Value Locked:</span>
+                <span className="font-semibold text-emerald-900">₹{(walletStats.rezCoin.totalValueLocked / 100000).toFixed(1)}L</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl shadow-sm p-6 border-2 border-blue-300">
+            <div className="mb-3">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-2xl">🔵</span>
+                <p className="text-blue-900 font-bold text-lg">Branded Coin</p>
+              </div>
+              <p className="text-blue-700 text-sm">Merchant loyalty coin</p>
+            </div>
+            <div className="space-y-2">
+              <div>
+                <p className="text-xs text-blue-700">Total Issued</p>
+                <p className="text-2xl font-bold text-blue-900">{(walletStats.brandedCoin.totalIssued / 1000000).toFixed(1)}M</p>
+              </div>
+              <div className="flex justify-between text-sm">
+                <span className="text-blue-700">Active Users:</span>
+                <span className="font-semibold text-blue-900">{walletStats.brandedCoin.activeUsers.toLocaleString()}</span>
+              </div>
+              <div className="flex justify-between text-sm">
+                <span className="text-blue-700">Value Locked:</span>
+                <span className="font-semibold text-blue-900">₹{(walletStats.brandedCoin.totalValueLocked / 100000).toFixed(1)}L</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl shadow-sm p-6 border-2 border-purple-300">
+            <div className="mb-3">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-2xl">👑</span>
+                <p className="text-purple-900 font-bold text-lg">Privé Coin</p>
+              </div>
+              <p className="text-purple-700 text-sm">Premium status coin</p>
+            </div>
+            <div className="space-y-2">
+              <div>
+                <p className="text-xs text-purple-700">Total Issued</p>
+                <p className="text-2xl font-bold text-purple-900">{(walletStats.priveCoin.totalIssued / 1000).toFixed(0)}K</p>
+              </div>
+              <div className="flex justify-between text-sm">
+                <span className="text-purple-700">Active Users:</span>
+                <span className="font-semibold text-purple-900">{walletStats.priveCoin.activeUsers.toLocaleString()}</span>
+              </div>
+              <div className="flex justify-between text-sm">
+                <span className="text-purple-700">Value Locked:</span>
+                <span className="font-semibold text-purple-900">₹{(walletStats.priveCoin.totalValueLocked / 1000).toFixed(0)}K</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-gradient-to-br from-orange-50 to-orange-100 rounded-xl shadow-sm p-6 border-2 border-orange-300">
+            <div className="mb-3">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-2xl">🎫</span>
+                <p className="text-orange-900 font-bold text-lg">Promo Coin</p>
+              </div>
+              <p className="text-orange-700 text-sm">System promo coin</p>
+            </div>
+            <div className="space-y-2">
+              <div>
+                <p className="text-xs text-orange-700">Total Injected</p>
+                <p className="text-2xl font-bold text-orange-900">{(walletStats.promoCoin.totalIssued / 1000000).toFixed(1)}M</p>
+              </div>
+              <div className="flex justify-between text-sm">
+                <span className="text-orange-700">Active Users:</span>
+                <span className="font-semibold text-orange-900">{walletStats.promoCoin.activeUsers.toLocaleString()}</span>
+              </div>
+              <div className="flex justify-between text-sm">
+                <span className="text-orange-700">Value Locked:</span>
+                <span className="font-semibold text-orange-900">₹{(walletStats.promoCoin.totalValueLocked / 1000).toFixed(0)}K</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Overall Stats */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           <div className="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
             <div className="flex items-center justify-between mb-2">
               <div>
-                <p className="text-gray-600 text-sm font-medium">Total Coins Issued</p>
+                <p className="text-gray-600 text-sm font-medium">Total Coins (All Types)</p>
                 <p className="text-3xl font-bold text-gray-900 mt-2">
-                  {(walletStats.totalCoinsIssued / 1000000).toFixed(2)}M
+                  {(walletStats.overall.totalCoinsIssued / 1000000).toFixed(1)}M
                 </p>
               </div>
               <div className="bg-yellow-100 p-3 rounded-lg">
@@ -307,9 +458,9 @@ export default function AdminWallet() {
           <div className="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
             <div className="flex items-center justify-between mb-2">
               <div>
-                <p className="text-gray-600 text-sm font-medium">Active Users with Balance</p>
+                <p className="text-gray-600 text-sm font-medium">Active Users</p>
                 <p className="text-3xl font-bold text-gray-900 mt-2">
-                  {walletStats.activeUsersWithBalance.toLocaleString()}
+                  {walletStats.overall.activeUsersWithBalance.toLocaleString()}
                 </p>
               </div>
               <div className="bg-blue-100 p-3 rounded-lg">
@@ -317,33 +468,16 @@ export default function AdminWallet() {
               </div>
             </div>
             <div className="mt-4 text-sm text-gray-600">
-              Avg balance: {walletStats.avgBalancePerUser} coins
+              Avg: {walletStats.overall.avgBalancePerUser} coins
             </div>
           </div>
 
           <div className="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
             <div className="flex items-center justify-between mb-2">
               <div>
-                <p className="text-gray-600 text-sm font-medium">Total Value Locked</p>
+                <p className="text-gray-600 text-sm font-medium">Expiring Soon</p>
                 <p className="text-3xl font-bold text-gray-900 mt-2">
-                  ₹{(walletStats.totalValueLocked / 100000).toFixed(2)}L
-                </p>
-              </div>
-              <div className="bg-green-100 p-3 rounded-lg">
-                <DollarSign className="w-8 h-8 text-green-600" />
-              </div>
-            </div>
-            <div className="mt-4 text-sm text-gray-600">
-              1 coin = ₹1 value
-            </div>
-          </div>
-
-          <div className="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
-            <div className="flex items-center justify-between mb-2">
-              <div>
-                <p className="text-gray-600 text-sm font-medium">Coins Expiring Soon</p>
-                <p className="text-3xl font-bold text-gray-900 mt-2">
-                  {walletStats.coinsExpiringSoon.toLocaleString()}
+                  {walletStats.overall.coinsExpiringSoon.toLocaleString()}
                 </p>
               </div>
               <div className="bg-orange-100 p-3 rounded-lg">
@@ -351,7 +485,7 @@ export default function AdminWallet() {
               </div>
             </div>
             <div className="mt-4 text-sm text-orange-600">
-              Expiring in next 30 days
+              Next 30 days
             </div>
           </div>
 
@@ -360,7 +494,7 @@ export default function AdminWallet() {
               <div>
                 <p className="text-gray-600 text-sm font-medium">Frozen Wallets</p>
                 <p className="text-3xl font-bold text-gray-900 mt-2">
-                  {walletStats.frozenWallets}
+                  {walletStats.overall.frozenWallets}
                 </p>
               </div>
               <div className="bg-red-100 p-3 rounded-lg">
@@ -368,24 +502,7 @@ export default function AdminWallet() {
               </div>
             </div>
             <div className="mt-4 text-sm text-red-600">
-              Fraud prevention active
-            </div>
-          </div>
-
-          <div className="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
-            <div className="flex items-center justify-between mb-2">
-              <div>
-                <p className="text-gray-600 text-sm font-medium">Avg Redemption Rate</p>
-                <p className="text-3xl font-bold text-gray-900 mt-2">
-                  72.5%
-                </p>
-              </div>
-              <div className="bg-purple-100 p-3 rounded-lg">
-                <PieChart className="w-8 h-8 text-purple-600" />
-              </div>
-            </div>
-            <div className="mt-4 text-sm text-green-600">
-              Above 70% target
+              Fraud prevention
             </div>
           </div>
         </div>
@@ -478,8 +595,17 @@ export default function AdminWallet() {
                         </td>
                         <td className="px-4 py-3">
                           <div>
-                            <p className="font-bold text-yellow-600 text-lg">{wallet.balance.toLocaleString()}</p>
-                            <p className="text-xs text-gray-500">₹{wallet.valueInRupees.toLocaleString()}</p>
+                            <p className="font-bold text-gray-900 text-lg mb-2">{wallet.balance.toLocaleString()} total</p>
+                            <div className="space-y-1">
+                              <div className="flex items-center gap-2">
+                                <span className="text-emerald-600 text-xs">💚 {wallet.coinBalances.rezCoin}</span>
+                                <span className="text-blue-600 text-xs">🔵 {wallet.coinBalances.brandedCoin}</span>
+                              </div>
+                              <div className="flex items-center gap-2">
+                                <span className="text-purple-600 text-xs">👑 {wallet.coinBalances.priveCoin}</span>
+                                <span className="text-orange-600 text-xs">🎫 {wallet.coinBalances.promoCoin}</span>
+                              </div>
+                            </div>
                           </div>
                         </td>
                         <td className="px-4 py-3">

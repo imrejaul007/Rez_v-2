@@ -51,18 +51,18 @@ export default function AdminCashback() {
   ]);
 
   const [categoryRates, setCategoryRates] = useState([
-    { id: 1, category: 'Food & Dining', baseRate: 10, premiumRate: 12, studentRate: 15 },
-    { id: 2, category: 'Shopping', baseRate: 8, premiumRate: 10, studentRate: 12 },
-    { id: 3, category: 'Entertainment', baseRate: 5, premiumRate: 7, studentRate: 10 },
-    { id: 4, category: 'Travel', baseRate: 12, premiumRate: 15, studentRate: 18 },
-    { id: 5, category: 'Groceries', baseRate: 6, premiumRate: 8, studentRate: 10 }
+    { id: 1, category: 'Food & Dining', baseRate: 10, premiumRate: 12, studentRate: 15, coinType: 'rezCoin' },
+    { id: 2, category: 'Shopping', baseRate: 8, premiumRate: 10, studentRate: 12, coinType: 'rezCoin' },
+    { id: 3, category: 'Entertainment', baseRate: 5, premiumRate: 7, studentRate: 10, coinType: 'rezCoin' },
+    { id: 4, category: 'Travel', baseRate: 12, premiumRate: 15, studentRate: 18, coinType: 'rezCoin' },
+    { id: 5, category: 'Groceries', baseRate: 6, premiumRate: 8, studentRate: 10, coinType: 'rezCoin' }
   ]);
 
   const [merchantRates, setMerchantRates] = useState([
-    { id: 1, merchant: 'The Coffee House', logo: '☕', category: 'Food & Dining', rate: 10, boosted: false },
-    { id: 2, merchant: 'Pizza Paradise', logo: '🍕', category: 'Food & Dining', rate: 15, boosted: true },
-    { id: 3, merchant: 'Burger King', logo: '🍔', category: 'Food & Dining', rate: 12, boosted: false },
-    { id: 4, merchant: 'Fashion Boutique', logo: '👗', category: 'Shopping', rate: 8, boosted: false }
+    { id: 1, merchant: 'The Coffee House', logo: '☕', category: 'Food & Dining', rate: 10, boosted: false, coinType: 'rezCoin' },
+    { id: 2, merchant: 'Pizza Paradise', logo: '🍕', category: 'Food & Dining', rate: 15, boosted: true, coinType: 'brandedCoin' },
+    { id: 3, merchant: 'Burger King', logo: '🍔', category: 'Food & Dining', rate: 12, boosted: false, coinType: 'rezCoin' },
+    { id: 4, merchant: 'Fashion Boutique', logo: '👗', category: 'Shopping', rate: 8, boosted: false, coinType: 'brandedCoin' }
   ]);
 
   const handleApproveCashback = (id) => {
@@ -87,7 +87,7 @@ export default function AdminCashback() {
           <div className="flex justify-between items-center">
             <div>
               <h1 className="text-3xl font-bold text-gray-900">Cashback & Coins Management</h1>
-              <p className="text-gray-600 mt-1">Manage cashback distribution and ReZ Coins</p>
+              <p className="text-gray-600 mt-1">Manage cashback distribution and 4-coin system (ReZ, Branded, Privé, Promo)</p>
             </div>
             <button className="flex items-center gap-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors">
               <Send className="w-5 h-5" />
@@ -268,6 +268,7 @@ export default function AdminCashback() {
                   <thead className="bg-gray-50">
                     <tr>
                       <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Category</th>
+                      <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Coin Type</th>
                       <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Base Rate (%)</th>
                       <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Premium Rate (%)</th>
                       <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Student Rate (%)</th>
@@ -279,6 +280,17 @@ export default function AdminCashback() {
                       <tr key={cat.id} className="hover:bg-gray-50">
                         <td className="px-4 py-3">
                           <p className="font-medium text-gray-900">{cat.category}</p>
+                        </td>
+                        <td className="px-4 py-3">
+                          <select
+                            value={cat.coinType}
+                            onChange={(e) => handleUpdateRate(cat.id, 'coinType', e.target.value)}
+                            className="px-3 py-1 border border-gray-300 rounded text-sm font-medium"
+                          >
+                            <option value="rezCoin" className="text-emerald-700">ReZ Coin</option>
+                            <option value="brandedCoin" className="text-blue-700">Branded Coin</option>
+                            <option value="priveCoin" className="text-purple-700">Privé Coin</option>
+                          </select>
                         </td>
                         <td className="px-4 py-3">
                           <input
