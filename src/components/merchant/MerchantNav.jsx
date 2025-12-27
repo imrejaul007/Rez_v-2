@@ -40,8 +40,10 @@ export default function MerchantNav() {
       icon: ShoppingBag,
       items: [
         { path: '/merchant/orders', icon: ShoppingBag, label: 'Orders' },
+        { path: '/merchant/orders-multi-channel', icon: Layers, label: 'Multi-Channel Orders' },
         { path: '/merchant/products', icon: Package, label: 'Products' },
         { path: '/merchant/inventory', icon: Box, label: 'Inventory' },
+        { path: '/merchant/inventory-advanced', icon: BarChart3, label: 'Advanced Inventory' },
         { path: '/merchant/returns', icon: RotateCcw, label: 'Returns & Refunds' },
         { path: '/merchant/shipping', icon: Truck, label: 'Shipping & Logistics' }
       ]
