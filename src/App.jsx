@@ -48,6 +48,14 @@ import PriveRecognition from './pages/prive/PriveRecognition';
 import PriveAuthority from './pages/prive/PriveAuthority';
 import PriveVisibilityControl from './pages/prive/PriveVisibilityControl';
 import PriveActivityStatement from './pages/prive/PriveActivityStatement';
+
+// Admin Pages
+import AdminDashboard from './pages/admin/AdminDashboard';
+import AdminUsers from './pages/admin/AdminUsers';
+
+// Merchant Pages
+import MerchantDashboard from './pages/merchant/MerchantDashboard';
+import CreateOffer from './pages/merchant/CreateOffer';
 import PriveExit from './pages/prive/PriveExit';
 import PriveInvitations from './pages/prive/PriveInvitations';
 import PriveSettings from './pages/prive/PriveSettings';
@@ -687,6 +695,16 @@ function App() {
                 <Route path="exclusive/loyalty" element={<LoyaltyRewards />} />
                 <Route path="exclusive/special-profiles" element={<SpecialProfiles />} />
                 <Route path="exclusive/prive" element={<RezPrive />} />
+
+                {/* Admin Routes */}
+                <Route path="admin" element={<AdminDashboard />} />
+                <Route path="admin/dashboard" element={<AdminDashboard />} />
+                <Route path="admin/users" element={<AdminUsers />} />
+
+                {/* Merchant Routes */}
+                <Route path="merchant" element={<MerchantDashboard />} />
+                <Route path="merchant/dashboard" element={<MerchantDashboard />} />
+                <Route path="merchant/offers/create" element={<CreateOffer />} />
 
                 {/* Loyalty & Rewards - Unified Hub */}
                 <Route path="loyalty-rewards" element={<LoyaltyRewardsHub />} />
