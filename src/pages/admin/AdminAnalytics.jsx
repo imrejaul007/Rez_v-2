@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { TrendingUp, Users, Store, Tag, DollarSign, ShoppingCart, Calendar, Download } from 'lucide-react';
+import AdminNav from '../../components/admin/AdminNav';
 
 export default function AdminAnalytics() {
   const [dateRange, setDateRange] = useState('30days');
@@ -100,6 +101,8 @@ export default function AdminAnalytics() {
           </div>
         </div>
       </div>
+
+      <AdminNav />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Key Metrics */}

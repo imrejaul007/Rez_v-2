@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Search, Filter, Download, MoreVertical, Eye, CheckCircle, XCircle, Clock, Store, MapPin, Phone, Mail, Star, TrendingUp } from 'lucide-react';
+import AdminNav from '../../components/admin/AdminNav';
 
 export default function AdminMerchants() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -130,6 +131,8 @@ export default function AdminMerchants() {
           </div>
         </div>
       </div>
+
+      <AdminNav />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Stats Overview */}

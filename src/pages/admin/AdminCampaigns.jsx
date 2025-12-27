@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Plus, Search, Send, Users, Eye, Edit, Trash2, Copy, Calendar, Target, BarChart3 } from 'lucide-react';
+import AdminNav from '../../components/admin/AdminNav';
 
 export default function AdminCampaigns() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -157,6 +158,8 @@ export default function AdminCampaigns() {
           </div>
         </div>
       </div>
+
+      <AdminNav />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Stats */}

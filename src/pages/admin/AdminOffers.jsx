@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Search, CheckCircle, XCircle, Eye, Tag, TrendingUp, Users, Clock } from 'lucide-react';
+import AdminNav from '../../components/admin/AdminNav';
 
 export default function AdminOffers() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -134,6 +135,8 @@ export default function AdminOffers() {
           <p className="text-gray-600 mt-1">Review and approve merchant offers</p>
         </div>
       </div>
+
+      <AdminNav />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">

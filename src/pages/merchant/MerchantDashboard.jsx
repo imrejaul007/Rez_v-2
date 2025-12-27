@@ -6,6 +6,7 @@ import {
   AlertCircle, Star, ArrowUpRight, ArrowDownRight,
   Plus, BarChart3, Calendar, MapPin
 } from 'lucide-react';
+import MerchantNav from '../../components/merchant/MerchantNav';
 
 export default function MerchantDashboard() {
   const [merchantInfo] = useState({
@@ -160,6 +161,8 @@ export default function MerchantDashboard() {
           </div>
         </div>
       </div>
+
+      <MerchantNav />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Stats Grid */}
