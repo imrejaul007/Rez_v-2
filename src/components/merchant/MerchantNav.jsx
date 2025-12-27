@@ -6,7 +6,7 @@ import {
   BarChart3, LineChart, TrendingUp, DollarSign, Image, Gift, Award,
   UserPlus, FileText, FolderOpen, Bell, Headphones, Settings, MapPin,
   Clock, Cake, Coins, ShoppingCart, Layers, Lock, Box, ChevronDown, Menu, X,
-  Monitor, ChefHat, Grid3x3, Scan
+  Monitor, ChefHat, Grid3x3, Scan, Calendar, Scissors
 } from 'lucide-react';
 
 export default function MerchantNav() {
@@ -23,11 +23,13 @@ export default function MerchantNav() {
         { path: '/merchant/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
         { path: '/merchant/profile', icon: Store, label: 'Profile' },
         { path: '/merchant/pos', icon: ShoppingCart, label: 'POS System' },
-        { path: '/merchant/barcode-scanner', icon: Scan, label: 'Barcode Scanner' },
-        { path: '/merchant/product-variants', icon: Layers, label: 'Product Variants' },
-        { path: '/merchant/kds', icon: Monitor, label: 'Kitchen Display' },
-        { path: '/merchant/tables', icon: Grid3x3, label: 'Table Management' },
-        { path: '/merchant/recipe-costing', icon: ChefHat, label: 'Recipe Costing' }
+        { path: '/merchant/barcode-scanner', icon: Scan, label: 'Barcode Scanner (Retail)' },
+        { path: '/merchant/product-variants', icon: Layers, label: 'Product Variants (Retail)' },
+        { path: '/merchant/kds', icon: Monitor, label: 'Kitchen Display (Restaurant)' },
+        { path: '/merchant/tables', icon: Grid3x3, label: 'Table Management (Restaurant)' },
+        { path: '/merchant/recipe-costing', icon: ChefHat, label: 'Recipe Costing (Restaurant)' },
+        { path: '/merchant/appointments', icon: Calendar, label: 'Appointments (Salon/Service)' },
+        { path: '/merchant/service-catalog', icon: Scissors, label: 'Service Catalog (Salon)' }
       ]
     },
     {
