@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Search, Bell, SlidersHorizontal, Sparkles } from 'lucide-react';
 import { useApp, globalModeOptions } from '../../contexts/AppContext';
 import { useWallet } from '../../contexts/WalletContext';
@@ -9,6 +10,7 @@ const Header = () => {
   const { globalMode, toggleFilterSheet, toggleModeSwitcher } = useApp();
   const { totalCoinsValue } = useWallet();
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const navigate = useNavigate();
 
   const currentMode = globalModeOptions.find(m => m.id === globalMode);
 
@@ -65,7 +67,10 @@ const Header = () => {
             </div>
 
             {/* Notifications with Glass Effect */}
-            <button className="relative p-2.5 rounded-full bg-white/50 dark:bg-white/10 backdrop-blur-xl border border-white/20 dark:border-white/10 hover:bg-white/70 dark:hover:bg-white/20 transition-all shadow-lg hover:shadow-xl group">
+            <button
+              onClick={() => navigate('/notifications')}
+              className="relative p-2.5 rounded-full bg-white/50 dark:bg-white/10 backdrop-blur-xl border border-white/20 dark:border-white/10 hover:bg-white/70 dark:hover:bg-white/20 transition-all shadow-lg hover:shadow-xl group"
+            >
               <Bell className="w-5 h-5 text-gray-700 dark:text-gray-200 group-hover:scale-110 transition-transform" />
               <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-gradient-to-r from-red-500 to-pink-500 rounded-full animate-pulse shadow-lg shadow-red-500/50"></span>
               <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full"></span>

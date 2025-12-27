@@ -9,11 +9,11 @@ const MallBrands = () => {
 
   // Mock brands data
   const brands = [
-    { id: 1, name: 'Zara', logo: '👔', category: 'Fashion', rating: 4.8, badge: '✅ Verified', coins: 'Up to 35% ReZ Coins' },
-    { id: 2, name: 'Nykaa', logo: '💄', category: 'Beauty', rating: 4.9, badge: '⭐ ReZ Preferred', coins: 'Up to 30% ReZ Coins' },
-    { id: 3, name: 'Sony', logo: '📱', category: 'Electronics', rating: 4.7, badge: '✅ Verified', coins: 'Up to 25% ReZ Coins' },
-    { id: 4, name: 'Licious', logo: '🍖', category: 'Food', rating: 4.6, badge: '⭐ ReZ Preferred', coins: 'Up to 20% ReZ Coins' },
-    { id: 5, name: 'Forest Essentials', logo: '🌿', category: 'Beauty', rating: 4.8, badge: '👑 Premium', coins: 'Up to 40% ReZ Coins' },
+    { id: 1, name: 'Zara', logo: 'https://logo.clearbit.com/zara.com', category: 'Fashion', rating: 4.8, badge: '✅ Verified', coins: 'Up to 35% ReZ Coins' },
+    { id: 2, name: 'Nykaa', logo: 'https://logo.clearbit.com/nykaa.com', category: 'Beauty', rating: 4.9, badge: '⭐ ReZ Preferred', coins: 'Up to 30% ReZ Coins' },
+    { id: 3, name: 'Sony', logo: 'https://logo.clearbit.com/sony.com', category: 'Electronics', rating: 4.7, badge: '✅ Verified', coins: 'Up to 25% ReZ Coins' },
+    { id: 4, name: 'Licious', logo: 'https://logo.clearbit.com/licious.in', category: 'Food', rating: 4.6, badge: '⭐ ReZ Preferred', coins: 'Up to 20% ReZ Coins' },
+    { id: 5, name: 'Forest Essentials', logo: 'https://logo.clearbit.com/forestessentialsindia.com', category: 'Beauty', rating: 4.8, badge: '👑 Premium', coins: 'Up to 40% ReZ Coins' },
   ];
 
   return (
@@ -49,8 +49,16 @@ const MallBrands = () => {
               className="p-4 rounded-2xl bg-white dark:bg-dark-800 border border-rez-gray-200 dark:border-dark-700 hover:border-emerald-500 dark:hover:border-emerald-500 transition-all cursor-pointer"
             >
               <div className="flex items-center gap-4">
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-500/20 to-emerald-600/20 flex items-center justify-center text-3xl">
-                  {brand.logo}
+                <div className="w-16 h-16 rounded-2xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 flex items-center justify-center p-2 overflow-hidden">
+                  <img
+                    src={brand.logo}
+                    alt={brand.name}
+                    className="w-full h-full object-contain"
+                    onError={(e) => {
+                      e.target.style.display = 'none';
+                      e.target.parentElement.innerHTML = '<span class="text-2xl">🏪</span>';
+                    }}
+                  />
                 </div>
                 <div className="flex-1">
                   <div className="flex items-start justify-between mb-1">

@@ -18,7 +18,7 @@ const RezMall = () => {
     {
       id: 1,
       name: 'Zara',
-      logo: '👔',
+      logo: 'https://logo.clearbit.com/zara.com',
       category: 'Fashion',
       cashback: '₹500 ReZ Coins',
       badge: '✅ Verified',
@@ -28,7 +28,7 @@ const RezMall = () => {
     {
       id: 2,
       name: 'Nykaa',
-      logo: '💄',
+      logo: 'https://logo.clearbit.com/nykaa.com',
       category: 'Beauty',
       cashback: '₹300 ReZ Coins',
       badge: '⭐ ReZ Preferred',
@@ -38,7 +38,7 @@ const RezMall = () => {
     {
       id: 3,
       name: 'Sony',
-      logo: '📱',
+      logo: 'https://logo.clearbit.com/sony.com',
       category: 'Electronics',
       cashback: '₹1,200 ReZ Coins',
       badge: '✅ Verified',
@@ -48,7 +48,7 @@ const RezMall = () => {
     {
       id: 4,
       name: 'Licious',
-      logo: '🍖',
+      logo: 'https://logo.clearbit.com/licious.in',
       category: 'Food',
       cashback: '₹250 ReZ Coins',
       badge: '👑 Premium',
@@ -105,10 +105,10 @@ const RezMall = () => {
   ];
 
   const newArrivals = [
-    { id: 1, name: 'Urban Company', category: 'Services', badge: '🆕 New on ReZ', logo: '🔧', bonus: 'Extra 100 Coins' },
-    { id: 2, name: 'Boat', category: 'Electronics', badge: '🆕 New on ReZ', logo: '🎧', bonus: 'Early-bird Coins' },
-    { id: 3, name: 'Mamaearth', category: 'Wellness', badge: '🆕 New on ReZ', logo: '🌿', bonus: 'Extra 150 Coins' },
-    { id: 4, name: 'Pepperfry', category: 'Home', badge: '🆕 New on ReZ', logo: '🪑', bonus: 'Double Coins' }
+    { id: 1, name: 'Urban Company', category: 'Services', badge: '🆕 New on ReZ', logo: 'https://logo.clearbit.com/urbancompany.com', bonus: 'Extra 100 Coins' },
+    { id: 2, name: 'Boat', category: 'Electronics', badge: '🆕 New on ReZ', logo: 'https://logo.clearbit.com/boat-lifestyle.com', bonus: 'Early-bird Coins' },
+    { id: 3, name: 'Mamaearth', category: 'Wellness', badge: '🆕 New on ReZ', logo: 'https://logo.clearbit.com/mamaearth.in', bonus: 'Extra 150 Coins' },
+    { id: 4, name: 'Pepperfry', category: 'Home', badge: '🆕 New on ReZ', logo: 'https://logo.clearbit.com/pepperfry.com', bonus: 'Double Coins' }
   ];
 
   const topRated = [
@@ -168,8 +168,16 @@ const RezMall = () => {
               to={`/mall/brand/${brand.id}`}
               className="p-4 rounded-2xl bg-white dark:bg-dark-800 border border-rez-gray-200 dark:border-dark-700 hover:border-blue-500 dark:hover:border-blue-500 transition-all active:scale-98"
             >
-              <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${brand.color} flex items-center justify-center text-3xl mb-3 mx-auto`}>
-                {brand.logo}
+              <div className={`w-16 h-16 rounded-2xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 flex items-center justify-center p-2 mb-3 mx-auto overflow-hidden`}>
+                <img
+                  src={brand.logo}
+                  alt={brand.name}
+                  className="w-full h-full object-contain"
+                  onError={(e) => {
+                    e.target.style.display = 'none';
+                    e.target.parentElement.innerHTML = '<span class="text-2xl">🏪</span>';
+                  }}
+                />
               </div>
               <h3 className="font-semibold text-rez-navy dark:text-white text-center mb-1">
                 {brand.name}
@@ -317,8 +325,16 @@ const RezMall = () => {
               <span className="absolute top-2 right-2 px-2 py-0.5 rounded-full bg-emerald-500 text-[10px] font-bold text-white">
                 {brand.badge}
               </span>
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500/20 to-green-500/20 flex items-center justify-center text-2xl mb-3">
-                {brand.logo}
+              <div className="w-12 h-12 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 flex items-center justify-center p-2 mb-3 overflow-hidden">
+                <img
+                  src={brand.logo}
+                  alt={brand.name}
+                  className="w-full h-full object-contain"
+                  onError={(e) => {
+                    e.target.style.display = 'none';
+                    e.target.parentElement.innerHTML = '<span class="text-xl">🏪</span>';
+                  }}
+                />
               </div>
               <h3 className="font-semibold text-sm text-rez-navy dark:text-white mb-1">
                 {brand.name}
