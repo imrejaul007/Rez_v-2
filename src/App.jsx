@@ -52,10 +52,12 @@ import PriveActivityStatement from './pages/prive/PriveActivityStatement';
 // Admin Pages
 import AdminDashboard from './pages/admin/AdminDashboard';
 import AdminUsers from './pages/admin/AdminUsers';
+import AdminMerchants from './pages/admin/AdminMerchants';
 
 // Merchant Pages
 import MerchantDashboard from './pages/merchant/MerchantDashboard';
 import CreateOffer from './pages/merchant/CreateOffer';
+import MerchantOffers from './pages/merchant/MerchantOffers';
 import PriveExit from './pages/prive/PriveExit';
 import PriveInvitations from './pages/prive/PriveInvitations';
 import PriveSettings from './pages/prive/PriveSettings';
@@ -700,10 +702,12 @@ function App() {
                 <Route path="admin" element={<AdminDashboard />} />
                 <Route path="admin/dashboard" element={<AdminDashboard />} />
                 <Route path="admin/users" element={<AdminUsers />} />
+                <Route path="admin/merchants" element={<AdminMerchants />} />
 
                 {/* Merchant Routes */}
                 <Route path="merchant" element={<MerchantDashboard />} />
                 <Route path="merchant/dashboard" element={<MerchantDashboard />} />
+                <Route path="merchant/offers" element={<MerchantOffers />} />
                 <Route path="merchant/offers/create" element={<CreateOffer />} />
 
                 {/* Loyalty & Rewards - Unified Hub */}
