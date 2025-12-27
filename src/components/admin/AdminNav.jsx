@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { LayoutDashboard, Users, Store, Tag, BarChart3, Send, Folder, FileText, Gamepad2, UserPlus, Calendar, Heart, Settings, Headphones, CreditCard, Coins, Wallet, Megaphone, Shield, Award, Plug, Activity, Bell, UserCog, Code, Image, Mail, Ticket, Zap, Building2, Trophy, MessageSquare, Server, TrendingDown, GitCompare, Share2, ImagePlus, Brain } from 'lucide-react';
+import { LayoutDashboard, Users, Store, Tag, BarChart3, Send, Folder, FileText, Gamepad2, UserPlus, Calendar, Heart, Settings, Headphones, CreditCard, Coins, Wallet, Megaphone, Shield, Award, Plug, Activity, Bell, UserCog, Code, Image, Mail, Ticket, Zap, Building2, Trophy, MessageSquare, Server, TrendingDown, GitCompare, Share2, ImagePlus, Brain, CheckCircle } from 'lucide-react';
 
 export default function AdminNav() {
   const location = useLocation();
@@ -20,6 +20,7 @@ export default function AdminNav() {
     { path: '/admin/ugc-management', icon: ImagePlus, label: 'UGC' },
     { path: '/admin/analytics', icon: BarChart3, label: 'Analytics' },
     { path: '/admin/campaigns', icon: Send, label: 'Campaigns' },
+    { path: '/admin/campaign-approval', icon: CheckCircle, label: 'Approvals' },
     { path: '/admin/gamification', icon: Gamepad2, label: 'Gamification' },
     { path: '/admin/referrals', icon: UserPlus, label: 'Referrals' },
     { path: '/admin/tournaments', icon: Trophy, label: 'Tournaments' },

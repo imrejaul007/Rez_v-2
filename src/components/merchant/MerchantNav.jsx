@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { LayoutDashboard, Tag, Users, CreditCard, Star, BarChart3, Wallet, Megaphone, Headphones, Settings, Store, Bell, Image, Gift, UserPlus, TrendingUp, FileText, FolderOpen } from 'lucide-react';
+import { LayoutDashboard, Tag, Users, CreditCard, Star, BarChart3, Wallet, Megaphone, Headphones, Settings, Store, Bell, Image, Gift, UserPlus, TrendingUp, FileText, FolderOpen, ShoppingBag, Package, Camera, Award, DollarSign } from 'lucide-react';
 
 export default function MerchantNav() {
   const location = useLocation();
@@ -7,7 +7,11 @@ export default function MerchantNav() {
   const navItems = [
     { path: '/merchant/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
     { path: '/merchant/profile', icon: Store, label: 'Profile' },
+    { path: '/merchant/orders', icon: ShoppingBag, label: 'Orders' },
+    { path: '/merchant/products', icon: Package, label: 'Products' },
     { path: '/merchant/offers', icon: Tag, label: 'Offers' },
+    { path: '/merchant/campaigns', icon: Megaphone, label: 'Campaigns' },
+    { path: '/merchant/ugc-campaigns', icon: Camera, label: 'UGC' },
     { path: '/merchant/customers', icon: Users, label: 'Customers' },
     { path: '/merchant/transactions', icon: CreditCard, label: 'Transactions' },
     { path: '/merchant/wallet', icon: Wallet, label: 'Wallet' },
@@ -17,6 +21,8 @@ export default function MerchantNav() {
     { path: '/merchant/marketing', icon: Megaphone, label: 'Marketing' },
     { path: '/merchant/content', icon: Image, label: 'Content' },
     { path: '/merchant/loyalty', icon: Gift, label: 'Loyalty' },
+    { path: '/merchant/loyalty-offers', icon: Award, label: 'Loyalty Offers' },
+    { path: '/merchant/price-engineering', icon: DollarSign, label: 'Pricing' },
     { path: '/merchant/staff', icon: UserPlus, label: 'Staff' },
     { path: '/merchant/benchmarks', icon: TrendingUp, label: 'Benchmarks' },
     { path: '/merchant/compliance', icon: FileText, label: 'Compliance' },

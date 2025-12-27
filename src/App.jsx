@@ -111,6 +111,13 @@ import MerchantBenchmarks from './pages/merchant/MerchantBenchmarks';
 import MerchantCompliance from './pages/merchant/MerchantCompliance';
 import MerchantDocuments from './pages/merchant/MerchantDocuments';
 import MerchantWallet from './pages/merchant/MerchantWallet';
+import MerchantOrders from './pages/merchant/MerchantOrders';
+import MerchantProducts from './pages/merchant/MerchantProducts';
+import MerchantCampaigns from './pages/merchant/MerchantCampaigns';
+import MerchantUGCCampaigns from './pages/merchant/MerchantUGCCampaigns';
+import MerchantLoyaltyOffers from './pages/merchant/MerchantLoyaltyOffers';
+import MerchantPriceEngineering from './pages/merchant/MerchantPriceEngineering';
+import AdminCampaignApproval from './pages/admin/AdminCampaignApproval';
 import PriveExit from './pages/prive/PriveExit';
 import PriveInvitations from './pages/prive/PriveInvitations';
 import PriveSettings from './pages/prive/PriveSettings';
@@ -759,6 +766,7 @@ function App() {
                 <Route path="admin/offers" element={<AdminOffers />} />
                 <Route path="admin/analytics" element={<AdminAnalytics />} />
                 <Route path="admin/campaigns" element={<AdminCampaigns />} />
+                <Route path="admin/campaign-approval" element={<AdminCampaignApproval />} />
                 <Route path="admin/categories" element={<AdminCategories />} />
                 <Route path="admin/content" element={<AdminContent />} />
                 <Route path="admin/ugc-management" element={<AdminUGCManagement />} />
@@ -797,8 +805,12 @@ function App() {
                 <Route path="merchant" element={<MerchantDashboard />} />
                 <Route path="merchant/dashboard" element={<MerchantDashboard />} />
                 <Route path="merchant/profile" element={<MerchantProfile />} />
+                <Route path="merchant/orders" element={<MerchantOrders />} />
+                <Route path="merchant/products" element={<MerchantProducts />} />
                 <Route path="merchant/offers" element={<MerchantOffers />} />
                 <Route path="merchant/offers/create" element={<CreateOffer />} />
+                <Route path="merchant/campaigns" element={<MerchantCampaigns />} />
+                <Route path="merchant/ugc-campaigns" element={<MerchantUGCCampaigns />} />
                 <Route path="merchant/customers" element={<MerchantCustomers />} />
                 <Route path="merchant/transactions" element={<MerchantTransactions />} />
                 <Route path="merchant/wallet" element={<MerchantWallet />} />
@@ -808,6 +820,8 @@ function App() {
                 <Route path="merchant/marketing" element={<MerchantMarketing />} />
                 <Route path="merchant/content" element={<MerchantContent />} />
                 <Route path="merchant/loyalty" element={<MerchantLoyalty />} />
+                <Route path="merchant/loyalty-offers" element={<MerchantLoyaltyOffers />} />
+                <Route path="merchant/price-engineering" element={<MerchantPriceEngineering />} />
                 <Route path="merchant/staff" element={<MerchantStaff />} />
                 <Route path="merchant/benchmarks" element={<MerchantBenchmarks />} />
                 <Route path="merchant/compliance" element={<MerchantCompliance />} />
