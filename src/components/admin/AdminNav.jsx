@@ -8,12 +8,13 @@ import {
   Server, TrendingDown, GitCompare, Share2, ImagePlus, Brain, CheckCircle,
   Target, Package, GraduationCap, MapPin, Clock, Gift, TrendingUp, Flame,
   Receipt, UserCheck, Truck, Sparkles, QrCode, CalendarCheck, Lock, Grid3x3,
-  Layers, Handshake, Briefcase
+  Layers, Handshake, Briefcase, Menu, X, Globe, DollarSign
 } from 'lucide-react';
 
 export default function AdminNav() {
   const location = useLocation();
-  const [openDropdown, setOpenDropdown] = useState(null);
+  const [openCategories, setOpenCategories] = useState({});
+  const [sidebarOpen, setSidebarOpen] = useState(true);
 
   const navCategories = [
     {
@@ -21,7 +22,16 @@ export default function AdminNav() {
       label: 'Overview',
       icon: LayoutDashboard,
       items: [
-        { path: '/admin/dashboard', icon: LayoutDashboard, label: 'Dashboard' }
+        { path: '/admin/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
+        { path: '/admin/global-dashboard', icon: Globe, label: 'Global Dashboard (ReZ HQ)' },
+        { path: '/admin/regional-dashboard', icon: MapPin, label: 'Regional Dashboard' },
+        { path: '/admin/marketing-dashboard', icon: Megaphone, label: 'Marketing Dashboard' },
+        { path: '/admin/finance-dashboard', icon: DollarSign, label: 'Finance Dashboard' },
+        { path: '/admin/operations-dashboard', icon: Settings, label: 'Operations Dashboard' },
+        { path: '/admin/support-dashboard', icon: Headphones, label: 'Customer Support Dashboard' },
+        { path: '/admin/content-dashboard', icon: FileText, label: 'Content Admin Dashboard' },
+        { path: '/admin/analytics-dashboard', icon: BarChart3, label: 'Analytics Admin Dashboard' },
+        { path: '/admin/role-management', icon: Shield, label: 'Admin Role Management' }
       ]
     },
     {
@@ -38,7 +48,7 @@ export default function AdminNav() {
     },
     {
       id: 'transactions',
-      label: 'Transactions & Payments',
+      label: 'Transactions',
       icon: CreditCard,
       items: [
         { path: '/admin/transactions', icon: CreditCard, label: 'Transactions' },
@@ -73,6 +83,8 @@ export default function AdminNav() {
       icon: Coins,
       items: [
         { path: '/admin/coin-system-overview', icon: Coins, label: '4-Coin Overview' },
+        { path: '/admin/coin-issuance', icon: Zap, label: 'Coin Issuance Control' },
+        { path: '/admin/coin-rules', icon: Settings, label: 'Coin Rules Engine' },
         { path: '/admin/coin-events', icon: Coins, label: 'Coin Events' },
         { path: '/admin/promo-coin-manager', icon: Ticket, label: 'Promo Coin Manager' },
         { path: '/admin/redemption-rules', icon: Shield, label: 'Redemption Rules' },
@@ -82,7 +94,7 @@ export default function AdminNav() {
     },
     {
       id: 'merchant-config',
-      label: 'Merchant Configuration',
+      label: 'Merchant Config',
       icon: Store,
       items: [
         { path: '/admin/merchant-tier-config', icon: Layers, label: 'Merchant Tiers' },
@@ -92,7 +104,7 @@ export default function AdminNav() {
     },
     {
       id: 'programs',
-      label: 'Programs & Gamification',
+      label: 'Programs',
       icon: Gamepad2,
       items: [
         { path: '/admin/exclusive-programs', icon: GraduationCap, label: 'Exclusive Programs' },
@@ -107,7 +119,7 @@ export default function AdminNav() {
     },
     {
       id: 'campaigns',
-      label: 'Marketing & Campaigns',
+      label: 'Campaigns',
       icon: Megaphone,
       items: [
         { path: '/admin/campaigns', icon: Send, label: 'Campaigns' },
@@ -121,7 +133,7 @@ export default function AdminNav() {
     },
     {
       id: 'content',
-      label: 'Content & Analytics',
+      label: 'Content',
       icon: BarChart3,
       items: [
         { path: '/admin/analytics', icon: BarChart3, label: 'Analytics' },
@@ -136,7 +148,7 @@ export default function AdminNav() {
     },
     {
       id: 'ai-recommendations',
-      label: 'AI & Recommendations',
+      label: 'AI Engine',
       icon: Brain,
       items: [
         { path: '/admin/recommendations', icon: Brain, label: 'Recommendation Engine' },
@@ -145,7 +157,7 @@ export default function AdminNav() {
     },
     {
       id: 'features',
-      label: 'Feature Management',
+      label: 'Features',
       icon: Target,
       items: [
         { path: '/admin/upload-bill-settings', icon: Receipt, label: 'Bill Upload Settings' },
@@ -154,26 +166,37 @@ export default function AdminNav() {
     },
     {
       id: 'security',
-      label: 'Security & Compliance',
+      label: 'Security',
       icon: Shield,
       items: [
         { path: '/admin/fraud', icon: Shield, label: 'Fraud Detection' },
+        { path: '/admin/kyc-compliance', icon: UserCheck, label: 'KYC & Compliance' },
         { path: '/admin/logs', icon: Activity, label: 'Activity Logs' }
       ]
     },
     {
+      id: 'system-management',
+      label: 'System Management',
+      icon: Settings,
+      items: [
+        { path: '/admin/mode-control', icon: Layers, label: 'Mode & Category Control' },
+        { path: '/admin/college-corporate', icon: GraduationCap, label: 'College & Corporate' },
+        { path: '/admin/bank-reconciliation', icon: DollarSign, label: 'Bank Reconciliation' },
+        { path: '/operations/city-dashboard', icon: MapPin, label: 'City Operations' }
+      ]
+    },
+    {
       id: 'integrations',
-      label: 'Integrations & API',
+      label: 'Integrations',
       icon: Plug,
       items: [
         { path: '/admin/integrations', icon: Plug, label: 'Integrations' },
-        { path: '/admin/api', icon: Code, label: 'API Management' },
         { path: '/admin/background-jobs', icon: Server, label: 'Background Jobs' }
       ]
     },
     {
       id: 'support',
-      label: 'Support & Settings',
+      label: 'Support',
       icon: Settings,
       items: [
         { path: '/admin/notifications', icon: Bell, label: 'Notifications' },
@@ -183,8 +206,11 @@ export default function AdminNav() {
     }
   ];
 
-  const toggleDropdown = (categoryId) => {
-    setOpenDropdown(openDropdown === categoryId ? null : categoryId);
+  const toggleCategory = (categoryId) => {
+    setOpenCategories(prev => ({
+      ...prev,
+      [categoryId]: !prev[categoryId]
+    }));
   };
 
   const isPathActive = (path) => {
@@ -196,45 +222,76 @@ export default function AdminNav() {
   };
 
   return (
-    <div className="bg-white border-b border-gray-200 sticky top-0 z-40">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <nav className="flex gap-1 overflow-x-auto">
+    <>
+      {/* Mobile Toggle Button */}
+      <button
+        onClick={() => setSidebarOpen(!sidebarOpen)}
+        className="fixed top-4 left-4 z-50 lg:hidden bg-white p-2 rounded-lg shadow-lg border border-gray-200"
+      >
+        {sidebarOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+      </button>
+
+      {/* Overlay for mobile */}
+      {sidebarOpen && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 z-30 lg:hidden"
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
+
+      {/* Sidebar */}
+      <div
+        className={`fixed left-0 top-0 h-full bg-white border-r border-gray-200 z-40 transition-transform duration-300 overflow-y-auto ${
+          sidebarOpen ? 'translate-x-0' : '-translate-x-full'
+        } ${sidebarOpen ? 'w-64' : 'w-0'} lg:translate-x-0 lg:w-64`}
+      >
+        <div className="p-4 border-b border-gray-200">
+          <h2 className="text-lg font-bold text-gray-900">Admin Portal</h2>
+        </div>
+
+        <nav className="p-2">
           {navCategories.map((category) => {
             const CategoryIcon = category.icon;
             const isActive = isCategoryActive(category);
+            const isOpen = openCategories[category.id];
 
             return (
-              <div key={category.id} className="relative">
+              <div key={category.id} className="mb-1">
                 <button
-                  onClick={() => toggleDropdown(category.id)}
-                  className={`flex items-center gap-2 px-4 py-3 border-b-2 transition-colors whitespace-nowrap ${
+                  onClick={() => toggleCategory(category.id)}
+                  className={`w-full flex items-center justify-between px-3 py-2 rounded-lg transition-colors ${
                     isActive
-                      ? 'border-indigo-600 text-indigo-600 font-medium bg-indigo-50'
-                      : 'border-transparent text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                      ? 'bg-indigo-50 text-indigo-600'
+                      : 'text-gray-700 hover:bg-gray-100'
                   }`}
                 >
-                  <CategoryIcon className="w-4 h-4" />
-                  {category.label}
-                  <ChevronDown className={`w-4 h-4 transition-transform ${openDropdown === category.id ? 'rotate-180' : ''}`} />
+                  <div className="flex items-center gap-3">
+                    <CategoryIcon className="w-5 h-5" />
+                    <span className="font-medium text-sm">{category.label}</span>
+                  </div>
+                  <ChevronDown
+                    className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`}
+                  />
                 </button>
 
-                {openDropdown === category.id && (
-                  <div className="absolute top-full left-0 mt-0 w-64 bg-white border border-gray-200 rounded-b-lg shadow-lg z-50 max-h-96 overflow-y-auto">
+                {isOpen && (
+                  <div className="ml-4 mt-1 space-y-1">
                     {category.items.map((item) => {
                       const ItemIcon = item.icon;
+                      const isItemActive = isPathActive(item.path);
+
                       return (
                         <Link
                           key={item.path}
                           to={item.path}
-                          onClick={() => setOpenDropdown(null)}
-                          className={`flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-colors ${
-                            isPathActive(item.path)
-                              ? 'bg-indigo-50 text-indigo-600 font-medium border-l-4 border-indigo-600'
-                              : 'text-gray-700 border-l-4 border-transparent'
+                          className={`flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-colors ${
+                            isItemActive
+                              ? 'bg-indigo-100 text-indigo-700 font-semibold'
+                              : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
                           }`}
                         >
                           <ItemIcon className="w-4 h-4" />
-                          {item.label}
+                          <span>{item.label}</span>
                         </Link>
                       );
                     })}
@@ -246,13 +303,8 @@ export default function AdminNav() {
         </nav>
       </div>
 
-      {/* Click outside to close dropdown */}
-      {openDropdown && (
-        <div
-          className="fixed inset-0 z-30"
-          onClick={() => setOpenDropdown(null)}
-        />
-      )}
-    </div>
+      {/* Spacer for content */}
+      <div className={`${sidebarOpen ? 'lg:ml-64' : 'lg:ml-0'} transition-all duration-300`} />
+    </>
   );
 }

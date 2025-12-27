@@ -1,16 +1,17 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import {
-  LayoutDashboard, Store, ChevronDown, ShoppingBag, Package, RotateCcw, Truck,
+  LayoutDashboard, Store, ChevronRight, ShoppingBag, Package, RotateCcw, Truck,
   Tag, Zap, Crown, Megaphone, Camera, Users, CreditCard, Wallet, Star,
   BarChart3, LineChart, TrendingUp, DollarSign, Image, Gift, Award,
   UserPlus, FileText, FolderOpen, Bell, Headphones, Settings, MapPin,
-  Clock, Cake, Coins, ShoppingCart, Layers, Lock, Box
+  Clock, Cake, Coins, ShoppingCart, Layers, Lock, Box, ChevronDown, Menu, X
 } from 'lucide-react';
 
 export default function MerchantNav() {
   const location = useLocation();
-  const [openDropdown, setOpenDropdown] = useState(null);
+  const [openCategories, setOpenCategories] = useState({});
+  const [sidebarOpen, setSidebarOpen] = useState(true);
 
   const navCategories = [
     {
@@ -36,7 +37,7 @@ export default function MerchantNav() {
     },
     {
       id: 'promotions',
-      label: 'Promotions & Marketing',
+      label: 'Promotions',
       icon: Tag,
       items: [
         { path: '/merchant/offers', icon: Tag, label: 'Offers' },
@@ -77,7 +78,7 @@ export default function MerchantNav() {
     },
     {
       id: 'financials',
-      label: 'Finance & Analytics',
+      label: 'Finance',
       icon: BarChart3,
       items: [
         { path: '/merchant/analytics', icon: BarChart3, label: 'Analytics' },
@@ -102,7 +103,7 @@ export default function MerchantNav() {
     },
     {
       id: 'settings',
-      label: 'Settings & Support',
+      label: 'Settings',
       icon: Settings,
       items: [
         { path: '/merchant/staff', icon: UserPlus, label: 'Staff Management' },
@@ -115,8 +116,11 @@ export default function MerchantNav() {
     }
   ];
 
-  const toggleDropdown = (categoryId) => {
-    setOpenDropdown(openDropdown === categoryId ? null : categoryId);
+  const toggleCategory = (categoryId) => {
+    setOpenCategories(prev => ({
+      ...prev,
+      [categoryId]: !prev[categoryId]
+    }));
   };
 
   const isPathActive = (path) => {
@@ -128,45 +132,76 @@ export default function MerchantNav() {
   };
 
   return (
-    <div className="bg-white border-b border-gray-200 sticky top-0 z-40">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <nav className="flex gap-1 overflow-x-auto">
+    <>
+      {/* Mobile Toggle Button */}
+      <button
+        onClick={() => setSidebarOpen(!sidebarOpen)}
+        className="fixed top-4 left-4 z-50 lg:hidden bg-white p-2 rounded-lg shadow-lg border border-gray-200"
+      >
+        {sidebarOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+      </button>
+
+      {/* Overlay for mobile */}
+      {sidebarOpen && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 z-30 lg:hidden"
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
+
+      {/* Sidebar */}
+      <div
+        className={`fixed left-0 top-0 h-full bg-white border-r border-gray-200 z-40 transition-transform duration-300 overflow-y-auto ${
+          sidebarOpen ? 'translate-x-0' : '-translate-x-full'
+        } ${sidebarOpen ? 'w-64' : 'w-0'} lg:translate-x-0 lg:w-64`}
+      >
+        <div className="p-4 border-b border-gray-200">
+          <h2 className="text-lg font-bold text-gray-900">Merchant Portal</h2>
+        </div>
+
+        <nav className="p-2">
           {navCategories.map((category) => {
             const CategoryIcon = category.icon;
             const isActive = isCategoryActive(category);
+            const isOpen = openCategories[category.id];
 
             return (
-              <div key={category.id} className="relative">
+              <div key={category.id} className="mb-1">
                 <button
-                  onClick={() => toggleDropdown(category.id)}
-                  className={`flex items-center gap-2 px-4 py-3 border-b-2 transition-colors whitespace-nowrap ${
+                  onClick={() => toggleCategory(category.id)}
+                  className={`w-full flex items-center justify-between px-3 py-2 rounded-lg transition-colors ${
                     isActive
-                      ? 'border-indigo-600 text-indigo-600 font-medium bg-indigo-50'
-                      : 'border-transparent text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                      ? 'bg-indigo-50 text-indigo-600'
+                      : 'text-gray-700 hover:bg-gray-100'
                   }`}
                 >
-                  <CategoryIcon className="w-4 h-4" />
-                  {category.label}
-                  <ChevronDown className={`w-4 h-4 transition-transform ${openDropdown === category.id ? 'rotate-180' : ''}`} />
+                  <div className="flex items-center gap-3">
+                    <CategoryIcon className="w-5 h-5" />
+                    <span className="font-medium text-sm">{category.label}</span>
+                  </div>
+                  <ChevronDown
+                    className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`}
+                  />
                 </button>
 
-                {openDropdown === category.id && (
-                  <div className="absolute top-full left-0 mt-0 w-64 bg-white border border-gray-200 rounded-b-lg shadow-lg z-50">
+                {isOpen && (
+                  <div className="ml-4 mt-1 space-y-1">
                     {category.items.map((item) => {
                       const ItemIcon = item.icon;
+                      const isItemActive = isPathActive(item.path);
+
                       return (
                         <Link
                           key={item.path}
                           to={item.path}
-                          onClick={() => setOpenDropdown(null)}
-                          className={`flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-colors ${
-                            isPathActive(item.path)
-                              ? 'bg-indigo-50 text-indigo-600 font-medium border-l-4 border-indigo-600'
-                              : 'text-gray-700 border-l-4 border-transparent'
+                          className={`flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-colors ${
+                            isItemActive
+                              ? 'bg-indigo-100 text-indigo-700 font-semibold'
+                              : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
                           }`}
                         >
                           <ItemIcon className="w-4 h-4" />
-                          {item.label}
+                          <span>{item.label}</span>
                         </Link>
                       );
                     })}
@@ -178,13 +213,8 @@ export default function MerchantNav() {
         </nav>
       </div>
 
-      {/* Click outside to close dropdown */}
-      {openDropdown && (
-        <div
-          className="fixed inset-0 z-30"
-          onClick={() => setOpenDropdown(null)}
-        />
-      )}
-    </div>
+      {/* Spacer for content */}
+      <div className={`${sidebarOpen ? 'lg:ml-64' : 'lg:ml-0'} transition-all duration-300`} />
+    </>
   );
 }

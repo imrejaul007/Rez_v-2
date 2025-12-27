@@ -51,6 +51,22 @@ import PriveActivityStatement from './pages/prive/PriveActivityStatement';
 
 // Admin Pages
 import AdminDashboard from './pages/admin/AdminDashboard';
+import AdminGlobalDashboard from './pages/admin/AdminGlobalDashboard';
+import AdminMarketingDashboard from './pages/admin/AdminMarketingDashboard';
+import AdminFinanceDashboard from './pages/admin/AdminFinanceDashboard';
+import AdminOperationsDashboard from './pages/admin/AdminOperationsDashboard';
+import AdminRegionalDashboard from './pages/admin/AdminRegionalDashboard';
+import AdminRoleManagement from './pages/admin/AdminRoleManagement';
+import AdminSupportDashboard from './pages/admin/AdminSupportDashboard';
+import AdminContentDashboard from './pages/admin/AdminContentDashboard';
+import AdminAnalyticsDashboard from './pages/admin/AdminAnalyticsDashboard';
+import AdminModeControl from './pages/admin/AdminModeControl';
+import AdminCollegeCorporateModule from './pages/admin/AdminCollegeCorporateModule';
+import AdminCoinIssuanceControl from './pages/admin/AdminCoinIssuanceControl';
+import AdminCoinRulesEngine from './pages/admin/AdminCoinRulesEngine';
+import AdminKYCCompliance from './pages/admin/AdminKYCCompliance';
+import AdminBankReconciliation from './pages/admin/AdminBankReconciliation';
+import OperationsCityDashboard from './pages/admin/OperationsCityDashboard';
 import AdminUsers from './pages/admin/AdminUsers';
 import AdminMerchants from './pages/admin/AdminMerchants';
 import AdminOffers from './pages/admin/AdminOffers';
@@ -74,7 +90,6 @@ import AdminIntegrations from './pages/admin/AdminIntegrations';
 import AdminLogs from './pages/admin/AdminLogs';
 import AdminUserManagement from './pages/admin/AdminUserManagement';
 import AdminNotifications from './pages/admin/AdminNotifications';
-import AdminAPI from './pages/admin/AdminAPI';
 import AdminWallet from './pages/admin/AdminWallet';
 import AdminVouchers from './pages/admin/AdminVouchers';
 import AdminFlashSales from './pages/admin/AdminFlashSales';
@@ -89,9 +104,19 @@ import AdminProductComparison from './pages/admin/AdminProductComparison';
 import AdminSocialIntegration from './pages/admin/AdminSocialIntegration';
 import AdminUGCManagement from './pages/admin/AdminUGCManagement';
 import AdminRecommendations from './pages/admin/AdminRecommendations';
+import AdminMerchantSuperOS from './pages/admin/AdminMerchantSuperOS';
+import AdminEcosystemAnalytics from './pages/admin/AdminEcosystemAnalytics';
+import AdminSettlementCommission from './pages/admin/AdminSettlementCommission';
 
 // Merchant Pages
 import MerchantDashboard from './pages/merchant/MerchantDashboard';
+import MerchantSuperOSDashboard from './pages/merchant/MerchantSuperOSDashboard';
+import MerchantPOS from './pages/merchant/MerchantPOS';
+import MerchantAccounting from './pages/merchant/MerchantAccounting';
+import MerchantEvents from './pages/merchant/MerchantEvents';
+import MerchantBranchManager from './pages/merchant/MerchantBranchManager';
+import MerchantDiscovery from './pages/merchant/MerchantDiscovery';
+import MerchantPriveModule from './pages/merchant/MerchantPriveModule';
 import CreateOffer from './pages/merchant/CreateOffer';
 import MerchantOffers from './pages/merchant/MerchantOffers';
 import MerchantCustomers from './pages/merchant/MerchantCustomers';
@@ -807,6 +832,22 @@ function App() {
                 {/* Admin Routes */}
                 <Route path="admin" element={<AdminDashboard />} />
                 <Route path="admin/dashboard" element={<AdminDashboard />} />
+                <Route path="admin/global-dashboard" element={<AdminGlobalDashboard />} />
+                <Route path="admin/marketing-dashboard" element={<AdminMarketingDashboard />} />
+                <Route path="admin/finance-dashboard" element={<AdminFinanceDashboard />} />
+                <Route path="admin/operations-dashboard" element={<AdminOperationsDashboard />} />
+                <Route path="admin/regional-dashboard" element={<AdminRegionalDashboard />} />
+                <Route path="admin/role-management" element={<AdminRoleManagement />} />
+                <Route path="admin/support-dashboard" element={<AdminSupportDashboard />} />
+                <Route path="admin/content-dashboard" element={<AdminContentDashboard />} />
+                <Route path="admin/analytics-dashboard" element={<AdminAnalyticsDashboard />} />
+                <Route path="admin/mode-control" element={<AdminModeControl />} />
+                <Route path="admin/college-corporate" element={<AdminCollegeCorporateModule />} />
+                <Route path="admin/coin-issuance" element={<AdminCoinIssuanceControl />} />
+                <Route path="admin/coin-rules" element={<AdminCoinRulesEngine />} />
+                <Route path="admin/kyc-compliance" element={<AdminKYCCompliance />} />
+                <Route path="admin/bank-reconciliation" element={<AdminBankReconciliation />} />
+                <Route path="operations/city-dashboard" element={<OperationsCityDashboard />} />
                 <Route path="admin/users" element={<AdminUsers />} />
                 <Route path="admin/merchants" element={<AdminMerchants />} />
                 <Route path="admin/offers" element={<AdminOffers />} />
@@ -844,7 +885,6 @@ function App() {
                 <Route path="admin/fraud" element={<AdminFraud />} />
                 <Route path="admin/special-programs" element={<AdminSpecialPrograms />} />
                 <Route path="admin/integrations" element={<AdminIntegrations />} />
-                <Route path="admin/api" element={<AdminAPI />} />
                 <Route path="admin/background-jobs" element={<AdminBackgroundJobs />} />
                 <Route path="admin/user-management" element={<AdminUserManagement />} />
                 <Route path="admin/notifications" element={<AdminNotifications />} />
@@ -873,10 +913,20 @@ function App() {
                 <Route path="admin/merchant-tier-config" element={<AdminMerchantTierConfig />} />
                 <Route path="admin/co-partner-brands" element={<AdminCoPartnerBrands />} />
                 <Route path="admin/partnerships" element={<AdminPartnerships />} />
+                <Route path="admin/merchant-super-os" element={<AdminMerchantSuperOS />} />
+                <Route path="admin/ecosystem-analytics" element={<AdminEcosystemAnalytics />} />
+                <Route path="admin/settlement-commission" element={<AdminSettlementCommission />} />
 
                 {/* Merchant Routes */}
-                <Route path="merchant" element={<MerchantDashboard />} />
-                <Route path="merchant/dashboard" element={<MerchantDashboard />} />
+                <Route path="merchant" element={<MerchantSuperOSDashboard />} />
+                <Route path="merchant/dashboard" element={<MerchantSuperOSDashboard />} />
+                <Route path="merchant/dashboard-old" element={<MerchantDashboard />} />
+                <Route path="merchant/pos" element={<MerchantPOS />} />
+                <Route path="merchant/accounting" element={<MerchantAccounting />} />
+                <Route path="merchant/events" element={<MerchantEvents />} />
+                <Route path="merchant/branches" element={<MerchantBranchManager />} />
+                <Route path="merchant/discovery" element={<MerchantDiscovery />} />
+                <Route path="merchant/prive-module" element={<MerchantPriveModule />} />
                 <Route path="merchant/profile" element={<MerchantProfile />} />
                 <Route path="merchant/orders" element={<MerchantOrders />} />
                 <Route path="merchant/products" element={<MerchantProducts />} />

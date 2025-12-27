@@ -1,5 +1,7 @@
 import { useState } from 'react';
-import { Package, Plus, Search, Filter, Download, Upload, Edit, Trash2, Eye, AlertCircle, CheckCircle, XCircle } from 'lucide-react';
+import { Package, Plus, Search, Filter, Download, Upload, Edit, Trash2, Eye, AlertCircle, CheckCircle, XCircle, TrendingUp, TrendingDown } from 'lucide-react';
+import MerchantNav from '../../components/merchant/MerchantNav';
+import { mockProducts, getLowStockProducts } from '../../data/mock/products';
 
 export default function MerchantInventory() {
   const [activeTab, setActiveTab] = useState('all');
@@ -7,7 +9,18 @@ export default function MerchantInventory() {
   const [showAddModal, setShowAddModal] = useState(false);
   const [showBulkUpload, setShowBulkUpload] = useState(false);
 
-  const [products, setProducts] = useState([
+  const lowStockProducts = getLowStockProducts();
+
+  const [products, setProducts] = useState(mockProducts.map(p => ({
+    ...p,
+    status: p.stock.quantity === 0 ? 'out_of_stock' :
+            p.stock.quantity <= p.stock.reorderLevel ? 'low_stock' :
+            p.isActive ? 'active' : 'inactive',
+    sold: Math.floor(Math.random() * 200) + 50,
+    revenueGenerated: p.price * (Math.floor(Math.random() * 200) + 50)
+  })));
+
+  const [productsOld] = useState([
     {
       id: 'PRD001',
       sku: 'SHOE-NIKE-001',
@@ -127,14 +140,39 @@ export default function MerchantInventory() {
   };
 
   return (
-    <div className="p-6">
-      <div className="mb-6">
-        <h1 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
-          <Package className="w-8 h-8 text-indigo-600" />
-          Inventory & Catalog Management
-        </h1>
-        <p className="text-gray-600 mt-1">Manage your product catalog, stock levels, and SKU inventory</p>
-      </div>
+    <div className="min-h-screen bg-gray-50">
+      <MerchantNav />
+
+      <div className="lg:ml-64">
+        {/* Header */}
+        <div className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white p-6">
+          <div className="flex items-center gap-3">
+            <Package className="w-8 h-8" />
+            <div>
+              <h1 className="text-2xl font-bold">Inventory & Catalog Management</h1>
+              <p className="text-purple-100">Manage your product catalog, stock levels, and SKU inventory</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="p-6">
+          {/* Low Stock Alert */}
+          {lowStockProducts.length > 0 && (
+            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6">
+              <div className="flex items-center gap-3">
+                <AlertCircle className="w-5 h-5 text-yellow-600" />
+                <div className="flex-1">
+                  <p className="font-medium text-yellow-900">Low Stock Alert</p>
+                  <p className="text-sm text-yellow-700">
+                    {lowStockProducts.length} items need restocking urgently.
+                  </p>
+                </div>
+                <button className="px-4 py-2 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700 text-sm font-medium">
+                  Reorder Now
+                </button>
+              </div>
+            </div>
+          )}
 
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-5 gap-4 mb-6">
@@ -245,10 +283,12 @@ export default function MerchantInventory() {
                 <tr key={product.id} className="hover:bg-gray-50">
                   <td className="px-6 py-4 whitespace-nowrap">
                     <div className="flex items-center gap-3">
-                      <div className="text-3xl">{product.image}</div>
+                      <div className="w-12 h-12 bg-gradient-to-br from-purple-100 to-indigo-100 rounded flex items-center justify-center">
+                        <Package className="w-6 h-6 text-purple-600" />
+                      </div>
                       <div>
                         <div className="font-medium text-gray-900">{product.name}</div>
-                        <div className="text-sm text-gray-500">{product.variants} variant{product.variants > 1 ? 's' : ''}</div>
+                        <div className="text-sm text-gray-500">{product.description?.substring(0, 30)}...</div>
                       </div>
                     </div>
                   </td>
@@ -260,15 +300,17 @@ export default function MerchantInventory() {
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     <div className="text-sm font-semibold text-gray-900">₹{product.price.toLocaleString()}</div>
+                    <div className="text-xs text-gray-500">Cost: ₹{product.costPrice}</div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     <div className={`text-sm font-semibold ${
-                      product.stock === 0 ? 'text-red-600' :
-                      product.stock < 10 ? 'text-yellow-600' :
+                      product.stock.quantity === 0 ? 'text-red-600' :
+                      product.stock.quantity <= product.stock.reorderLevel ? 'text-yellow-600' :
                       'text-green-600'
                     }`}>
-                      {product.stock} units
+                      {product.stock.quantity} {product.stock.unit}
                     </div>
+                    <div className="text-xs text-gray-500">Reorder at: {product.stock.reorderLevel}</div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     {getStatusBadge(product.status)}
@@ -449,6 +491,8 @@ export default function MerchantInventory() {
           </div>
         </div>
       )}
+        </div>
+      </div>
     </div>
   );
 }
