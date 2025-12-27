@@ -1,11 +1,12 @@
 import { Link, useLocation } from 'react-router-dom';
-import { LayoutDashboard, Tag, Users, CreditCard, Star, BarChart3, Wallet, Megaphone, Headphones, Settings } from 'lucide-react';
+import { LayoutDashboard, Tag, Users, CreditCard, Star, BarChart3, Wallet, Megaphone, Headphones, Settings, Store, Bell } from 'lucide-react';
 
 export default function MerchantNav() {
   const location = useLocation();
 
   const navItems = [
     { path: '/merchant/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
+    { path: '/merchant/profile', icon: Store, label: 'Profile' },
     { path: '/merchant/offers', icon: Tag, label: 'Offers' },
     { path: '/merchant/customers', icon: Users, label: 'Customers' },
     { path: '/merchant/transactions', icon: CreditCard, label: 'Transactions' },
@@ -13,6 +14,7 @@ export default function MerchantNav() {
     { path: '/merchant/analytics', icon: BarChart3, label: 'Analytics' },
     { path: '/merchant/financials', icon: Wallet, label: 'Financials' },
     { path: '/merchant/marketing', icon: Megaphone, label: 'Marketing' },
+    { path: '/merchant/notifications', icon: Bell, label: 'Notifications' },
     { path: '/merchant/support', icon: Headphones, label: 'Support' },
     { path: '/merchant/settings', icon: Settings, label: 'Settings' }
   ];

@@ -64,6 +64,14 @@ import AdminEvents from './pages/admin/AdminEvents';
 import AdminSocialImpact from './pages/admin/AdminSocialImpact';
 import AdminSettings from './pages/admin/AdminSettings';
 import AdminSupport from './pages/admin/AdminSupport';
+import AdminTransactions from './pages/admin/AdminTransactions';
+import AdminCashback from './pages/admin/AdminCashback';
+import AdminPayments from './pages/admin/AdminPayments';
+import AdminMarketing from './pages/admin/AdminMarketing';
+import AdminFraud from './pages/admin/AdminFraud';
+import AdminSpecialPrograms from './pages/admin/AdminSpecialPrograms';
+import AdminIntegrations from './pages/admin/AdminIntegrations';
+import AdminLogs from './pages/admin/AdminLogs';
 
 // Merchant Pages
 import MerchantDashboard from './pages/merchant/MerchantDashboard';
@@ -77,6 +85,8 @@ import MerchantFinancials from './pages/merchant/MerchantFinancials';
 import MerchantMarketing from './pages/merchant/MerchantMarketing';
 import MerchantSupport from './pages/merchant/MerchantSupport';
 import MerchantSettings from './pages/merchant/MerchantSettings';
+import MerchantProfile from './pages/merchant/MerchantProfile';
+import MerchantNotifications from './pages/merchant/MerchantNotifications';
 import PriveExit from './pages/prive/PriveExit';
 import PriveInvitations from './pages/prive/PriveInvitations';
 import PriveSettings from './pages/prive/PriveSettings';
@@ -731,12 +741,21 @@ function App() {
                 <Route path="admin/referrals" element={<AdminReferrals />} />
                 <Route path="admin/events" element={<AdminEvents />} />
                 <Route path="admin/social-impact" element={<AdminSocialImpact />} />
+                <Route path="admin/transactions" element={<AdminTransactions />} />
+                <Route path="admin/cashback" element={<AdminCashback />} />
+                <Route path="admin/payments" element={<AdminPayments />} />
+                <Route path="admin/marketing" element={<AdminMarketing />} />
+                <Route path="admin/fraud" element={<AdminFraud />} />
+                <Route path="admin/special-programs" element={<AdminSpecialPrograms />} />
+                <Route path="admin/integrations" element={<AdminIntegrations />} />
+                <Route path="admin/logs" element={<AdminLogs />} />
                 <Route path="admin/settings" element={<AdminSettings />} />
                 <Route path="admin/support" element={<AdminSupport />} />
 
                 {/* Merchant Routes */}
                 <Route path="merchant" element={<MerchantDashboard />} />
                 <Route path="merchant/dashboard" element={<MerchantDashboard />} />
+                <Route path="merchant/profile" element={<MerchantProfile />} />
                 <Route path="merchant/offers" element={<MerchantOffers />} />
                 <Route path="merchant/offers/create" element={<CreateOffer />} />
                 <Route path="merchant/customers" element={<MerchantCustomers />} />
@@ -745,6 +764,7 @@ function App() {
                 <Route path="merchant/analytics" element={<MerchantAnalytics />} />
                 <Route path="merchant/financials" element={<MerchantFinancials />} />
                 <Route path="merchant/marketing" element={<MerchantMarketing />} />
+                <Route path="merchant/notifications" element={<MerchantNotifications />} />
                 <Route path="merchant/support" element={<MerchantSupport />} />
                 <Route path="merchant/settings" element={<MerchantSettings />} />
 
