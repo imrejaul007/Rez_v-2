@@ -134,6 +134,11 @@ import MerchantPricingIntelligence from './pages/merchant/MerchantPricingIntelli
 import MerchantTaxCompliance from './pages/merchant/MerchantTaxCompliance';
 import MerchantSuppliersProcurement from './pages/merchant/MerchantSuppliersProcurement';
 import MerchantIntegrations from './pages/merchant/MerchantIntegrations';
+import MerchantMemberships from './pages/merchant/MerchantMemberships';
+import MerchantWasteManagement from './pages/merchant/MerchantWasteManagement';
+import MerchantBatchTracking from './pages/merchant/MerchantBatchTracking';
+import MerchantPayroll from './pages/merchant/MerchantPayroll';
+import MerchantStoreTransfer from './pages/merchant/MerchantStoreTransfer';
 import CreateOffer from './pages/merchant/CreateOffer';
 import MerchantOffers from './pages/merchant/MerchantOffers';
 import MerchantCustomers from './pages/merchant/MerchantCustomers';
@@ -965,6 +970,11 @@ function App() {
                 <Route path="merchant/tax-compliance" element={<MerchantTaxCompliance />} />
                 <Route path="merchant/suppliers-procurement" element={<MerchantSuppliersProcurement />} />
                 <Route path="merchant/integrations" element={<MerchantIntegrations />} />
+                <Route path="merchant/memberships" element={<MerchantMemberships />} />
+                <Route path="merchant/waste-management" element={<MerchantWasteManagement />} />
+                <Route path="merchant/batch-tracking" element={<MerchantBatchTracking />} />
+                <Route path="merchant/payroll" element={<MerchantPayroll />} />
+                <Route path="merchant/store-transfer" element={<MerchantStoreTransfer />} />
                 <Route path="merchant/returns" element={<MerchantReturns />} />
                 <Route path="merchant/payments" element={<MerchantPayments />} />
                 <Route path="merchant/performance" element={<MerchantPerformance />} />

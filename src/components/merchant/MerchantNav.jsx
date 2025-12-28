@@ -7,7 +7,7 @@ import {
   UserPlus, FileText, FolderOpen, Bell, Headphones, Settings, MapPin,
   Clock, Cake, Coins, ShoppingCart, Layers, Lock, Box, ChevronDown, Menu, X,
   Monitor, ChefHat, Grid3x3, Scan, Calendar, Scissors, ClipboardList, Repeat, Globe, Target,
-  Receipt, PackageSearch, Link
+  Receipt, PackageSearch, Link, Crown as MembershipIcon, Trash2, QrCode, ArrowLeftRight
 } from 'lucide-react';
 
 export default function MerchantNav() {
@@ -45,7 +45,10 @@ export default function MerchantNav() {
         { path: '/merchant/products', icon: Package, label: 'Products' },
         { path: '/merchant/inventory', icon: Box, label: 'Inventory' },
         { path: '/merchant/inventory-advanced', icon: BarChart3, label: 'Advanced Inventory' },
+        { path: '/merchant/batch-tracking', icon: QrCode, label: 'Batch & Expiry Tracking' },
+        { path: '/merchant/waste-management', icon: Trash2, label: 'Waste Management' },
         { path: '/merchant/suppliers-procurement', icon: PackageSearch, label: 'Suppliers & Procurement' },
+        { path: '/merchant/store-transfer', icon: ArrowLeftRight, label: 'Inter-Store Transfer' },
         { path: '/merchant/returns', icon: RotateCcw, label: 'Returns & Refunds' },
         { path: '/merchant/shipping', icon: Truck, label: 'Shipping & Logistics' }
       ]
@@ -75,6 +78,7 @@ export default function MerchantNav() {
       icon: Gift,
       items: [
         { path: '/merchant/loyalty', icon: Gift, label: 'Loyalty Program' },
+        { path: '/merchant/memberships', icon: MembershipIcon, label: 'Memberships & Packages' },
         { path: '/merchant/loyalty-offers', icon: Award, label: 'Loyalty Offers' },
         { path: '/merchant/loyalty-tiers', icon: Layers, label: 'Loyalty Tiers' },
         { path: '/merchant/branded-coin-config', icon: Coins, label: 'Branded Coin Config' },
@@ -126,6 +130,7 @@ export default function MerchantNav() {
       items: [
         { path: '/merchant/staff', icon: UserPlus, label: 'Staff Management' },
         { path: '/merchant/staff-roster', icon: ClipboardList, label: 'Staff Roster & Shifts' },
+        { path: '/merchant/payroll', icon: CreditCard, label: 'Payroll & Commission' },
         { path: '/merchant/integrations', icon: Link, label: 'Integration Hub' },
         { path: '/merchant/compliance', icon: FileText, label: 'Compliance' },
         { path: '/merchant/documents', icon: FolderOpen, label: 'Documents' },
