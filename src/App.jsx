@@ -115,6 +115,8 @@ import AdminEventInventory from './pages/admin/AdminEventInventory';
 import AdminFraudDetection from './pages/admin/AdminFraudDetection';
 import AdminAIInsights from './pages/admin/AdminAIInsights';
 import AdminPlatformHealth from './pages/admin/AdminPlatformHealth';
+import AdminCreatorContent from './pages/admin/AdminCreatorContent';
+import AdminWalletAnalytics from './pages/admin/AdminWalletAnalytics';
 
 // Merchant Pages
 import MerchantDashboard from './pages/merchant/MerchantDashboard';
@@ -963,6 +965,8 @@ function App() {
                 <Route path="admin/fraud-detection" element={<AdminFraudDetection />} />
                 <Route path="admin/ai-insights" element={<AdminAIInsights />} />
                 <Route path="admin/platform-health" element={<AdminPlatformHealth />} />
+                <Route path="admin/creator-content" element={<AdminCreatorContent />} />
+                <Route path="admin/wallet-analytics" element={<AdminWalletAnalytics />} />
 
                 {/* Merchant Routes */}
                 <Route path="merchant" element={<MerchantSuperOSDashboard />} />
