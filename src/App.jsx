@@ -117,6 +117,8 @@ import AdminAIInsights from './pages/admin/AdminAIInsights';
 import AdminPlatformHealth from './pages/admin/AdminPlatformHealth';
 import AdminCreatorContent from './pages/admin/AdminCreatorContent';
 import AdminWalletAnalytics from './pages/admin/AdminWalletAnalytics';
+import AdminRoleBasedAccess from './pages/admin/AdminRoleBasedAccess';
+import AdminRegionalControl from './pages/admin/AdminRegionalControl';
 
 // Merchant Pages
 import MerchantDashboard from './pages/merchant/MerchantDashboard';
@@ -158,6 +160,7 @@ import MerchantCreatorHub from './pages/merchant/MerchantCreatorHub';
 import MerchantReviewManagement from './pages/merchant/MerchantReviewManagement';
 import MerchantMultiStore from './pages/merchant/MerchantMultiStore';
 import MerchantCustomerSegmentation from './pages/merchant/MerchantCustomerSegmentation';
+import MerchantUserRoles from './pages/merchant/MerchantUserRoles';
 import CreateOffer from './pages/merchant/CreateOffer';
 import MerchantOffers from './pages/merchant/MerchantOffers';
 import MerchantCustomers from './pages/merchant/MerchantCustomers';
@@ -967,6 +970,8 @@ function App() {
                 <Route path="admin/platform-health" element={<AdminPlatformHealth />} />
                 <Route path="admin/creator-content" element={<AdminCreatorContent />} />
                 <Route path="admin/wallet-analytics" element={<AdminWalletAnalytics />} />
+                <Route path="admin/role-based-access" element={<AdminRoleBasedAccess />} />
+                <Route path="admin/regional-control" element={<AdminRegionalControl />} />
 
                 {/* Merchant Routes */}
                 <Route path="merchant" element={<MerchantSuperOSDashboard />} />
@@ -1013,6 +1018,7 @@ function App() {
                 <Route path="merchant/review-management" element={<MerchantReviewManagement />} />
                 <Route path="merchant/multi-store" element={<MerchantMultiStore />} />
                 <Route path="merchant/customer-segmentation" element={<MerchantCustomerSegmentation />} />
+                <Route path="merchant/user-roles" element={<MerchantUserRoles />} />
                 <Route path="merchant/returns" element={<MerchantReturns />} />
                 <Route path="merchant/payments" element={<MerchantPayments />} />
                 <Route path="merchant/performance" element={<MerchantPerformance />} />
