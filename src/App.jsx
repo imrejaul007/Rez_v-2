@@ -119,6 +119,7 @@ import AdminCreatorContent from './pages/admin/AdminCreatorContent';
 import AdminWalletAnalytics from './pages/admin/AdminWalletAnalytics';
 import AdminRoleBasedAccess from './pages/admin/AdminRoleBasedAccess';
 import AdminRegionalControl from './pages/admin/AdminRegionalControl';
+import AdminMultiChannelMarketing from './pages/admin/AdminMultiChannelMarketing';
 
 // Merchant Pages
 import MerchantDashboard from './pages/merchant/MerchantDashboard';
@@ -972,6 +973,7 @@ function App() {
                 <Route path="admin/wallet-analytics" element={<AdminWalletAnalytics />} />
                 <Route path="admin/role-based-access" element={<AdminRoleBasedAccess />} />
                 <Route path="admin/regional-control" element={<AdminRegionalControl />} />
+                <Route path="admin/multi-channel-marketing" element={<AdminMultiChannelMarketing />} />
 
                 {/* Merchant Routes */}
                 <Route path="merchant" element={<MerchantSuperOSDashboard />} />
