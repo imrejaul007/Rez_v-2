@@ -8,6 +8,8 @@ import { SearchProvider } from './contexts/SearchContext';
 import { WishlistProvider } from './contexts/WishlistContext';
 import { SavingsProvider } from './contexts/SavingsContext';
 import { GamificationProvider } from './contexts/GamificationContext';
+import { AuthProvider } from './context/AuthContext';
+import RoleSwitcher from './components/RoleSwitcher';
 
 import Layout from './components/layout/Layout';
 import Home from './pages/Home';
@@ -512,8 +514,9 @@ import ModeTransitionManager from './components/preloader/ModeTransitionManager'
 
 function App() {
   return (
-    <BrowserRouter>
-      <ThemeProvider>
+    <AuthProvider>
+      <BrowserRouter>
+        <ThemeProvider>
         <UserProvider>
           <WalletProvider>
             <WishlistProvider>
@@ -1087,6 +1090,8 @@ function App() {
         </UserProvider>
       </ThemeProvider>
     </BrowserRouter>
+    <RoleSwitcher />
+    </AuthProvider>
   );
 }
 

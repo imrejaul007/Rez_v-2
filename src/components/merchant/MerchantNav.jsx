@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import {
   LayoutDashboard, Store, ChevronRight, ShoppingBag, Package, RotateCcw, Truck,
@@ -10,11 +10,14 @@ import {
   Receipt, PackageSearch, Link as LinkIcon, Crown as MembershipIcon, Trash2, QrCode, ArrowLeftRight,
   CalendarDays, BookOpen, Stethoscope
 } from 'lucide-react';
+import { useAuth } from '../../context/AuthContext';
+import { filterNavByRole, MERCHANT_NAV_PERMISSIONS } from '../../utils/rolePermissions';
 
 export default function MerchantNav() {
   const location = useLocation();
   const [openCategories, setOpenCategories] = useState({});
   const [sidebarOpen, setSidebarOpen] = useState(true);
+  const { userRole } = useAuth();
 
   const navCategories = [
     {
@@ -145,6 +148,11 @@ export default function MerchantNav() {
     }
   ];
 
+  // Filter navigation based on user role
+  const filteredNavCategories = useMemo(() => {
+    return filterNavByRole(navCategories, userRole, MERCHANT_NAV_PERMISSIONS);
+  }, [userRole]);
+
   const toggleCategory = (categoryId) => {
     setOpenCategories(prev => ({
       ...prev,
@@ -189,7 +197,7 @@ export default function MerchantNav() {
         </div>
 
         <nav className="p-2">
-          {navCategories.map((category) => {
+          {filteredNavCategories.map((category) => {
             const CategoryIcon = category.icon;
             const isActive = isCategoryActive(category);
             const isOpen = openCategories[category.id];
