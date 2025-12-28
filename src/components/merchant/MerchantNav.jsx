@@ -7,7 +7,7 @@ import {
   UserPlus, FileText, FolderOpen, Bell, Headphones, Settings, MapPin,
   Clock, Cake, Coins, ShoppingCart, Layers, Lock, Box, ChevronDown, Menu, X,
   Monitor, ChefHat, Grid3x3, Scan, Calendar, Scissors, ClipboardList, Repeat, Globe, Target,
-  Receipt, PackageSearch, Link, Crown as MembershipIcon, Trash2, QrCode, ArrowLeftRight,
+  Receipt, PackageSearch, Link as LinkIcon, Crown as MembershipIcon, Trash2, QrCode, ArrowLeftRight,
   CalendarDays, BookOpen, Stethoscope
 } from 'lucide-react';
 
@@ -135,7 +135,7 @@ export default function MerchantNav() {
         { path: '/merchant/staff', icon: UserPlus, label: 'Staff Management' },
         { path: '/merchant/staff-roster', icon: ClipboardList, label: 'Staff Roster & Shifts' },
         { path: '/merchant/payroll', icon: CreditCard, label: 'Payroll & Commission' },
-        { path: '/merchant/integrations', icon: Link, label: 'Integration Hub' },
+        { path: '/merchant/integrations', icon: LinkIcon, label: 'Integration Hub' },
         { path: '/merchant/compliance', icon: FileText, label: 'Compliance' },
         { path: '/merchant/documents', icon: FolderOpen, label: 'Documents' },
         { path: '/merchant/notifications', icon: Bell, label: 'Notifications' },
