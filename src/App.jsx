@@ -111,6 +111,8 @@ import AdminPriveManagement from './pages/admin/AdminPriveManagement';
 import AdminContentModeration from './pages/admin/AdminContentModeration';
 import AdminGameConfiguration from './pages/admin/AdminGameConfiguration';
 import AdminSocialImpactVerification from './pages/admin/AdminSocialImpactVerification';
+import AdminEventInventory from './pages/admin/AdminEventInventory';
+import AdminFraudDetection from './pages/admin/AdminFraudDetection';
 
 // Merchant Pages
 import MerchantDashboard from './pages/merchant/MerchantDashboard';
@@ -150,6 +152,8 @@ import MerchantQRPayments from './pages/merchant/MerchantQRPayments';
 import MerchantEventCheckIn from './pages/merchant/MerchantEventCheckIn';
 import MerchantCreatorHub from './pages/merchant/MerchantCreatorHub';
 import MerchantReviewManagement from './pages/merchant/MerchantReviewManagement';
+import MerchantMultiStore from './pages/merchant/MerchantMultiStore';
+import MerchantCustomerSegmentation from './pages/merchant/MerchantCustomerSegmentation';
 import CreateOffer from './pages/merchant/CreateOffer';
 import MerchantOffers from './pages/merchant/MerchantOffers';
 import MerchantCustomers from './pages/merchant/MerchantCustomers';
@@ -953,6 +957,8 @@ function App() {
                 <Route path="admin/content-moderation" element={<AdminContentModeration />} />
                 <Route path="admin/game-configuration" element={<AdminGameConfiguration />} />
                 <Route path="admin/social-impact-verification" element={<AdminSocialImpactVerification />} />
+                <Route path="admin/event-inventory" element={<AdminEventInventory />} />
+                <Route path="admin/fraud-detection" element={<AdminFraudDetection />} />
 
                 {/* Merchant Routes */}
                 <Route path="merchant" element={<MerchantSuperOSDashboard />} />
@@ -997,6 +1003,8 @@ function App() {
                 <Route path="merchant/event-checkin" element={<MerchantEventCheckIn />} />
                 <Route path="merchant/creator-hub" element={<MerchantCreatorHub />} />
                 <Route path="merchant/review-management" element={<MerchantReviewManagement />} />
+                <Route path="merchant/multi-store" element={<MerchantMultiStore />} />
+                <Route path="merchant/customer-segmentation" element={<MerchantCustomerSegmentation />} />
                 <Route path="merchant/returns" element={<MerchantReturns />} />
                 <Route path="merchant/payments" element={<MerchantPayments />} />
                 <Route path="merchant/performance" element={<MerchantPerformance />} />
