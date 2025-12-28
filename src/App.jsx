@@ -110,6 +110,7 @@ import AdminSettlementCommission from './pages/admin/AdminSettlementCommission';
 import AdminPriveManagement from './pages/admin/AdminPriveManagement';
 import AdminContentModeration from './pages/admin/AdminContentModeration';
 import AdminGameConfiguration from './pages/admin/AdminGameConfiguration';
+import AdminSocialImpactVerification from './pages/admin/AdminSocialImpactVerification';
 
 // Merchant Pages
 import MerchantDashboard from './pages/merchant/MerchantDashboard';
@@ -147,6 +148,8 @@ import MerchantBookingCalendar from './pages/merchant/MerchantBookingCalendar';
 import MerchantPrescriptions from './pages/merchant/MerchantPrescriptions';
 import MerchantQRPayments from './pages/merchant/MerchantQRPayments';
 import MerchantEventCheckIn from './pages/merchant/MerchantEventCheckIn';
+import MerchantCreatorHub from './pages/merchant/MerchantCreatorHub';
+import MerchantReviewManagement from './pages/merchant/MerchantReviewManagement';
 import CreateOffer from './pages/merchant/CreateOffer';
 import MerchantOffers from './pages/merchant/MerchantOffers';
 import MerchantCustomers from './pages/merchant/MerchantCustomers';
@@ -949,6 +952,7 @@ function App() {
                 <Route path="admin/prive-management" element={<AdminPriveManagement />} />
                 <Route path="admin/content-moderation" element={<AdminContentModeration />} />
                 <Route path="admin/game-configuration" element={<AdminGameConfiguration />} />
+                <Route path="admin/social-impact-verification" element={<AdminSocialImpactVerification />} />
 
                 {/* Merchant Routes */}
                 <Route path="merchant" element={<MerchantSuperOSDashboard />} />
@@ -991,6 +995,8 @@ function App() {
                 <Route path="merchant/prescriptions" element={<MerchantPrescriptions />} />
                 <Route path="merchant/qr-payments" element={<MerchantQRPayments />} />
                 <Route path="merchant/event-checkin" element={<MerchantEventCheckIn />} />
+                <Route path="merchant/creator-hub" element={<MerchantCreatorHub />} />
+                <Route path="merchant/review-management" element={<MerchantReviewManagement />} />
                 <Route path="merchant/returns" element={<MerchantReturns />} />
                 <Route path="merchant/payments" element={<MerchantPayments />} />
                 <Route path="merchant/performance" element={<MerchantPerformance />} />
