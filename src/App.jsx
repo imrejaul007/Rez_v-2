@@ -107,6 +107,9 @@ import AdminRecommendations from './pages/admin/AdminRecommendations';
 import AdminMerchantSuperOS from './pages/admin/AdminMerchantSuperOS';
 import AdminEcosystemAnalytics from './pages/admin/AdminEcosystemAnalytics';
 import AdminSettlementCommission from './pages/admin/AdminSettlementCommission';
+import AdminPriveManagement from './pages/admin/AdminPriveManagement';
+import AdminContentModeration from './pages/admin/AdminContentModeration';
+import AdminGameConfiguration from './pages/admin/AdminGameConfiguration';
 
 // Merchant Pages
 import MerchantDashboard from './pages/merchant/MerchantDashboard';
@@ -142,6 +145,8 @@ import MerchantStoreTransfer from './pages/merchant/MerchantStoreTransfer';
 import MerchantClassSchedule from './pages/merchant/MerchantClassSchedule';
 import MerchantBookingCalendar from './pages/merchant/MerchantBookingCalendar';
 import MerchantPrescriptions from './pages/merchant/MerchantPrescriptions';
+import MerchantQRPayments from './pages/merchant/MerchantQRPayments';
+import MerchantEventCheckIn from './pages/merchant/MerchantEventCheckIn';
 import CreateOffer from './pages/merchant/CreateOffer';
 import MerchantOffers from './pages/merchant/MerchantOffers';
 import MerchantCustomers from './pages/merchant/MerchantCustomers';
@@ -941,6 +946,9 @@ function App() {
                 <Route path="admin/merchant-super-os" element={<AdminMerchantSuperOS />} />
                 <Route path="admin/ecosystem-analytics" element={<AdminEcosystemAnalytics />} />
                 <Route path="admin/settlement-commission" element={<AdminSettlementCommission />} />
+                <Route path="admin/prive-management" element={<AdminPriveManagement />} />
+                <Route path="admin/content-moderation" element={<AdminContentModeration />} />
+                <Route path="admin/game-configuration" element={<AdminGameConfiguration />} />
 
                 {/* Merchant Routes */}
                 <Route path="merchant" element={<MerchantSuperOSDashboard />} />
@@ -981,6 +989,8 @@ function App() {
                 <Route path="merchant/class-schedule" element={<MerchantClassSchedule />} />
                 <Route path="merchant/booking-calendar" element={<MerchantBookingCalendar />} />
                 <Route path="merchant/prescriptions" element={<MerchantPrescriptions />} />
+                <Route path="merchant/qr-payments" element={<MerchantQRPayments />} />
+                <Route path="merchant/event-checkin" element={<MerchantEventCheckIn />} />
                 <Route path="merchant/returns" element={<MerchantReturns />} />
                 <Route path="merchant/payments" element={<MerchantPayments />} />
                 <Route path="merchant/performance" element={<MerchantPerformance />} />
