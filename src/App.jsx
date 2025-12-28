@@ -162,6 +162,7 @@ import MerchantReviewManagement from './pages/merchant/MerchantReviewManagement'
 import MerchantMultiStore from './pages/merchant/MerchantMultiStore';
 import MerchantCustomerSegmentation from './pages/merchant/MerchantCustomerSegmentation';
 import MerchantUserRoles from './pages/merchant/MerchantUserRoles';
+import MerchantMarketingCampaigns from './pages/merchant/MerchantMarketingCampaigns';
 import CreateOffer from './pages/merchant/CreateOffer';
 import MerchantOffers from './pages/merchant/MerchantOffers';
 import MerchantCustomers from './pages/merchant/MerchantCustomers';
@@ -1021,6 +1022,7 @@ function App() {
                 <Route path="merchant/multi-store" element={<MerchantMultiStore />} />
                 <Route path="merchant/customer-segmentation" element={<MerchantCustomerSegmentation />} />
                 <Route path="merchant/user-roles" element={<MerchantUserRoles />} />
+                <Route path="merchant/marketing-campaigns" element={<MerchantMarketingCampaigns />} />
                 <Route path="merchant/returns" element={<MerchantReturns />} />
                 <Route path="merchant/payments" element={<MerchantPayments />} />
                 <Route path="merchant/performance" element={<MerchantPerformance />} />
