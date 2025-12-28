@@ -211,6 +211,10 @@ export default function AdminNav() {
 
   // Filter navigation based on user role
   const filteredNavCategories = useMemo(() => {
+    // If no user role, show all nav items (for development)
+    if (!userRole) {
+      return navCategories;
+    }
     return filterNavByRole(navCategories, userRole, ADMIN_NAV_PERMISSIONS);
   }, [userRole]);
 

@@ -150,6 +150,10 @@ export default function MerchantNav() {
 
   // Filter navigation based on user role
   const filteredNavCategories = useMemo(() => {
+    // If no user role, show all nav items (for development)
+    if (!userRole) {
+      return navCategories;
+    }
     return filterNavByRole(navCategories, userRole, MERCHANT_NAV_PERMISSIONS);
   }, [userRole]);
 
