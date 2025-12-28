@@ -117,50 +117,41 @@ export const ADMIN_NAV_PERMISSIONS = {
 
 // Merchant navigation category permissions
 export const MERCHANT_NAV_PERMISSIONS = {
-  // Dashboard
+  // Overview (Dashboard, POS, Industry-specific tools)
   overview: {
     [MERCHANT_ROLES.OWNER]: true,
     [MERCHANT_ROLES.MANAGER]: true,
-    [MERCHANT_ROLES.POS_OPERATOR]: ['dashboard'],
+    [MERCHANT_ROLES.POS_OPERATOR]: ['dashboard', 'pos', 'barcode-scanner'],
     [MERCHANT_ROLES.ACCOUNTANT]: ['dashboard'],
     [MERCHANT_ROLES.MARKETING_MANAGER]: ['dashboard'],
     [MERCHANT_ROLES.INVENTORY_MANAGER]: ['dashboard'],
-    [MERCHANT_ROLES.CASHIER]: ['dashboard'],
+    [MERCHANT_ROLES.CASHIER]: ['dashboard', 'pos'],
     [MERCHANT_ROLES.SUPPORT_AGENT]: ['dashboard']
   },
 
-  // Operations
+  // Operations (Orders, Products, Inventory, Returns, Shipping)
   operations: {
     [MERCHANT_ROLES.OWNER]: true,
     [MERCHANT_ROLES.MANAGER]: true,
-    [MERCHANT_ROLES.POS_OPERATOR]: ['pos', 'orders'],
-    [MERCHANT_ROLES.CASHIER]: ['pos']
+    [MERCHANT_ROLES.INVENTORY_MANAGER]: ['inventory', 'inventory-advanced', 'batch-tracking', 'waste-management', 'suppliers-procurement', 'store-transfer', 'products'],
+    [MERCHANT_ROLES.POS_OPERATOR]: ['orders', 'returns']
   },
 
-  // Sales & Orders
-  'sales-orders': {
+  // Promotions (Offers, Flash Deals, Campaigns)
+  promotions: {
     [MERCHANT_ROLES.OWNER]: true,
     [MERCHANT_ROLES.MANAGER]: true,
-    [MERCHANT_ROLES.POS_OPERATOR]: ['pos', 'orders', 'transactions'],
-    [MERCHANT_ROLES.CASHIER]: ['pos', 'orders']
+    [MERCHANT_ROLES.MARKETING_MANAGER]: true
   },
 
-  // Inventory
-  inventory: {
+  // Loyalty & Rewards
+  loyalty: {
     [MERCHANT_ROLES.OWNER]: true,
     [MERCHANT_ROLES.MANAGER]: true,
-    [MERCHANT_ROLES.INVENTORY_MANAGER]: true,
-    [MERCHANT_ROLES.POS_OPERATOR]: ['inventory']
+    [MERCHANT_ROLES.MARKETING_MANAGER]: true
   },
 
-  // Products
-  products: {
-    [MERCHANT_ROLES.OWNER]: true,
-    [MERCHANT_ROLES.MANAGER]: true,
-    [MERCHANT_ROLES.INVENTORY_MANAGER]: true
-  },
-
-  // Customers
+  // Customers (Customer List, CRM, Reviews)
   customers: {
     [MERCHANT_ROLES.OWNER]: true,
     [MERCHANT_ROLES.MANAGER]: true,
@@ -168,46 +159,24 @@ export const MERCHANT_NAV_PERMISSIONS = {
     [MERCHANT_ROLES.SUPPORT_AGENT]: true
   },
 
-  // Marketing & Campaigns
-  marketing: {
+  // Financials (Analytics, Transactions, Wallet, Payments)
+  financials: {
     [MERCHANT_ROLES.OWNER]: true,
     [MERCHANT_ROLES.MANAGER]: true,
-    [MERCHANT_ROLES.MARKETING_MANAGER]: true
-  },
-
-  // Offers & Deals
-  offers: {
-    [MERCHANT_ROLES.OWNER]: true,
-    [MERCHANT_ROLES.MANAGER]: true,
-    [MERCHANT_ROLES.MARKETING_MANAGER]: true,
-    [MERCHANT_ROLES.POS_OPERATOR]: ['offers']
-  },
-
-  // Analytics & Reports
-  analytics: {
-    [MERCHANT_ROLES.OWNER]: true,
-    [MERCHANT_ROLES.MANAGER]: true,
-    [MERCHANT_ROLES.ACCOUNTANT]: true,
-    [MERCHANT_ROLES.MARKETING_MANAGER]: ['analytics']
-  },
-
-  // Financial
-  financial: {
-    [MERCHANT_ROLES.OWNER]: true,
-    [MERCHANT_ROLES.MANAGER]: ['accounting', 'transactions'],
     [MERCHANT_ROLES.ACCOUNTANT]: true
   },
 
-  // Staff Management
-  staff: {
+  // Pricing & Content
+  pricing: {
     [MERCHANT_ROLES.OWNER]: true,
-    [MERCHANT_ROLES.MANAGER]: true
+    [MERCHANT_ROLES.MANAGER]: true,
+    [MERCHANT_ROLES.MARKETING_MANAGER]: ['pricing-intelligence', 'content']
   },
 
-  // Settings
+  // Settings (Staff, Compliance, Documents, etc.)
   settings: {
     [MERCHANT_ROLES.OWNER]: true,
-    [MERCHANT_ROLES.MANAGER]: ['settings']
+    [MERCHANT_ROLES.MANAGER]: ['staff', 'staff-roster', 'integrations', 'notifications', 'support', 'settings']
   }
 };
 
