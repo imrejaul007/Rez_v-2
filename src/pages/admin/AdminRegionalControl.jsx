@@ -81,7 +81,7 @@ const AdminRegionalControl = () => {
         { name: 'Gurgaon', merchants: 789, users: 123456, gmv: 3456789 },
         { name: 'Noida', merchants: 567, users: 78901, gmv: 2345678 },
         { name: 'Chandigarh', merchants: 189, users: 34567, gmv: 987654 }
-      },
+      ],
       totalMerchants: 2890,
       totalUsers: 398765,
       monthlyGMV: 11777775,
