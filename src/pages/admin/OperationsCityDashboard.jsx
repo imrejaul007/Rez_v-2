@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { MapPin, Store, Users, TrendingUp, Calendar, Bell, CheckCircle, Clock, Target } from 'lucide-react';
+import AdminNav from '../../components/admin/AdminNav';
 
 export default function OperationsCityDashboard() {
   const [selectedCity, setSelectedCity] = useState('mumbai');
@@ -53,6 +54,7 @@ export default function OperationsCityDashboard() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <AdminNav />
       <div className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white p-6">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-3">

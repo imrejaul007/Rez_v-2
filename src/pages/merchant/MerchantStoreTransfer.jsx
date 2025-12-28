@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Search, Plus, ArrowRight, Package, MapPin, TrendingUp, Clock, CheckCircle, XCircle, AlertTriangle, Download, Truck, BarChart3 } from 'lucide-react';
+import MerchantNav from '../../components/merchant/MerchantNav';
 
 export default function MerchantStoreTransfer() {
   const [activeTab, setActiveTab] = useState('transfers');
@@ -172,6 +173,7 @@ export default function MerchantStoreTransfer() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 p-6">
+      <MerchantNav />
       {/* Header */}
       <div className="mb-6">
         <div className="flex items-center justify-between mb-2">

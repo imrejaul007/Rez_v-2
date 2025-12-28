@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Search, Plus, TrendingDown, AlertTriangle, Calendar, DollarSign, Package, Trash2, BarChart3, Download, Filter, Clock, X } from 'lucide-react';
+import MerchantNav from '../../components/merchant/MerchantNav';
 
 export default function MerchantWasteManagement() {
   const [activeTab, setActiveTab] = useState('overview');
@@ -164,6 +165,7 @@ export default function MerchantWasteManagement() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-red-50 via-orange-50 to-yellow-50 p-6">
+      <MerchantNav />
       {/* Header */}
       <div className="mb-6">
         <div className="flex items-center justify-between mb-2">

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Truck, Users, ShoppingCart, Package, CheckCircle, Clock, AlertCircle, TrendingUp, DollarSign, Star, Calendar, FileText, Phone, Mail, MapPin, Plus, Edit, Eye, Download } from 'lucide-react';
+import MerchantNav from '../../components/merchant/MerchantNav';
 
 export default function MerchantSuppliersProcurement() {
   const [activeTab, setActiveTab] = useState('suppliers');
@@ -190,6 +191,7 @@ export default function MerchantSuppliersProcurement() {
 
   return (
     <div className="min-h-screen bg-gray-50 p-4 lg:p-8">
+      <MerchantNav />
       <div className="max-w-7xl mx-auto space-y-6">
         {/* Header */}
         <div className="bg-gradient-to-r from-blue-600 to-cyan-600 rounded-2xl p-6 text-white">

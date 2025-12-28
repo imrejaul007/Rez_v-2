@@ -5,6 +5,7 @@ import {
   Plus, BarChart3, Zap, CheckCircle, XCircle, Clock, Award,
   Settings, Filter, Search, Download, Play, Pause, Edit
 } from 'lucide-react';
+import AdminNav from '../../components/admin/AdminNav';
 
 const AdminMultiChannelMarketing = () => {
   const [activeTab, setActiveTab] = useState('overview');
@@ -477,6 +478,7 @@ const AdminMultiChannelMarketing = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 p-6">
+      <AdminNav />
       {/* Header */}
       <div className="mb-8">
         <div className="flex items-center gap-3 mb-2">

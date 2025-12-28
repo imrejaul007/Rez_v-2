@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Search, Plus, Users, Package, TrendingUp, Calendar, CreditCard, CheckCircle, XCircle, Clock, Download, Filter, ChevronDown, Edit, Trash2, Gift, Crown, Award } from 'lucide-react';
+import MerchantNav from '../../components/merchant/MerchantNav';
 
 export default function MerchantMemberships() {
   const [activeTab, setActiveTab] = useState('plans');
@@ -224,6 +225,7 @@ export default function MerchantMemberships() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50 p-6">
+      <MerchantNav />
       {/* Header */}
       <div className="mb-6">
         <div className="flex items-center justify-between mb-2">

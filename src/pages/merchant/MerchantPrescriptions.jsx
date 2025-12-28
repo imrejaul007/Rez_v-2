@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Search, Plus, FileText, User, Calendar, AlertTriangle, CheckCircle, XCircle, Clock, Download, Upload, Camera, Eye } from 'lucide-react';
+import MerchantNav from '../../components/merchant/MerchantNav';
 
 export default function MerchantPrescriptions() {
   const [activeTab, setActiveTab] = useState('prescriptions');
@@ -165,6 +166,7 @@ export default function MerchantPrescriptions() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50 p-6">
+      <MerchantNav />
       {/* Header */}
       <div className="mb-6">
         <div className="flex items-center justify-between mb-2">

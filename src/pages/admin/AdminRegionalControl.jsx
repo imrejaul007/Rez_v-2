@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import AdminNav from '../../components/admin/AdminNav';
 import {
   Globe, MapPin, Users, Store, TrendingUp, DollarSign,
   Calendar, Activity, CheckCircle, XCircle, AlertTriangle,
@@ -277,6 +278,7 @@ const AdminRegionalControl = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-900 via-indigo-900 to-purple-900 p-6">
+      <AdminNav />
       {/* Header */}
       <div className="mb-8">
         <div className="flex items-center justify-between mb-4">

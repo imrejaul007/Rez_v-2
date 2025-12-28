@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import AdminNav from '../../components/admin/AdminNav';
 import {
   Layers, MapPin, Calendar, Sparkles, Moon, Star, Sun, Heart,
   ShoppingBag, Store, Crown, Globe, Eye, EyeOff, Palette, Settings,
@@ -253,6 +254,7 @@ export default function AdminModeControl() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <AdminNav />
       {/* Header */}
       <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white p-6">
         <div className="flex items-center justify-between mb-4">

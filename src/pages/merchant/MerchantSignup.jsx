@@ -6,6 +6,7 @@
 
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import MerchantNav from '../../components/merchant/MerchantNav';
 
 const MerchantSignup = () => {
   const navigate = useNavigate();
@@ -54,6 +55,7 @@ const MerchantSignup = () => {
 
   return (
     <div style={{ minHeight: '100vh', backgroundColor: '#F9FAFB' }}>
+      <MerchantNav />
       {/* Header */}
       <div style={{
         backgroundColor: '#FFFFFF',

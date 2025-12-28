@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import AdminNav from '../../components/admin/AdminNav';
 import {
   Gamepad2, Gift, Zap, DollarSign, Star, Trophy, Target, Settings,
   Plus, Save, Trash2, Copy, Eye, TrendingUp, Users, Coins, AlertCircle
@@ -421,6 +422,7 @@ export default function AdminGameConfiguration() {
 
   return (
     <div className="min-h-screen bg-gray-50 p-6">
+      <AdminNav />
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-8">

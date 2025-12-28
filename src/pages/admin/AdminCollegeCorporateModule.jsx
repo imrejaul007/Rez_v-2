@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import AdminNav from '../../components/admin/AdminNav';
 import {
   GraduationCap, Building2, Users, TrendingUp, Award, FileText,
   Calendar, MapPin, DollarSign, Target, Star, Check, X, Clock,
@@ -334,6 +335,7 @@ export default function AdminCollegeCorporateModule() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <AdminNav />
       {/* Header */}
       <div className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white p-6">
         <div className="flex items-center justify-between mb-4">

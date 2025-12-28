@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import MerchantNav from '../../components/merchant/MerchantNav';
 import {
   QrCode, Check, Clock, X, DollarSign, TrendingUp, Users, Zap,
   RefreshCw, Download, Search, Filter, Calendar, ArrowRight,
@@ -347,6 +348,7 @@ export default function MerchantQRPayments() {
 
   return (
     <div className="min-h-screen bg-gray-50 p-6">
+      <MerchantNav />
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-8">

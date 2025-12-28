@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import MerchantNav from '../../components/merchant/MerchantNav';
 import {
   Megaphone, Smartphone, MessageCircle, Mail, Target, Users,
   TrendingUp, DollarSign, Eye, MousePointer, Calendar, Plus,
@@ -230,6 +231,7 @@ const MerchantMarketingCampaigns = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-900 via-indigo-900 to-blue-900 p-6">
+      <MerchantNav />
       {/* Header */}
       <div className="mb-8">
         <div className="flex items-center gap-3 mb-2">

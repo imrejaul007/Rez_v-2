@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Search, Plus, DollarSign, TrendingUp, Calendar, Users, Download, CheckCircle, Clock, CreditCard, BarChart3, Award, AlertCircle } from 'lucide-react';
+import MerchantNav from '../../components/merchant/MerchantNav';
 
 export default function MerchantPayroll() {
   const [activeTab, setActiveTab] = useState('overview');
@@ -199,6 +200,7 @@ export default function MerchantPayroll() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50 p-6">
+      <MerchantNav />
       {/* Header */}
       <div className="mb-6">
         <div className="flex items-center justify-between mb-2">

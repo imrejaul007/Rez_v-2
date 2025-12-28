@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Wallet, TrendingUp, TrendingDown, DollarSign, Users, Repeat, AlertCircle, Award, Target } from 'lucide-react';
+import AdminNav from '../../components/admin/AdminNav';
 
 const AdminWalletAnalytics = () => {
   const [activeTab, setActiveTab] = useState('overview');
@@ -211,6 +212,7 @@ const AdminWalletAnalytics = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-green-900 to-gray-900 p-6">
+      <AdminNav />
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-8">

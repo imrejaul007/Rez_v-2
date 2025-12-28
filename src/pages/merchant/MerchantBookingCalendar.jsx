@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Search, Plus, Calendar, Clock, Users, DollarSign, TrendingUp, CheckCircle, XCircle, AlertCircle, ChevronLeft, ChevronRight, Download } from 'lucide-react';
+import MerchantNav from '../../components/merchant/MerchantNav';
 
 export default function MerchantBookingCalendar() {
   const [activeTab, setActiveTab] = useState('calendar');
@@ -160,6 +161,7 @@ export default function MerchantBookingCalendar() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-teal-50 via-cyan-50 to-blue-50 p-6">
+      <MerchantNav />
       {/* Header */}
       <div className="mb-6">
         <div className="flex items-center justify-between mb-2">

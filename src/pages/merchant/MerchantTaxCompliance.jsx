@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { FileText, DollarSign, AlertCircle, CheckCircle, Calendar, Download, Upload, Calculator, TrendingUp, Shield, Clock, File, Archive, Search, Filter, Eye } from 'lucide-react';
+import MerchantNav from '../../components/merchant/MerchantNav';
 
 export default function MerchantTaxCompliance() {
   const [activeTab, setActiveTab] = useState('gst');
@@ -196,6 +197,7 @@ export default function MerchantTaxCompliance() {
 
   return (
     <div className="min-h-screen bg-gray-50 p-4 lg:p-8">
+      <MerchantNav />
       <div className="max-w-7xl mx-auto space-y-6">
         {/* Header */}
         <div className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-6 text-white">

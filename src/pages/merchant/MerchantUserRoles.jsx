@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import MerchantNav from '../../components/merchant/MerchantNav';
 import {
   Users, Crown, UserCog, ShoppingCart, BarChart3, Settings,
   Shield, Plus, Edit, Trash2, Eye, Lock, CheckCircle, XCircle,
@@ -385,6 +386,7 @@ const MerchantUserRoles = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 p-6">
+      <MerchantNav />
       {/* Header */}
       <div className="mb-8">
         <div className="flex items-center gap-3 mb-2">

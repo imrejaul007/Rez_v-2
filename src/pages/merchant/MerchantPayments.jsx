@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { DollarSign, TrendingUp, Clock, CheckCircle, AlertCircle, Download, Eye, Filter, Search, Calendar, CreditCard, Wallet } from 'lucide-react';
+import MerchantNav from '../../components/merchant/MerchantNav';
 
 export default function MerchantPayments() {
   const [activeTab, setActiveTab] = useState('all');
@@ -104,6 +105,7 @@ export default function MerchantPayments() {
 
   return (
     <div className="p-6">
+      <MerchantNav />
       <div className="mb-6">
         <h1 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
           <DollarSign className="w-8 h-8 text-indigo-600" />

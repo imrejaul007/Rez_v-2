@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import MerchantNav from '../../components/merchant/MerchantNav';
 import {
   Star, MessageSquare, ThumbsUp, TrendingUp, TrendingDown, AlertCircle,
   Search, Filter, Send, Image as ImageIcon, Eye, Clock, CheckCircle,
@@ -449,6 +450,7 @@ export default function MerchantReviewManagement() {
 
   return (
     <div className="min-h-screen bg-gray-50 p-6">
+      <MerchantNav />
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-8">

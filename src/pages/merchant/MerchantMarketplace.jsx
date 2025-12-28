@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { ShoppingBag, TrendingUp, Package, DollarSign, Eye, Users, MapPin, Star, ShoppingCart, ArrowRight, Filter, Truck, BarChart3, AlertCircle, CheckCircle, Clock, Upload, Image as ImageIcon } from 'lucide-react';
+import MerchantNav from '../../components/merchant/MerchantNav';
 
 export default function MerchantMarketplace() {
   const [activeTab, setActiveTab] = useState('overview');
@@ -150,6 +151,7 @@ export default function MerchantMarketplace() {
 
   return (
     <div className="min-h-screen bg-gray-50 p-4 lg:p-8">
+      <MerchantNav />
       <div className="max-w-7xl mx-auto space-y-6">
         {/* Header */}
         <div className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-6 text-white">

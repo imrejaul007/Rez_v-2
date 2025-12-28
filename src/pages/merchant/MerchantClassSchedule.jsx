@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Search, Plus, Calendar, Users, Clock, TrendingUp, CheckCircle, XCircle, AlertCircle, Download, Edit, Copy, ChevronLeft, ChevronRight } from 'lucide-react';
+import MerchantNav from '../../components/merchant/MerchantNav';
 
 export default function MerchantClassSchedule() {
   const [activeTab, setActiveTab] = useState('schedule');
@@ -287,6 +288,7 @@ export default function MerchantClassSchedule() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 p-6">
+      <MerchantNav />
       {/* Header */}
       <div className="mb-6">
         <div className="flex items-center justify-between mb-2">

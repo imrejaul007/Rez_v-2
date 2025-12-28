@@ -5,6 +5,7 @@
  */
 
 import { useNavigate } from 'react-router-dom';
+import MerchantNav from '../../components/merchant/MerchantNav';
 
 const MerchantSuccess = () => {
   const navigate = useNavigate();
@@ -18,6 +19,7 @@ const MerchantSuccess = () => {
       justifyContent: 'center',
       padding: '20px',
     }}>
+      <MerchantNav />
       <div style={{ maxWidth: '600px', width: '100%' }}>
         {/* Success Icon */}
         <div style={{

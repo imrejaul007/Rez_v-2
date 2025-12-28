@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Brain, TrendingUp, AlertTriangle, Lightbulb, Zap, Target, Users, IndianRupee, BarChart3, Clock } from 'lucide-react';
+import AdminNav from '../../components/admin/AdminNav';
 
 const AdminAIInsights = () => {
   const [activeTab, setActiveTab] = useState('predictions');
@@ -261,6 +262,7 @@ const AdminAIInsights = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 p-6">
+      <AdminNav />
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-8">

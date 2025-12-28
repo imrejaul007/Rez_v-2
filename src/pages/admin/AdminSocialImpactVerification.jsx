@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import AdminNav from '../../components/admin/AdminNav';
 import {
   Heart, CheckCircle, XCircle, Clock, Users, TrendingUp, Award,
   MapPin, Calendar, Image as ImageIcon, Eye, Flag, MessageSquare,
@@ -423,6 +424,7 @@ export default function AdminSocialImpactVerification() {
 
   return (
     <div className="min-h-screen bg-gray-50 p-6">
+      <AdminNav />
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-8">

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Shield, AlertTriangle, Users, TrendingUp, Activity, Lock, Eye, Ban, CheckCircle, XCircle, Clock } from 'lucide-react';
+import AdminNav from '../../components/admin/AdminNav';
 
 const AdminFraudDetection = () => {
   const [activeTab, setActiveTab] = useState('alerts');
@@ -263,6 +264,7 @@ const AdminFraudDetection = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-red-900 to-gray-900 p-6">
+      <AdminNav />
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-8">

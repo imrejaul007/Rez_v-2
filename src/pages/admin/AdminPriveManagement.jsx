@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import AdminNav from '../../components/admin/AdminNav';
 import {
   Crown, Users, CheckCircle, XCircle, Clock, TrendingUp, Award,
   Filter, Search, ChevronRight, Eye, Star, Target, Zap, AlertTriangle,
@@ -418,6 +419,7 @@ export default function AdminPriveManagement() {
 
   return (
     <div className="min-h-screen bg-gray-50 p-6">
+      <AdminNav />
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-8">

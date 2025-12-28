@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { DollarSign, Upload, Download, CheckCircle, AlertCircle, FileText, TrendingUp, CreditCard } from 'lucide-react';
+import AdminNav from '../../components/admin/AdminNav';
 
 export default function AdminBankReconciliation() {
   const [activeTab, setActiveTab] = useState('reconciliation');
@@ -58,6 +59,7 @@ export default function AdminBankReconciliation() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <AdminNav />
       <div className="bg-gradient-to-r from-emerald-600 to-green-600 text-white p-6">
         <div className="flex items-center gap-3 mb-4">
           <DollarSign className="w-8 h-8" />

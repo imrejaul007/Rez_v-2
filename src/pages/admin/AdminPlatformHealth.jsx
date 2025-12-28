@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Activity, Server, Database, Zap, AlertCircle, CheckCircle, Clock, TrendingUp, Cpu, HardDrive, Wifi, Shield } from 'lucide-react';
+import AdminNav from '../../components/admin/AdminNav';
 
 const AdminPlatformHealth = () => {
   const [activeTab, setActiveTab] = useState('overview');
@@ -230,6 +231,7 @@ const AdminPlatformHealth = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 p-6">
+      <AdminNav />
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-8">

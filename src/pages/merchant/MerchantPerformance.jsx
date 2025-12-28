@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { TrendingUp, Package, DollarSign, Users, Star, Clock, ThumbsUp, Award, BarChart3, Calendar, ArrowUp, ArrowDown } from 'lucide-react';
+import MerchantNav from '../../components/merchant/MerchantNav';
 
 export default function MerchantPerformance() {
   const [selectedPeriod, setSelectedPeriod] = useState('week');
@@ -95,6 +96,7 @@ export default function MerchantPerformance() {
 
   return (
     <div className="p-6">
+      <MerchantNav />
       <div className="mb-6">
         <div className="flex items-center justify-between">
           <div>

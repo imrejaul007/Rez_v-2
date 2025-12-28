@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Users, TrendingUp, Target, Gift, Mail, IndianRupee, Clock, Award, Zap, Crown } from 'lucide-react';
+import MerchantNav from '../../components/merchant/MerchantNav';
 
 const MerchantCustomerSegmentation = () => {
   const [activeTab, setActiveTab] = useState('segments');
@@ -268,6 +269,7 @@ const MerchantCustomerSegmentation = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 p-6">
+      <MerchantNav />
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-8">

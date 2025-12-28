@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Users, TrendingUp, Star, ShoppingBag, DollarSign, Mail, Phone, MessageSquare, Tag, Filter, Search, Download, Upload, Target, Heart, Clock, Calendar, Gift, Award, Activity, BarChart3, Zap } from 'lucide-react';
+import MerchantNav from '../../components/merchant/MerchantNav';
 
 export default function MerchantCRM() {
   const [activeTab, setActiveTab] = useState('segments');
@@ -239,6 +240,7 @@ export default function MerchantCRM() {
 
   return (
     <div className="min-h-screen bg-gray-50 p-4 lg:p-8">
+      <MerchantNav />
       <div className="max-w-7xl mx-auto space-y-6">
         {/* Header */}
         <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl p-6 text-white">

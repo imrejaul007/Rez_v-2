@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Upload, X, Calendar, Clock, Users, Tag, DollarSign, Percent, Gift, Sparkles } from 'lucide-react';
+import MerchantNav from '../../components/merchant/MerchantNav';
 
 export default function CreateOffer() {
   const navigate = useNavigate();
@@ -129,6 +130,7 @@ export default function CreateOffer() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <MerchantNav />
       {/* Header */}
       <div className="bg-white border-b border-gray-200">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">

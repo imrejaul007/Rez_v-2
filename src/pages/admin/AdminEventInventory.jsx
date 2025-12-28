@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Calendar, Users, IndianRupee, TrendingUp, AlertCircle, CheckCircle, XCircle, Clock, Ticket, Package, RefreshCw } from 'lucide-react';
+import AdminNav from '../../components/admin/AdminNav';
 
 const AdminEventInventory = () => {
   const [activeTab, setActiveTab] = useState('inventory');
@@ -258,6 +259,7 @@ const AdminEventInventory = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 p-6">
+      <AdminNav />
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-8">

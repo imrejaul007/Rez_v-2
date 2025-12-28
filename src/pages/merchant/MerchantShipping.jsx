@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Truck, Package, MapPin, Search, Plus, Settings, CheckCircle, Clock, AlertCircle, Printer, Eye } from 'lucide-react';
+import MerchantNav from '../../components/merchant/MerchantNav';
 
 export default function MerchantShipping() {
   const [activeTab, setActiveTab] = useState('all');
@@ -125,6 +126,7 @@ export default function MerchantShipping() {
 
   return (
     <div className="p-6">
+      <MerchantNav />
       <div className="mb-6">
         <h1 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
           <Truck className="w-8 h-8 text-indigo-600" />

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import AdminNav from '../../components/admin/AdminNav';
 import {
   Coins, Zap, Upload, Calendar, Users, Target, TrendingUp,
   CheckCircle, Clock, AlertCircle, Download, Play, Pause, Edit,
@@ -320,6 +321,7 @@ export default function AdminCoinIssuanceControl() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <AdminNav />
       {/* Header */}
       <div className="bg-gradient-to-r from-yellow-600 to-orange-600 text-white p-6">
         <div className="flex items-center justify-between mb-4">

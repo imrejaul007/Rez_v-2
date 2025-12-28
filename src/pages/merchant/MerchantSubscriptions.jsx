@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Repeat, TrendingUp, Users, DollarSign, Calendar, Package, Play, Pause, X, Plus, Edit, Clock, CheckCircle, AlertCircle, Gift, Percent } from 'lucide-react';
+import MerchantNav from '../../components/merchant/MerchantNav';
 
 export default function MerchantSubscriptions() {
   const [activeTab, setActiveTab] = useState('active');
@@ -176,6 +177,7 @@ export default function MerchantSubscriptions() {
 
   return (
     <div className="min-h-screen bg-gray-50 p-4 lg:p-8">
+      <MerchantNav />
       <div className="max-w-7xl mx-auto space-y-6">
         {/* Header */}
         <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl p-6 text-white">

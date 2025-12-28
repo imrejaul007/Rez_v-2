@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { RotateCcw, Search, Filter, Download, Eye, ThumbsUp, ThumbsDown, AlertCircle, CheckCircle, XCircle, Package, DollarSign, Clock, Image as ImageIcon } from 'lucide-react';
+import MerchantNav from '../../components/merchant/MerchantNav';
 
 export default function MerchantReturns() {
   const [activeTab, setActiveTab] = useState('all');
@@ -137,6 +138,7 @@ export default function MerchantReturns() {
 
   return (
     <div className="p-6">
+      <MerchantNav />
       <div className="mb-6">
         <h1 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
           <RotateCcw className="w-8 h-8 text-indigo-600" />

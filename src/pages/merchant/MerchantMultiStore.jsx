@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Store, TrendingUp, Users, IndianRupee, Package, MapPin, BarChart3, Star, Award, AlertCircle } from 'lucide-react';
+import MerchantNav from '../../components/merchant/MerchantNav';
 
 const MerchantMultiStore = () => {
   const [activeTab, setActiveTab] = useState('overview');
@@ -234,6 +235,7 @@ const MerchantMultiStore = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 p-6">
+      <MerchantNav />
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-8">

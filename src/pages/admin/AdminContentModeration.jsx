@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import AdminNav from '../../components/admin/AdminNav';
 import {
   Shield, Eye, CheckCircle, XCircle, AlertTriangle, Flag, Image as ImageIcon,
   Video, Star, MessageSquare, ThumbsUp, ThumbsDown, Search, Filter,
@@ -442,6 +443,7 @@ export default function AdminContentModeration() {
 
   return (
     <div className="min-h-screen bg-gray-50 p-6">
+      <AdminNav />
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-8">

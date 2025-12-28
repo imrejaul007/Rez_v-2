@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Search, Plus, AlertTriangle, Calendar, Package, CheckCircle, XCircle, Clock, Download, Filter, QrCode, FileText, TrendingUp } from 'lucide-react';
+import MerchantNav from '../../components/merchant/MerchantNav';
 
 export default function MerchantBatchTracking() {
   const [activeTab, setActiveTab] = useState('batches');
@@ -229,6 +230,7 @@ export default function MerchantBatchTracking() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 p-6">
+      <MerchantNav />
       {/* Header */}
       <div className="mb-6">
         <div className="flex items-center justify-between mb-2">

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Zap, CheckCircle, XCircle, Clock, Settings, Key, Link as LinkIcon, RefreshCw, AlertCircle, Download, Upload, Code, Webhook, Database, Cloud, CreditCard, Truck, MessageSquare, Mail, ShoppingCart } from 'lucide-react';
+import MerchantNav from '../../components/merchant/MerchantNav';
 
 export default function MerchantIntegrations() {
   const [activeTab, setActiveTab] = useState('active');
@@ -198,6 +199,7 @@ export default function MerchantIntegrations() {
 
   return (
     <div className="min-h-screen bg-gray-50 p-4 lg:p-8">
+      <MerchantNav />
       <div className="max-w-7xl mx-auto space-y-6">
         {/* Header */}
         <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl p-6 text-white">

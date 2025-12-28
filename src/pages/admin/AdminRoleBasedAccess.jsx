@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import AdminNav from '../../components/admin/AdminNav';
 import {
   Shield, Users, Settings, Lock, Eye, Edit, Trash2, Plus,
   Search, Filter, UserCheck, Globe, MapPin, Briefcase,
@@ -443,6 +444,7 @@ const AdminRoleBasedAccess = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-900 via-indigo-900 to-blue-900 p-6">
+      <AdminNav />
       {/* Header */}
       <div className="mb-8">
         <div className="flex items-center gap-3 mb-2">

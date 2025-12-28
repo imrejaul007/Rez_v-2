@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import MerchantNav from '../../components/merchant/MerchantNav';
 import {
   Ticket, QrCode, CheckCircle, Users, Clock, TrendingUp, Calendar,
   Search, Filter, Eye, X, AlertCircle, UserCheck, Download, RefreshCw
@@ -182,6 +183,7 @@ export default function MerchantEventCheckIn() {
     if (!activeEvent) {
       return (
         <div className="bg-white rounded-xl border border-gray-200 p-12 text-center">
+          <MerchantNav />
           <Calendar className="w-16 h-16 text-gray-400 mx-auto mb-4" />
           <p className="text-gray-600">Select an event to start check-in</p>
         </div>

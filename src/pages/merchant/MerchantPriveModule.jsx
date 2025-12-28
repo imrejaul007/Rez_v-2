@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import MerchantNav from '../../components/merchant/MerchantNav';
 import {
   Crown, Star, TrendingUp, Calendar, DollarSign, Users, Eye,
   FileText, Check, X, Clock, Target, Award, Sparkles, Download,
@@ -220,6 +221,7 @@ export default function MerchantPriveModule() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <MerchantNav />
       {/* Header */}
       <div className="bg-gradient-to-r from-purple-600 via-pink-600 to-indigo-600 text-white p-6">
         <div className="flex items-center justify-between mb-4">

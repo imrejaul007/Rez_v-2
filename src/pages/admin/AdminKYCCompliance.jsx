@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Shield, CheckCircle, XCircle, AlertTriangle, Eye, FileText, User, Calendar, MapPin, Phone } from 'lucide-react';
+import AdminNav from '../../components/admin/AdminNav';
 
 export default function AdminKYCCompliance() {
   const [activeTab, setActiveTab] = useState('pending');
@@ -67,6 +68,7 @@ export default function AdminKYCCompliance() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <AdminNav />
       <div className="bg-gradient-to-r from-green-600 to-teal-600 text-white p-6">
         <div className="flex items-center gap-3 mb-4">
           <Shield className="w-8 h-8" />
