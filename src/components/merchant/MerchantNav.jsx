@@ -6,7 +6,8 @@ import {
   BarChart3, LineChart, TrendingUp, DollarSign, Image, Gift, Award,
   UserPlus, FileText, FolderOpen, Bell, Headphones, Settings, MapPin,
   Clock, Cake, Coins, ShoppingCart, Layers, Lock, Box, ChevronDown, Menu, X,
-  Monitor, ChefHat, Grid3x3, Scan, Calendar, Scissors, ClipboardList, Repeat, Globe, Target
+  Monitor, ChefHat, Grid3x3, Scan, Calendar, Scissors, ClipboardList, Repeat, Globe, Target,
+  Receipt, PackageSearch, Link
 } from 'lucide-react';
 
 export default function MerchantNav() {
@@ -44,6 +45,7 @@ export default function MerchantNav() {
         { path: '/merchant/products', icon: Package, label: 'Products' },
         { path: '/merchant/inventory', icon: Box, label: 'Inventory' },
         { path: '/merchant/inventory-advanced', icon: BarChart3, label: 'Advanced Inventory' },
+        { path: '/merchant/suppliers-procurement', icon: PackageSearch, label: 'Suppliers & Procurement' },
         { path: '/merchant/returns', icon: RotateCcw, label: 'Returns & Refunds' },
         { path: '/merchant/shipping', icon: Truck, label: 'Shipping & Logistics' }
       ]
@@ -102,6 +104,7 @@ export default function MerchantNav() {
         { path: '/merchant/wallet', icon: Wallet, label: 'Wallet' },
         { path: '/merchant/payments', icon: DollarSign, label: 'Payments & Settlements' },
         { path: '/merchant/financials', icon: CreditCard, label: 'Financial Reports' },
+        { path: '/merchant/tax-compliance', icon: Receipt, label: 'Tax & Compliance' },
         { path: '/merchant/benchmarks', icon: TrendingUp, label: 'Benchmarks' }
       ]
     },
@@ -123,6 +126,7 @@ export default function MerchantNav() {
       items: [
         { path: '/merchant/staff', icon: UserPlus, label: 'Staff Management' },
         { path: '/merchant/staff-roster', icon: ClipboardList, label: 'Staff Roster & Shifts' },
+        { path: '/merchant/integrations', icon: Link, label: 'Integration Hub' },
         { path: '/merchant/compliance', icon: FileText, label: 'Compliance' },
         { path: '/merchant/documents', icon: FolderOpen, label: 'Documents' },
         { path: '/merchant/notifications', icon: Bell, label: 'Notifications' },

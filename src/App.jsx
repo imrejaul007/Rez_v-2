@@ -131,6 +131,9 @@ import MerchantInventoryAdvanced from './pages/merchant/MerchantInventoryAdvance
 import MerchantOrdersMultiChannel from './pages/merchant/MerchantOrdersMultiChannel';
 import MerchantCRM from './pages/merchant/MerchantCRM';
 import MerchantPricingIntelligence from './pages/merchant/MerchantPricingIntelligence';
+import MerchantTaxCompliance from './pages/merchant/MerchantTaxCompliance';
+import MerchantSuppliersProcurement from './pages/merchant/MerchantSuppliersProcurement';
+import MerchantIntegrations from './pages/merchant/MerchantIntegrations';
 import CreateOffer from './pages/merchant/CreateOffer';
 import MerchantOffers from './pages/merchant/MerchantOffers';
 import MerchantCustomers from './pages/merchant/MerchantCustomers';
@@ -959,6 +962,9 @@ function App() {
                 <Route path="merchant/inventory-advanced" element={<MerchantInventoryAdvanced />} />
                 <Route path="merchant/crm" element={<MerchantCRM />} />
                 <Route path="merchant/pricing-intelligence" element={<MerchantPricingIntelligence />} />
+                <Route path="merchant/tax-compliance" element={<MerchantTaxCompliance />} />
+                <Route path="merchant/suppliers-procurement" element={<MerchantSuppliersProcurement />} />
+                <Route path="merchant/integrations" element={<MerchantIntegrations />} />
                 <Route path="merchant/returns" element={<MerchantReturns />} />
                 <Route path="merchant/payments" element={<MerchantPayments />} />
                 <Route path="merchant/performance" element={<MerchantPerformance />} />
