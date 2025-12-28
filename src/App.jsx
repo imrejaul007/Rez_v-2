@@ -113,6 +113,8 @@ import AdminGameConfiguration from './pages/admin/AdminGameConfiguration';
 import AdminSocialImpactVerification from './pages/admin/AdminSocialImpactVerification';
 import AdminEventInventory from './pages/admin/AdminEventInventory';
 import AdminFraudDetection from './pages/admin/AdminFraudDetection';
+import AdminAIInsights from './pages/admin/AdminAIInsights';
+import AdminPlatformHealth from './pages/admin/AdminPlatformHealth';
 
 // Merchant Pages
 import MerchantDashboard from './pages/merchant/MerchantDashboard';
@@ -959,6 +961,8 @@ function App() {
                 <Route path="admin/social-impact-verification" element={<AdminSocialImpactVerification />} />
                 <Route path="admin/event-inventory" element={<AdminEventInventory />} />
                 <Route path="admin/fraud-detection" element={<AdminFraudDetection />} />
+                <Route path="admin/ai-insights" element={<AdminAIInsights />} />
+                <Route path="admin/platform-health" element={<AdminPlatformHealth />} />
 
                 {/* Merchant Routes */}
                 <Route path="merchant" element={<MerchantSuperOSDashboard />} />
