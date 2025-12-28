@@ -7,7 +7,8 @@ import {
   UserPlus, FileText, FolderOpen, Bell, Headphones, Settings, MapPin,
   Clock, Cake, Coins, ShoppingCart, Layers, Lock, Box, ChevronDown, Menu, X,
   Monitor, ChefHat, Grid3x3, Scan, Calendar, Scissors, ClipboardList, Repeat, Globe, Target,
-  Receipt, PackageSearch, Link, Crown as MembershipIcon, Trash2, QrCode, ArrowLeftRight
+  Receipt, PackageSearch, Link, Crown as MembershipIcon, Trash2, QrCode, ArrowLeftRight,
+  CalendarDays, BookOpen, Stethoscope
 } from 'lucide-react';
 
 export default function MerchantNav() {
@@ -31,6 +32,9 @@ export default function MerchantNav() {
         { path: '/merchant/recipe-costing', icon: ChefHat, label: 'Recipe Costing (Restaurant)' },
         { path: '/merchant/appointments', icon: Calendar, label: 'Appointments (Salon/Service)' },
         { path: '/merchant/service-catalog', icon: Scissors, label: 'Service Catalog (Salon)' },
+        { path: '/merchant/class-schedule', icon: CalendarDays, label: 'Class Schedule (Fitness/Education)' },
+        { path: '/merchant/booking-calendar', icon: BookOpen, label: 'Booking Calendar (Travel/Events)' },
+        { path: '/merchant/prescriptions', icon: Stethoscope, label: 'Prescriptions (Healthcare)' },
         { path: '/merchant/marketplace', icon: Globe, label: 'D2C Marketplace (Brand)' },
         { path: '/merchant/subscriptions', icon: Repeat, label: 'Subscriptions (D2C)' }
       ]

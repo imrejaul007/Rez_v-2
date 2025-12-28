@@ -139,6 +139,9 @@ import MerchantWasteManagement from './pages/merchant/MerchantWasteManagement';
 import MerchantBatchTracking from './pages/merchant/MerchantBatchTracking';
 import MerchantPayroll from './pages/merchant/MerchantPayroll';
 import MerchantStoreTransfer from './pages/merchant/MerchantStoreTransfer';
+import MerchantClassSchedule from './pages/merchant/MerchantClassSchedule';
+import MerchantBookingCalendar from './pages/merchant/MerchantBookingCalendar';
+import MerchantPrescriptions from './pages/merchant/MerchantPrescriptions';
 import CreateOffer from './pages/merchant/CreateOffer';
 import MerchantOffers from './pages/merchant/MerchantOffers';
 import MerchantCustomers from './pages/merchant/MerchantCustomers';
@@ -975,6 +978,9 @@ function App() {
                 <Route path="merchant/batch-tracking" element={<MerchantBatchTracking />} />
                 <Route path="merchant/payroll" element={<MerchantPayroll />} />
                 <Route path="merchant/store-transfer" element={<MerchantStoreTransfer />} />
+                <Route path="merchant/class-schedule" element={<MerchantClassSchedule />} />
+                <Route path="merchant/booking-calendar" element={<MerchantBookingCalendar />} />
+                <Route path="merchant/prescriptions" element={<MerchantPrescriptions />} />
                 <Route path="merchant/returns" element={<MerchantReturns />} />
                 <Route path="merchant/payments" element={<MerchantPayments />} />
                 <Route path="merchant/performance" element={<MerchantPerformance />} />
