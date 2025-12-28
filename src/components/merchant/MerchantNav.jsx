@@ -6,7 +6,7 @@ import {
   BarChart3, LineChart, TrendingUp, DollarSign, Image, Gift, Award,
   UserPlus, FileText, FolderOpen, Bell, Headphones, Settings, MapPin,
   Clock, Cake, Coins, ShoppingCart, Layers, Lock, Box, ChevronDown, Menu, X,
-  Monitor, ChefHat, Grid3x3, Scan, Calendar, Scissors, ClipboardList, Repeat, Globe
+  Monitor, ChefHat, Grid3x3, Scan, Calendar, Scissors, ClipboardList, Repeat, Globe, Target
 } from 'lucide-react';
 
 export default function MerchantNav() {
@@ -86,6 +86,7 @@ export default function MerchantNav() {
       icon: Users,
       items: [
         { path: '/merchant/customers', icon: Users, label: 'Customer List' },
+        { path: '/merchant/crm', icon: Target, label: 'CRM & Segmentation' },
         { path: '/merchant/reviews', icon: Star, label: 'Reviews & Ratings' }
       ]
     },
@@ -110,6 +111,7 @@ export default function MerchantNav() {
       icon: DollarSign,
       items: [
         { path: '/merchant/price-engineering', icon: DollarSign, label: 'Price Engineering' },
+        { path: '/merchant/pricing-intelligence', icon: TrendingUp, label: 'Smart Pricing & Competition' },
         { path: '/merchant/content', icon: Image, label: 'Content Management' },
         { path: '/merchant/free-delivery', icon: Truck, label: 'Free Delivery Rules' }
       ]
