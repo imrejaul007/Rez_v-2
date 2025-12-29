@@ -152,6 +152,7 @@ import MerchantIntegrations from './pages/merchant/MerchantIntegrations';
 import MerchantMemberships from './pages/merchant/MerchantMemberships';
 import MerchantWasteManagement from './pages/merchant/MerchantWasteManagement';
 import MerchantBatchTracking from './pages/merchant/MerchantBatchTracking';
+import MerchantQROrdering from './pages/merchant/MerchantQROrdering';
 import MerchantPayroll from './pages/merchant/MerchantPayroll';
 import MerchantStoreTransfer from './pages/merchant/MerchantStoreTransfer';
 import MerchantClassSchedule from './pages/merchant/MerchantClassSchedule';
@@ -1019,6 +1020,7 @@ function App() {
                 <Route path="merchant/booking-calendar" element={<MerchantBookingCalendar />} />
                 <Route path="merchant/prescriptions" element={<MerchantPrescriptions />} />
                 <Route path="merchant/qr-payments" element={<MerchantQRPayments />} />
+                <Route path="merchant/qr-ordering" element={<MerchantQROrdering />} />
                 <Route path="merchant/event-checkin" element={<MerchantEventCheckIn />} />
                 <Route path="merchant/creator-hub" element={<MerchantCreatorHub />} />
                 <Route path="merchant/review-management" element={<MerchantReviewManagement />} />

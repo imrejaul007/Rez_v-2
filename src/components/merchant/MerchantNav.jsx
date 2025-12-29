@@ -33,6 +33,7 @@ export default function MerchantNav() {
         { path: '/merchant/kds', icon: Monitor, label: 'Kitchen Display (Restaurant)' },
         { path: '/merchant/tables', icon: Grid3x3, label: 'Table Management (Restaurant)' },
         { path: '/merchant/recipe-costing', icon: ChefHat, label: 'Recipe Costing (Restaurant)' },
+        { path: '/merchant/qr-ordering', icon: QrCode, label: 'QR Ordering (Restaurant)' },
         { path: '/merchant/appointments', icon: Calendar, label: 'Appointments (Salon/Service)' },
         { path: '/merchant/service-catalog', icon: Scissors, label: 'Service Catalog (Salon)' },
         { path: '/merchant/class-schedule', icon: CalendarDays, label: 'Class Schedule (Fitness/Education)' },
