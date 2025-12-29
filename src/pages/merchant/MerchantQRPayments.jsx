@@ -4,14 +4,14 @@ import {
   QrCode, Check, Clock, X, DollarSign, TrendingUp, Users, Zap,
   RefreshCw, Download, Search, Filter, Calendar, ArrowRight,
   Coins, Gift, Tag, Bell, AlertCircle, CheckCircle, Eye, Plus,
-  Edit, Trash2, Printer, Car, Utensils, Settings, Copy
+  Edit, Trash2, Printer, Car, Utensils, Settings, Copy, Store
 } from 'lucide-react';
 
 export default function MerchantQRPayments() {
   const [activeTab, setActiveTab] = useState('live');
   const [selectedPayment, setSelectedPayment] = useState(null);
   const [showCreateModal, setShowCreateModal] = useState(false);
-  const [qrType, setQrType] = useState('table'); // 'table' or 'drive-thru'
+  const [qrType, setQrType] = useState('store'); // 'store', 'table', or 'drive-thru'
   const [editingQR, setEditingQR] = useState(null);
 
   // Mock data - Live payments (pending confirmation)
@@ -99,7 +99,44 @@ export default function MerchantQRPayments() {
     }
   };
 
-  // Mock data - Table QR Codes
+  // Mock data - Store QR Codes (for direct payments)
+  const [storeQRs, setStoreQRs] = useState([
+    {
+      id: 'STORE-001',
+      storeName: 'Main Store',
+      location: 'Counter 1',
+      qrCode: 'https://rez.com/pay/store-001',
+      type: 'payment',
+      status: 'active',
+      createdAt: '2025-01-10',
+      paymentsToday: 156,
+      revenueToday: 234500
+    },
+    {
+      id: 'STORE-002',
+      storeName: 'Main Store',
+      location: 'Counter 2',
+      qrCode: 'https://rez.com/pay/store-002',
+      type: 'payment',
+      status: 'active',
+      createdAt: '2025-01-10',
+      paymentsToday: 143,
+      revenueToday: 198700
+    },
+    {
+      id: 'STORE-003',
+      storeName: 'Main Store',
+      location: 'Entrance',
+      qrCode: 'https://rez.com/pay/store-003',
+      type: 'payment',
+      status: 'active',
+      createdAt: '2025-01-10',
+      paymentsToday: 87,
+      revenueToday: 145200
+    }
+  ]);
+
+  // Mock data - Table QR Codes (for restaurant orders/billing)
   const [tableQRs, setTableQRs] = useState([
     {
       id: 'TBL-001',
@@ -147,13 +184,13 @@ export default function MerchantQRPayments() {
     }
   ]);
 
-  // Mock data - Drive-Through QR Codes
+  // Mock data - Drive-Through QR Codes (for drive-through orders)
   const [driveThruQRs, setDriveThruQRs] = useState([
     {
       id: 'DT-001',
       laneNumber: 1,
       laneName: 'Express Lane',
-      qrCode: 'https://rez.com/order/drive-001',
+      qrCode: 'https://rez.com/drive-thru/drive-001',
       status: 'active',
       createdAt: '2025-01-15',
       ordersToday: 45,
@@ -164,7 +201,7 @@ export default function MerchantQRPayments() {
       id: 'DT-002',
       laneNumber: 2,
       laneName: 'Regular Lane',
-      qrCode: 'https://rez.com/order/drive-002',
+      qrCode: 'https://rez.com/drive-thru/drive-002',
       status: 'active',
       createdAt: '2025-01-15',
       ordersToday: 38,
@@ -175,7 +212,7 @@ export default function MerchantQRPayments() {
       id: 'DT-003',
       laneNumber: 3,
       laneName: 'Pre-Order Lane',
-      qrCode: 'https://rez.com/order/drive-003',
+      qrCode: 'https://rez.com/drive-thru/drive-003',
       status: 'active',
       createdAt: '2025-01-15',
       ordersToday: 52,
@@ -192,6 +229,22 @@ export default function MerchantQRPayments() {
   const handleRejectPayment = (paymentId) => {
     console.log('Rejecting payment:', paymentId);
     // Implementation would reject payment
+  };
+
+  const handleCreateStoreQR = (data) => {
+    const newStore = {
+      id: `STORE-${String(storeQRs.length + 1).padStart(3, '0')}`,
+      storeName: data.storeName || 'Main Store',
+      location: data.location,
+      qrCode: `https://rez.com/pay/store-${String(storeQRs.length + 1).padStart(3, '0')}`,
+      type: 'payment',
+      status: 'active',
+      createdAt: new Date().toISOString().split('T')[0],
+      paymentsToday: 0,
+      revenueToday: 0
+    };
+    setStoreQRs([...storeQRs, newStore]);
+    setShowCreateModal(false);
   };
 
   const handleCreateTableQR = (data) => {
@@ -215,7 +268,7 @@ export default function MerchantQRPayments() {
       id: `DT-${String(driveThruQRs.length + 1).padStart(3, '0')}`,
       laneNumber: data.laneNumber,
       laneName: data.laneName,
-      qrCode: `https://rez.com/order/drive-${String(driveThruQRs.length + 1).padStart(3, '0')}`,
+      qrCode: `https://rez.com/drive-thru/drive-${String(driveThruQRs.length + 1).padStart(3, '0')}`,
       status: 'active',
       createdAt: new Date().toISOString().split('T')[0],
       ordersToday: 0,
@@ -224,6 +277,12 @@ export default function MerchantQRPayments() {
     };
     setDriveThruQRs([...driveThruQRs, newLane]);
     setShowCreateModal(false);
+  };
+
+  const handleDeleteStoreQR = (id) => {
+    if (window.confirm('Are you sure you want to delete this store QR code?')) {
+      setStoreQRs(storeQRs.filter(s => s.id !== id));
+    }
   };
 
   const handleDeleteTableQR = (id) => {
@@ -239,7 +298,11 @@ export default function MerchantQRPayments() {
   };
 
   const handleToggleQRStatus = (id, type) => {
-    if (type === 'table') {
+    if (type === 'store') {
+      setStoreQRs(storeQRs.map(s =>
+        s.id === id ? { ...s, status: s.status === 'active' ? 'inactive' : 'active' } : s
+      ));
+    } else if (type === 'table') {
       setTableQRs(tableQRs.map(t =>
         t.id === id ? { ...t, status: t.status === 'active' ? 'inactive' : 'active' } : t
       ));
@@ -450,10 +513,56 @@ export default function MerchantQRPayments() {
 
   const renderQRManagement = () => (
     <div className="space-y-6">
+      {/* Info Banner */}
+      <div className="bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200 rounded-xl p-6">
+        <div className="flex items-start gap-4">
+          <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center flex-shrink-0">
+            <QrCode className="w-6 h-6 text-white" />
+          </div>
+          <div>
+            <h3 className="font-semibold text-gray-900 mb-3">How QR Codes Work</h3>
+            <div className="grid grid-cols-3 gap-4 text-sm">
+              <div className="bg-white rounded-lg p-3 border border-purple-200">
+                <div className="flex items-center gap-2 mb-2">
+                  <Store className="w-4 h-4 text-purple-600" />
+                  <span className="font-semibold text-purple-900">Store Payment QR</span>
+                </div>
+                <p className="text-gray-600">Customers scan to make direct payments at your store counters</p>
+              </div>
+              <div className="bg-white rounded-lg p-3 border border-blue-200">
+                <div className="flex items-center gap-2 mb-2">
+                  <Utensils className="w-4 h-4 text-blue-600" />
+                  <span className="font-semibold text-blue-900">Table Order QR</span>
+                </div>
+                <p className="text-gray-600">Customers scan to view menu and place orders for specific tables</p>
+              </div>
+              <div className="bg-white rounded-lg p-3 border border-orange-200">
+                <div className="flex items-center gap-2 mb-2">
+                  <Car className="w-4 h-4 text-orange-600" />
+                  <span className="font-semibold text-orange-900">Drive-Thru Order QR</span>
+                </div>
+                <p className="text-gray-600">Customers scan to place drive-through orders from their vehicles</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* QR Type Selector */}
       <div className="bg-white rounded-xl border border-gray-200 p-4">
         <div className="flex items-center justify-between">
           <div className="flex gap-2">
+            <button
+              onClick={() => setQrType('store')}
+              className={`px-6 py-3 rounded-lg font-medium transition-colors flex items-center gap-2 ${
+                qrType === 'store'
+                  ? 'bg-purple-600 text-white'
+                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+              }`}
+            >
+              <Store className="w-5 h-5" />
+              Store Payment QR ({storeQRs.length})
+            </button>
             <button
               onClick={() => setQrType('table')}
               className={`px-6 py-3 rounded-lg font-medium transition-colors flex items-center gap-2 ${
@@ -463,18 +572,18 @@ export default function MerchantQRPayments() {
               }`}
             >
               <Utensils className="w-5 h-5" />
-              Table QR Codes ({tableQRs.length})
+              Table Order QR ({tableQRs.length})
             </button>
             <button
               onClick={() => setQrType('drive-thru')}
               className={`px-6 py-3 rounded-lg font-medium transition-colors flex items-center gap-2 ${
                 qrType === 'drive-thru'
-                  ? 'bg-blue-600 text-white'
+                  ? 'bg-orange-600 text-white'
                   : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
               }`}
             >
               <Car className="w-5 h-5" />
-              Drive-Through QR Codes ({driveThruQRs.length})
+              Drive-Thru Order QR ({driveThruQRs.length})
             </button>
           </div>
           <button
@@ -482,10 +591,117 @@ export default function MerchantQRPayments() {
             className="px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg font-medium transition-colors flex items-center gap-2"
           >
             <Plus className="w-5 h-5" />
-            Create New {qrType === 'table' ? 'Table' : 'Drive-Through'} QR
+            Create {qrType === 'store' ? 'Store' : qrType === 'table' ? 'Table' : 'Drive-Thru'} QR
           </button>
         </div>
       </div>
+
+      {/* Store QR Codes */}
+      {qrType === 'store' && (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {storeQRs.map((store) => (
+            <div key={store.id} className="bg-white rounded-xl border border-gray-200 p-6">
+              {/* Header */}
+              <div className="flex items-start justify-between mb-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center">
+                    <Store className="w-6 h-6 text-purple-600" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-gray-900">{store.location}</h3>
+                    <p className="text-sm text-gray-600">{store.storeName}</p>
+                  </div>
+                </div>
+                <span className={`px-3 py-1 rounded-full text-xs font-medium ${
+                  store.status === 'active'
+                    ? 'bg-green-100 text-green-700'
+                    : 'bg-gray-100 text-gray-600'
+                }`}>
+                  {store.status}
+                </span>
+              </div>
+
+              {/* QR Code Display */}
+              <div className="bg-gray-50 rounded-lg p-4 mb-4 flex items-center justify-center">
+                <QrCode className="w-24 h-24 text-gray-400" />
+              </div>
+
+              {/* Badge */}
+              <div className="mb-4 flex justify-center">
+                <span className="px-3 py-1 bg-purple-100 text-purple-700 text-xs font-medium rounded-full">
+                  Direct Payment QR
+                </span>
+              </div>
+
+              {/* Stats */}
+              <div className="grid grid-cols-2 gap-3 mb-4">
+                <div className="bg-green-50 rounded-lg p-3">
+                  <p className="text-xs text-gray-600 mb-1">Payments Today</p>
+                  <p className="text-lg font-bold text-gray-900">{store.paymentsToday}</p>
+                </div>
+                <div className="bg-blue-50 rounded-lg p-3">
+                  <p className="text-xs text-gray-600 mb-1">Revenue Today</p>
+                  <p className="text-lg font-bold text-gray-900">₹{(store.revenueToday / 1000).toFixed(1)}K</p>
+                </div>
+              </div>
+
+              <div className="bg-purple-50 rounded-lg p-3 mb-4">
+                <p className="text-xs text-gray-600 mb-1">Total Revenue</p>
+                <p className="text-xl font-bold text-purple-600">₹{store.revenueToday.toLocaleString()}</p>
+              </div>
+
+              {/* QR Code Link */}
+              <div className="mb-4">
+                <p className="text-xs text-gray-600 mb-1">QR Code Link</p>
+                <div className="flex items-center gap-2">
+                  <input
+                    type="text"
+                    value={store.qrCode}
+                    readOnly
+                    className="flex-1 px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg text-xs font-mono"
+                  />
+                  <button
+                    onClick={() => handleCopyQRLink(store.qrCode)}
+                    className="p-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
+                  >
+                    <Copy className="w-4 h-4 text-gray-600" />
+                  </button>
+                </div>
+              </div>
+
+              {/* Actions */}
+              <div className="flex gap-2">
+                <button
+                  onClick={() => handlePrintQR(store.qrCode, `${store.location}`)}
+                  className="flex-1 px-3 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg text-sm font-medium transition-colors flex items-center justify-center gap-2"
+                >
+                  <Printer className="w-4 h-4" />
+                  Print
+                </button>
+                <button
+                  onClick={() => handleDownloadQR(store.qrCode, `${store.location}`)}
+                  className="flex-1 px-3 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg text-sm font-medium transition-colors flex items-center justify-center gap-2"
+                >
+                  <Download className="w-4 h-4" />
+                  Download
+                </button>
+                <button
+                  onClick={() => handleToggleQRStatus(store.id, 'store')}
+                  className="px-3 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition-colors"
+                >
+                  <Settings className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={() => handleDeleteStoreQR(store.id)}
+                  className="px-3 py-2 bg-red-100 hover:bg-red-200 text-red-600 rounded-lg transition-colors"
+                >
+                  <Trash2 className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
 
       {/* Table QR Codes */}
       {qrType === 'table' && (
@@ -749,6 +965,8 @@ export default function MerchantQRPayments() {
 
   const CreateQRModal = () => {
     const [formData, setFormData] = useState({
+      storeName: 'Main Store',
+      location: '',
       tableNumber: '',
       section: 'Indoor',
       capacity: 4,
@@ -758,12 +976,16 @@ export default function MerchantQRPayments() {
 
     const handleSubmit = (e) => {
       e.preventDefault();
-      if (qrType === 'table') {
+      if (qrType === 'store') {
+        handleCreateStoreQR(formData);
+      } else if (qrType === 'table') {
         handleCreateTableQR(formData);
       } else {
         handleCreateDriveThruQR(formData);
       }
       setFormData({
+        storeName: 'Main Store',
+        location: '',
         tableNumber: '',
         section: 'Indoor',
         capacity: 4,
@@ -779,7 +1001,7 @@ export default function MerchantQRPayments() {
         <div className="bg-white rounded-2xl max-w-md w-full p-6">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-2xl font-bold text-gray-900">
-              Create {qrType === 'table' ? 'Table' : 'Drive-Through'} QR Code
+              Create {qrType === 'store' ? 'Store Payment' : qrType === 'table' ? 'Table Order' : 'Drive-Thru Order'} QR
             </h2>
             <button
               onClick={() => setShowCreateModal(false)}
@@ -790,7 +1012,36 @@ export default function MerchantQRPayments() {
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-4">
-            {qrType === 'table' ? (
+            {qrType === 'store' ? (
+              <>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Store Name *
+                  </label>
+                  <input
+                    type="text"
+                    value={formData.storeName}
+                    onChange={(e) => setFormData({ ...formData, storeName: e.target.value })}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Location / Counter Name *
+                  </label>
+                  <input
+                    type="text"
+                    value={formData.location}
+                    onChange={(e) => setFormData({ ...formData, location: e.target.value })}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+                    placeholder="e.g., Counter 1, Entrance, Billing Desk"
+                    required
+                  />
+                </div>
+              </>
+            ) : qrType === 'table' ? (
               <>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -881,7 +1132,9 @@ export default function MerchantQRPayments() {
               <button
                 type="submit"
                 className={`flex-1 px-4 py-2 ${
-                  qrType === 'table' ? 'bg-blue-600 hover:bg-blue-700' : 'bg-orange-600 hover:bg-orange-700'
+                  qrType === 'store' ? 'bg-purple-600 hover:bg-purple-700' :
+                  qrType === 'table' ? 'bg-blue-600 hover:bg-blue-700' :
+                  'bg-orange-600 hover:bg-orange-700'
                 } text-white rounded-lg font-medium transition-colors`}
               >
                 Create QR Code
@@ -1021,7 +1274,7 @@ export default function MerchantQRPayments() {
                 <QrCode className="w-5 h-5" />
                 QR Management
                 <span className="px-2 py-1 bg-blue-100 text-blue-700 text-xs font-medium rounded-full">
-                  {tableQRs.length + driveThruQRs.length}
+                  {storeQRs.length + tableQRs.length + driveThruQRs.length}
                 </span>
               </div>
             </button>
