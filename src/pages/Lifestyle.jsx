@@ -1,290 +1,378 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Sparkles, ShoppingBag, Dumbbell, Calendar, UtensilsCrossed, Home as HomeIcon, Leaf, TrendingUp, Award, ArrowRight } from 'lucide-react';
+import {
+  Sparkles, ShoppingBag, Dumbbell, Calendar, UtensilsCrossed, Home as HomeIcon,
+  Leaf, TrendingUp, Award, ArrowRight, User, Bell, Search, Heart,
+  Flame, Clock, MapPin, Star, ChevronRight, Play, Users, Zap, Gift, Target
+} from 'lucide-react';
 
 export default function Lifestyle() {
   const navigate = useNavigate();
+  const [activeStoryIndex, setActiveStoryIndex] = useState(null);
 
-  const verticals = [
+  // User info (mock)
+  const user = {
+    name: 'Arjun',
+    avatar: 'https://i.pravatar.cc/150?img=12',
+    styleDNA: 'Modern Minimalist',
+    sustainabilityScore: 75,
+    rezCoins: 2450
+  };
+
+  // Story-like highlights
+  const stories = [
+    { id: 1, title: 'Take Quiz', icon: Sparkles, color: 'from-purple-500 to-pink-500', action: '/lifestyle/fashion/style-quiz' },
+    { id: 2, title: 'Wardrobe', icon: ShoppingBag, color: 'from-blue-500 to-cyan-500', action: '/lifestyle/fashion/virtual-wardrobe' },
+    { id: 3, title: 'Calendar', icon: Calendar, color: 'from-orange-500 to-red-500', action: '/lifestyle/fashion/outfit-calendar' },
+    { id: 4, title: 'Eco Score', icon: Leaf, color: 'from-green-500 to-teal-500', action: '/lifestyle/fashion/sustainability' },
+    { id: 5, title: 'New Arrivals', icon: Flame, color: 'from-pink-500 to-rose-500', action: '/fashion' },
+    { id: 6, title: 'Trending', icon: TrendingUp, color: 'from-yellow-500 to-orange-500', action: '/fashion/trending' }
+  ];
+
+  // Quick actions
+  const quickActions = [
     {
-      id: 'fashion',
-      name: 'Fashion',
-      description: 'Discover your style DNA & build the perfect wardrobe',
+      icon: Target,
+      title: 'Discover Your Style',
+      subtitle: 'Take 2-min quiz',
+      color: 'bg-gradient-to-br from-purple-500 to-pink-500',
+      action: '/lifestyle/fashion/style-quiz'
+    },
+    {
       icon: ShoppingBag,
-      color: 'from-purple-600 to-pink-600',
-      image: 'https://images.unsplash.com/photo-1490114538077-0a7f8cb49891?w=600&h=400&fit=crop',
-      features: ['Style DNA Quiz', 'Virtual Wardrobe', 'Outfit Calendar', 'Sustainability Tracking'],
-      path: '/lifestyle/fashion/style-quiz',
-      status: 'Available Now',
-      badge: 'New'
+      title: 'Shop Fashion',
+      subtitle: '5000+ items',
+      color: 'bg-gradient-to-br from-blue-500 to-cyan-500',
+      action: '/fashion'
     },
     {
-      id: 'beauty',
-      name: 'Beauty',
-      description: 'Personalized skincare & makeup recommendations',
-      icon: Sparkles,
-      color: 'from-pink-600 to-rose-600',
-      image: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600&h=400&fit=crop',
-      features: ['Skin Analysis', 'Product Finder', 'Beauty Routine', 'Virtual Try-On'],
-      path: '/beauty',
-      status: 'Coming Soon',
-      badge: 'Q2 2025'
-    },
-    {
-      id: 'fitness',
-      name: 'Fitness',
-      description: 'Track workouts, nutrition & wellness goals',
-      icon: Dumbbell,
-      color: 'from-green-600 to-teal-600',
-      image: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&h=400&fit=crop',
-      features: ['Workout Plans', 'Nutrition Tracker', 'Progress Analytics', 'Community Challenges'],
-      path: '/fitness',
-      status: 'Coming Soon',
-      badge: 'Q2 2025'
-    },
-    {
-      id: 'events',
-      name: 'Events',
-      description: 'Discover, book & manage lifestyle events',
       icon: Calendar,
-      color: 'from-blue-600 to-indigo-600',
-      image: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600&h=400&fit=crop',
-      features: ['Event Discovery', 'Ticket Booking', 'Calendar Sync', 'Social Sharing'],
-      path: '/events',
-      status: 'Coming Soon',
-      badge: 'Q3 2025'
+      title: 'Plan Outfits',
+      subtitle: '30 days ahead',
+      color: 'bg-gradient-to-br from-orange-500 to-red-500',
+      action: '/lifestyle/fashion/outfit-calendar'
     },
     {
-      id: 'food',
-      name: 'Food & Dining',
-      description: 'Curated restaurants, recipes & meal planning',
-      icon: UtensilsCrossed,
-      color: 'from-orange-600 to-red-600',
-      image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&h=400&fit=crop',
-      features: ['Restaurant Discovery', 'Meal Planner', 'Recipe Collection', 'Food Diary'],
-      path: '/food',
-      status: 'Coming Soon',
-      badge: 'Q3 2025'
-    },
-    {
-      id: 'home',
-      name: 'Home & Living',
-      description: 'Transform your space with curated home solutions',
-      icon: HomeIcon,
-      color: 'from-amber-600 to-yellow-600',
-      image: 'https://images.unsplash.com/photo-1484101403633-562f891dc89a?w=600&h=400&fit=crop',
-      features: ['Home Decor', 'Smart Home', 'Organization Tips', 'Interior Design'],
-      path: '/home',
-      status: 'Coming Soon',
-      badge: 'Q4 2025'
+      icon: Leaf,
+      title: 'Go Sustainable',
+      subtitle: 'Earn 2x coins',
+      color: 'bg-gradient-to-br from-green-500 to-teal-500',
+      action: '/lifestyle/fashion/sustainability'
     }
   ];
 
-  const lifestyleStats = {
-    activeUsers: '50K+',
-    categoriesLive: '1 of 6',
-    avgSavings: '₹12,400',
-    sustainabilityScore: '75/100'
-  };
+  // Trending now
+  const trendingNow = [
+    {
+      image: 'https://images.unsplash.com/photo-1490114538077-0a7f8cb49891?w=400&h=500&fit=crop',
+      title: 'Minimal Whites',
+      category: 'Trending',
+      likes: '2.3K',
+      tag: 'Hot'
+    },
+    {
+      image: 'https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=400&h=500&fit=crop',
+      title: 'Boho Summer',
+      category: 'Vibe',
+      likes: '1.8K',
+      tag: 'New'
+    },
+    {
+      image: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?w=400&h=500&fit=crop',
+      title: 'Streetwear 2025',
+      category: 'Style',
+      likes: '3.1K',
+      tag: 'Popular'
+    }
+  ];
 
-  const fashionHighlights = [
-    { icon: Sparkles, title: 'Style DNA', description: 'AI-powered personalization' },
-    { icon: Leaf, title: 'Eco-Friendly', description: 'Track sustainability impact' },
-    { icon: TrendingUp, title: 'Smart Wardrobe', description: 'Digital closet management' },
-    { icon: Award, title: 'Rewards', description: 'Earn 2x RezCoins' }
+  // Categories grid
+  const categories = [
+    { id: 'fashion', name: 'Fashion', icon: ShoppingBag, color: 'from-purple-500 to-pink-500', active: true },
+    { id: 'beauty', name: 'Beauty', icon: Sparkles, color: 'from-pink-500 to-rose-500', soon: true },
+    { id: 'fitness', name: 'Fitness', icon: Dumbbell, color: 'from-green-500 to-teal-500', soon: true },
+    { id: 'events', name: 'Events', icon: Calendar, color: 'from-blue-500 to-indigo-500', soon: true },
+    { id: 'food', name: 'Food', icon: UtensilsCrossed, color: 'from-orange-500 to-red-500', soon: true },
+    { id: 'home', name: 'Home', icon: HomeIcon, color: 'from-amber-500 to-yellow-500', soon: true }
+  ];
+
+  // For you section
+  const forYou = [
+    {
+      type: 'challenge',
+      title: 'Build Your Capsule Wardrobe',
+      description: '15 versatile pieces for endless outfits',
+      image: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600&h=400&fit=crop',
+      cta: 'Start Challenge',
+      icon: Target
+    },
+    {
+      type: 'reward',
+      title: '2x Coins on Sustainable Fashion',
+      description: 'Shop eco-friendly brands this week',
+      image: 'https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=600&h=400&fit=crop',
+      cta: 'Explore Brands',
+      icon: Leaf
+    }
+  ];
+
+  // Stats
+  const stats = [
+    { label: 'Saved This Month', value: '₹3,240', icon: Award, color: 'text-green-600' },
+    { label: 'RezCoins', value: user.rezCoins.toLocaleString(), icon: Zap, color: 'text-yellow-600' },
+    { label: 'Eco Score', value: `${user.sustainabilityScore}/100`, icon: Leaf, color: 'text-teal-600' }
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-pink-50">
-      {/* Hero Section */}
-      <div className="bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 text-white">
-        <div className="max-w-7xl mx-auto px-4 py-16">
-          <div className="text-center max-w-3xl mx-auto">
-            <div className="inline-block bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 mb-4">
-              <span className="text-sm font-medium">Introducing ReZ Lifestyle</span>
-            </div>
-
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">
-              Your Personal Lifestyle<br />
-              <span className="text-yellow-300">Curator</span>
-            </h1>
-
-            <p className="text-xl text-purple-100 mb-8">
-              Discover personalized fashion, beauty, fitness, food, events, and home solutions
-              all in one place. AI-powered recommendations tailored just for you.
-            </p>
-
-            {/* Stats */}
-            <div className="grid grid-cols-4 gap-6 max-w-2xl mx-auto">
-              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4">
-                <div className="text-2xl font-bold">{lifestyleStats.activeUsers}</div>
-                <div className="text-sm text-purple-200">Active Users</div>
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4">
-                <div className="text-2xl font-bold">{lifestyleStats.categoriesLive}</div>
-                <div className="text-sm text-purple-200">Categories Live</div>
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4">
-                <div className="text-2xl font-bold">{lifestyleStats.avgSavings}</div>
-                <div className="text-sm text-purple-200">Avg Savings</div>
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4">
-                <div className="text-2xl font-bold">{lifestyleStats.sustainabilityScore}</div>
-                <div className="text-sm text-purple-200">Eco Score</div>
+    <div className="min-h-screen bg-gray-50">
+      {/* Header */}
+      <div className="bg-white border-b border-gray-200 sticky top-0 z-40">
+        <div className="px-4 py-3">
+          <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center gap-3">
+              <img
+                src={user.avatar}
+                alt={user.name}
+                className="w-10 h-10 rounded-full border-2 border-purple-600"
+              />
+              <div>
+                <div className="text-xs text-gray-500">Welcome back,</div>
+                <div className="font-bold text-gray-900">{user.name}</div>
               </div>
             </div>
+
+            <div className="flex items-center gap-3">
+              <button className="relative p-2 hover:bg-gray-100 rounded-full">
+                <Search className="w-6 h-6 text-gray-600" />
+              </button>
+              <button className="relative p-2 hover:bg-gray-100 rounded-full">
+                <Bell className="w-6 h-6 text-gray-600" />
+                <div className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full" />
+              </button>
+              <button className="relative p-2 hover:bg-gray-100 rounded-full">
+                <Heart className="w-6 h-6 text-gray-600" />
+              </button>
+            </div>
+          </div>
+
+          {/* Search Bar */}
+          <div className="relative">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+            <input
+              type="text"
+              placeholder="Search fashion, outfits, styles..."
+              className="w-full pl-10 pr-4 py-3 bg-gray-100 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-600"
+            />
           </div>
         </div>
       </div>
 
-      {/* Fashion Spotlight - Available Now */}
-      <div className="max-w-7xl mx-auto px-4 py-12">
-        <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-3xl overflow-hidden mb-12">
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div className="p-8 md:p-12 text-white">
-              <div className="inline-block bg-yellow-400 text-purple-900 px-3 py-1 rounded-full text-sm font-bold mb-4">
-                ✨ AVAILABLE NOW
-              </div>
-
-              <h2 className="text-4xl font-bold mb-4">Fashion Vertical is Live!</h2>
-
-              <p className="text-purple-100 mb-6">
-                Start your style journey with AI-powered personalization, virtual wardrobe management,
-                and sustainability tracking. Discover fashion that matches your DNA.
-              </p>
-
-              {/* Fashion Features */}
-              <div className="grid grid-cols-2 gap-4 mb-8">
-                {fashionHighlights.map((highlight, index) => {
-                  const Icon = highlight.icon;
-                  return (
-                    <div key={index} className="flex items-start gap-3">
-                      <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                        <Icon className="w-5 h-5" />
-                      </div>
-                      <div>
-                        <div className="font-semibold">{highlight.title}</div>
-                        <div className="text-sm text-purple-200">{highlight.description}</div>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-
-              <button
-                onClick={() => navigate('/lifestyle/fashion/style-quiz')}
-                className="bg-white text-purple-600 px-8 py-4 rounded-xl font-bold text-lg hover:shadow-2xl transition-all inline-flex items-center gap-2 group"
-              >
-                Take Style DNA Quiz
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </button>
-            </div>
-
-            <div className="relative h-full min-h-[400px]">
-              <img
-                src="https://images.unsplash.com/photo-1490114538077-0a7f8cb49891?w=800&h=600&fit=crop"
-                alt="Fashion"
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-            </div>
-          </div>
-        </div>
-
-        {/* All Verticals Grid */}
-        <h2 className="text-3xl font-bold text-gray-900 mb-8">Explore All Lifestyle Categories</h2>
-
-        <div className="grid md:grid-cols-3 gap-6">
-          {verticals.map((vertical) => {
-            const Icon = vertical.icon;
-            const isAvailable = vertical.status === 'Available Now';
-
+      {/* Story-like Quick Access */}
+      <div className="bg-white border-b border-gray-200 px-4 py-4">
+        <div className="flex gap-4 overflow-x-auto pb-2 scrollbar-hide">
+          {stories.map((story) => {
+            const Icon = story.icon;
             return (
-              <div
-                key={vertical.id}
-                className={`bg-white rounded-2xl overflow-hidden border-2 transition-all ${
-                  isAvailable
-                    ? 'border-purple-600 hover:shadow-2xl cursor-pointer'
-                    : 'border-gray-200 hover:shadow-lg opacity-75'
-                }`}
-                onClick={() => isAvailable && navigate(vertical.path)}
+              <button
+                key={story.id}
+                onClick={() => navigate(story.action)}
+                className="flex flex-col items-center gap-2 flex-shrink-0"
               >
-                {/* Image */}
-                <div className="relative h-48">
-                  <img
-                    src={vertical.image}
-                    alt={vertical.name}
-                    className="w-full h-full object-cover"
-                  />
-                  <div className={`absolute inset-0 bg-gradient-to-t ${vertical.color} opacity-70`} />
-
-                  {/* Badge */}
-                  <div className="absolute top-4 right-4">
-                    <span className={`px-3 py-1 rounded-full text-xs font-bold ${
-                      isAvailable
-                        ? 'bg-green-500 text-white'
-                        : 'bg-gray-700 text-white'
-                    }`}>
-                      {vertical.badge}
-                    </span>
-                  </div>
-
-                  {/* Icon */}
-                  <div className="absolute bottom-4 left-4">
-                    <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center">
-                      <Icon className="w-6 h-6 text-gray-900" />
-                    </div>
+                <div className={`w-16 h-16 rounded-full bg-gradient-to-br ${story.color} p-0.5`}>
+                  <div className="w-full h-full bg-white rounded-full flex items-center justify-center">
+                    <Icon className="w-6 h-6 text-gray-900" />
                   </div>
                 </div>
+                <span className="text-xs text-gray-600 text-center w-16 truncate">{story.title}</span>
+              </button>
+            );
+          })}
+        </div>
+      </div>
 
-                {/* Content */}
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">{vertical.name}</h3>
-                  <p className="text-gray-600 text-sm mb-4">{vertical.description}</p>
-
-                  {/* Features */}
-                  <div className="space-y-2 mb-4">
-                    {vertical.features.map((feature, idx) => (
-                      <div key={idx} className="flex items-center gap-2 text-sm text-gray-500">
-                        <div className="w-1.5 h-1.5 bg-purple-600 rounded-full" />
-                        {feature}
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* CTA */}
-                  <div className="pt-4 border-t border-gray-200">
-                    {isAvailable ? (
-                      <div className="flex items-center justify-between">
-                        <span className="text-purple-600 font-semibold">Get Started</span>
-                        <ArrowRight className="w-5 h-5 text-purple-600" />
-                      </div>
-                    ) : (
-                      <div className="text-center">
-                        <span className="text-gray-500 text-sm">{vertical.status}</span>
-                      </div>
-                    )}
-                  </div>
-                </div>
+      {/* Main Content */}
+      <div className="px-4 py-6 space-y-6">
+        {/* User Stats */}
+        <div className="grid grid-cols-3 gap-3">
+          {stats.map((stat, index) => {
+            const Icon = stat.icon;
+            return (
+              <div key={index} className="bg-white rounded-xl p-4 border border-gray-200">
+                <Icon className={`w-5 h-5 ${stat.color} mb-2`} />
+                <div className="text-lg font-bold text-gray-900">{stat.value}</div>
+                <div className="text-xs text-gray-500">{stat.label}</div>
               </div>
             );
           })}
         </div>
 
-        {/* CTA Section */}
-        <div className="mt-16 bg-gradient-to-r from-gray-900 to-gray-800 rounded-3xl p-12 text-white text-center">
-          <h2 className="text-3xl font-bold mb-4">More Categories Coming Soon</h2>
-          <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
-            We're working hard to bring you Beauty, Fitness, Events, Food, and Home verticals.
-            Stay tuned for updates!
-          </p>
-          <div className="flex justify-center gap-4">
-            <button className="px-6 py-3 bg-white text-gray-900 rounded-xl font-semibold hover:shadow-lg transition-all">
-              Notify Me
-            </button>
-            <button className="px-6 py-3 border-2 border-white text-white rounded-xl font-semibold hover:bg-white hover:text-gray-900 transition-all">
-              Learn More
-            </button>
+        {/* Quick Actions */}
+        <div>
+          <h2 className="text-lg font-bold text-gray-900 mb-3">Quick Actions</h2>
+          <div className="grid grid-cols-2 gap-3">
+            {quickActions.map((action, index) => {
+              const Icon = action.icon;
+              return (
+                <button
+                  key={index}
+                  onClick={() => navigate(action.action)}
+                  className={`${action.color} text-white rounded-2xl p-4 text-left hover:shadow-lg transition-all`}
+                >
+                  <Icon className="w-8 h-8 mb-2" />
+                  <div className="font-bold mb-1">{action.title}</div>
+                  <div className="text-sm opacity-90">{action.subtitle}</div>
+                </button>
+              );
+            })}
           </div>
         </div>
+
+        {/* Fashion Live Banner */}
+        <div className="relative rounded-2xl overflow-hidden">
+          <img
+            src="https://images.unsplash.com/photo-1490114538077-0a7f8cb49891?w=800&h=300&fit=crop"
+            alt="Fashion"
+            className="w-full h-48 object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-purple-900/90 to-pink-900/90" />
+          <div className="absolute inset-0 p-6 flex flex-col justify-between">
+            <div className="inline-block self-start bg-yellow-400 text-purple-900 px-3 py-1 rounded-full text-xs font-bold">
+              ✨ LIVE NOW
+            </div>
+            <div>
+              <h3 className="text-2xl font-bold text-white mb-2">Fashion Vertical is Here!</h3>
+              <p className="text-purple-100 text-sm mb-3">Discover your style DNA & shop sustainably</p>
+              <button
+                onClick={() => navigate('/lifestyle/fashion/style-quiz')}
+                className="bg-white text-purple-600 px-6 py-2 rounded-xl font-semibold hover:shadow-lg inline-flex items-center gap-2"
+              >
+                Take Quiz <ArrowRight className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Trending Now */}
+        <div>
+          <div className="flex items-center justify-between mb-3">
+            <h2 className="text-lg font-bold text-gray-900 flex items-center gap-2">
+              <Flame className="w-5 h-5 text-orange-500" />
+              Trending Now
+            </h2>
+            <button className="text-sm text-purple-600 font-semibold">See All</button>
+          </div>
+
+          <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
+            {trendingNow.map((item, index) => (
+              <div key={index} className="flex-shrink-0 w-40">
+                <div className="relative rounded-xl overflow-hidden mb-2">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-52 object-cover"
+                  />
+                  <div className="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded-full text-xs font-bold">
+                    {item.tag}
+                  </div>
+                  <div className="absolute bottom-2 left-2 right-2">
+                    <div className="text-white text-sm font-semibold">{item.title}</div>
+                    <div className="flex items-center gap-1 text-white/80 text-xs">
+                      <Heart className="w-3 h-3" />
+                      {item.likes}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Categories */}
+        <div>
+          <h2 className="text-lg font-bold text-gray-900 mb-3">Explore Lifestyle</h2>
+          <div className="grid grid-cols-3 gap-3">
+            {categories.map((category) => {
+              const Icon = category.icon;
+              return (
+                <button
+                  key={category.id}
+                  onClick={() => category.active && navigate('/lifestyle/fashion/style-quiz')}
+                  className={`relative rounded-2xl p-4 text-center transition-all ${
+                    category.active
+                      ? 'bg-gradient-to-br ' + category.color + ' text-white hover:shadow-lg'
+                      : 'bg-gray-100 text-gray-400'
+                  }`}
+                  disabled={!category.active}
+                >
+                  {category.soon && (
+                    <div className="absolute top-2 right-2 bg-black/50 backdrop-blur-sm text-white px-2 py-0.5 rounded-full text-xs">
+                      Soon
+                    </div>
+                  )}
+                  <Icon className="w-8 h-8 mx-auto mb-2" />
+                  <div className="text-sm font-semibold">{category.name}</div>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* For You */}
+        <div>
+          <h2 className="text-lg font-bold text-gray-900 mb-3">For You</h2>
+          <div className="space-y-3">
+            {forYou.map((item, index) => {
+              const Icon = item.icon;
+              return (
+                <div key={index} className="bg-white rounded-2xl overflow-hidden border border-gray-200 hover:shadow-lg transition-all">
+                  <div className="flex">
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="w-28 h-28 object-cover"
+                    />
+                    <div className="flex-1 p-4">
+                      <div className="flex items-start gap-2 mb-2">
+                        <div className="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                          <Icon className="w-4 h-4 text-purple-600" />
+                        </div>
+                        <div className="flex-1">
+                          <h3 className="font-bold text-gray-900 text-sm mb-1">{item.title}</h3>
+                          <p className="text-xs text-gray-600">{item.description}</p>
+                        </div>
+                      </div>
+                      <button className="w-full bg-purple-600 text-white py-2 rounded-lg text-sm font-semibold hover:bg-purple-700">
+                        {item.cta}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Your Style DNA (if completed) */}
+        {user.styleDNA && (
+          <div className="bg-gradient-to-br from-purple-600 to-pink-600 rounded-2xl p-6 text-white">
+            <div className="flex items-center justify-between mb-3">
+              <div>
+                <div className="text-sm opacity-90 mb-1">Your Style DNA</div>
+                <div className="text-2xl font-bold">{user.styleDNA}</div>
+              </div>
+              <Sparkles className="w-12 h-12 opacity-50" />
+            </div>
+            <button
+              onClick={() => navigate('/lifestyle/fashion/virtual-wardrobe')}
+              className="w-full bg-white/20 backdrop-blur-sm text-white py-3 rounded-xl font-semibold hover:bg-white/30 transition-all"
+            >
+              Open Virtual Wardrobe
+            </button>
+          </div>
+        )}
+
+        {/* Bottom Spacer */}
+        <div className="h-20" />
       </div>
     </div>
   );
