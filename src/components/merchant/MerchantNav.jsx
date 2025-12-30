@@ -146,6 +146,20 @@ export default function MerchantNav() {
         { path: '/merchant/support', icon: Headphones, label: 'Support' },
         { path: '/merchant/settings', icon: Settings, label: 'Settings' }
       ]
+    },
+    {
+      id: 'advanced',
+      label: 'Advanced Features',
+      icon: Zap,
+      items: [
+        { path: '/merchant/qr-payments', icon: QrCode, label: 'QR Payments' },
+        { path: '/merchant/prive-module', icon: Crown, label: 'ReZ Privé Module' },
+        { path: '/merchant/event-checkin', icon: Calendar, label: 'Event Check-In' },
+        { path: '/merchant/user-roles', icon: Users, label: 'User Roles Management' },
+        { path: '/merchant/creator-hub', icon: Camera, label: 'Creator Partnership Hub' },
+        { path: '/merchant/marketing-campaigns', icon: Megaphone, label: 'Marketing Campaigns' },
+        { path: '/merchant/review-management', icon: Star, label: 'Review Management' }
+      ]
     }
   ];
 

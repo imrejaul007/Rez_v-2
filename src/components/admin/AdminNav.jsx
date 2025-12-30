@@ -8,7 +8,7 @@ import {
   Server, TrendingDown, GitCompare, Share2, ImagePlus, Brain, CheckCircle,
   Target, Package, GraduationCap, MapPin, Clock, Gift, TrendingUp, Flame,
   Receipt, UserCheck, Truck, Sparkles, QrCode, CalendarCheck, Lock, Grid3x3,
-  Layers, Handshake, Briefcase, Menu, X, Globe, DollarSign
+  Layers, Handshake, Briefcase, Menu, X, Globe, DollarSign, Crown
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { filterNavByRole, ADMIN_NAV_PERMISSIONS } from '../../utils/rolePermissions';
@@ -205,6 +205,29 @@ export default function AdminNav() {
         { path: '/admin/notifications', icon: Bell, label: 'Notifications' },
         { path: '/admin/support', icon: Headphones, label: 'Support' },
         { path: '/admin/settings', icon: Settings, label: 'Settings' }
+      ]
+    },
+    {
+      id: 'advanced',
+      label: 'Advanced Features',
+      icon: Sparkles,
+      items: [
+        { path: '/admin/multi-channel-marketing', icon: Megaphone, label: 'Multi-Channel Marketing' },
+        { path: '/admin/role-based-access', icon: Shield, label: 'Role-Based Access Control' },
+        { path: '/admin/regional-control', icon: MapPin, label: 'Regional Control' },
+        { path: '/admin/creator-content', icon: ImagePlus, label: 'Creator Content Moderation' },
+        { path: '/admin/social-impact-verification', icon: CheckCircle, label: 'Social Impact Verification' },
+        { path: '/admin/prive-management', icon: Crown, label: 'ReZ Privé Management' },
+        { path: '/admin/game-configuration', icon: Gamepad2, label: 'Game Configuration' },
+        { path: '/admin/wallet-analytics', icon: BarChart3, label: 'Wallet Analytics' },
+        { path: '/admin/ai-insights', icon: Brain, label: 'AI Insights' },
+        { path: '/admin/fraud-detection', icon: Shield, label: 'Fraud Detection (Advanced)' },
+        { path: '/admin/platform-health', icon: Activity, label: 'Platform Health' },
+        { path: '/admin/content-moderation', icon: Shield, label: 'Content Moderation' },
+        { path: '/admin/event-inventory', icon: Ticket, label: 'Event Inventory' },
+        { path: '/admin/ecosystem-analytics', icon: BarChart3, label: 'Ecosystem Analytics' },
+        { path: '/admin/merchant-super-os', icon: Store, label: 'Merchant Super OS' },
+        { path: '/admin/settlement-commission', icon: DollarSign, label: 'Settlement & Commission' }
       ]
     }
   ];

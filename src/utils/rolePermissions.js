@@ -112,6 +112,18 @@ export const ADMIN_NAV_PERMISSIONS = {
   settings: {
     [ADMIN_ROLES.HQ_ADMIN]: true,
     [ADMIN_ROLES.OPERATIONS_ADMIN]: ['settings', 'integrations']
+  },
+
+  // Advanced Features
+  advanced: {
+    [ADMIN_ROLES.HQ_ADMIN]: true,
+    [ADMIN_ROLES.REGIONAL_ADMIN]: ['regional-control'],
+    [ADMIN_ROLES.MARKETING_ADMIN]: ['multi-channel-marketing'],
+    [ADMIN_ROLES.CONTENT_ADMIN]: ['creator-content', 'content-moderation'],
+    [ADMIN_ROLES.ANALYTICS_ADMIN]: ['wallet-analytics', 'ai-insights', 'ecosystem-analytics'],
+    [ADMIN_ROLES.FRAUD_ADMIN]: ['fraud-detection', 'platform-health'],
+    [ADMIN_ROLES.FINANCE_ADMIN]: ['settlement-commission'],
+    [ADMIN_ROLES.OPERATIONS_ADMIN]: ['social-impact-verification', 'event-inventory', 'merchant-super-os']
   }
 };
 
@@ -177,6 +189,14 @@ export const MERCHANT_NAV_PERMISSIONS = {
   settings: {
     [MERCHANT_ROLES.OWNER]: true,
     [MERCHANT_ROLES.MANAGER]: ['staff', 'staff-roster', 'integrations', 'notifications', 'support', 'settings']
+  },
+
+  // Advanced Features
+  advanced: {
+    [MERCHANT_ROLES.OWNER]: true,
+    [MERCHANT_ROLES.MANAGER]: true,
+    [MERCHANT_ROLES.MARKETING_MANAGER]: ['creator-hub', 'marketing-campaigns', 'review-management'],
+    [MERCHANT_ROLES.ACCOUNTANT]: ['qr-payments']
   }
 };
 
