@@ -310,6 +310,11 @@ import StyleDNAResult from './pages/lifestyle/fashion/StyleDNAResult';
 import VirtualWardrobe from './pages/lifestyle/fashion/VirtualWardrobe';
 import OutfitCalendar from './pages/lifestyle/fashion/OutfitCalendar';
 import SustainabilityDashboard from './pages/lifestyle/fashion/SustainabilityDashboard';
+import WardrobeOutfitSuggestions from './pages/lifestyle/fashion/WardrobeOutfitSuggestions';
+import FashionTravelPlanner from './pages/lifestyle/fashion/FashionTravelPlanner';
+import CreatorFashionFeed from './pages/lifestyle/fashion/CreatorFashionFeed';
+import StyleChallenges from './pages/lifestyle/fashion/StyleChallenges';
+import LifestyleProfile from './pages/lifestyle/LifestyleProfile';
 import FashionBrandDetail from './pages/fashion/FashionBrandDetail';
 import FashionTrendDetail from './pages/fashion/FashionTrendDetail';
 import Beauty from './pages/Beauty';
@@ -695,6 +700,11 @@ function App() {
                 <Route path="lifestyle/fashion/virtual-wardrobe" element={<VirtualWardrobe />} />
                 <Route path="lifestyle/fashion/outfit-calendar" element={<OutfitCalendar />} />
                 <Route path="lifestyle/fashion/sustainability" element={<SustainabilityDashboard />} />
+                <Route path="lifestyle/fashion/wardrobe-suggestions" element={<WardrobeOutfitSuggestions />} />
+                <Route path="lifestyle/fashion/travel-planner" element={<FashionTravelPlanner />} />
+                <Route path="lifestyle/fashion/creator-feed" element={<CreatorFashionFeed />} />
+                <Route path="lifestyle/fashion/challenges" element={<StyleChallenges />} />
+                <Route path="lifestyle/profile" element={<LifestyleProfile />} />
                 <Route path="fashion/deals" element={<FashionDeals />} />
                 <Route path="fashion/vibe/:id" element={<FashionVibeDetail />} />
                 <Route path="fashion/occasion/:id" element={<FashionOccasionDetail />} />
