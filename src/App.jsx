@@ -293,6 +293,7 @@ import RestaurantDetail from './pages/RestaurantDetail';
 import Electronics from './pages/Electronics';
 import ElectronicsCategory from './pages/ElectronicsCategory';
 import ElectronicsProduct from './pages/ElectronicsProduct';
+import Lifestyle from './pages/Lifestyle';
 import Fashion from './pages/Fashion';
 import FashionCategory from './pages/FashionCategory';
 import FashionProduct from './pages/FashionProduct';
@@ -684,6 +685,9 @@ function App() {
                 <Route path="fashion/brands" element={<FashionBrands />} />
                 <Route path="fashion/trending" element={<FashionTrending />} />
                 <Route path="fashion/stores" element={<FashionStores />} />
+
+                {/* Lifestyle Hub */}
+                <Route path="lifestyle" element={<Lifestyle />} />
 
                 {/* Lifestyle Fashion Pages */}
                 <Route path="lifestyle/fashion/style-quiz" element={<StyleQuiz />} />
