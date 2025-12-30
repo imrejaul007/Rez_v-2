@@ -88,12 +88,12 @@ export default function Lifestyle() {
 
   // Categories grid
   const categories = [
-    { id: 'fashion', name: 'Fashion', icon: ShoppingBag, color: 'from-purple-500 to-pink-500', active: true },
-    { id: 'beauty', name: 'Beauty', icon: Sparkles, color: 'from-pink-500 to-rose-500', soon: true },
-    { id: 'fitness', name: 'Fitness', icon: Dumbbell, color: 'from-green-500 to-teal-500', soon: true },
+    { id: 'fashion', name: 'Fashion', icon: ShoppingBag, color: 'from-purple-500 to-pink-500', active: true, path: '/fashion' },
+    { id: 'beauty', name: 'Beauty', icon: Sparkles, color: 'from-pink-500 to-rose-500', active: true, path: '/beauty' },
+    { id: 'fitness', name: 'Fitness', icon: Dumbbell, color: 'from-green-500 to-teal-500', active: true, path: '/fitness' },
     { id: 'events', name: 'Events', icon: Calendar, color: 'from-blue-500 to-indigo-500', soon: true },
     { id: 'food', name: 'Food', icon: UtensilsCrossed, color: 'from-orange-500 to-red-500', soon: true },
-    { id: 'home', name: 'Home', icon: HomeIcon, color: 'from-amber-500 to-yellow-500', soon: true }
+    { id: 'home', name: 'Home', icon: HomeIcon, color: 'from-amber-500 to-yellow-500', active: true, path: '/home-services' }
   ];
 
   // For you section
@@ -296,7 +296,7 @@ export default function Lifestyle() {
               return (
                 <button
                   key={category.id}
-                  onClick={() => category.active && navigate('/lifestyle/fashion/style-quiz')}
+                  onClick={() => category.active && category.path && navigate(category.path)}
                   className={`relative rounded-2xl p-4 text-center transition-all ${
                     category.active
                       ? 'bg-gradient-to-br ' + category.color + ' text-white hover:shadow-lg'
