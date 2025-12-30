@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { User, Settings, ShoppingBag, Heart, Calendar, Leaf, Award, ChevronRight, LogOut, Bell, Shield } from 'lucide-react';
-import BottomNav from '../components/lifestyle/BottomNav';
+import BottomNav from '../../components/lifestyle/BottomNav';
 
 export default function LifestyleProfile() {
   const navigate = useNavigate();
