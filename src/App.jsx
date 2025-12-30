@@ -315,6 +315,8 @@ import FashionTravelPlanner from './pages/lifestyle/fashion/FashionTravelPlanner
 import CreatorFashionFeed from './pages/lifestyle/fashion/CreatorFashionFeed';
 import StyleChallenges from './pages/lifestyle/fashion/StyleChallenges';
 import LifestyleProfile from './pages/lifestyle/LifestyleProfile';
+import EventsHub from './pages/lifestyle/events/EventsHub';
+import FoodHub from './pages/lifestyle/food/FoodHub';
 import FashionBrandDetail from './pages/fashion/FashionBrandDetail';
 import FashionTrendDetail from './pages/fashion/FashionTrendDetail';
 import Beauty from './pages/Beauty';
@@ -705,6 +707,10 @@ function App() {
                 <Route path="lifestyle/fashion/creator-feed" element={<CreatorFashionFeed />} />
                 <Route path="lifestyle/fashion/challenges" element={<StyleChallenges />} />
                 <Route path="lifestyle/profile" element={<LifestyleProfile />} />
+
+                {/* Lifestyle Events & Food Pages */}
+                <Route path="lifestyle/events" element={<EventsHub />} />
+                <Route path="lifestyle/food" element={<FoodHub />} />
                 <Route path="fashion/deals" element={<FashionDeals />} />
                 <Route path="fashion/vibe/:id" element={<FashionVibeDetail />} />
                 <Route path="fashion/occasion/:id" element={<FashionOccasionDetail />} />

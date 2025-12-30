@@ -91,8 +91,8 @@ export default function Lifestyle() {
     { id: 'fashion', name: 'Fashion', icon: ShoppingBag, color: 'from-purple-500 to-pink-500', active: true, path: '/fashion' },
     { id: 'beauty', name: 'Beauty', icon: Sparkles, color: 'from-pink-500 to-rose-500', active: true, path: '/beauty' },
     { id: 'fitness', name: 'Fitness', icon: Dumbbell, color: 'from-green-500 to-teal-500', active: true, path: '/fitness' },
-    { id: 'events', name: 'Events', icon: Calendar, color: 'from-blue-500 to-indigo-500', soon: true },
-    { id: 'food', name: 'Food', icon: UtensilsCrossed, color: 'from-orange-500 to-red-500', soon: true },
+    { id: 'events', name: 'Events', icon: Calendar, color: 'from-blue-500 to-indigo-500', active: true, path: '/lifestyle/events' },
+    { id: 'food', name: 'Food', icon: UtensilsCrossed, color: 'from-orange-500 to-red-500', active: true, path: '/lifestyle/food' },
     { id: 'home', name: 'Home', icon: HomeIcon, color: 'from-amber-500 to-yellow-500', active: true, path: '/home-services' }
   ];
 
