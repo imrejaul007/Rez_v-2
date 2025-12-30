@@ -1,378 +1,416 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
-  Sparkles, ShoppingBag, Dumbbell, Calendar, UtensilsCrossed, Home as HomeIcon,
-  Leaf, TrendingUp, Award, ArrowRight, User, Bell, Search, Heart,
-  Flame, Clock, MapPin, Star, ChevronRight, Play, Users, Zap, Gift, Target
+  Wallet, Coins, Gift, Percent, Receipt, QrCode, Upload, Users, Trophy,
+  ShoppingBag, Sparkles, Dumbbell, Calendar, UtensilsCrossed, Home as HomeIcon,
+  TrendingUp, Award, ArrowRight, User, Bell, Search, Heart, Zap, Target,
+  Clock, MapPin, Star, ChevronRight, Flame, Tag, CreditCard, PiggyBank,
+  Ticket, CheckCircle, Lock, Scan, Share2, Crown, Timer, BadgePercent
 } from 'lucide-react';
 
 export default function Lifestyle() {
   const navigate = useNavigate();
-  const [activeStoryIndex, setActiveStoryIndex] = useState(null);
 
-  // User info (mock)
-  const user = {
-    name: 'Arjun',
-    avatar: 'https://i.pravatar.cc/150?img=12',
-    styleDNA: 'Modern Minimalist',
-    sustainabilityScore: 75,
-    rezCoins: 2450
+  // User Wallet & Savings Data
+  const walletData = {
+    rezCoins: 2450,
+    brandedCoins: 850,
+    promoCoins: 200,
+    totalSaved: 12450,
+    monthSaved: 3240,
+    cashbackPending: 450,
+    lockedDeals: 3
   };
 
-  // Story-like highlights
-  const stories = [
-    { id: 1, title: 'Take Quiz', icon: Sparkles, color: 'from-purple-500 to-pink-500', action: '/lifestyle/fashion/style-quiz' },
-    { id: 2, title: 'Wardrobe', icon: ShoppingBag, color: 'from-blue-500 to-cyan-500', action: '/lifestyle/fashion/virtual-wardrobe' },
-    { id: 3, title: 'Calendar', icon: Calendar, color: 'from-orange-500 to-red-500', action: '/lifestyle/fashion/outfit-calendar' },
-    { id: 4, title: 'Eco Score', icon: Leaf, color: 'from-green-500 to-teal-500', action: '/lifestyle/fashion/sustainability' },
-    { id: 5, title: 'New Arrivals', icon: Flame, color: 'from-pink-500 to-rose-500', action: '/fashion' },
-    { id: 6, title: 'Trending', icon: TrendingUp, color: 'from-yellow-500 to-orange-500', action: '/fashion/trending' }
+  // Today's Earnings Summary
+  const todayEarnings = [
+    { label: 'Daily Check-in', value: '+50', done: true },
+    { label: 'Upload Bill', value: '+₹200', done: false },
+    { label: 'Share Offer', value: '+20', done: false },
+    { label: 'Write Review', value: '+50', done: false }
   ];
 
-  // Quick actions
-  const quickActions = [
+  // Quick Earning Actions
+  const earningActions = [
+    { id: 'checkin', title: 'Daily Check-in', subtitle: 'Claim 50 coins', icon: CheckCircle, color: 'from-green-500 to-emerald-600', path: '/daily-checkin', coins: '+50' },
+    { id: 'upload', title: 'Upload Bill', subtitle: 'Get ₹50-200 back', icon: Upload, color: 'from-blue-500 to-indigo-600', path: '/upload-bill', coins: '+₹200' },
+    { id: 'refer', title: 'Refer Friends', subtitle: 'Earn 100 coins each', icon: Users, color: 'from-purple-500 to-pink-600', path: '/refer', coins: '+100' },
+    { id: 'scan', title: 'Scan & Pay', subtitle: 'Instant cashback', icon: QrCode, color: 'from-orange-500 to-red-600', path: '/scan-pay', coins: '+5%' }
+  ];
+
+  // Hot Offers in Lifestyle
+  const hotOffers = [
     {
-      icon: Target,
-      title: 'Discover Your Style',
-      subtitle: 'Take 2-min quiz',
-      color: 'bg-gradient-to-br from-purple-500 to-pink-500',
-      action: '/lifestyle/fashion/style-quiz'
+      id: 1,
+      brand: 'Zara',
+      category: 'Fashion',
+      title: 'Flat 40% Off + 3x Coins',
+      description: 'On all ethnic wear',
+      image: 'https://images.unsplash.com/photo-1490114538077-0a7f8cb49891?w=400&h=300&fit=crop',
+      expiry: '2 hours left',
+      cashback: '₹500',
+      tag: 'Lightning Deal'
     },
     {
-      icon: ShoppingBag,
-      title: 'Shop Fashion',
-      subtitle: '5000+ items',
-      color: 'bg-gradient-to-br from-blue-500 to-cyan-500',
-      action: '/fashion'
+      id: 2,
+      brand: 'Lakme Salon',
+      category: 'Beauty',
+      title: 'BOGO on Services',
+      description: 'Facial + Cleanup combo',
+      image: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?w=400&h=300&fit=crop',
+      expiry: '5 hours left',
+      cashback: '₹350',
+      tag: 'Buy 1 Get 1'
     },
     {
-      icon: Calendar,
-      title: 'Plan Outfits',
-      subtitle: '30 days ahead',
-      color: 'bg-gradient-to-br from-orange-500 to-red-500',
-      action: '/lifestyle/fashion/outfit-calendar'
-    },
-    {
-      icon: Leaf,
-      title: 'Go Sustainable',
-      subtitle: 'Earn 2x coins',
-      color: 'bg-gradient-to-br from-green-500 to-teal-500',
-      action: '/lifestyle/fashion/sustainability'
+      id: 3,
+      brand: 'Cult.fit',
+      category: 'Fitness',
+      title: '50% Off Membership',
+      description: '3 months unlimited access',
+      image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=400&h=300&fit=crop',
+      expiry: 'Today only',
+      cashback: '₹1,500',
+      tag: 'Mega Deal'
     }
   ];
 
-  // Trending now
-  const trendingNow = [
-    {
-      image: 'https://images.unsplash.com/photo-1490114538077-0a7f8cb49891?w=400&h=500&fit=crop',
-      title: 'Minimal Whites',
-      category: 'Trending',
-      likes: '2.3K',
-      tag: 'Hot'
-    },
-    {
-      image: 'https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=400&h=500&fit=crop',
-      title: 'Boho Summer',
-      category: 'Vibe',
-      likes: '1.8K',
-      tag: 'New'
-    },
-    {
-      image: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?w=400&h=500&fit=crop',
-      title: 'Streetwear 2025',
-      category: 'Style',
-      likes: '3.1K',
-      tag: 'Popular'
-    }
-  ];
-
-  // Categories grid
+  // Lifestyle Categories
   const categories = [
-    { id: 'fashion', name: 'Fashion', icon: ShoppingBag, color: 'from-purple-500 to-pink-500', active: true, path: '/fashion' },
-    { id: 'beauty', name: 'Beauty', icon: Sparkles, color: 'from-pink-500 to-rose-500', active: true, path: '/beauty' },
-    { id: 'fitness', name: 'Fitness', icon: Dumbbell, color: 'from-green-500 to-teal-500', active: true, path: '/fitness' },
-    { id: 'events', name: 'Events', icon: Calendar, color: 'from-blue-500 to-indigo-500', active: true, path: '/lifestyle/events' },
-    { id: 'food', name: 'Food', icon: UtensilsCrossed, color: 'from-orange-500 to-red-500', active: true, path: '/lifestyle/food' },
-    { id: 'home', name: 'Home', icon: HomeIcon, color: 'from-amber-500 to-yellow-500', active: true, path: '/home-services' }
+    { id: 'fashion', name: 'Fashion', icon: ShoppingBag, color: 'from-purple-500 to-pink-500', path: '/fashion', offers: 234, cashback: 'Up to 15%' },
+    { id: 'beauty', name: 'Beauty', icon: Sparkles, color: 'from-pink-500 to-rose-500', path: '/beauty', offers: 156, cashback: 'Up to 20%' },
+    { id: 'fitness', name: 'Fitness', icon: Dumbbell, color: 'from-green-500 to-teal-500', path: '/fitness', offers: 89, cashback: 'Up to 25%' },
+    { id: 'events', name: 'Events', icon: Calendar, color: 'from-blue-500 to-indigo-500', path: '/lifestyle/events', offers: 45, cashback: 'Up to 10%' },
+    { id: 'food', name: 'Food', icon: UtensilsCrossed, color: 'from-orange-500 to-red-500', path: '/lifestyle/food', offers: 312, cashback: 'Up to 30%' },
+    { id: 'home', name: 'Home', icon: HomeIcon, color: 'from-amber-500 to-yellow-500', path: '/home-services', offers: 78, cashback: 'Up to 12%' }
   ];
 
-  // For you section
-  const forYou = [
-    {
-      type: 'challenge',
-      title: 'Build Your Capsule Wardrobe',
-      description: '15 versatile pieces for endless outfits',
-      image: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600&h=400&fit=crop',
-      cta: 'Start Challenge',
-      icon: Target
-    },
-    {
-      type: 'reward',
-      title: '2x Coins on Sustainable Fashion',
-      description: 'Shop eco-friendly brands this week',
-      image: 'https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=600&h=400&fit=crop',
-      cta: 'Explore Brands',
-      icon: Leaf
-    }
+  // Offer Types
+  const offerTypes = [
+    { id: 'nearby', title: 'Nearby Offers', subtitle: '45 stores within 2km', icon: MapPin, color: 'bg-blue-100 text-blue-600', path: '/nearby-offers' },
+    { id: 'today', title: "Today's Deals", subtitle: '23 expiring today', icon: Clock, color: 'bg-red-100 text-red-600', path: '/todays-offers' },
+    { id: 'bogo', title: 'Buy 1 Get 1', subtitle: '67 BOGO offers', icon: Gift, color: 'bg-green-100 text-green-600', path: '/bogo-offers' },
+    { id: 'lock', title: 'Lock Price', subtitle: 'Lock now, buy later', icon: Lock, color: 'bg-purple-100 text-purple-600', path: '/lock-price' },
+    { id: 'trending', title: 'Trending', subtitle: 'Most popular now', icon: TrendingUp, color: 'bg-orange-100 text-orange-600', path: '/trending' },
+    { id: 'clearance', title: 'Clearance', subtitle: 'Up to 70% off', icon: BadgePercent, color: 'bg-pink-100 text-pink-600', path: '/clearance' }
   ];
 
-  // Stats
-  const stats = [
-    { label: 'Saved This Month', value: '₹3,240', icon: Award, color: 'text-green-600' },
-    { label: 'RezCoins', value: user.rezCoins.toLocaleString(), icon: Zap, color: 'text-yellow-600' },
-    { label: 'Eco Score', value: `${user.sustainabilityScore}/100`, icon: Leaf, color: 'text-teal-600' }
+  // Exclusive Programs
+  const exclusivePrograms = [
+    { id: 'student', title: 'Student Zone', subtitle: 'Extra 10% off + rewards', icon: '🎓', path: '/student-zone' },
+    { id: 'birthday', title: 'Birthday Special', subtitle: 'Free gift + 2x coins', icon: '🎂', path: '/birthday-offers' },
+    { id: 'women', title: 'Women Exclusive', subtitle: 'Special deals for her', icon: '👩', path: '/women-exclusive' },
+    { id: 'corporate', title: 'Corporate Perks', subtitle: 'Employee benefits', icon: '💼', path: '/corporate-perks' }
+  ];
+
+  // Games & Rewards
+  const gamesRewards = [
+    { id: 'spin', title: 'Spin & Win', subtitle: 'Win up to ₹1000', icon: '🎰', coins: 'Free spin available', path: '/spin-win' },
+    { id: 'scratch', title: 'Scratch Card', subtitle: '3 cards available', icon: '🎴', coins: 'Guaranteed rewards', path: '/scratch-cards' },
+    { id: 'quiz', title: 'Daily Quiz', subtitle: 'Answer & earn', icon: '❓', coins: '+25 coins', path: '/daily-quiz' },
+    { id: 'leaderboard', title: 'Leaderboard', subtitle: 'Rank #234', icon: '🏆', coins: 'Top 100 win', path: '/leaderboard' }
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <div className="bg-white border-b border-gray-200 sticky top-0 z-40">
-        <div className="px-4 py-3">
-          <div className="flex items-center justify-between mb-3">
+    <div className="min-h-screen bg-gray-50 pb-20">
+      {/* Header with Wallet Summary */}
+      <div className="bg-gradient-to-br from-purple-600 via-purple-700 to-indigo-800 text-white">
+        <div className="px-4 pt-4 pb-2">
+          <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-3">
-              <img
-                src={user.avatar}
-                alt={user.name}
-                className="w-10 h-10 rounded-full border-2 border-purple-600"
-              />
+              <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
+                <User className="w-6 h-6" />
+              </div>
               <div>
-                <div className="text-xs text-gray-500">Welcome back,</div>
-                <div className="font-bold text-gray-900">{user.name}</div>
+                <div className="text-xs text-purple-200">Good evening,</div>
+                <div className="font-bold">Arjun</div>
               </div>
             </div>
-
-            <div className="flex items-center gap-3">
-              <button className="relative p-2 hover:bg-gray-100 rounded-full">
-                <Search className="w-6 h-6 text-gray-600" />
+            <div className="flex items-center gap-2">
+              <button onClick={() => navigate('/search')} className="p-2 bg-white/10 rounded-full">
+                <Search className="w-5 h-5" />
               </button>
-              <button className="relative p-2 hover:bg-gray-100 rounded-full">
-                <Bell className="w-6 h-6 text-gray-600" />
+              <button onClick={() => navigate('/notifications')} className="p-2 bg-white/10 rounded-full relative">
+                <Bell className="w-5 h-5" />
                 <div className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full" />
               </button>
-              <button className="relative p-2 hover:bg-gray-100 rounded-full">
-                <Heart className="w-6 h-6 text-gray-600" />
+              <button onClick={() => navigate('/scan-pay')} className="p-2 bg-white/10 rounded-full">
+                <QrCode className="w-5 h-5" />
               </button>
             </div>
           </div>
+        </div>
 
-          {/* Search Bar */}
-          <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-            <input
-              type="text"
-              placeholder="Search fashion, outfits, styles..."
-              className="w-full pl-10 pr-4 py-3 bg-gray-100 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-600"
-            />
+        {/* Wallet Card */}
+        <div className="px-4 pb-6">
+          <button
+            onClick={() => navigate('/wallet')}
+            className="w-full bg-white/15 backdrop-blur-sm rounded-2xl p-4 border border-white/20"
+          >
+            <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center gap-2">
+                <Wallet className="w-5 h-5" />
+                <span className="font-semibold">My Wallet</span>
+              </div>
+              <ChevronRight className="w-5 h-5 text-purple-200" />
+            </div>
+
+            <div className="grid grid-cols-3 gap-4 text-center">
+              <div>
+                <div className="flex items-center justify-center gap-1 mb-1">
+                  <Coins className="w-4 h-4 text-yellow-400" />
+                  <span className="text-xl font-bold">{walletData.rezCoins.toLocaleString()}</span>
+                </div>
+                <div className="text-xs text-purple-200">RezCoins</div>
+              </div>
+              <div className="border-x border-white/20">
+                <div className="text-xl font-bold text-green-400 mb-1">₹{walletData.monthSaved.toLocaleString()}</div>
+                <div className="text-xs text-purple-200">Saved This Month</div>
+              </div>
+              <div>
+                <div className="text-xl font-bold text-yellow-400 mb-1">₹{walletData.cashbackPending}</div>
+                <div className="text-xs text-purple-200">Pending Cashback</div>
+              </div>
+            </div>
+          </button>
+        </div>
+
+        {/* Quick Stats Row */}
+        <div className="px-4 pb-4 flex gap-3 overflow-x-auto scrollbar-hide">
+          <div className="flex-shrink-0 bg-white/10 rounded-xl px-4 py-2 flex items-center gap-2">
+            <PiggyBank className="w-4 h-4 text-green-400" />
+            <span className="text-sm">Total Saved: <strong>₹{walletData.totalSaved.toLocaleString()}</strong></span>
+          </div>
+          <div className="flex-shrink-0 bg-white/10 rounded-xl px-4 py-2 flex items-center gap-2">
+            <Lock className="w-4 h-4 text-yellow-400" />
+            <span className="text-sm">Locked Deals: <strong>{walletData.lockedDeals}</strong></span>
+          </div>
+          <div className="flex-shrink-0 bg-white/10 rounded-xl px-4 py-2 flex items-center gap-2">
+            <Tag className="w-4 h-4 text-pink-400" />
+            <span className="text-sm">Branded Coins: <strong>{walletData.brandedCoins}</strong></span>
           </div>
         </div>
       </div>
 
-      {/* Story-like Quick Access */}
-      <div className="bg-white border-b border-gray-200 px-4 py-4">
-        <div className="flex gap-4 overflow-x-auto pb-2 scrollbar-hide">
-          {stories.map((story) => {
-            const Icon = story.icon;
-            return (
-              <button
-                key={story.id}
-                onClick={() => navigate(story.action)}
-                className="flex flex-col items-center gap-2 flex-shrink-0"
-              >
-                <div className={`w-16 h-16 rounded-full bg-gradient-to-br ${story.color} p-0.5`}>
-                  <div className="w-full h-full bg-white rounded-full flex items-center justify-center">
-                    <Icon className="w-6 h-6 text-gray-900" />
-                  </div>
-                </div>
-                <span className="text-xs text-gray-600 text-center w-16 truncate">{story.title}</span>
-              </button>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* Main Content */}
-      <div className="px-4 py-6 space-y-6">
-        {/* User Stats */}
-        <div className="grid grid-cols-3 gap-3">
-          {stats.map((stat, index) => {
-            const Icon = stat.icon;
-            return (
-              <div key={index} className="bg-white rounded-xl p-4 border border-gray-200">
-                <Icon className={`w-5 h-5 ${stat.color} mb-2`} />
-                <div className="text-lg font-bold text-gray-900">{stat.value}</div>
-                <div className="text-xs text-gray-500">{stat.label}</div>
-              </div>
-            );
-          })}
-        </div>
-
-        {/* Quick Actions */}
-        <div>
-          <h2 className="text-lg font-bold text-gray-900 mb-3">Quick Actions</h2>
-          <div className="grid grid-cols-2 gap-3">
-            {quickActions.map((action, index) => {
+      {/* Earning Actions */}
+      <div className="px-4 py-4 -mt-2">
+        <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
+          <div className="flex items-center justify-between mb-3">
+            <h2 className="font-bold text-gray-900">Earn More Coins</h2>
+            <button onClick={() => navigate('/earn')} className="text-sm text-purple-600 font-semibold">View All</button>
+          </div>
+          <div className="grid grid-cols-4 gap-2">
+            {earningActions.map((action) => {
               const Icon = action.icon;
               return (
                 <button
-                  key={index}
-                  onClick={() => navigate(action.action)}
-                  className={`${action.color} text-white rounded-2xl p-4 text-left hover:shadow-lg transition-all`}
+                  key={action.id}
+                  onClick={() => navigate(action.path)}
+                  className="flex flex-col items-center text-center"
                 >
-                  <Icon className="w-8 h-8 mb-2" />
-                  <div className="font-bold mb-1">{action.title}</div>
-                  <div className="text-sm opacity-90">{action.subtitle}</div>
+                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${action.color} flex items-center justify-center mb-1`}>
+                    <Icon className="w-6 h-6 text-white" />
+                  </div>
+                  <div className="text-xs font-medium text-gray-900 leading-tight">{action.title}</div>
+                  <div className="text-xs text-green-600 font-bold">{action.coins}</div>
                 </button>
               );
             })}
           </div>
         </div>
+      </div>
 
-        {/* Fashion Live Banner */}
-        <div className="relative rounded-2xl overflow-hidden">
-          <img
-            src="https://images.unsplash.com/photo-1490114538077-0a7f8cb49891?w=800&h=300&fit=crop"
-            alt="Fashion"
-            className="w-full h-48 object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-purple-900/90 to-pink-900/90" />
-          <div className="absolute inset-0 p-6 flex flex-col justify-between">
-            <div className="inline-block self-start bg-yellow-400 text-purple-900 px-3 py-1 rounded-full text-xs font-bold">
-              ✨ LIVE NOW
-            </div>
-            <div>
-              <h3 className="text-2xl font-bold text-white mb-2">Fashion Vertical is Here!</h3>
-              <p className="text-purple-100 text-sm mb-3">Discover your style DNA & shop sustainably</p>
+      {/* Offer Types Grid */}
+      <div className="px-4 py-2">
+        <div className="flex items-center justify-between mb-3">
+          <h2 className="font-bold text-gray-900">Browse Offers</h2>
+          <button onClick={() => navigate('/all-offers')} className="text-sm text-purple-600 font-semibold">All Offers</button>
+        </div>
+        <div className="grid grid-cols-3 gap-2">
+          {offerTypes.map((type) => {
+            const Icon = type.icon;
+            return (
               <button
-                onClick={() => navigate('/lifestyle/fashion/style-quiz')}
-                className="bg-white text-purple-600 px-6 py-2 rounded-xl font-semibold hover:shadow-lg inline-flex items-center gap-2"
+                key={type.id}
+                onClick={() => navigate(type.path)}
+                className="bg-white rounded-xl p-3 border border-gray-100 hover:shadow-md transition-all text-left"
               >
-                Take Quiz <ArrowRight className="w-4 h-4" />
+                <div className={`w-10 h-10 ${type.color} rounded-lg flex items-center justify-center mb-2`}>
+                  <Icon className="w-5 h-5" />
+                </div>
+                <div className="text-sm font-semibold text-gray-900">{type.title}</div>
+                <div className="text-xs text-gray-500">{type.subtitle}</div>
               </button>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Hot Deals - Lightning */}
+      <div className="px-4 py-4">
+        <div className="flex items-center justify-between mb-3">
+          <h2 className="font-bold text-gray-900 flex items-center gap-2">
+            <Zap className="w-5 h-5 text-yellow-500" />
+            Lightning Deals
+          </h2>
+          <button className="text-sm text-purple-600 font-semibold flex items-center gap-1">
+            <Timer className="w-4 h-4" />
+            See All
+          </button>
+        </div>
+        <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
+          {hotOffers.map((offer) => (
+            <div
+              key={offer.id}
+              className="flex-shrink-0 w-64 bg-white rounded-2xl overflow-hidden border border-gray-100 hover:shadow-lg transition-all"
+            >
+              <div className="relative">
+                <img src={offer.image} alt={offer.brand} className="w-full h-32 object-cover" />
+                <div className="absolute top-2 left-2 bg-red-500 text-white px-2 py-1 rounded-full text-xs font-bold flex items-center gap-1">
+                  <Flame className="w-3 h-3" />
+                  {offer.tag}
+                </div>
+                <div className="absolute top-2 right-2 bg-black/70 text-white px-2 py-1 rounded-full text-xs">
+                  {offer.expiry}
+                </div>
+              </div>
+              <div className="p-3">
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="text-xs bg-purple-100 text-purple-700 px-2 py-0.5 rounded-full font-medium">{offer.category}</span>
+                  <span className="text-xs text-gray-500">{offer.brand}</span>
+                </div>
+                <h3 className="font-bold text-gray-900 mb-1">{offer.title}</h3>
+                <p className="text-xs text-gray-600 mb-2">{offer.description}</p>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-1 text-green-600">
+                    <CreditCard className="w-4 h-4" />
+                    <span className="text-sm font-bold">{offer.cashback} cashback</span>
+                  </div>
+                  <button className="bg-purple-600 text-white px-3 py-1 rounded-lg text-xs font-semibold">
+                    Grab
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Lifestyle Categories */}
+      <div className="px-4 py-2">
+        <div className="flex items-center justify-between mb-3">
+          <h2 className="font-bold text-gray-900">Lifestyle Categories</h2>
+          <span className="text-xs text-gray-500">914 total offers</span>
+        </div>
+        <div className="grid grid-cols-3 gap-3">
+          {categories.map((category) => {
+            const Icon = category.icon;
+            return (
+              <button
+                key={category.id}
+                onClick={() => navigate(category.path)}
+                className={`bg-gradient-to-br ${category.color} rounded-2xl p-4 text-white text-left hover:shadow-lg transition-all`}
+              >
+                <Icon className="w-8 h-8 mb-2 opacity-90" />
+                <div className="font-bold text-sm mb-1">{category.name}</div>
+                <div className="text-xs opacity-80">{category.offers} offers</div>
+                <div className="text-xs font-semibold mt-1 bg-white/20 rounded-full px-2 py-0.5 inline-block">
+                  {category.cashback}
+                </div>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Exclusive Programs */}
+      <div className="px-4 py-4">
+        <div className="flex items-center justify-between mb-3">
+          <h2 className="font-bold text-gray-900 flex items-center gap-2">
+            <Crown className="w-5 h-5 text-yellow-500" />
+            Exclusive Programs
+          </h2>
+        </div>
+        <div className="grid grid-cols-2 gap-3">
+          {exclusivePrograms.map((program) => (
+            <button
+              key={program.id}
+              onClick={() => navigate(program.path)}
+              className="bg-white rounded-xl p-4 border border-gray-100 hover:shadow-md transition-all flex items-center gap-3"
+            >
+              <div className="text-3xl">{program.icon}</div>
+              <div className="text-left">
+                <div className="font-semibold text-gray-900 text-sm">{program.title}</div>
+                <div className="text-xs text-gray-500">{program.subtitle}</div>
+              </div>
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Games & Rewards */}
+      <div className="px-4 py-2">
+        <div className="flex items-center justify-between mb-3">
+          <h2 className="font-bold text-gray-900 flex items-center gap-2">
+            <Trophy className="w-5 h-5 text-orange-500" />
+            Games & Rewards
+          </h2>
+          <button className="text-sm text-purple-600 font-semibold">Play All</button>
+        </div>
+        <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
+          {gamesRewards.map((game) => (
+            <button
+              key={game.id}
+              onClick={() => navigate(game.path)}
+              className="flex-shrink-0 w-36 bg-white rounded-xl p-4 border border-gray-100 hover:shadow-md transition-all text-center"
+            >
+              <div className="text-4xl mb-2">{game.icon}</div>
+              <div className="font-semibold text-gray-900 text-sm mb-1">{game.title}</div>
+              <div className="text-xs text-green-600 font-medium">{game.coins}</div>
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Upload Bill CTA */}
+      <div className="px-4 py-4">
+        <button
+          onClick={() => navigate('/upload-bill')}
+          className="w-full bg-gradient-to-r from-green-500 to-emerald-600 rounded-2xl p-5 text-white flex items-center justify-between hover:shadow-lg transition-all"
+        >
+          <div className="flex items-center gap-4">
+            <div className="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center">
+              <Receipt className="w-8 h-8" />
+            </div>
+            <div className="text-left">
+              <div className="font-bold text-lg">Upload Bill & Earn</div>
+              <div className="text-sm opacity-90">Get ₹50-200 cashback on every bill</div>
             </div>
           </div>
-        </div>
+          <ArrowRight className="w-6 h-6" />
+        </button>
+      </div>
 
-        {/* Trending Now */}
-        <div>
-          <div className="flex items-center justify-between mb-3">
-            <h2 className="text-lg font-bold text-gray-900 flex items-center gap-2">
-              <Flame className="w-5 h-5 text-orange-500" />
-              Trending Now
-            </h2>
-            <button className="text-sm text-purple-600 font-semibold">See All</button>
-          </div>
-
-          <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
-            {trendingNow.map((item, index) => (
-              <div key={index} className="flex-shrink-0 w-40">
-                <div className="relative rounded-xl overflow-hidden mb-2">
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="w-full h-52 object-cover"
-                  />
-                  <div className="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded-full text-xs font-bold">
-                    {item.tag}
-                  </div>
-                  <div className="absolute bottom-2 left-2 right-2">
-                    <div className="text-white text-sm font-semibold">{item.title}</div>
-                    <div className="flex items-center gap-1 text-white/80 text-xs">
-                      <Heart className="w-3 h-3" />
-                      {item.likes}
-                    </div>
-                  </div>
-                </div>
+      {/* Refer & Earn */}
+      <div className="px-4 pb-6">
+        <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl p-5 text-white">
+          <div className="flex items-center justify-between">
+            <div>
+              <div className="flex items-center gap-2 mb-2">
+                <Share2 className="w-5 h-5" />
+                <span className="font-bold">Refer & Earn</span>
               </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Categories */}
-        <div>
-          <h2 className="text-lg font-bold text-gray-900 mb-3">Explore Lifestyle</h2>
-          <div className="grid grid-cols-3 gap-3">
-            {categories.map((category) => {
-              const Icon = category.icon;
-              return (
-                <button
-                  key={category.id}
-                  onClick={() => category.active && category.path && navigate(category.path)}
-                  className={`relative rounded-2xl p-4 text-center transition-all ${
-                    category.active
-                      ? 'bg-gradient-to-br ' + category.color + ' text-white hover:shadow-lg'
-                      : 'bg-gray-100 text-gray-400'
-                  }`}
-                  disabled={!category.active}
-                >
-                  {category.soon && (
-                    <div className="absolute top-2 right-2 bg-black/50 backdrop-blur-sm text-white px-2 py-0.5 rounded-full text-xs">
-                      Soon
-                    </div>
-                  )}
-                  <Icon className="w-8 h-8 mx-auto mb-2" />
-                  <div className="text-sm font-semibold">{category.name}</div>
-                </button>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* For You */}
-        <div>
-          <h2 className="text-lg font-bold text-gray-900 mb-3">For You</h2>
-          <div className="space-y-3">
-            {forYou.map((item, index) => {
-              const Icon = item.icon;
-              return (
-                <div key={index} className="bg-white rounded-2xl overflow-hidden border border-gray-200 hover:shadow-lg transition-all">
-                  <div className="flex">
-                    <img
-                      src={item.image}
-                      alt={item.title}
-                      className="w-28 h-28 object-cover"
-                    />
-                    <div className="flex-1 p-4">
-                      <div className="flex items-start gap-2 mb-2">
-                        <div className="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                          <Icon className="w-4 h-4 text-purple-600" />
-                        </div>
-                        <div className="flex-1">
-                          <h3 className="font-bold text-gray-900 text-sm mb-1">{item.title}</h3>
-                          <p className="text-xs text-gray-600">{item.description}</p>
-                        </div>
-                      </div>
-                      <button className="w-full bg-purple-600 text-white py-2 rounded-lg text-sm font-semibold hover:bg-purple-700">
-                        {item.cta}
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Your Style DNA (if completed) */}
-        {user.styleDNA && (
-          <div className="bg-gradient-to-br from-purple-600 to-pink-600 rounded-2xl p-6 text-white">
-            <div className="flex items-center justify-between mb-3">
-              <div>
-                <div className="text-sm opacity-90 mb-1">Your Style DNA</div>
-                <div className="text-2xl font-bold">{user.styleDNA}</div>
-              </div>
-              <Sparkles className="w-12 h-12 opacity-50" />
+              <div className="text-2xl font-bold mb-1">₹100 per friend</div>
+              <div className="text-sm opacity-90">Both you and your friend get ₹100 + 100 coins</div>
             </div>
             <button
-              onClick={() => navigate('/lifestyle/fashion/virtual-wardrobe')}
-              className="w-full bg-white/20 backdrop-blur-sm text-white py-3 rounded-xl font-semibold hover:bg-white/30 transition-all"
+              onClick={() => navigate('/refer')}
+              className="bg-white text-purple-600 px-4 py-2 rounded-xl font-bold hover:shadow-lg"
             >
-              Open Virtual Wardrobe
+              Invite Now
             </button>
           </div>
-        )}
-
-        {/* Bottom Spacer */}
-        <div className="h-20" />
+        </div>
       </div>
     </div>
   );
