@@ -230,6 +230,9 @@ import MerchantFreeDelivery from './pages/merchant/MerchantFreeDelivery';
 import MerchantLockPriceDeals from './pages/merchant/MerchantLockPriceDeals';
 import MerchantExclusivePrograms from './pages/merchant/MerchantExclusivePrograms';
 import MerchantBrandedCoinConfig from './pages/merchant/MerchantBrandedCoinConfig';
+import MerchantPOSIntegration from './pages/merchant/MerchantPOSIntegration';
+import MerchantPOSTransactions from './pages/merchant/MerchantPOSTransactions';
+import AdminPOSIntegration from './pages/admin/AdminPOSIntegration';
 import AdminPromoCoinManager from './pages/admin/AdminPromoCoinManager';
 import AdminRedemptionRules from './pages/admin/AdminRedemptionRules';
 import AdminCheckoutPriority from './pages/admin/AdminCheckoutPriority';
@@ -995,6 +998,7 @@ function App() {
                 <Route path="admin/merchant-tier-config" element={<AdminMerchantTierConfig />} />
                 <Route path="admin/co-partner-brands" element={<AdminCoPartnerBrands />} />
                 <Route path="admin/partnerships" element={<AdminPartnerships />} />
+                <Route path="admin/pos-integration" element={<AdminPOSIntegration />} />
                 <Route path="admin/merchant-super-os" element={<AdminMerchantSuperOS />} />
                 <Route path="admin/ecosystem-analytics" element={<AdminEcosystemAnalytics />} />
                 <Route path="admin/settlement-commission" element={<AdminSettlementCommission />} />
@@ -1100,6 +1104,8 @@ function App() {
                 <Route path="merchant/free-delivery" element={<MerchantFreeDelivery />} />
                 <Route path="merchant/lock-price-deals" element={<MerchantLockPriceDeals />} />
                 <Route path="merchant/exclusive-programs" element={<MerchantExclusivePrograms />} />
+                <Route path="merchant/pos-integration" element={<MerchantPOSIntegration />} />
+                <Route path="merchant/pos-transactions" element={<MerchantPOSTransactions />} />
 
                 {/* Loyalty & Rewards - Unified Hub */}
                 <Route path="loyalty-rewards" element={<LoyaltyRewardsHub />} />
