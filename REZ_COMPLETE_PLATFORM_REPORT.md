@@ -1126,9 +1126,72 @@ Optional (Merchant Funded):
 
 ---
 
+# CRITICAL MERCHANT ADOPTION FEATURES (NEW)
+
+## The 10 Tech Blockers That Make Merchants Say NO
+
+These 8 new pages address the critical friction points that cause merchant rejection.
+
+### Problem → Solution Matrix
+
+| # | Merchant Fear | Tech Blocker | Solution Page | Key Feature |
+|---|---------------|--------------|---------------|-------------|
+| 1 | "POS lag karega" | Slow/offline POS | MerchantOfflinePOSSync | Local-first SQLite, background sync |
+| 2 | "Printer connect nahi ho raha" | Hardware issues | MerchantHardwareDiagnostics | Test buttons, certified list |
+| 3 | "Stock galat hoga" | Inventory mismatch | MerchantStockVarianceReport | System vs actual, audit log |
+| 4 | "CA se problem" | GST confusion | MerchantGSTSetupWizard | GSTIN verify, auto HSN, Tally export |
+| 5 | "Time nahi hai" | Complex onboarding | MerchantQuickOnboarding | 10-min flow, photo/WhatsApp upload |
+| 6 | "Kitna bacha?" | No profit view | MerchantProfitView | Sales-Commission-Coins=Profit |
+| 7 | "Tech fail toh?" | No human help | MerchantSupportHub | 1-tap WhatsApp, callback <10min |
+| 8 | "Staff galti karega" | Permission issues | MerchantStaffActivityLog | Undo window, flagged actions |
+
+### Implementation Status
+
+```
+✅ MerchantOfflinePOSSync      - /merchant/offline-sync
+✅ MerchantHardwareDiagnostics - /merchant/hardware-diagnostics
+✅ MerchantStockVarianceReport - /merchant/stock-variance
+✅ MerchantGSTSetupWizard      - /merchant/gst-setup
+✅ MerchantQuickOnboarding     - /merchant/quick-onboarding
+✅ MerchantProfitView          - /merchant/profit-view
+✅ MerchantSupportHub          - /merchant/support-hub
+✅ MerchantStaffActivityLog    - /merchant/staff-activity
+```
+
+### The Simple Profit Formula
+
+```
+┌─────────────────────────────────────────────┐
+│           MERCHANT DAILY PROFIT             │
+├─────────────────────────────────────────────┤
+│                                             │
+│   Total Sales         ₹45,670               │
+│   - Commission (20%)  -₹9,134               │
+│   - ReZ Coins (5%)    -₹2,284               │
+│   ─────────────────────────────             │
+│   = NET PROFIT        ₹34,252               │
+│                                             │
+│   WhatsApp report sent daily at 10 PM       │
+│                                             │
+└─────────────────────────────────────────────┘
+```
+
+### Support Channels
+
+| Channel | Response Time | Availability |
+|---------|---------------|--------------|
+| WhatsApp | Instant | 24/7 |
+| Callback | <10 minutes | 24/7 |
+| Dedicated Concierge | Immediate | First 30 days |
+| Emergency Hotline | Immediate | 24/7 |
+
+---
+
 *Document Generated: January 2025*
-*Platform Version: ReZ V2.2 (King-Making + Package Tiers)*
-*Total Lines of Code: 550,000+*
-*Admin Modules: 117+ | Merchant Modules: 105+ | User Features: 180+*
+*Platform Version: ReZ V2.3 (King-Making + Package Tiers + Adoption Fixes)*
+*Total Lines of Code: 560,000+*
+*Total Pages: 728 | Total Routes: 640*
+*Admin Modules: 143 | Merchant Modules: 172 | User Features: 261*
 *King-Making Systems: 9 Strategic Control Layers*
 *Merchant Package Tiers: 4 (Free, Basic, Golden, Diamond)*
+*Critical Adoption Features: 8 blocker-fix pages*

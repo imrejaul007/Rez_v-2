@@ -1001,12 +1001,105 @@ HQ Sets Rules
 
 | Section | Pages | Routes | Key Features |
 |---------|-------|--------|--------------|
-| Admin | 142 | 140+ | Governance, Promotions, Analytics, Compliance |
-| Merchant | 164 | 160+ | POS, Inventory, Orders, CRM, Marketing |
+| Admin | 143 | 141+ | Governance, Promotions, Analytics, Compliance, Package Management |
+| Merchant | 172 | 168+ | POS, Inventory, Orders, CRM, Marketing, **Critical Adoption Features** |
 | User | 107 | 100+ | Shopping, Earning, Payments, Social |
 | Prive | 141 | 40+ | Exclusive offers, Influence, Redemption |
 | Verticals | 154 | 130+ | Fashion, Food, Events, Healthcare, etc. |
-| **Total** | **718** | **631** | Complete commerce ecosystem |
+| **Total** | **728** | **640** | Complete commerce ecosystem |
+
+---
+
+# CRITICAL MERCHANT ADOPTION FEATURES (NEW)
+
+These 8 pages address the **top 10 tech blockers** that make merchants say NO to POS systems.
+
+## Priority Fix Order
+
+| Priority | Blocker | Solution Page | Route |
+|----------|---------|---------------|-------|
+| 1 | POS freezes offline | MerchantOfflinePOSSync | `/merchant/offline-sync` |
+| 2 | Printer/hardware issues | MerchantHardwareDiagnostics | `/merchant/hardware-diagnostics` |
+| 3 | Stock mismatch | MerchantStockVarianceReport | `/merchant/stock-variance` |
+| 4 | GST/CA confusion | MerchantGSTSetupWizard | `/merchant/gst-setup` |
+| 5 | Complex onboarding | MerchantQuickOnboarding | `/merchant/quick-onboarding` |
+| 6 | No simple profit view | MerchantProfitView | `/merchant/profit-view` |
+| 7 | No human support | MerchantSupportHub | `/merchant/support-hub` |
+| 8 | Staff permission issues | MerchantStaffActivityLog | `/merchant/staff-activity` |
+
+## Feature Details
+
+### 1. Offline POS Sync (`/merchant/offline-sync`)
+- **Problem**: "Internet gaya toh business rukega"
+- **Solution**: Local-first architecture with SQLite/Realm
+- **Features**:
+  - Pending sync queue (transactions, inventory, coins, offers)
+  - Conflict resolution UI
+  - Auto-sync when online
+  - Clear "pending sync" state
+
+### 2. Hardware Diagnostics (`/merchant/hardware-diagnostics`)
+- **Problem**: "Printer connect nahi ho raha"
+- **Solution**: One-click hardware testing
+- **Features**:
+  - Test print/scan/drawer buttons
+  - Certified hardware list
+  - Troubleshooting guides
+  - Auto-retry drivers
+
+### 3. Stock Variance Report (`/merchant/stock-variance`)
+- **Problem**: "Stock galat hua toh loss hoga"
+- **Solution**: Inventory accuracy tracking
+- **Features**:
+  - System vs actual comparison
+  - Variance value tracking (₹ impact)
+  - Manual correction with audit log
+  - Daily variance reports
+
+### 4. GST Setup Wizard (`/merchant/gst-setup`)
+- **Problem**: "CA se problem nahi chahiye"
+- **Solution**: 4-step GST configuration
+- **Features**:
+  - GSTIN verification
+  - Auto HSN/SAC suggestions by category
+  - Invoice preview
+  - One-click CA export (Tally-compatible)
+
+### 5. Quick Onboarding (`/merchant/quick-onboarding`)
+- **Problem**: "Abhi customer aa raha hai, baad mein dekhenge"
+- **Solution**: 10-minute setup flow
+- **Features**:
+  - Skip & continue later
+  - Photo/Excel/WhatsApp menu upload
+  - Category-based auto-configuration
+  - First bill walkthrough
+
+### 6. Profit View (`/merchant/profit-view`)
+- **Problem**: "Kitna paisa bacha - seedha batao"
+- **Solution**: One-screen profit formula
+- **Features**:
+  - **Sales - Commission - Coins = Net Profit**
+  - Daily/weekly charts
+  - WhatsApp daily reports
+  - Tier upgrade suggestions
+
+### 7. Support Hub (`/merchant/support-hub`)
+- **Problem**: When tech fails, merchant wants human, not docs
+- **Solution**: Multiple human support channels
+- **Features**:
+  - 1-tap WhatsApp support
+  - Request callback (<10 mins)
+  - First 30-day dedicated concierge
+  - Emergency toll-free hotline
+
+### 8. Staff Activity Log (`/merchant/staff-activity`)
+- **Problem**: "Staff kuch galat kar dega"
+- **Solution**: Action tracking with undo
+- **Features**:
+  - Staff action timeline
+  - Undo window for mistakes
+  - Flagged actions alerts
+  - Audit trail for CA
 
 ---
 
@@ -1046,6 +1139,7 @@ Optional (Merchant Funded):
 
 | Date | Version | Changes |
 |------|---------|---------|
+| 2025-01-02 | 1.2 | Added 8 Critical Merchant Adoption Features (728 pages, 640 routes) |
 | 2025-01-01 | 1.1 | Added Merchant Package Tiers documentation |
 | 2024-01-01 | 1.0 | Initial documentation with 718 pages, 631 routes |
 

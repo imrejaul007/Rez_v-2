@@ -2,8 +2,8 @@
 
 ## Complete API & Page Reference for 3 Applications
 
-**Total Pages**: 718
-**Total Routes**: 631
+**Total Pages**: 728
+**Total Routes**: 640
 **Applications**: Admin (Web), Merchant (Mobile/Web), User (Mobile)
 
 ---
@@ -12,8 +12,8 @@
 
 1. [Architecture Overview](#architecture-overview)
 2. [Application Structure](#application-structure)
-3. [Admin Application](#admin-application-142-pages)
-4. [Merchant Application](#merchant-application-164-pages)
+3. [Admin Application](#admin-application-143-pages)
+4. [Merchant Application](#merchant-application-172-pages)
 5. [User Application](#user-application-261-pages)
 6. [API Endpoints Required](#api-endpoints-required)
 7. [Data Flow Between Apps](#data-flow-between-apps)
@@ -658,13 +658,55 @@ MerchantOffers (All offers)
 
 ---
 
-### M17. ONBOARDING (3 Pages)
+### M17. ONBOARDING (4 Pages)
 
 | # | Page | Route | API Endpoints | Data Required |
 |---|------|-------|---------------|---------------|
 | 1 | MerchantSignup | `/merchant/signup` | `POST /api/merchant/signup` | Registration |
 | 2 | MerchantBusinessDetails | `/merchant/business-details` | `POST /api/merchant/business-details` | Business info |
-| 3 | MerchantSuccess | `/merchant/success` | - | Success page |
+| 3 | MerchantQuickOnboarding | `/merchant/quick-onboarding` | `POST /api/merchant/quick-setup` | 10-min setup flow, photo/Excel/WhatsApp menu upload |
+| 4 | MerchantSuccess | `/merchant/success` | - | Success page |
+
+---
+
+### M18. CRITICAL ADOPTION FEATURES (8 Pages) - NEW
+
+These pages address the **top 10 tech blockers** that make merchants reject POS systems.
+
+| # | Page | Route | API Endpoints | Data Required |
+|---|------|-------|---------------|---------------|
+| 1 | MerchantOfflinePOSSync | `/merchant/offline-sync` | `GET /api/merchant/sync/status`<br>`POST /api/merchant/sync/force`<br>`GET /api/merchant/sync/pending`<br>`POST /api/merchant/sync/resolve-conflict` | Pending transactions, inventory updates, coin redemptions, offer claims, sync history, conflicts |
+| 2 | MerchantHardwareDiagnostics | `/merchant/hardware-diagnostics` | `GET /api/merchant/hardware/devices`<br>`POST /api/merchant/hardware/test/{deviceId}`<br>`GET /api/merchant/hardware/certified` | Connected devices, test results, certified hardware list, troubleshooting guides |
+| 3 | MerchantStockVarianceReport | `/merchant/stock-variance` | `GET /api/merchant/inventory/variance`<br>`POST /api/merchant/inventory/reconcile`<br>`GET /api/merchant/inventory/audit-log` | System vs actual stock, variance items, correction history, daily variance reports |
+| 4 | MerchantGSTSetupWizard | `/merchant/gst-setup` | `POST /api/merchant/gst/verify`<br>`GET /api/merchant/gst/hsn-suggestions`<br>`PUT /api/merchant/gst/config`<br>`GET /api/merchant/gst/invoice-preview` | GSTIN verification, business type, category HSN codes, invoice settings |
+| 5 | MerchantProfitView | `/merchant/profit-view` | `GET /api/merchant/profit/daily`<br>`GET /api/merchant/profit/weekly`<br>`POST /api/merchant/profit/whatsapp-report` | Sales, commission, coins, net profit, daily/weekly charts |
+| 6 | MerchantSupportHub | `/merchant/support-hub` | `POST /api/merchant/support/callback`<br>`GET /api/merchant/support/tickets`<br>`GET /api/merchant/support/concierge` | Support options, ticket history, concierge info, quick help links |
+| 7 | MerchantStaffActivityLog | `/merchant/staff-activity` | `GET /api/merchant/staff/activity`<br>`POST /api/merchant/staff/undo/{actionId}`<br>`GET /api/merchant/staff/flagged` | Staff actions, undo-able items, flagged actions, audit trail |
+| 8 | MerchantGSTSetupWizard | `/merchant/gst-setup` | (See above) | GST compliance wizard |
+
+**Navigation Flow**:
+```
+MerchantSuperOSDashboard
+    ├── Quick Profit → MerchantProfitView
+    ├── Sync Status → MerchantOfflinePOSSync
+    ├── Hardware → MerchantHardwareDiagnostics
+    ├── Stock Audit → MerchantStockVarianceReport
+    ├── GST Setup → MerchantGSTSetupWizard
+    ├── Help → MerchantSupportHub
+    └── Staff Log → MerchantStaffActivityLog
+```
+
+**Critical Features Addressed**:
+| Blocker | Solution |
+|---------|----------|
+| POS freezes offline | MerchantOfflinePOSSync - Local-first with sync queue |
+| Printer not working | MerchantHardwareDiagnostics - Test buttons, certified list |
+| Stock mismatch | MerchantStockVarianceReport - Variance tracking, audit log |
+| GST confusion | MerchantGSTSetupWizard - 4-step wizard, auto HSN |
+| Complex setup | MerchantQuickOnboarding - 10-min flow, skip option |
+| No profit view | MerchantProfitView - Sales-Commission-Coins=Profit |
+| No human help | MerchantSupportHub - WhatsApp, callback, concierge |
+| Staff mistakes | MerchantStaffActivityLog - Undo window, audit trail |
 
 ---
 
