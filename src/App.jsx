@@ -122,6 +122,36 @@ import AdminWalletAnalytics from './pages/admin/AdminWalletAnalytics';
 import AdminRoleBasedAccess from './pages/admin/AdminRoleBasedAccess';
 import AdminRegionalControl from './pages/admin/AdminRegionalControl';
 import AdminMultiChannelMarketing from './pages/admin/AdminMultiChannelMarketing';
+import AdminCoinEmergencyControls from './pages/admin/AdminCoinEmergencyControls';
+import AdminMerchantTrustScore from './pages/admin/AdminMerchantTrustScore';
+import AdminUserTrustScore from './pages/admin/AdminUserTrustScore';
+import AdminOfflineReconciliation from './pages/admin/AdminOfflineReconciliation';
+import AdminDisputeResolution from './pages/admin/AdminDisputeResolution';
+import AdminInternalOps from './pages/admin/AdminInternalOps';
+import AdminExperiments from './pages/admin/AdminExperiments';
+import AdminMonetizationHub from './pages/admin/AdminMonetizationHub';
+import AdminAuditVault from './pages/admin/AdminAuditVault';
+import AdminMerchantProfitEngine from './pages/admin/AdminMerchantProfitEngine';
+import AdminMerchantIntelligence from './pages/admin/AdminMerchantIntelligence';
+import AdminUserHabitEngine from './pages/admin/AdminUserHabitEngine';
+import AdminCityLockEngine from './pages/admin/AdminCityLockEngine';
+import AdminTrustPassport from './pages/admin/AdminTrustPassport';
+import AdminGovernmentConsole from './pages/admin/AdminGovernmentConsole';
+import AdminCreditEngine from './pages/admin/AdminCreditEngine';
+import AdminCommerceProtocol from './pages/admin/AdminCommerceProtocol';
+import AdminEnterpriseHub from './pages/admin/AdminEnterpriseHub';
+import AdminSocialFeedControl from './pages/admin/AdminSocialFeedControl';
+
+// User Gap Pages
+import TrustPassport from './pages/TrustPassport';
+import DisputeCenter from './pages/DisputeCenter';
+import ContentSubmissionTracker from './pages/ContentSubmissionTracker';
+import SecurityAlerts from './pages/SecurityAlerts';
+import KYCStatus from './pages/KYCStatus';
+import TableReservation from './pages/TableReservation';
+import BillSplitting from './pages/BillSplitting';
+import PrescriptionHistory from './pages/PrescriptionHistory';
+import InsuranceCoverage from './pages/InsuranceCoverage';
 
 // Merchant Pages
 import MerchantDashboard from './pages/merchant/MerchantDashboard';
@@ -232,6 +262,42 @@ import MerchantExclusivePrograms from './pages/merchant/MerchantExclusiveProgram
 import MerchantBrandedCoinConfig from './pages/merchant/MerchantBrandedCoinConfig';
 import MerchantPOSIntegration from './pages/merchant/MerchantPOSIntegration';
 import MerchantPOSTransactions from './pages/merchant/MerchantPOSTransactions';
+import MerchantPaymentLinks from './pages/merchant/MerchantPaymentLinks';
+import MerchantBillSplitting from './pages/merchant/MerchantBillSplitting';
+import MerchantTipsConfig from './pages/merchant/MerchantTipsConfig';
+import MerchantPostPaymentRewards from './pages/merchant/MerchantPostPaymentRewards';
+import MerchantSoftPOS from './pages/merchant/MerchantSoftPOS';
+import MerchantCaptainApp from './pages/merchant/MerchantCaptainApp';
+import MerchantCreditLedger from './pages/merchant/MerchantCreditLedger';
+import MerchantGSTReports from './pages/merchant/MerchantGSTReports';
+import MerchantPaymentReminders from './pages/merchant/MerchantPaymentReminders';
+import MerchantBillHold from './pages/merchant/MerchantBillHold';
+import MerchantAggregatorReconciliation from './pages/merchant/MerchantAggregatorReconciliation';
+import MerchantTokenDisplay from './pages/merchant/MerchantTokenDisplay';
+import MerchantExpenseTracker from './pages/merchant/MerchantExpenseTracker';
+import MerchantProfitLoss from './pages/merchant/MerchantProfitLoss';
+import MerchantQuotations from './pages/merchant/MerchantQuotations';
+import MerchantInvoiceScanner from './pages/merchant/MerchantInvoiceScanner';
+import MerchantComboProducts from './pages/merchant/MerchantComboProducts';
+import MerchantSalesmanCommission from './pages/merchant/MerchantSalesmanCommission';
+import MerchantOfflinePOS from './pages/merchant/MerchantOfflinePOS';
+import MerchantBillManagement from './pages/merchant/MerchantBillManagement';
+import MerchantAccountantPortal from './pages/merchant/MerchantAccountantPortal';
+import MerchantCashDrawer from './pages/merchant/MerchantCashDrawer';
+import MerchantSimplePOS from './pages/merchant/MerchantSimplePOS';
+import MerchantDayEndReport from './pages/merchant/MerchantDayEndReport';
+import MerchantHardwareHub from './pages/merchant/MerchantHardwareHub';
+import MerchantPowerSurvival from './pages/merchant/MerchantPowerSurvival';
+import MerchantCategoryPOS from './pages/merchant/MerchantCategoryPOS';
+import MerchantDataExport from './pages/merchant/MerchantDataExport';
+import MerchantRushHourMode from './pages/merchant/MerchantRushHourMode';
+import MerchantStockReconciliation from './pages/merchant/MerchantStockReconciliation';
+import MerchantSalonPackages from './pages/merchant/MerchantSalonPackages';
+import MerchantClinicInsurance from './pages/merchant/MerchantClinicInsurance';
+import MerchantSupplierReturns from './pages/merchant/MerchantSupplierReturns';
+import MerchantTrustScoreDetail from './pages/merchant/MerchantTrustScoreDetail';
+import MerchantContestBuilder from './pages/merchant/MerchantContestBuilder';
+import MerchantWishlistDemand from './pages/merchant/MerchantWishlistDemand';
 import AdminPOSIntegration from './pages/admin/AdminPOSIntegration';
 import AdminPromoCoinManager from './pages/admin/AdminPromoCoinManager';
 import AdminRedemptionRules from './pages/admin/AdminRedemptionRules';
@@ -1015,6 +1081,38 @@ function App() {
                 <Route path="admin/role-based-access" element={<AdminRoleBasedAccess />} />
                 <Route path="admin/regional-control" element={<AdminRegionalControl />} />
                 <Route path="admin/multi-channel-marketing" element={<AdminMultiChannelMarketing />} />
+                <Route path="admin/coin-emergency-controls" element={<AdminCoinEmergencyControls />} />
+                <Route path="admin/merchant-trust-score" element={<AdminMerchantTrustScore />} />
+                <Route path="admin/user-trust-score" element={<AdminUserTrustScore />} />
+                <Route path="admin/offline-reconciliation" element={<AdminOfflineReconciliation />} />
+                <Route path="admin/dispute-resolution" element={<AdminDisputeResolution />} />
+                <Route path="admin/internal-ops" element={<AdminInternalOps />} />
+                <Route path="admin/experiments" element={<AdminExperiments />} />
+                <Route path="admin/monetization-hub" element={<AdminMonetizationHub />} />
+                <Route path="admin/audit-vault" element={<AdminAuditVault />} />
+                <Route path="admin/merchant-profit-engine" element={<AdminMerchantProfitEngine />} />
+                <Route path="admin/merchant-intelligence" element={<AdminMerchantIntelligence />} />
+                <Route path="admin/user-habit-engine" element={<AdminUserHabitEngine />} />
+                <Route path="admin/city-lock-engine" element={<AdminCityLockEngine />} />
+                <Route path="admin/trust-passport" element={<AdminTrustPassport />} />
+                <Route path="admin/government-console" element={<AdminGovernmentConsole />} />
+                <Route path="admin/credit-engine" element={<AdminCreditEngine />} />
+                <Route path="admin/commerce-protocol" element={<AdminCommerceProtocol />} />
+                <Route path="admin/enterprise-hub" element={<AdminEnterpriseHub />} />
+                <Route path="admin/social-feed-control" element={<AdminSocialFeedControl />} />
+
+                {/* User Gap Feature Routes */}
+                <Route path="trust-passport" element={<TrustPassport />} />
+                <Route path="disputes" element={<DisputeCenter />} />
+                <Route path="my-content" element={<ContentSubmissionTracker />} />
+                <Route path="security" element={<SecurityAlerts />} />
+                <Route path="kyc-status" element={<KYCStatus />} />
+                <Route path="table-reservation/:restaurantId" element={<TableReservation />} />
+                <Route path="table-reservation" element={<TableReservation />} />
+                <Route path="bill-split/:orderId" element={<BillSplitting />} />
+                <Route path="bill-split" element={<BillSplitting />} />
+                <Route path="prescriptions" element={<PrescriptionHistory />} />
+                <Route path="insurance" element={<InsuranceCoverage />} />
 
                 {/* Merchant Routes */}
                 <Route path="merchant" element={<MerchantSuperOSDashboard />} />
@@ -1106,6 +1204,42 @@ function App() {
                 <Route path="merchant/exclusive-programs" element={<MerchantExclusivePrograms />} />
                 <Route path="merchant/pos-integration" element={<MerchantPOSIntegration />} />
                 <Route path="merchant/pos-transactions" element={<MerchantPOSTransactions />} />
+                <Route path="merchant/payment-links" element={<MerchantPaymentLinks />} />
+                <Route path="merchant/bill-splitting" element={<MerchantBillSplitting />} />
+                <Route path="merchant/tips-config" element={<MerchantTipsConfig />} />
+                <Route path="merchant/post-payment-rewards" element={<MerchantPostPaymentRewards />} />
+                <Route path="merchant/softpos" element={<MerchantSoftPOS />} />
+                <Route path="merchant/captain-app" element={<MerchantCaptainApp />} />
+                <Route path="merchant/credit-ledger" element={<MerchantCreditLedger />} />
+                <Route path="merchant/gst-reports" element={<MerchantGSTReports />} />
+                <Route path="merchant/payment-reminders" element={<MerchantPaymentReminders />} />
+                <Route path="merchant/bill-hold" element={<MerchantBillHold />} />
+                <Route path="merchant/aggregator-reconciliation" element={<MerchantAggregatorReconciliation />} />
+                <Route path="merchant/token-display" element={<MerchantTokenDisplay />} />
+                <Route path="merchant/expense-tracker" element={<MerchantExpenseTracker />} />
+                <Route path="merchant/profit-loss" element={<MerchantProfitLoss />} />
+                <Route path="merchant/quotations" element={<MerchantQuotations />} />
+                <Route path="merchant/invoice-scanner" element={<MerchantInvoiceScanner />} />
+                <Route path="merchant/combo-products" element={<MerchantComboProducts />} />
+                <Route path="merchant/salesman-commission" element={<MerchantSalesmanCommission />} />
+                <Route path="merchant/offline-pos" element={<MerchantOfflinePOS />} />
+                <Route path="merchant/bill-management" element={<MerchantBillManagement />} />
+                <Route path="merchant/accountant-portal" element={<MerchantAccountantPortal />} />
+                <Route path="merchant/cash-drawer" element={<MerchantCashDrawer />} />
+                <Route path="merchant/simple-pos" element={<MerchantSimplePOS />} />
+                <Route path="merchant/day-end-report" element={<MerchantDayEndReport />} />
+                <Route path="merchant/hardware-hub" element={<MerchantHardwareHub />} />
+                <Route path="merchant/power-survival" element={<MerchantPowerSurvival />} />
+                <Route path="merchant/category-pos" element={<MerchantCategoryPOS />} />
+                <Route path="merchant/data-export" element={<MerchantDataExport />} />
+                <Route path="merchant/rush-hour-mode" element={<MerchantRushHourMode />} />
+                <Route path="merchant/stock-reconciliation" element={<MerchantStockReconciliation />} />
+                <Route path="merchant/salon-packages" element={<MerchantSalonPackages />} />
+                <Route path="merchant/clinic-insurance" element={<MerchantClinicInsurance />} />
+                <Route path="merchant/supplier-returns" element={<MerchantSupplierReturns />} />
+                <Route path="merchant/trust-score" element={<MerchantTrustScoreDetail />} />
+                <Route path="merchant/contest-builder" element={<MerchantContestBuilder />} />
+                <Route path="merchant/wishlist-demand" element={<MerchantWishlistDemand />} />
 
                 {/* Loyalty & Rewards - Unified Hub */}
                 <Route path="loyalty-rewards" element={<LoyaltyRewardsHub />} />
