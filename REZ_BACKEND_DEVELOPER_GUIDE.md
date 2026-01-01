@@ -2,9 +2,10 @@
 
 ## Complete API & Page Reference for 3 Applications
 
-**Total Pages**: 728
-**Total Routes**: 640
+**Total Pages**: 738
+**Total Routes**: 658
 **Applications**: Admin (Web), Merchant (Mobile/Web), User (Mobile)
+**Core Systems**: ReZ (Wallet), BizOne (Merchant OS), Adzy (Marketing), Rabtul (Infra)
 
 ---
 
@@ -707,6 +708,57 @@ MerchantSuperOSDashboard
 | No profit view | MerchantProfitView - Sales-Commission-Coins=Profit |
 | No human help | MerchantSupportHub - WhatsApp, callback, concierge |
 | Staff mistakes | MerchantStaffActivityLog - Undo window, audit trail |
+
+---
+
+### M19. ADZY MARKETING HUB (1 Page) - NEW
+
+| # | Page | Route | API Endpoints | Data Required |
+|---|------|-------|---------------|---------------|
+| 1 | MerchantAdzyHub | `/merchant/adzy-hub` | `GET /api/merchant/adzy/campaigns`<br>`POST /api/merchant/adzy/campaigns`<br>`GET /api/merchant/adzy/templates`<br>`GET /api/merchant/adzy/analytics` | Campaign management, templates, performance metrics |
+
+**Features**:
+- Quick campaign templates (Flash Deal, Coin Boost, New Customers)
+- Budget management and spend tracking
+- Performance analytics (CTR, ROAS, conversions)
+- Closed-loop ecosystem advertising
+- AI-powered campaign suggestions
+
+---
+
+# ADMIN ADZY & RABTUL MODULES (7 Pages) - NEW
+
+## Adzy (Marketing Exchange)
+
+| # | Page | Route | API Endpoints | Data Required |
+|---|------|-------|---------------|---------------|
+| 1 | AdzyDashboard | `/admin/adzy-dashboard` | `GET /api/admin/adzy/overview`<br>`GET /api/admin/adzy/channels` | Platform metrics, channel performance, money flow |
+| 2 | AdzyAdInventory | `/admin/adzy-inventory` | `GET /api/admin/adzy/inventory/digital`<br>`GET /api/admin/adzy/inventory/physical`<br>`POST /api/admin/adzy/inventory/placement` | Digital placements, physical screens, partner stores |
+
+**Adzy Features**:
+- Closed-loop ad economy (100% spend stays in ecosystem)
+- Digital placements (in-app, push, SMS, email)
+- Physical screens (malls, stores, transit)
+- Partner store display networks
+- Real-time ROAS tracking
+
+## Rabtul (Infrastructure Layer)
+
+| # | Page | Route | API Endpoints | Data Required |
+|---|------|-------|---------------|---------------|
+| 1 | RabtulDashboard | `/admin/rabtul-dashboard` | `GET /api/admin/rabtul/health`<br>`GET /api/admin/rabtul/services` | Service health, connected apps, architecture overview |
+| 2 | RabtulAPIGateway | `/admin/rabtul-api-gateway` | `GET /api/admin/rabtul/gateway/stats`<br>`GET /api/admin/rabtul/gateway/clients`<br>`PUT /api/admin/rabtul/gateway/rate-limits` | API traffic, clients, rate limiting, endpoints |
+| 3 | RabtulAIRAEngine | `/admin/rabtul-aira` | `GET /api/admin/rabtul/aira/models`<br>`POST /api/admin/rabtul/aira/train` | AI models, personalization metrics, inference stats |
+| 4 | RabtulCoinLedger | `/admin/rabtul-coins` | `GET /api/admin/rabtul/coins/supply`<br>`GET /api/admin/rabtul/coins/transactions`<br>`POST /api/admin/rabtul/coins/mint` | Cross-app coin sync, economy overview, transaction ledger |
+
+**Rabtul Services**:
+- Auth Service (JWT, SSO, RBAC)
+- Payment Service (UPI, Cards, Wallets)
+- Coin Ledger (cross-app sync)
+- AIRA Engine (8 AI models for personalization)
+- API Gateway (unified entry point)
+- Notification Hub (push, SMS, email, WhatsApp)
+- Fraud Detection (real-time ML scoring)
 
 ---
 

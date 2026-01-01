@@ -159,6 +159,16 @@ import AdminLanguageManager from './pages/admin/AdminLanguageManager';
 import AdminAPIQuotas from './pages/admin/AdminAPIQuotas';
 import AdminHeatmaps from './pages/admin/AdminHeatmaps';
 
+// Adzy (Marketing Exchange) Pages
+import AdzyDashboard from './pages/admin/AdzyDashboard';
+import AdzyAdInventory from './pages/admin/AdzyAdInventory';
+
+// Rabtul (Infrastructure) Pages
+import RabtulDashboard from './pages/admin/RabtulDashboard';
+import RabtulAPIGateway from './pages/admin/RabtulAPIGateway';
+import RabtulAIRAEngine from './pages/admin/RabtulAIRAEngine';
+import RabtulCoinLedger from './pages/admin/RabtulCoinLedger';
+
 // User Gap Pages
 import TrustPassport from './pages/TrustPassport';
 import DisputeCenter from './pages/DisputeCenter';
@@ -351,6 +361,7 @@ import MerchantQuickOnboarding from './pages/merchant/MerchantQuickOnboarding';
 import MerchantSupportHub from './pages/merchant/MerchantSupportHub';
 import MerchantStockVarianceReport from './pages/merchant/MerchantStockVarianceReport';
 import MerchantStaffActivityLog from './pages/merchant/MerchantStaffActivityLog';
+import MerchantAdzyHub from './pages/merchant/MerchantAdzyHub';
 import MerchantBulkImport from './pages/merchant/MerchantBulkImport';
 import MerchantPrintTemplates from './pages/merchant/MerchantPrintTemplates';
 import MerchantSubscriptionPlans from './pages/merchant/MerchantSubscriptionPlans';
@@ -1192,6 +1203,16 @@ function App() {
                 <Route path="admin/api-quotas" element={<AdminAPIQuotas />} />
                 <Route path="admin/heatmaps" element={<AdminHeatmaps />} />
 
+                {/* Adzy (Marketing Exchange) Routes */}
+                <Route path="admin/adzy-dashboard" element={<AdzyDashboard />} />
+                <Route path="admin/adzy-inventory" element={<AdzyAdInventory />} />
+
+                {/* Rabtul (Infrastructure) Routes */}
+                <Route path="admin/rabtul-dashboard" element={<RabtulDashboard />} />
+                <Route path="admin/rabtul-api-gateway" element={<RabtulAPIGateway />} />
+                <Route path="admin/rabtul-aira" element={<RabtulAIRAEngine />} />
+                <Route path="admin/rabtul-coins" element={<RabtulCoinLedger />} />
+
                 {/* User Gap Feature Routes */}
                 <Route path="trust-passport" element={<TrustPassport />} />
                 <Route path="disputes" element={<DisputeCenter />} />
@@ -1367,6 +1388,7 @@ function App() {
                 <Route path="merchant/support-hub" element={<MerchantSupportHub />} />
                 <Route path="merchant/stock-variance" element={<MerchantStockVarianceReport />} />
                 <Route path="merchant/staff-activity" element={<MerchantStaffActivityLog />} />
+                <Route path="merchant/adzy-hub" element={<MerchantAdzyHub />} />
                 <Route path="merchant/bulk-import" element={<MerchantBulkImport />} />
                 <Route path="merchant/print-templates" element={<MerchantPrintTemplates />} />
                 <Route path="merchant/subscription-plans" element={<MerchantSubscriptionPlans />} />
