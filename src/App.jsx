@@ -327,6 +327,16 @@ import MerchantSessionTracking from './pages/merchant/MerchantSessionTracking';
 import MerchantHSNCodes from './pages/merchant/MerchantHSNCodes';
 import MerchantTDSTCSReports from './pages/merchant/MerchantTDSTCSReports';
 import MerchantCalendarSync from './pages/merchant/MerchantCalendarSync';
+import MerchantIntegrationHub from './pages/merchant/MerchantIntegrationHub';
+import MerchantControlPlane from './pages/merchant/MerchantControlPlane';
+import MerchantAggregatorBridge from './pages/merchant/MerchantAggregatorBridge';
+import MerchantUnifiedOrders from './pages/merchant/MerchantUnifiedOrders';
+import MerchantCustomerIdentity from './pages/merchant/MerchantCustomerIdentity';
+import MerchantSettlementEngine from './pages/merchant/MerchantSettlementEngine';
+import MerchantIntegrationHealth from './pages/merchant/MerchantIntegrationHealth';
+import MerchantERPConnector from './pages/merchant/MerchantERPConnector';
+import MerchantDeliveryBridge from './pages/merchant/MerchantDeliveryBridge';
+import MerchantEventStream from './pages/merchant/MerchantEventStream';
 import AdminPOSIntegration from './pages/admin/AdminPOSIntegration';
 import AdminPromoCoinManager from './pages/admin/AdminPromoCoinManager';
 import AdminRedemptionRules from './pages/admin/AdminRedemptionRules';
@@ -1298,6 +1308,16 @@ function App() {
                 <Route path="merchant/hsn-codes" element={<MerchantHSNCodes />} />
                 <Route path="merchant/tds-tcs-reports" element={<MerchantTDSTCSReports />} />
                 <Route path="merchant/calendar-sync" element={<MerchantCalendarSync />} />
+                <Route path="merchant/integration-hub" element={<MerchantIntegrationHub />} />
+                <Route path="merchant/control-plane" element={<MerchantControlPlane />} />
+                <Route path="merchant/aggregator-bridge" element={<MerchantAggregatorBridge />} />
+                <Route path="merchant/unified-orders" element={<MerchantUnifiedOrders />} />
+                <Route path="merchant/customer-identity" element={<MerchantCustomerIdentity />} />
+                <Route path="merchant/settlement-engine" element={<MerchantSettlementEngine />} />
+                <Route path="merchant/integration-health" element={<MerchantIntegrationHealth />} />
+                <Route path="merchant/erp-connector" element={<MerchantERPConnector />} />
+                <Route path="merchant/delivery-bridge" element={<MerchantDeliveryBridge />} />
+                <Route path="merchant/event-stream" element={<MerchantEventStream />} />
 
                 {/* Loyalty & Rewards - Unified Hub */}
                 <Route path="loyalty-rewards" element={<LoyaltyRewardsHub />} />
