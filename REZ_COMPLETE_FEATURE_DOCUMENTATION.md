@@ -1010,10 +1010,43 @@ HQ Sets Rules
 
 ---
 
+# MERCHANT PACKAGE TIERS
+
+ReZ offers 4 merchant subscription packages based on marketing spend commitment.
+
+## Quick Comparison
+
+| Tier | Marketing Spend | Commission | ReZ Coin | Platform Revenue | Subscription |
+|------|-----------------|------------|----------|------------------|--------------|
+| **Free** | ₹0 | 20% | 5-10% | 10-15% | ₹0/₹499* |
+| **Basic** | ₹10k/mo | 18% | 5-10% | 8-13% | ₹0/₹499* |
+| **Golden** | ₹30k/mo | 17% | 5-10% | 7-12% | ₹0/₹499* |
+| **Diamond** | ₹100k+/mo | 15% | 5-10% | 5-10% | ₹0/₹499* |
+
+*\*₹0 if monthly sales > ₹100k, else ₹499/month*
+
+## Optional Allocations (All Tiers)
+- **Brand Coin**: 0-10% (Merchant's own loyalty coin)
+- **Prive Coin**: 5-100% (Rewards for Prive members)
+
+## Commission Breakdown
+```
+Transaction Amount → Commission (15-20%)
+                     ├── ReZ Coin (5-10%) → User rewards
+                     └── Platform (5-15%) → ReZ revenue
+
+Optional (Merchant Funded):
+├── Brand Coin (0-10%) → Merchant loyalty
+└── Prive Coin (5-100%) → VIP rewards
+```
+
+---
+
 ## Version History
 
 | Date | Version | Changes |
 |------|---------|---------|
+| 2025-01-01 | 1.1 | Added Merchant Package Tiers documentation |
 | 2024-01-01 | 1.0 | Initial documentation with 718 pages, 631 routes |
 
 ---

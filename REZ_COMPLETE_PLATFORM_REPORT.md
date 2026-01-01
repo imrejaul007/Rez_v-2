@@ -1065,8 +1065,70 @@ These are the control layers that transform ReZ from a platform into an **ecosys
 
 ---
 
-*Document Generated: January 2026*
-*Platform Version: ReZ V2.1 (King-Making Edition)*
+# MERCHANT PACKAGE TIERS
+
+## Business Model for Merchant Partnerships
+
+ReZ operates on a tiered partnership model based on merchant marketing commitment.
+
+### Tier Structure
+
+| Tier | Marketing Spend | Fixed Commission | ReZ Coin | Platform Share | Subscription |
+|------|-----------------|------------------|----------|----------------|--------------|
+| 🆓 **Free** | ₹0 | 20% | 5-10% | 10-15% | ₹0/₹499* |
+| 📦 **Basic** | ₹10,000/mo | 18% | 5-10% | 8-13% | ₹0/₹499* |
+| 🥇 **Golden** | ₹30,000/mo | 17% | 5-10% | 7-12% | ₹0/₹499* |
+| 💎 **Diamond** | ₹100,000+/mo | 15% | 5-10% | 5-10% | ₹0/₹499* |
+
+*\*Subscription waived if monthly sales exceed ₹100,000 INR*
+
+### Optional Coin Allocations (All Tiers)
+
+| Coin Type | Range | Description |
+|-----------|-------|-------------|
+| **Brand Coin** | 0-10% | Merchant's own loyalty currency |
+| **Prive Coin** | 5-100% | Rewards for Prive VIP members |
+
+### Revenue Flow
+
+```
+Customer Transaction (₹1000)
+         │
+         ▼
+   Commission (15-20%)
+         │
+    ┌────┴────┐
+    ▼         ▼
+ReZ Coin   Platform
+(5-10%)    Revenue
+    │      (5-15%)
+    ▼
+ User
+Rewards
+
+Optional (Merchant Funded):
+├── Brand Coin (0-10%)
+└── Prive Coin (5-100%)
+```
+
+### Key Benefits by Tier
+
+| Benefit | Free | Basic | Golden | Diamond |
+|---------|:----:|:-----:|:------:|:-------:|
+| Platform Listing | ✓ | ✓ | ✓ | ✓ |
+| Basic Analytics | ✓ | ✓ | ✓ | ✓ |
+| POS System | ✓ | ✓ | ✓ | ✓ |
+| Priority Support | - | ✓ | ✓ | ✓ |
+| Featured Placement | - | - | ✓ | ✓ |
+| Dedicated Manager | - | - | - | ✓ |
+| Custom Campaigns | - | - | ✓ | ✓ |
+| API Access | - | ✓ | ✓ | ✓ |
+
+---
+
+*Document Generated: January 2025*
+*Platform Version: ReZ V2.2 (King-Making + Package Tiers)*
 *Total Lines of Code: 550,000+*
 *Admin Modules: 117+ | Merchant Modules: 105+ | User Features: 180+*
-*King-Making Systems: 8 Strategic Control Layers*
+*King-Making Systems: 9 Strategic Control Layers*
+*Merchant Package Tiers: 4 (Free, Basic, Golden, Diamond)*

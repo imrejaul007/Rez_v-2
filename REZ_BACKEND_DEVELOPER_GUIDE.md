@@ -1090,7 +1090,179 @@ Prive_Members
 
 ---
 
-*Document Version: 1.0*
-*Total Pages Documented: 718*
+# MERCHANT PACKAGE TIERS
+
+## Overview
+
+ReZ offers 4 merchant subscription tiers based on marketing spend commitment. Each tier provides different commission rates and benefits.
+
+---
+
+## Tier Comparison Table
+
+| Feature | Free | Basic | Golden | Diamond |
+|---------|------|-------|--------|---------|
+| **Marketing Spend** | ₹0 | ₹10,000/mo | ₹30,000/mo | ₹100,000+/mo |
+| **Commission (Fixed)** | 20% | 18% | 17% | 15% |
+| **ReZ Coin Allocation** | 5-10% | 5-10% | 5-10% | 5-10% |
+| **Platform Revenue** | 10-15% | 8-13% | 7-12% | 5-10% |
+| **Brand Coin (Optional)** | 0-10% | 0-10% | 0-10% | 0-10% |
+| **Prive Coin (Optional)** | 5-100% | 5-100% | 5-100% | 5-100% |
+| **Subscription Fee** | ₹0/₹499* | ₹0/₹499* | ₹0/₹499* | ₹0/₹499* |
+
+*\*Subscription: ₹0 if monthly sales > ₹100,000 INR, else ₹499/month*
+
+---
+
+## Detailed Tier Breakdown
+
+### 🆓 FREE TIER
+
+| Component | Value |
+|-----------|-------|
+| Marketing Spend Required | ₹0 |
+| **Commission Structure** | |
+| └─ Fixed Commission | 20% |
+| └─ ReZ Coin Allocation | 5-10% |
+| └─ Platform Revenue (Ours) | 10-15% |
+| **Optional Allocations** | |
+| └─ Brand Coin | 0-10% |
+| └─ Prive Coin | 5-100% |
+| **Subscription Fee** | |
+| └─ Monthly Sales > ₹100k | ₹0 |
+| └─ Monthly Sales < ₹100k | ₹499 |
+
+**Best For**: New merchants, small businesses, testing the platform
+
+---
+
+### 📦 BASIC TIER
+
+| Component | Value |
+|-----------|-------|
+| Marketing Spend Required | ₹10,000/month |
+| **Commission Structure** | |
+| └─ Fixed Commission | 18% |
+| └─ ReZ Coin Allocation | 5-10% |
+| └─ Platform Revenue (Ours) | 8-13% |
+| **Optional Allocations** | |
+| └─ Brand Coin | 0-10% |
+| └─ Prive Coin | 5-100% |
+| **Subscription Fee** | |
+| └─ Monthly Sales > ₹100k | ₹0 |
+| └─ Monthly Sales < ₹100k | ₹499 |
+
+**Best For**: Growing businesses, merchants ready to invest in visibility
+
+---
+
+### 🥇 GOLDEN TIER
+
+| Component | Value |
+|-----------|-------|
+| Marketing Spend Required | ₹30,000/month |
+| **Commission Structure** | |
+| └─ Fixed Commission | 17% |
+| └─ ReZ Coin Allocation | 5-10% |
+| └─ Platform Revenue (Ours) | 7-12% |
+| **Optional Allocations** | |
+| └─ Brand Coin | 0-10% |
+| └─ Prive Coin | 5-100% |
+| **Subscription Fee** | |
+| └─ Monthly Sales > ₹100k | ₹0 |
+| └─ Monthly Sales < ₹100k | ₹499 |
+
+**Best For**: Established merchants, multi-location stores, high-volume businesses
+
+---
+
+### 💎 DIAMOND TIER
+
+| Component | Value |
+|-----------|-------|
+| Marketing Spend Required | ₹100,000+/month |
+| **Commission Structure** | |
+| └─ Fixed Commission | 15% |
+| └─ ReZ Coin Allocation | 5-10% |
+| └─ Platform Revenue (Ours) | 5-10% |
+| **Optional Allocations** | |
+| └─ Brand Coin | 0-10% |
+| └─ Prive Coin | 5-100% |
+| **Subscription Fee** | |
+| └─ Monthly Sales > ₹100k | ₹0 |
+| └─ Monthly Sales < ₹100k | ₹499 |
+
+**Best For**: Enterprise merchants, franchise chains, premium brands
+
+---
+
+## Commission Breakdown Explained
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│                    COMMISSION FLOW EXAMPLE                          │
+│                    (₹1000 Transaction)                              │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                      │
+│  DIAMOND TIER (15% Commission = ₹150)                               │
+│  ─────────────────────────────────────                              │
+│                                                                      │
+│  ₹150 Commission Split:                                             │
+│  ├── ReZ Coins (5-10%)     →  ₹50-100  → Goes to Users             │
+│  ├── Platform Revenue      →  ₹50-100  → ReZ Platform              │
+│  │                                                                   │
+│  Optional (Merchant Funded):                                        │
+│  ├── Brand Coin (0-10%)    →  ₹0-100   → Merchant's loyalty coin   │
+│  └── Prive Coin (5-100%)   →  ₹5-150   → Prive member rewards      │
+│                                                                      │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## API Endpoints for Package Management
+
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/api/merchant/package` | GET | Get current package tier |
+| `/api/merchant/package/upgrade` | POST | Request tier upgrade |
+| `/api/merchant/package/downgrade` | POST | Request tier downgrade |
+| `/api/admin/merchant-tiers` | GET | Get all tier configurations |
+| `/api/admin/merchant-tiers` | PUT | Update tier configurations |
+| `/api/admin/merchant/{id}/tier` | PUT | Manually set merchant tier |
+
+---
+
+## Database Schema for Packages
+
+```
+Merchant_Packages
+├── id
+├── merchant_id
+├── tier (free, basic, golden, diamond)
+├── marketing_spend_commitment
+├── commission_rate
+├── rez_coin_rate
+├── brand_coin_rate (optional)
+├── prive_coin_rate (optional)
+├── subscription_status
+├── monthly_sales
+├── effective_date
+└── created_at, updated_at
+
+Merchant_Package_History
+├── id
+├── merchant_id
+├── from_tier
+├── to_tier
+├── reason
+├── changed_by
+└── changed_at
+```
+
+---
+
+*Document Version: 1.1*
+*Total Pages Documented: 719*
 *Total API Endpoints: 400+*
-*Last Updated: 2024-01-01*
+*Last Updated: 2025-01-01*
