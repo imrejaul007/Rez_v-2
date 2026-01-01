@@ -11,6 +11,144 @@ Everything else (103+ apps) are **distribution layers**, not core systems.
 
 ---
 
+## The Golden Rule
+
+> **Many apps. One economy. One rulebook. One truth.**
+
+This is a **federated application ecosystem**, not a monolith.
+- Every app = **independent product**
+- All apps talk to **shared core engines**
+- UI & flows can repeat
+- Business logic must NOT fragment
+
+---
+
+## 🔐 NON-NEGOTIABLE ARCHITECTURE RULES
+
+### RULE #1 — SINGLE SOURCE OF TRUTH (ALWAYS)
+
+Even if features look duplicated, **truth must live in one place**.
+
+| Domain | Single Truth Engine |
+|--------|---------------------|
+| Wallet & Coins | ReZ Core (Rabtul Coin Ledger) |
+| Merchant data, POS, inventory | BizOne (Merchant OS) |
+| Rules, limits, permissions | HQ Rule Engine |
+| Ads & attribution | Adzy |
+| Identity, events, AI | Rabtul |
+
+**NO app owns:**
+- ❌ its own wallet
+- ❌ its own loyalty logic
+- ❌ its own settlement math
+
+---
+
+### RULE #2 — DUPLICATION ALLOWED ONLY AT UI/FLOW LEVEL
+
+**ALLOWED to duplicate:**
+- Offer screens
+- Checkout flows
+- Campaign creation screens
+- Wallet screens
+- Analytics dashboards
+
+**NOT ALLOWED to duplicate:**
+- ❌ Offer evaluation logic
+- ❌ Coin deduction logic
+- ❌ Commission logic
+- ❌ Settlement logic
+- ❌ Rule enforcement
+
+**Example (Correct):**
+- ReZ App → "Create Offer" screen
+- Merchant App → "Create Offer" screen
+- ➡️ Both call the **same Offer Engine API**
+
+---
+
+### RULE #3 — EVERY APP IS A "CLIENT", NOT A SYSTEM
+
+Each app must behave like:
+- a **client**
+- with **scoped permissions**
+- calling central APIs
+
+Even **Admin apps** are clients.
+
+```
+App → API Gateway → Core Engines → Event Bus
+```
+
+**Violations:**
+- ❌ No app directly talks to DB
+- ❌ No app bypasses rule engine
+
+---
+
+### RULE #4 — COMMON FEATURES ≠ COMMON OWNERSHIP
+
+You can have:
+- Wallet in 10 apps
+- Campaign creation in 5 apps
+- Analytics in 7 apps
+
+But ownership is **central**.
+
+| Feature | Owner |
+|---------|-------|
+| Wallet balance | ReZ Core (Rabtul Coin Ledger) |
+| Offer rules | HQ Rule Engine |
+| Merchant data | BizOne (Merchant OS) |
+| Ads spend | Adzy |
+| Permissions | IAM / RBAC |
+
+Apps only **render + trigger**.
+
+---
+
+### RULE #5 — APPS MUST BE KILLABLE
+
+Every app must be:
+- ✅ Launchable independently
+- ✅ Killable independently
+- ✅ Replaceable independently
+
+This is why:
+- Logic must be centralized
+- State must be shared
+
+**If an app dies → system lives**
+
+---
+
+## ⚠️ WHAT WILL KILL THIS MODEL (DO NOT DO THESE)
+
+| Violation | Consequence |
+|-----------|-------------|
+| Let an app manage its own wallet | Coin economy breaks |
+| Let an app compute settlement | Financial chaos |
+| Let an app apply coin rules locally | Inconsistent rewards |
+| Let teams create "quick logic" inside apps | Technical debt explosion |
+| Let merchants bypass Merchant OS | Data fragmentation |
+
+**One violation → chaos.**
+
+---
+
+## ✅ CONFIRMED ARCHITECTURE MODEL
+
+| Decision | Status |
+|----------|--------|
+| Separate applications | ✅ YES (correct) |
+| Connected via shared core engines | ✅ YES |
+| Duplicate common features at UI level | ✅ YES |
+| Centralized rules, data, money | ✅ MANDATORY |
+
+---
+
+---
+
 ## The 4 Core Pillars
 
 ### 1. ReZ (Customer Wallet + Loyalty Brain) ✅ 92% Complete
