@@ -752,25 +752,239 @@ POST /api/admin/rabtul/coins/burn
 
 ---
 
-## Correct Execution Order
+## 🧭 RTMN 6-PHASE DEVELOPMENT ROADMAP (FULL BUILD)
 
-### ✅ Phase 1: DONE
-1. BizOne (Merchant OS) - 98%
-2. ReZ (Wallet/Loyalty) - 92%
-3. Adzy (Marketing) - 90%
-4. Rabtul (Infra) - 85%
+> **Philosophy**: This is an operating system + ecosystem, NOT an MVP startup.
+> Each phase **unlocks the next** without rework.
 
-### Phase 2: NEXT
-1. ReZ Arcade (gamification hub)
-2. AI-R (UI layer on AIRA)
-3. 2-3 Wasil verticals (extract & rebrand)
-4. Eventora+ (events acquisition)
+---
 
-### Phase 3: SCALE
-1. NextaBizz + Inventora (merchant lock-in)
-2. RTMN Finance (merchant credit)
-3. Adzy physical inventory expansion
-4. Selected viral apps
+### 🔵 PHASE 0 — FOUNDATION & NON-NEGOTIABLES ✅ COMPLETE
+
+**Goal**: Create the ONE HEARTBEAT so nothing fractures later.
+
+**Rabtul Core (Built)**
+- Identity & SSO (user, merchant, admin)
+- Wallet Ledger (single source of truth)
+- Rule Engine (coins, commissions, caps, expiry)
+- Event Bus (every action emits events)
+- Permission & RBAC framework
+- Notification service (push, WhatsApp, email hooks)
+- Audit logs & rule versioning
+
+**RTMN Core SDK (Internal)**
+- Auth UI components
+- Wallet UI components
+- Deep linking framework
+- Feature flags system
+- Analytics hooks
+
+> ❗ **ENFORCED**: No app team bypasses Rabtul
+> ❗ **ENFORCED**: No wallet logic outside Rabtul
+
+**Phase 0 Output**: One economy. One rulebook. One login across all future apps.
+
+---
+
+### 🟢 PHASE 1 — CORE ECONOMY LAUNCH ✅ COMPLETE
+
+**Status**: ReZ + BizOne + Adzy + Rabtul = 740+ pages built
+
+#### 1. ReZ (Gold Master User App) - 92%
+| Component | Status |
+|-----------|--------|
+| Discovery (merchants, offers) | ✅ |
+| Wallet (ReZ Coins, Branded, Promo) | ✅ |
+| Cashback logic (earn, burn, expiry) | ✅ |
+| Scan & Pay / Online checkout | ✅ |
+| Social share → reward hooks | ✅ |
+| Visit-based loyalty engine | ✅ |
+| Referral system | ✅ |
+| ReZ Arcade (games/challenges) | ✅ |
+| Prive VIP Program (141 pages) | ✅ |
+
+**Outcome**: Users understand saving + habit loop
+
+#### 2. BizOne (Universal Merchant OS) - 98%
+| Component | Status |
+|-----------|--------|
+| POS (offline-first, 14 pages) | ✅ |
+| Billing + GST invoices | ✅ |
+| Inventory (SKU + expiry, 10 pages) | ✅ |
+| CRM & customer history | ✅ |
+| Loyalty (native + ReZ optional) | ✅ |
+| Settlement & payouts | ✅ |
+| Merchant user roles | ✅ |
+| Multi-channel order intake | ✅ |
+| Basic analytics | ✅ |
+
+**Outcome**: Merchant can run entire business without anything else
+
+#### 3. Adzy (Closed Ecosystem Marketing) - 90%
+| Component | Status |
+|-----------|--------|
+| Merchant self-serve campaigns | ✅ |
+| In-app ads (ReZ + engagement apps) | ✅ |
+| WhatsApp & email campaigns | ✅ |
+| Physical inventory booking | ✅ |
+| Campaign attribution → BizOne | ✅ |
+| Budget caps, fraud prevention | ✅ |
+| Pay via cash + ReZ Coins | ✅ |
+
+**Outcome**: Merchants stop needing Meta/Google for local sales
+
+#### 4. Rabtul (Infrastructure) - 85%
+| Service | Status |
+|---------|--------|
+| API Gateway | ✅ |
+| AIRA AI Engine | ✅ |
+| Coin Ledger | ✅ |
+| Auth Service | ✅ |
+| Payment Service | ✅ |
+| Fraud Detection | ✅ |
+
+**Phase 1 Success Signals**:
+- ✅ Users can transact
+- ✅ Merchants can bill daily
+- ✅ Ads can convert to sales
+- ✅ No wallet disputes (single source)
+
+---
+
+### 🟡 PHASE 2 — DISCOVERY CLONES (ReZ → 4 Apps) ⏳ NEXT
+
+**Strategy**: Clone ReZ UI + SDK, NOT logic.
+
+| App | Purpose | Clone From |
+|-----|---------|------------|
+| **AI-R** | AI-first interface | ReZ + AIRA |
+| **BuzzLoop** | Social/UGC feed | ReZ + UGC |
+| **CoinHunt** | Deals & coupons | ReZ + Offers |
+| **LocalEdge** | Hyperlocal check-ins | ReZ + Location |
+
+**What Gets Cloned**:
+- Login (Rabtul SSO)
+- Wallet UI
+- Rewards UI
+- Notifications
+- Profile
+
+**What Is Unique**:
+- Discovery UX
+- Engagement logic
+- Content type
+
+**Phase 2 Output**: Multiple entry points, same economy.
+
+---
+
+### 🟠 PHASE 3 — TRANSACTION EXPANSION (Wasil Apps) ⏳ FUTURE
+
+**Goal**: Turn discovery into GMV at scale.
+
+#### Wave 1 (High Frequency)
+| App | Vertical | Clone From |
+|-----|----------|------------|
+| Dinezy | Food | Food Hub |
+| Grocify | Grocery | Grocery Hub |
+| Glowzy | Beauty | Beauty Hub |
+| MediEarn | Healthcare | Healthcare Hub |
+| FitEarn | Fitness | Fitness Hub |
+
+#### Wave 2 (Medium Frequency)
+| App | Vertical |
+|-----|----------|
+| Shopazy | Shopping |
+| Funzy | Entertainment |
+| AutoPerks | Automotive |
+| Petzy | Pet Care |
+| Kidzo | Kids/Family |
+
+#### Wave 3 (Premium)
+| App | Vertical |
+|-----|----------|
+| Luxora | Luxury |
+| Elitezy | Elite Services |
+| Royale+ | VIP Experiences |
+
+**All Wasil Apps Use**:
+- Same wallet (Rabtul)
+- Same BizOne backend
+- Same Adzy promotions
+
+**Phase 3 Output**: RTMN looks like a commerce network, not an app.
+
+---
+
+### 🔴 PHASE 4 — SUPPLY, FINANCE & MERCHANT LOCK-IN ⏳ FUTURE
+
+#### NextaBizz + Inventora
+- Bulk procurement
+- Auto reordering from BizOne
+- Better pricing than open market
+
+#### RTMN Finance
+- Merchant credit (based on BizOne data)
+- Inventory BNPL
+- Auto deductions from settlements
+- User wallet expansion (later)
+
+**Phase 4 Output**: Merchants CANNOT leave without losing money advantages.
+
+---
+
+### 🟣 PHASE 5 — ACQUISITION ENGINE (Zero CAC) ⏳ FUTURE
+
+**Goal**: Scale users cheaply.
+
+| Category | Apps |
+|----------|------|
+| Growth Stack | Gigzy, BuzzLocal, JobLoop, SkillPe |
+| Ultra-Light | Memezy, Quizzy, Spinzy |
+| Events | Eventora+ (District competitor) |
+
+**Every App**:
+- Earns coins → drives to ReZ
+- Deep-links to ReZ/Wasil
+- Feeds Rabtul data
+
+**Phase 5 Output**: RTMN owns attention + transactions.
+
+---
+
+### ⚫ PHASE 6 — BRANDS, MEDIA & GLOBAL SCALE ⏳ FUTURE
+
+#### RTMN Media
+- Content platform
+- Creators marketplace
+- Influencer network
+- Owned attention
+
+#### RTMN Brands & Franchise
+- Restaurants
+- Retail chains
+- Wellness centers
+- Travel services
+- Luxury brands
+
+#### International Expansion
+- GCC markets
+- Southeast Asia
+
+**Phase 6 Output**: RTMN becomes platform + operator + brand owner.
+
+---
+
+## 🧠 WHY THIS PLAN WORKS
+
+| Principle | Enforcement |
+|-----------|-------------|
+| No rework | Each phase builds on previous |
+| No logic duplication | Rabtul owns all business logic |
+| No merchant confusion | BizOne is THE ONLY merchant app |
+| No tech debt explosion | SDK + cloning strategy |
+| Easy investor narrative | Clear phases with metrics |
+| Easy cloning | Gold master (ReZ) → variations |
 
 ---
 
@@ -788,9 +1002,9 @@ POST /api/admin/rabtul/coins/burn
 
 ---
 
-*Document Version: 2.0*
+*Document Version: 3.0*
 *Last Updated: January 2026*
-*Platform Version: ReZ V2.5 (Phase 1 Complete - Fully Interconnected)*
+*Platform Version: ReZ V2.5 (Phase 0+1 Complete - Ready for Phase 2)*
 
 ---
 
@@ -819,11 +1033,12 @@ POST /api/admin/rabtul/coins/burn
 │   │   Exchange      │    │    Backbone     │                                   │
 │   └─────────────────┘    └─────────────────┘                                   │
 │                                                                                 │
-│   STATUS: PHASE 1 COMPLETE ✅                                                   │
+│   STATUS: PHASE 0+1 COMPLETE ✅                                                  │
 │   • 740+ Pages Built                                                           │
 │   • 660+ Routes Defined                                                        │
 │   • 50+ Interconnection APIs                                                   │
 │   • 5 Architecture Rules Enforced                                              │
+│   • 6-Phase Roadmap Documented                                                 │
 │                                                                                 │
 └────────────────────────────────────────────────────────────────────────────────┘
 ```
