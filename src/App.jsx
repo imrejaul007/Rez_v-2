@@ -141,6 +141,12 @@ import AdminCreditEngine from './pages/admin/AdminCreditEngine';
 import AdminCommerceProtocol from './pages/admin/AdminCommerceProtocol';
 import AdminEnterpriseHub from './pages/admin/AdminEnterpriseHub';
 import AdminSocialFeedControl from './pages/admin/AdminSocialFeedControl';
+import AdminCitySupplyLock from './pages/admin/AdminCitySupplyLock';
+import AdminTemporalCommerce from './pages/admin/AdminTemporalCommerce';
+import AdminCompetitiveDefense from './pages/admin/AdminCompetitiveDefense';
+import AdminOpsIntelligence from './pages/admin/AdminOpsIntelligence';
+import AdminInstitutionalAPIs from './pages/admin/AdminInstitutionalAPIs';
+import AdminFounderVault from './pages/admin/AdminFounderVault';
 
 // User Gap Pages
 import TrustPassport from './pages/TrustPassport';
@@ -152,6 +158,8 @@ import TableReservation from './pages/TableReservation';
 import BillSplitting from './pages/BillSplitting';
 import PrescriptionHistory from './pages/PrescriptionHistory';
 import InsuranceCoverage from './pages/InsuranceCoverage';
+import PriceLedger from './pages/PriceLedger';
+import TrustCredit from './pages/TrustCredit';
 
 // Merchant Pages
 import MerchantDashboard from './pages/merchant/MerchantDashboard';
@@ -298,6 +306,7 @@ import MerchantSupplierReturns from './pages/merchant/MerchantSupplierReturns';
 import MerchantTrustScoreDetail from './pages/merchant/MerchantTrustScoreDetail';
 import MerchantContestBuilder from './pages/merchant/MerchantContestBuilder';
 import MerchantWishlistDemand from './pages/merchant/MerchantWishlistDemand';
+import MerchantAutopilot from './pages/merchant/MerchantAutopilot';
 import AdminPOSIntegration from './pages/admin/AdminPOSIntegration';
 import AdminPromoCoinManager from './pages/admin/AdminPromoCoinManager';
 import AdminRedemptionRules from './pages/admin/AdminRedemptionRules';
@@ -1100,6 +1109,12 @@ function App() {
                 <Route path="admin/commerce-protocol" element={<AdminCommerceProtocol />} />
                 <Route path="admin/enterprise-hub" element={<AdminEnterpriseHub />} />
                 <Route path="admin/social-feed-control" element={<AdminSocialFeedControl />} />
+                <Route path="admin/city-supply-lock" element={<AdminCitySupplyLock />} />
+                <Route path="admin/temporal-commerce" element={<AdminTemporalCommerce />} />
+                <Route path="admin/competitive-defense" element={<AdminCompetitiveDefense />} />
+                <Route path="admin/ops-intelligence" element={<AdminOpsIntelligence />} />
+                <Route path="admin/institutional-apis" element={<AdminInstitutionalAPIs />} />
+                <Route path="admin/founder-vault" element={<AdminFounderVault />} />
 
                 {/* User Gap Feature Routes */}
                 <Route path="trust-passport" element={<TrustPassport />} />
@@ -1113,6 +1128,8 @@ function App() {
                 <Route path="bill-split" element={<BillSplitting />} />
                 <Route path="prescriptions" element={<PrescriptionHistory />} />
                 <Route path="insurance" element={<InsuranceCoverage />} />
+                <Route path="price-ledger" element={<PriceLedger />} />
+                <Route path="trust-credit" element={<TrustCredit />} />
 
                 {/* Merchant Routes */}
                 <Route path="merchant" element={<MerchantSuperOSDashboard />} />
@@ -1240,6 +1257,7 @@ function App() {
                 <Route path="merchant/trust-score" element={<MerchantTrustScoreDetail />} />
                 <Route path="merchant/contest-builder" element={<MerchantContestBuilder />} />
                 <Route path="merchant/wishlist-demand" element={<MerchantWishlistDemand />} />
+                <Route path="merchant/autopilot" element={<MerchantAutopilot />} />
 
                 {/* Loyalty & Rewards - Unified Hub */}
                 <Route path="loyalty-rewards" element={<LoyaltyRewardsHub />} />
