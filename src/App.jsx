@@ -343,6 +343,14 @@ import MerchantERPConnector from './pages/merchant/MerchantERPConnector';
 import MerchantDeliveryBridge from './pages/merchant/MerchantDeliveryBridge';
 import MerchantEventStream from './pages/merchant/MerchantEventStream';
 import MerchantWhatsAppBusiness from './pages/merchant/MerchantWhatsAppBusiness';
+import MerchantOfflinePOSSync from './pages/merchant/MerchantOfflinePOSSync';
+import MerchantHardwareDiagnostics from './pages/merchant/MerchantHardwareDiagnostics';
+import MerchantGSTSetupWizard from './pages/merchant/MerchantGSTSetupWizard';
+import MerchantProfitView from './pages/merchant/MerchantProfitView';
+import MerchantQuickOnboarding from './pages/merchant/MerchantQuickOnboarding';
+import MerchantSupportHub from './pages/merchant/MerchantSupportHub';
+import MerchantStockVarianceReport from './pages/merchant/MerchantStockVarianceReport';
+import MerchantStaffActivityLog from './pages/merchant/MerchantStaffActivityLog';
 import MerchantBulkImport from './pages/merchant/MerchantBulkImport';
 import MerchantPrintTemplates from './pages/merchant/MerchantPrintTemplates';
 import MerchantSubscriptionPlans from './pages/merchant/MerchantSubscriptionPlans';
@@ -1351,6 +1359,14 @@ function App() {
                 <Route path="merchant/delivery-bridge" element={<MerchantDeliveryBridge />} />
                 <Route path="merchant/event-stream" element={<MerchantEventStream />} />
                 <Route path="merchant/whatsapp-business" element={<MerchantWhatsAppBusiness />} />
+                <Route path="merchant/offline-sync" element={<MerchantOfflinePOSSync />} />
+                <Route path="merchant/hardware-diagnostics" element={<MerchantHardwareDiagnostics />} />
+                <Route path="merchant/gst-setup" element={<MerchantGSTSetupWizard />} />
+                <Route path="merchant/profit-view" element={<MerchantProfitView />} />
+                <Route path="merchant/quick-onboarding" element={<MerchantQuickOnboarding />} />
+                <Route path="merchant/support-hub" element={<MerchantSupportHub />} />
+                <Route path="merchant/stock-variance" element={<MerchantStockVarianceReport />} />
+                <Route path="merchant/staff-activity" element={<MerchantStaffActivityLog />} />
                 <Route path="merchant/bulk-import" element={<MerchantBulkImport />} />
                 <Route path="merchant/print-templates" element={<MerchantPrintTemplates />} />
                 <Route path="merchant/subscription-plans" element={<MerchantSubscriptionPlans />} />
