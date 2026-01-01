@@ -84,6 +84,7 @@ import AdminSettings from './pages/admin/AdminSettings';
 import AdminSupport from './pages/admin/AdminSupport';
 import AdminTransactions from './pages/admin/AdminTransactions';
 import AdminCashback from './pages/admin/AdminCashback';
+import AdminCashbackRates from './pages/admin/AdminCashbackRates';
 import AdminPayments from './pages/admin/AdminPayments';
 import AdminMarketing from './pages/admin/AdminMarketing';
 import AdminFraud from './pages/admin/AdminFraud';
@@ -153,6 +154,9 @@ import AdminMSMEReports from './pages/admin/AdminMSMEReports';
 import AdminWebhookManager from './pages/admin/AdminWebhookManager';
 import AdminGMBSync from './pages/admin/AdminGMBSync';
 import AdminSessionReplay from './pages/admin/AdminSessionReplay';
+import AdminLanguageManager from './pages/admin/AdminLanguageManager';
+import AdminAPIQuotas from './pages/admin/AdminAPIQuotas';
+import AdminHeatmaps from './pages/admin/AdminHeatmaps';
 
 // User Gap Pages
 import TrustPassport from './pages/TrustPassport';
@@ -337,6 +341,28 @@ import MerchantIntegrationHealth from './pages/merchant/MerchantIntegrationHealt
 import MerchantERPConnector from './pages/merchant/MerchantERPConnector';
 import MerchantDeliveryBridge from './pages/merchant/MerchantDeliveryBridge';
 import MerchantEventStream from './pages/merchant/MerchantEventStream';
+import MerchantWhatsAppBusiness from './pages/merchant/MerchantWhatsAppBusiness';
+import MerchantBulkImport from './pages/merchant/MerchantBulkImport';
+import MerchantPrintTemplates from './pages/merchant/MerchantPrintTemplates';
+import MerchantSubscriptionPlans from './pages/merchant/MerchantSubscriptionPlans';
+import MerchantHolidayCalendar from './pages/merchant/MerchantHolidayCalendar';
+import MerchantUnifiedMarketing from './pages/merchant/MerchantUnifiedMarketing';
+import MerchantMetaAdsManager from './pages/merchant/MerchantMetaAdsManager';
+import MerchantGoogleAdsManager from './pages/merchant/MerchantGoogleAdsManager';
+import MerchantOfflineMarketing from './pages/merchant/MerchantOfflineMarketing';
+import AdminMarketingOrchestrator from './pages/admin/AdminMarketingOrchestrator';
+import HQCommandCenter from './pages/admin/HQCommandCenter';
+import ZoneManagement from './pages/admin/ZoneManagement';
+import AdminRuleEngine from './pages/admin/AdminRuleEngine';
+import MerchantGovernance from './pages/admin/MerchantGovernance';
+import UserAccessGovernance from './pages/admin/UserAccessGovernance';
+import MerchantTeamManagement from './pages/merchant/MerchantTeamManagement';
+import AdminPromotionLauncher from './pages/admin/AdminPromotionLauncher';
+import MerchantPromotionParticipation from './pages/merchant/MerchantPromotionParticipation';
+import PromotionsFeed from './pages/PromotionsFeed';
+import AdminMandatoryOffers from './pages/admin/AdminMandatoryOffers';
+import MerchantDemandSignals from './pages/merchant/MerchantDemandSignals';
+import UserDemandRequests from './pages/UserDemandRequests';
 import AdminPOSIntegration from './pages/admin/AdminPOSIntegration';
 import AdminPromoCoinManager from './pages/admin/AdminPromoCoinManager';
 import AdminRedemptionRules from './pages/admin/AdminRedemptionRules';
@@ -1058,6 +1084,7 @@ function App() {
                 <Route path="admin/transactions" element={<AdminTransactions />} />
                 <Route path="admin/wallet" element={<AdminWallet />} />
                 <Route path="admin/cashback" element={<AdminCashback />} />
+                <Route path="admin/cashback-rates" element={<AdminCashbackRates />} />
                 <Route path="admin/vouchers" element={<AdminVouchers />} />
                 <Route path="admin/flash-sales" element={<AdminFlashSales />} />
                 <Route path="admin/lightning-deals" element={<AdminLightningDeals />} />
@@ -1151,6 +1178,9 @@ function App() {
                 <Route path="admin/webhook-manager" element={<AdminWebhookManager />} />
                 <Route path="admin/gmb-sync" element={<AdminGMBSync />} />
                 <Route path="admin/session-replay" element={<AdminSessionReplay />} />
+                <Route path="admin/language-manager" element={<AdminLanguageManager />} />
+                <Route path="admin/api-quotas" element={<AdminAPIQuotas />} />
+                <Route path="admin/heatmaps" element={<AdminHeatmaps />} />
 
                 {/* User Gap Feature Routes */}
                 <Route path="trust-passport" element={<TrustPassport />} />
@@ -1318,6 +1348,28 @@ function App() {
                 <Route path="merchant/erp-connector" element={<MerchantERPConnector />} />
                 <Route path="merchant/delivery-bridge" element={<MerchantDeliveryBridge />} />
                 <Route path="merchant/event-stream" element={<MerchantEventStream />} />
+                <Route path="merchant/whatsapp-business" element={<MerchantWhatsAppBusiness />} />
+                <Route path="merchant/bulk-import" element={<MerchantBulkImport />} />
+                <Route path="merchant/print-templates" element={<MerchantPrintTemplates />} />
+                <Route path="merchant/subscription-plans" element={<MerchantSubscriptionPlans />} />
+                <Route path="merchant/holiday-calendar" element={<MerchantHolidayCalendar />} />
+                <Route path="merchant/unified-marketing" element={<MerchantUnifiedMarketing />} />
+                <Route path="merchant/meta-ads" element={<MerchantMetaAdsManager />} />
+                <Route path="merchant/google-ads" element={<MerchantGoogleAdsManager />} />
+                <Route path="merchant/offline-marketing" element={<MerchantOfflineMarketing />} />
+                <Route path="admin/marketing-orchestrator" element={<AdminMarketingOrchestrator />} />
+                <Route path="admin/hq-command" element={<HQCommandCenter />} />
+                <Route path="admin/zone-management" element={<ZoneManagement />} />
+                <Route path="admin/rule-engine" element={<AdminRuleEngine />} />
+                <Route path="admin/merchant-governance" element={<MerchantGovernance />} />
+                <Route path="admin/user-governance" element={<UserAccessGovernance />} />
+                <Route path="merchant/team-management" element={<MerchantTeamManagement />} />
+                <Route path="admin/promotion-launcher" element={<AdminPromotionLauncher />} />
+                <Route path="merchant/promotion-participation" element={<MerchantPromotionParticipation />} />
+                <Route path="promotions" element={<PromotionsFeed />} />
+                <Route path="admin/mandatory-offers" element={<AdminMandatoryOffers />} />
+                <Route path="merchant/demand-signals" element={<MerchantDemandSignals />} />
+                <Route path="demand-requests" element={<UserDemandRequests />} />
 
                 {/* Loyalty & Rewards - Unified Hub */}
                 <Route path="loyalty-rewards" element={<LoyaltyRewardsHub />} />
