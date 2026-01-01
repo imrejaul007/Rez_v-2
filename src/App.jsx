@@ -147,6 +147,12 @@ import AdminCompetitiveDefense from './pages/admin/AdminCompetitiveDefense';
 import AdminOpsIntelligence from './pages/admin/AdminOpsIntelligence';
 import AdminInstitutionalAPIs from './pages/admin/AdminInstitutionalAPIs';
 import AdminFounderVault from './pages/admin/AdminFounderVault';
+import AdminDeveloperPortal from './pages/admin/AdminDeveloperPortal';
+import AdminBarterCampaigns from './pages/admin/AdminBarterCampaigns';
+import AdminMSMEReports from './pages/admin/AdminMSMEReports';
+import AdminWebhookManager from './pages/admin/AdminWebhookManager';
+import AdminGMBSync from './pages/admin/AdminGMBSync';
+import AdminSessionReplay from './pages/admin/AdminSessionReplay';
 
 // User Gap Pages
 import TrustPassport from './pages/TrustPassport';
@@ -307,6 +313,20 @@ import MerchantTrustScoreDetail from './pages/merchant/MerchantTrustScoreDetail'
 import MerchantContestBuilder from './pages/merchant/MerchantContestBuilder';
 import MerchantWishlistDemand from './pages/merchant/MerchantWishlistDemand';
 import MerchantAutopilot from './pages/merchant/MerchantAutopilot';
+import MerchantShiftManagement from './pages/merchant/MerchantShiftManagement';
+import MerchantPurchaseOrders from './pages/merchant/MerchantPurchaseOrders';
+import MerchantFailedPayments from './pages/merchant/MerchantFailedPayments';
+import MerchantVouchers from './pages/merchant/MerchantVouchers';
+import MerchantDaybook from './pages/merchant/MerchantDaybook';
+import MerchantEInvoice from './pages/merchant/MerchantEInvoice';
+import MerchantGSTRExport from './pages/merchant/MerchantGSTRExport';
+import MerchantExpiryDashboard from './pages/merchant/MerchantExpiryDashboard';
+import MerchantPaymentIntents from './pages/merchant/MerchantPaymentIntents';
+import MerchantBirthdayRewards from './pages/merchant/MerchantBirthdayRewards';
+import MerchantSessionTracking from './pages/merchant/MerchantSessionTracking';
+import MerchantHSNCodes from './pages/merchant/MerchantHSNCodes';
+import MerchantTDSTCSReports from './pages/merchant/MerchantTDSTCSReports';
+import MerchantCalendarSync from './pages/merchant/MerchantCalendarSync';
 import AdminPOSIntegration from './pages/admin/AdminPOSIntegration';
 import AdminPromoCoinManager from './pages/admin/AdminPromoCoinManager';
 import AdminRedemptionRules from './pages/admin/AdminRedemptionRules';
@@ -1115,6 +1135,12 @@ function App() {
                 <Route path="admin/ops-intelligence" element={<AdminOpsIntelligence />} />
                 <Route path="admin/institutional-apis" element={<AdminInstitutionalAPIs />} />
                 <Route path="admin/founder-vault" element={<AdminFounderVault />} />
+                <Route path="admin/developer-portal" element={<AdminDeveloperPortal />} />
+                <Route path="admin/barter-campaigns" element={<AdminBarterCampaigns />} />
+                <Route path="admin/msme-reports" element={<AdminMSMEReports />} />
+                <Route path="admin/webhook-manager" element={<AdminWebhookManager />} />
+                <Route path="admin/gmb-sync" element={<AdminGMBSync />} />
+                <Route path="admin/session-replay" element={<AdminSessionReplay />} />
 
                 {/* User Gap Feature Routes */}
                 <Route path="trust-passport" element={<TrustPassport />} />
@@ -1258,6 +1284,20 @@ function App() {
                 <Route path="merchant/contest-builder" element={<MerchantContestBuilder />} />
                 <Route path="merchant/wishlist-demand" element={<MerchantWishlistDemand />} />
                 <Route path="merchant/autopilot" element={<MerchantAutopilot />} />
+                <Route path="merchant/shift-management" element={<MerchantShiftManagement />} />
+                <Route path="merchant/purchase-orders" element={<MerchantPurchaseOrders />} />
+                <Route path="merchant/failed-payments" element={<MerchantFailedPayments />} />
+                <Route path="merchant/vouchers" element={<MerchantVouchers />} />
+                <Route path="merchant/daybook" element={<MerchantDaybook />} />
+                <Route path="merchant/e-invoice" element={<MerchantEInvoice />} />
+                <Route path="merchant/gstr-export" element={<MerchantGSTRExport />} />
+                <Route path="merchant/expiry-dashboard" element={<MerchantExpiryDashboard />} />
+                <Route path="merchant/payment-intents" element={<MerchantPaymentIntents />} />
+                <Route path="merchant/birthday-rewards" element={<MerchantBirthdayRewards />} />
+                <Route path="merchant/session-tracking" element={<MerchantSessionTracking />} />
+                <Route path="merchant/hsn-codes" element={<MerchantHSNCodes />} />
+                <Route path="merchant/tds-tcs-reports" element={<MerchantTDSTCSReports />} />
+                <Route path="merchant/calendar-sync" element={<MerchantCalendarSync />} />
 
                 {/* Loyalty & Rewards - Unified Hub */}
                 <Route path="loyalty-rewards" element={<LoyaltyRewardsHub />} />
