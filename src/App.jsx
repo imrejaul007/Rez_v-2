@@ -85,6 +85,7 @@ import AdminSupport from './pages/admin/AdminSupport';
 import AdminTransactions from './pages/admin/AdminTransactions';
 import AdminCashback from './pages/admin/AdminCashback';
 import AdminCashbackRates from './pages/admin/AdminCashbackRates';
+import AdminMerchantPackages from './pages/admin/AdminMerchantPackages';
 import AdminPayments from './pages/admin/AdminPayments';
 import AdminMarketing from './pages/admin/AdminMarketing';
 import AdminFraud from './pages/admin/AdminFraud';
@@ -1085,6 +1086,7 @@ function App() {
                 <Route path="admin/wallet" element={<AdminWallet />} />
                 <Route path="admin/cashback" element={<AdminCashback />} />
                 <Route path="admin/cashback-rates" element={<AdminCashbackRates />} />
+                <Route path="admin/merchant-packages" element={<AdminMerchantPackages />} />
                 <Route path="admin/vouchers" element={<AdminVouchers />} />
                 <Route path="admin/flash-sales" element={<AdminFlashSales />} />
                 <Route path="admin/lightning-deals" element={<AdminLightningDeals />} />

@@ -147,6 +147,7 @@ AdminPromotionLauncher (Create promotion)
 | 6 | AdminMerchantProfitEngine | `/admin/merchant-profit-engine` | `GET /api/admin/merchant-profit` | Profit optimization |
 | 7 | AdminSettlementCommission | `/admin/settlement-commission` | `GET /api/admin/settlements`<br>`PUT /api/admin/commission-rules` | Settlement config |
 | 8 | AdminKYCCompliance | `/admin/kyc-compliance` | `GET /api/admin/kyc`<br>`PUT /api/admin/kyc/{id}` | KYC verification queue |
+| 9 | AdminMerchantPackages | `/admin/merchant-packages` | `GET /api/admin/merchant-packages`<br>`PUT /api/admin/merchant-packages/{tierId}`<br>`POST /api/admin/merchant-packages/special`<br>`GET /api/admin/merchant-packages/special`<br>`PUT /api/admin/merchant-packages/special/{id}` | Package tiers (Free/Basic/Golden/Diamond), commission rates, ReZ coin allocation, subscription fees, special privileges for individual merchants |
 
 **Navigation Flow**:
 ```
@@ -154,6 +155,7 @@ AdminMerchants (Merchant directory)
     ├── [Click merchant] → Merchant Detail
     ├── AdminMerchantTierConfig (Tier rules)
     ├── AdminMerchantTrustScore (Trust algorithm)
+    ├── AdminMerchantPackages (Package tiers & special privileges)
     ├── AdminSettlementCommission (Payments)
     └── AdminKYCCompliance (Verification)
 ```
@@ -1222,14 +1224,32 @@ ReZ offers 4 merchant subscription tiers based on marketing spend commitment. Ea
 
 ## API Endpoints for Package Management
 
+### Merchant-Side Endpoints
 | Endpoint | Method | Description |
 |----------|--------|-------------|
 | `/api/merchant/package` | GET | Get current package tier |
 | `/api/merchant/package/upgrade` | POST | Request tier upgrade |
 | `/api/merchant/package/downgrade` | POST | Request tier downgrade |
-| `/api/admin/merchant-tiers` | GET | Get all tier configurations |
-| `/api/admin/merchant-tiers` | PUT | Update tier configurations |
+
+### Admin-Side Endpoints (Tier Configuration)
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/api/admin/merchant-packages` | GET | Get all tier configurations |
+| `/api/admin/merchant-packages/{tierId}` | PUT | Update specific tier rates |
+| `/api/admin/merchant-packages/global-settings` | GET | Get global settings (threshold, grace period) |
+| `/api/admin/merchant-packages/global-settings` | PUT | Update global settings |
 | `/api/admin/merchant/{id}/tier` | PUT | Manually set merchant tier |
+
+### Admin-Side Endpoints (Special Privileges)
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/api/admin/merchant-packages/special` | GET | Get all special privilege merchants |
+| `/api/admin/merchant-packages/special` | POST | Grant special privilege to merchant |
+| `/api/admin/merchant-packages/special/{id}` | GET | Get specific special privilege details |
+| `/api/admin/merchant-packages/special/{id}` | PUT | Update special privilege |
+| `/api/admin/merchant-packages/special/{id}` | DELETE | Revoke special privilege |
+| `/api/admin/merchant-packages/special/expiring` | GET | Get privileges expiring soon |
+| `/api/admin/merchant-packages/history` | GET | Get change history log |
 
 ---
 
@@ -1249,6 +1269,30 @@ Merchant_Packages
 ├── monthly_sales
 ├── effective_date
 └── created_at, updated_at
+
+Merchant_Special_Privileges
+├── id
+├── merchant_id
+├── base_tier
+├── custom_commission_rate
+├── custom_rez_coin_rate
+├── custom_subscription_fee
+├── reason
+├── valid_from
+├── valid_until
+├── approved_by (admin_id)
+├── status (active, expired, revoked)
+└── created_at, updated_at
+
+Merchant_Package_Change_History
+├── id
+├── merchant_id (nullable for global changes)
+├── change_type (tier_update, special_grant, special_revoke, global_setting)
+├── from_value
+├── to_value
+├── changed_by (admin_id)
+├── reason
+└── changed_at
 
 Merchant_Package_History
 ├── id
