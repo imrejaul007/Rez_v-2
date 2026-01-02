@@ -5,7 +5,7 @@ import {
   ChevronRight, Eye, Star, Bike, Car, Settings
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import BottomNav from '../../components/layout/BottomNav';
+import MerchantNav from "../../components/merchant/MerchantNav";
 
 const MerchantDeliveryBridge = () => {
   const navigate = useNavigate();
@@ -478,7 +478,7 @@ const MerchantDeliveryBridge = () => {
         </div>
       )}
 
-      <BottomNav />
+      <MerchantNav />
     </div>
   );
 };

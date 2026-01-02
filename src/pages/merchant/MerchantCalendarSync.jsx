@@ -5,7 +5,7 @@ import {
   ChevronRight, Smartphone, Globe
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import BottomNav from '../../components/layout/BottomNav';
+import MerchantNav from "../../components/merchant/MerchantNav";
 
 const MerchantCalendarSync = () => {
   const navigate = useNavigate();
@@ -396,7 +396,7 @@ const MerchantCalendarSync = () => {
         </div>
       )}
 
-      <BottomNav />
+      <MerchantNav />
     </div>
   );
 };

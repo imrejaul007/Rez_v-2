@@ -5,7 +5,7 @@ import {
   BarChart2, ArrowUpRight, ArrowDownRight, ChevronRight, Info
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import BottomNav from '../../components/layout/BottomNav';
+import MerchantNav from "../../components/merchant/MerchantNav";
 
 const MerchantProfitLoss = () => {
   const navigate = useNavigate();

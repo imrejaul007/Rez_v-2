@@ -6,7 +6,7 @@ import {
   Copy, ExternalLink, AlertCircle, TrendingUp, Eye
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import BottomNav from '../../components/layout/BottomNav';
+import MerchantNav from "../../components/merchant/MerchantNav";
 
 const MerchantWhatsAppBusiness = () => {
   const navigate = useNavigate();
@@ -798,7 +798,7 @@ const MerchantWhatsAppBusiness = () => {
         </div>
       )}
 
-      <BottomNav />
+      <MerchantNav />
     </div>
   );
 };

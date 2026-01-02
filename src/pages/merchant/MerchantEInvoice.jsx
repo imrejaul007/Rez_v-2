@@ -5,7 +5,7 @@ import {
   Eye, Printer, Share2, RefreshCw, Building2, ChevronRight
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import BottomNav from '../../components/layout/BottomNav';
+import MerchantNav from "../../components/merchant/MerchantNav";
 
 const MerchantEInvoice = () => {
   const navigate = useNavigate();
@@ -427,7 +427,7 @@ const MerchantEInvoice = () => {
         </div>
       )}
 
-      <BottomNav />
+      <MerchantNav />
     </div>
   );
 };

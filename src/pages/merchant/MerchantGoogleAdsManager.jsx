@@ -7,7 +7,7 @@ import {
   Globe, Smartphone, Video, Image, FileText
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import BottomNav from '../../components/layout/BottomNav';
+import MerchantNav from "../../components/merchant/MerchantNav";
 
 const MerchantGoogleAdsManager = () => {
   const navigate = useNavigate();
@@ -656,7 +656,7 @@ const MerchantGoogleAdsManager = () => {
         </div>
       )}
 
-      <BottomNav />
+      <MerchantNav />
     </div>
   );
 };

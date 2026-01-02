@@ -6,7 +6,7 @@ import {
   Tag, Gift, Percent, Smartphone, Camera, Share2
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import BottomNav from '../../components/layout/BottomNav';
+import MerchantNav from "../../components/merchant/MerchantNav";
 
 const MerchantOfflineMarketing = () => {
   const navigate = useNavigate();
@@ -558,7 +558,7 @@ const MerchantOfflineMarketing = () => {
         </div>
       )}
 
-      <BottomNav />
+      <MerchantNav />
     </div>
   );
 };

@@ -6,7 +6,7 @@ import {
   Download, Zap, Shield, Server, HardDrive, Activity,
   AlertCircle, Settings, Info, ChevronRight, Loader2
 } from 'lucide-react';
-import BottomNav from '../../components/BottomNav';
+import MerchantNav from "../../components/merchant/MerchantNav";
 
 const MerchantOfflinePOSSync = () => {
   const navigate = useNavigate();
@@ -399,7 +399,7 @@ const MerchantOfflinePOSSync = () => {
         </div>
       </div>
 
-      <BottomNav />
+      <MerchantNav />
     </div>
   );
 };

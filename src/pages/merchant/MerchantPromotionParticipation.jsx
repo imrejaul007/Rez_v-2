@@ -6,7 +6,7 @@ import {
   CheckCircle, XCircle, ChevronRight, Star, Zap, Crown,
   Store, Bell, Settings, BarChart3, Target, Play, Pause
 } from 'lucide-react';
-import BottomNav from '../../components/layout/BottomNav';
+import MerchantNav from "../../components/merchant/MerchantNav";
 
 const MerchantPromotionParticipation = () => {
   const navigate = useNavigate();
@@ -614,7 +614,7 @@ const MerchantPromotionParticipation = () => {
       {/* Participate Modal */}
       {showParticipateModal && renderParticipateModal()}
 
-      <BottomNav />
+      <MerchantNav />
     </div>
   );
 };

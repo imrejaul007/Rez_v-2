@@ -6,7 +6,7 @@ import {
   Headphones, Zap, Shield, Star, Book, ExternalLink,
   Send, X, User, Bot
 } from 'lucide-react';
-import BottomNav from '../../components/BottomNav';
+import MerchantNav from "../../components/merchant/MerchantNav";
 
 const MerchantSupportHub = () => {
   const navigate = useNavigate();
@@ -352,7 +352,7 @@ const MerchantSupportHub = () => {
         </div>
       )}
 
-      <BottomNav />
+      <MerchantNav />
     </div>
   );
 };

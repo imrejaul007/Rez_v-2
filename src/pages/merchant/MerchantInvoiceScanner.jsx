@@ -4,7 +4,7 @@ import {
   Sparkles, RefreshCw, Plus, Trash2, X, Image, Zap, AlertCircle
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import BottomNav from '../../components/layout/BottomNav';
+import MerchantNav from "../../components/merchant/MerchantNav";
 
 const MerchantInvoiceScanner = () => {
   const navigate = useNavigate();

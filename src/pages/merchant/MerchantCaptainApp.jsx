@@ -5,7 +5,7 @@ import {
   ChefHat, Receipt, Sparkles, User, Search, Filter, RefreshCw
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import BottomNav from '../../components/layout/BottomNav';
+import MerchantNav from "../../components/merchant/MerchantNav";
 
 const MerchantCaptainApp = () => {
   const navigate = useNavigate();

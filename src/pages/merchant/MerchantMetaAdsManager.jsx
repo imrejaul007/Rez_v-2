@@ -7,7 +7,7 @@ import {
   CheckCircle, AlertCircle, ExternalLink, Zap
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import BottomNav from '../../components/layout/BottomNav';
+import MerchantNav from "../../components/merchant/MerchantNav";
 
 const MerchantMetaAdsManager = () => {
   const navigate = useNavigate();
@@ -622,7 +622,7 @@ const MerchantMetaAdsManager = () => {
         </div>
       )}
 
-      <BottomNav />
+      <MerchantNav />
     </div>
   );
 };

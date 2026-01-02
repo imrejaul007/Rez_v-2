@@ -5,7 +5,7 @@ import {
   MessageSquare, Mail, Smartphone, TrendingUp, Percent
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import BottomNav from '../../components/layout/BottomNav';
+import MerchantNav from "../../components/merchant/MerchantNav";
 
 const MerchantBirthdayRewards = () => {
   const navigate = useNavigate();
@@ -479,7 +479,7 @@ const MerchantBirthdayRewards = () => {
         </div>
       )}
 
-      <BottomNav />
+      <MerchantNav />
     </div>
   );
 };

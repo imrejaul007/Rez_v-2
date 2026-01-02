@@ -6,7 +6,7 @@ import {
   Wallet, Building2, Users, Package, FileText
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import BottomNav from '../../components/layout/BottomNav';
+import MerchantNav from "../../components/merchant/MerchantNav";
 
 const MerchantDaybook = () => {
   const navigate = useNavigate();
@@ -458,7 +458,7 @@ const MerchantDaybook = () => {
         </div>
       )}
 
-      <BottomNav />
+      <MerchantNav />
     </div>
   );
 };

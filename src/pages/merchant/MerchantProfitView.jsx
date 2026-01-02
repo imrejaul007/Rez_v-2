@@ -6,7 +6,7 @@ import {
   MessageSquare, Bell, Info, ArrowUpRight, ArrowDownRight,
   Wallet, Percent, Coins, ShoppingBag, CreditCard
 } from 'lucide-react';
-import BottomNav from '../../components/BottomNav';
+import MerchantNav from "../../components/merchant/MerchantNav";
 
 const MerchantProfitView = () => {
   const navigate = useNavigate();
@@ -286,7 +286,7 @@ const MerchantProfitView = () => {
         </div>
       </div>
 
-      <BottomNav />
+      <MerchantNav />
     </div>
   );
 };

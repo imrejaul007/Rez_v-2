@@ -5,7 +5,7 @@ import {
   ChevronRight, AlertCircle, TrendingUp, Users
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import BottomNav from '../../components/layout/BottomNav';
+import MerchantNav from "../../components/merchant/MerchantNav";
 
 const MerchantSessionTracking = () => {
   const navigate = useNavigate();
@@ -390,7 +390,7 @@ const MerchantSessionTracking = () => {
         </div>
       )}
 
-      <BottomNav />
+      <MerchantNav />
     </div>
   );
 };

@@ -6,7 +6,7 @@ import {
   Merge, Link2, AlertCircle, Gift
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import BottomNav from '../../components/layout/BottomNav';
+import MerchantNav from "../../components/merchant/MerchantNav";
 
 const MerchantCustomerIdentity = () => {
   const navigate = useNavigate();
@@ -510,7 +510,7 @@ const MerchantCustomerIdentity = () => {
         </div>
       )}
 
-      <BottomNav />
+      <MerchantNav />
     </div>
   );
 };

@@ -7,7 +7,7 @@ import {
   ArrowUp, ArrowDown, Sparkles, MessageSquare, ThumbsUp,
   Calendar, Tag, Percent, Gift, ShoppingCart, Plus
 } from 'lucide-react';
-import BottomNav from '../../components/layout/BottomNav';
+import MerchantNav from "../../components/merchant/MerchantNav";
 
 const MerchantDemandSignals = () => {
   const navigate = useNavigate();
@@ -548,7 +548,7 @@ const MerchantDemandSignals = () => {
         )}
       </div>
 
-      <BottomNav />
+      <MerchantNav />
     </div>
   );
 };

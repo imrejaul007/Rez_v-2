@@ -5,7 +5,7 @@ import {
   MessageSquare, Phone, Mail, ChevronRight, Filter, Search
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import BottomNav from '../../components/layout/BottomNav';
+import MerchantNav from "../../components/merchant/MerchantNav";
 
 const MerchantFailedPayments = () => {
   const navigate = useNavigate();
@@ -337,7 +337,7 @@ const MerchantFailedPayments = () => {
         </div>
       </div>
 
-      <BottomNav />
+      <MerchantNav />
     </div>
   );
 };

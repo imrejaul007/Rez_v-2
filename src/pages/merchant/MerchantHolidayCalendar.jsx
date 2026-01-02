@@ -6,7 +6,7 @@ import {
   Settings, Copy, RefreshCw, Globe
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import BottomNav from '../../components/layout/BottomNav';
+import MerchantNav from "../../components/merchant/MerchantNav";
 
 const MerchantHolidayCalendar = () => {
   const navigate = useNavigate();
@@ -604,7 +604,7 @@ const MerchantHolidayCalendar = () => {
         </div>
       )}
 
-      <BottomNav />
+      <MerchantNav />
     </div>
   );
 };

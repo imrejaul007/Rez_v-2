@@ -16,7 +16,7 @@ const CoinHuntHome = () => {
   // User stats
   const userStats = {
     coins: 2450,
-    deals Claimed: 23,
+    dealsClaimed: 23,
     totalSaved: 12850,
     streak: 7
   };

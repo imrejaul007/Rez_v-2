@@ -6,7 +6,7 @@ import {
   DollarSign, Package, Settings, LogIn, LogOut, Eye,
   ChevronDown, Calendar, Download, Shield, User
 } from 'lucide-react';
-import BottomNav from '../../components/BottomNav';
+import MerchantNav from "../../components/merchant/MerchantNav";
 
 const MerchantStaffActivityLog = () => {
   const navigate = useNavigate();
@@ -397,7 +397,7 @@ const MerchantStaffActivityLog = () => {
         </div>
       )}
 
-      <BottomNav />
+      <MerchantNav />
     </div>
   );
 };

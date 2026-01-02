@@ -5,7 +5,7 @@ import {
   Percent, Tag, HelpCircle, AlertCircle, Search, Download,
   Eye, Settings, Shield, ChevronRight, Info
 } from 'lucide-react';
-import BottomNav from '../../components/BottomNav';
+import MerchantNav from "../../components/merchant/MerchantNav";
 
 const MerchantGSTSetupWizard = () => {
   const navigate = useNavigate();

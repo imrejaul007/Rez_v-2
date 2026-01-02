@@ -6,7 +6,7 @@ import {
   Play, Pause, RotateCcw
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import BottomNav from '../../components/layout/BottomNav';
+import MerchantNav from "../../components/merchant/MerchantNav";
 
 const MerchantIntegrationHealth = () => {
   const navigate = useNavigate();
@@ -420,7 +420,7 @@ const MerchantIntegrationHealth = () => {
         </div>
       )}
 
-      <BottomNav />
+      <MerchantNav />
     </div>
   );
 };

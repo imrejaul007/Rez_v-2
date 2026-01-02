@@ -6,7 +6,7 @@ import {
   Database, Webhook, Key, Lock, TrendingUp, Search
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import BottomNav from '../../components/layout/BottomNav';
+import MerchantNav from "../../components/merchant/MerchantNav";
 
 const MerchantIntegrationHub = () => {
   const navigate = useNavigate();
@@ -524,7 +524,7 @@ const MerchantIntegrationHub = () => {
         </div>
       )}
 
-      <BottomNav />
+      <MerchantNav />
     </div>
   );
 };

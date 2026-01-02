@@ -5,7 +5,7 @@ import {
   CreditCard, Wallet, PieChart, BarChart2, Download, Camera, X
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import BottomNav from '../../components/layout/BottomNav';
+import MerchantNav from "../../components/merchant/MerchantNav";
 
 const MerchantExpenseTracker = () => {
   const navigate = useNavigate();

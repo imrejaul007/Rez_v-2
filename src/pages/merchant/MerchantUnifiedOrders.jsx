@@ -5,7 +5,7 @@ import {
   RefreshCw, MoreVertical, Printer, MessageSquare, AlertCircle
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import BottomNav from '../../components/layout/BottomNav';
+import MerchantNav from "../../components/merchant/MerchantNav";
 
 const MerchantUnifiedOrders = () => {
   const navigate = useNavigate();
@@ -427,7 +427,7 @@ const MerchantUnifiedOrders = () => {
         </div>
       )}
 
-      <BottomNav />
+      <MerchantNav />
     </div>
   );
 };

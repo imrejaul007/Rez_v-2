@@ -5,7 +5,7 @@ import {
   ChevronRight, ExternalLink, FileText, XCircle
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import BottomNav from '../../components/layout/BottomNav';
+import MerchantNav from "../../components/merchant/MerchantNav";
 
 const MerchantAggregatorReconciliation = () => {
   const navigate = useNavigate();

@@ -8,7 +8,7 @@ import {
   Calendar, FileText, UserCog, Crown, ChevronDown, ChevronRight,
   Activity, Bell, LogOut
 } from 'lucide-react';
-import BottomNav from '../../components/layout/BottomNav';
+import MerchantNav from "../../components/merchant/MerchantNav";
 
 const MerchantTeamManagement = () => {
   const navigate = useNavigate();
@@ -643,7 +643,7 @@ const MerchantTeamManagement = () => {
       {showAddMember && renderAddMemberModal()}
       {showPermissions && renderPermissionsModal()}
 
-      <BottomNav />
+      <MerchantNav />
     </div>
   );
 };

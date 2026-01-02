@@ -5,7 +5,7 @@ import {
   FileText, Calendar, AlertCircle, Play, Pause, Filter
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import BottomNav from '../../components/layout/BottomNav';
+import MerchantNav from "../../components/merchant/MerchantNav";
 
 const MerchantERPConnector = () => {
   const navigate = useNavigate();
@@ -465,7 +465,7 @@ const MerchantERPConnector = () => {
         </div>
       )}
 
-      <BottomNav />
+      <MerchantNav />
     </div>
   );
 };

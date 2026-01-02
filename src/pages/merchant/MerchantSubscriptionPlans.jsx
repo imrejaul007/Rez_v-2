@@ -6,7 +6,7 @@ import {
   Settings, Filter, Search, Download, Bell, Zap
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import BottomNav from '../../components/layout/BottomNav';
+import MerchantNav from "../../components/merchant/MerchantNav";
 
 const MerchantSubscriptionPlans = () => {
   const navigate = useNavigate();
@@ -573,7 +573,7 @@ const MerchantSubscriptionPlans = () => {
         </div>
       )}
 
-      <BottomNav />
+      <MerchantNav />
     </div>
   );
 };

@@ -6,7 +6,7 @@ import {
   BarChart3, Box, Minus, Plus, Edit3, Save, X, Clock,
   AlertCircle, FileText, ArrowUpRight, ArrowDownRight
 } from 'lucide-react';
-import BottomNav from '../../components/BottomNav';
+import MerchantNav from "../../components/merchant/MerchantNav";
 
 const MerchantStockVarianceReport = () => {
   const navigate = useNavigate();
@@ -383,7 +383,7 @@ const MerchantStockVarianceReport = () => {
         </div>
       )}
 
-      <BottomNav />
+      <MerchantNav />
     </div>
   );
 };

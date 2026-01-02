@@ -5,7 +5,7 @@ import {
   Smartphone, Mail, RefreshCw, ToggleLeft, ToggleRight
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import BottomNav from '../../components/layout/BottomNav';
+import MerchantNav from "../../components/merchant/MerchantNav";
 
 const MerchantPaymentReminders = () => {
   const navigate = useNavigate();

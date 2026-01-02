@@ -5,7 +5,7 @@ import {
   Trash2, Tag, Bell, ChevronRight, RefreshCw
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import BottomNav from '../../components/layout/BottomNav';
+import MerchantNav from "../../components/merchant/MerchantNav";
 
 const MerchantExpiryDashboard = () => {
   const navigate = useNavigate();
@@ -336,7 +336,7 @@ const MerchantExpiryDashboard = () => {
         </div>
       </div>
 
-      <BottomNav />
+      <MerchantNav />
     </div>
   );
 };

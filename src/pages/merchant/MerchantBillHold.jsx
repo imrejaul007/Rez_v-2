@@ -4,7 +4,7 @@ import {
   Trash2, Edit, Search, Package, IndianRupee, CheckCircle, X
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import BottomNav from '../../components/layout/BottomNav';
+import MerchantNav from "../../components/merchant/MerchantNav";
 
 const MerchantBillHold = () => {
   const navigate = useNavigate();

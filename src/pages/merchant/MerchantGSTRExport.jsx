@@ -5,7 +5,7 @@ import {
   ChevronRight, Building2, TrendingUp, Filter, Search
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import BottomNav from '../../components/layout/BottomNav';
+import MerchantNav from "../../components/merchant/MerchantNav";
 
 const MerchantGSTRExport = () => {
   const navigate = useNavigate();
@@ -405,7 +405,7 @@ const MerchantGSTRExport = () => {
         </div>
       )}
 
-      <BottomNav />
+      <MerchantNav />
     </div>
   );
 };

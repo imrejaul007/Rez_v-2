@@ -6,7 +6,7 @@ import {
   RefreshCw, FileText, PieChart, Shield
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import BottomNav from '../../components/layout/BottomNav';
+import MerchantNav from "../../components/merchant/MerchantNav";
 
 const MerchantSettlementEngine = () => {
   const navigate = useNavigate();
@@ -392,7 +392,7 @@ const MerchantSettlementEngine = () => {
         </div>
       )}
 
-      <BottomNav />
+      <MerchantNav />
     </div>
   );
 };

@@ -5,7 +5,7 @@ import {
   Play, Pause, RefreshCw, ChevronRight, Sparkles, Bot, Shield
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import BottomNav from '../../components/layout/BottomNav';
+import MerchantNav from "../../components/merchant/MerchantNav";
 
 const MerchantAutopilot = () => {
   const navigate = useNavigate();

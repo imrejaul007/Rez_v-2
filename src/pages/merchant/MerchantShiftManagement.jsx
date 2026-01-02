@@ -5,7 +5,7 @@ import {
   Calculator, FileText, ChevronRight, RefreshCw, Lock
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import BottomNav from '../../components/layout/BottomNav';
+import MerchantNav from "../../components/merchant/MerchantNav";
 
 const MerchantShiftManagement = () => {
   const navigate = useNavigate();
@@ -440,7 +440,7 @@ const MerchantShiftManagement = () => {
         </div>
       )}
 
-      <BottomNav />
+      <MerchantNav />
     </div>
   );
 };

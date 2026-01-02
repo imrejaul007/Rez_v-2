@@ -6,7 +6,7 @@ import {
   BarChart3, PieChart, LineChart
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import BottomNav from '../../components/layout/BottomNav';
+import MerchantNav from "../../components/merchant/MerchantNav";
 
 const MerchantControlPlane = () => {
   const navigate = useNavigate();
@@ -380,7 +380,7 @@ const MerchantControlPlane = () => {
         </div>
       )}
 
-      <BottomNav />
+      <MerchantNav />
     </div>
   );
 };

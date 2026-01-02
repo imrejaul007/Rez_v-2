@@ -5,7 +5,7 @@ import {
   TrendingDown, ChevronRight, Download, Upload, MoreVertical
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import BottomNav from '../../components/layout/BottomNav';
+import MerchantNav from "../../components/merchant/MerchantNav";
 
 const MerchantCreditLedger = () => {
   const navigate = useNavigate();

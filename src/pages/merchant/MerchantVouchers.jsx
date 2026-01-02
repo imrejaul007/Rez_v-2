@@ -5,7 +5,7 @@ import {
   Share2, Eye, Edit, Trash2, CheckCircle, Clock, XCircle
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import BottomNav from '../../components/layout/BottomNav';
+import MerchantNav from "../../components/merchant/MerchantNav";
 
 const MerchantVouchers = () => {
   const navigate = useNavigate();
@@ -447,7 +447,7 @@ const MerchantVouchers = () => {
         </div>
       )}
 
-      <BottomNav />
+      <MerchantNav />
     </div>
   );
 };

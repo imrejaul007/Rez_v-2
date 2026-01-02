@@ -6,7 +6,7 @@ import {
   HelpCircle, Play, Pause, Volume2, Zap, Cable, Box,
   Smartphone, CreditCard, QrCode, DollarSign, Loader2
 } from 'lucide-react';
-import BottomNav from '../../components/BottomNav';
+import MerchantNav from "../../components/merchant/MerchantNav";
 
 const MerchantHardwareDiagnostics = () => {
   const navigate = useNavigate();
@@ -351,7 +351,7 @@ const MerchantHardwareDiagnostics = () => {
         </div>
       </div>
 
-      <BottomNav />
+      <MerchantNav />
     </div>
   );
 };

@@ -6,7 +6,7 @@ import {
   Users, ShoppingCart, Bell, Database
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import BottomNav from '../../components/layout/BottomNav';
+import MerchantNav from "../../components/merchant/MerchantNav";
 
 const MerchantEventStream = () => {
   const navigate = useNavigate();
@@ -416,7 +416,7 @@ const MerchantEventStream = () => {
         </div>
       )}
 
-      <BottomNav />
+      <MerchantNav />
     </div>
   );
 };
