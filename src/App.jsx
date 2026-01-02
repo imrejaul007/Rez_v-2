@@ -265,6 +265,27 @@ import WellnezHome from './pages/wasil/wellnez/WellnezHome';
 import TravoPayHome from './pages/wasil/travopay/TravoPayHome';
 import LearnlyHome from './pages/wasil/learnly/LearnlyHome';
 
+// ============================================
+// PHASE 5: ACQUISITION ENGINE (GROWTH APPS)
+// Viral & Referral Mechanics
+// ============================================
+
+// Growth Stack Apps
+import ReferralXHome from './pages/growth/referralx/ReferralXHome';
+import CampusConnectHome from './pages/growth/campusconnect/CampusConnectHome';
+import CorpPerksHome from './pages/growth/corpperks/CorpPerksHome';
+
+// Ultra-Light Referral Apps
+import ShareEarnHome from './pages/growth/shareearn/ShareEarnHome';
+import InviteLoopHome from './pages/growth/inviteloop/InviteLoopHome';
+
+// Viral Mechanics Apps
+import SpinWinHome from './pages/growth/spinwin/SpinWinHome';
+import DailyStreakHome from './pages/growth/dailystreak/DailyStreakHome';
+import LeaderBoardsHome from './pages/growth/leaderboards/LeaderBoardsHome';
+import ChallengesHome from './pages/growth/challenges/ChallengesHome';
+import SquadGoalsHome from './pages/growth/squadgoals/SquadGoalsHome';
+
 // User Gap Pages
 import TrustPassport from './pages/TrustPassport';
 import DisputeCenter from './pages/DisputeCenter';
@@ -1471,6 +1492,37 @@ function App() {
                 {/* Learnly - E-Learning */}
                 <Route path="wasil/learnly" element={<LearnlyHome />} />
                 <Route path="wasil/learnly/home" element={<LearnlyHome />} />
+
+                {/* ============================================ */}
+                {/* PHASE 5: ACQUISITION ENGINE (GROWTH APPS) */}
+                {/* Viral & Referral Mechanics */}
+                {/* ============================================ */}
+
+                {/* Growth Stack Apps */}
+                <Route path="growth/referralx" element={<ReferralXHome />} />
+                <Route path="growth/referralx/home" element={<ReferralXHome />} />
+                <Route path="growth/campusconnect" element={<CampusConnectHome />} />
+                <Route path="growth/campusconnect/home" element={<CampusConnectHome />} />
+                <Route path="growth/corpperks" element={<CorpPerksHome />} />
+                <Route path="growth/corpperks/home" element={<CorpPerksHome />} />
+
+                {/* Ultra-Light Referral Apps */}
+                <Route path="growth/shareearn" element={<ShareEarnHome />} />
+                <Route path="growth/shareearn/home" element={<ShareEarnHome />} />
+                <Route path="growth/inviteloop" element={<InviteLoopHome />} />
+                <Route path="growth/inviteloop/home" element={<InviteLoopHome />} />
+
+                {/* Viral Mechanics Apps */}
+                <Route path="growth/spinwin" element={<SpinWinHome />} />
+                <Route path="growth/spinwin/home" element={<SpinWinHome />} />
+                <Route path="growth/dailystreak" element={<DailyStreakHome />} />
+                <Route path="growth/dailystreak/home" element={<DailyStreakHome />} />
+                <Route path="growth/leaderboards" element={<LeaderBoardsHome />} />
+                <Route path="growth/leaderboards/home" element={<LeaderBoardsHome />} />
+                <Route path="growth/challenges" element={<ChallengesHome />} />
+                <Route path="growth/challenges/home" element={<ChallengesHome />} />
+                <Route path="growth/squadgoals" element={<SquadGoalsHome />} />
+                <Route path="growth/squadgoals/home" element={<SquadGoalsHome />} />
 
                 {/* User Gap Feature Routes */}
                 <Route path="trust-passport" element={<TrustPassport />} />
