@@ -229,6 +229,42 @@ import HomeHubRoomPlanner from './pages/homehub/HomeHubRoomPlanner';
 import HomeHubServices from './pages/homehub/HomeHubServices';
 import HomeHubShop from './pages/homehub/HomeHubShop';
 
+// ============================================
+// PHASE 4: WASIL TRANSACTION APPS
+// 60-Minute Delivery Commerce Verticals
+// ============================================
+
+// Wave 1: High Frequency Apps
+import DinezyHome from './pages/wasil/dinezy/DinezyHome';
+import DinezyRestaurant from './pages/wasil/dinezy/DinezyRestaurant';
+import GrocifyHome from './pages/wasil/grocify/GrocifyHome';
+import GlowzyHome from './pages/wasil/glowzy/GlowzyHome';
+import MediEarnHome from './pages/wasil/mediearn/MediEarnHome';
+import FitEarnHome from './pages/wasil/fitearn/FitEarnHome';
+
+// Wave 2: Retail & Lifestyle Apps
+import ShopazyHome from './pages/wasil/shopazy/ShopazyHome';
+import FunzyHome from './pages/wasil/funzy/FunzyHome';
+import AutoPerksHome from './pages/wasil/autoperks/AutoPerksHome';
+import PetzyHome from './pages/wasil/petzy/PetzyHome';
+import KidzoHome from './pages/wasil/kidzo/KidzoHome';
+
+// Wave 3: Premium & Luxury Apps
+import LuxoraHome from './pages/wasil/luxora/LuxoraHome';
+import ElitezyHome from './pages/wasil/elitezy/ElitezyHome';
+import RoyaleHome from './pages/wasil/royale/RoyaleHome';
+
+// Wave 4: Utility & Service Apps
+import WashzyHome from './pages/wasil/washzy/WashzyHome';
+import MaidzyHome from './pages/wasil/maidzy/MaidzyHome';
+import EssentiaHome from './pages/wasil/essentia/EssentiaHome';
+import SocietyHome from './pages/wasil/society/SocietyHome';
+import BizoraHome from './pages/wasil/bizora/BizoraHome';
+import GamezyHome from './pages/wasil/gamezy/GamezyHome';
+import WellnezHome from './pages/wasil/wellnez/WellnezHome';
+import TravoPayHome from './pages/wasil/travopay/TravoPayHome';
+import LearnlyHome from './pages/wasil/learnly/LearnlyHome';
+
 // User Gap Pages
 import TrustPassport from './pages/TrustPassport';
 import DisputeCenter from './pages/DisputeCenter';
@@ -1341,6 +1377,100 @@ function App() {
                 <Route path="homehub/room-planner" element={<HomeHubRoomPlanner />} />
                 <Route path="homehub/services" element={<HomeHubServices />} />
                 <Route path="homehub/shop" element={<HomeHubShop />} />
+
+                {/* ============================================ */}
+                {/* PHASE 4: WASIL TRANSACTION APPS */}
+                {/* 60-Minute Delivery Commerce Verticals */}
+                {/* ============================================ */}
+
+                {/* Dinezy - Food & Dining */}
+                <Route path="wasil/dinezy" element={<DinezyHome />} />
+                <Route path="wasil/dinezy/home" element={<DinezyHome />} />
+                <Route path="wasil/dinezy/restaurant/:id" element={<DinezyRestaurant />} />
+
+                {/* Grocify - Groceries */}
+                <Route path="wasil/grocify" element={<GrocifyHome />} />
+                <Route path="wasil/grocify/home" element={<GrocifyHome />} />
+
+                {/* Glowzy - Beauty & Wellness */}
+                <Route path="wasil/glowzy" element={<GlowzyHome />} />
+                <Route path="wasil/glowzy/home" element={<GlowzyHome />} />
+
+                {/* MediEarn - Medicines & Healthcare */}
+                <Route path="wasil/mediearn" element={<MediEarnHome />} />
+                <Route path="wasil/mediearn/home" element={<MediEarnHome />} />
+
+                {/* FitEarn - Fitness Products */}
+                <Route path="wasil/fitearn" element={<FitEarnHome />} />
+                <Route path="wasil/fitearn/home" element={<FitEarnHome />} />
+
+                {/* Shopazy - Quick Retail & Electronics */}
+                <Route path="wasil/shopazy" element={<ShopazyHome />} />
+                <Route path="wasil/shopazy/home" element={<ShopazyHome />} />
+
+                {/* Funzy - Entertainment & Events */}
+                <Route path="wasil/funzy" element={<FunzyHome />} />
+                <Route path="wasil/funzy/home" element={<FunzyHome />} />
+
+                {/* AutoPerks - Automobile */}
+                <Route path="wasil/autoperks" element={<AutoPerksHome />} />
+                <Route path="wasil/autoperks/home" element={<AutoPerksHome />} />
+
+                {/* Petzy - Pet Products */}
+                <Route path="wasil/petzy" element={<PetzyHome />} />
+                <Route path="wasil/petzy/home" element={<PetzyHome />} />
+
+                {/* Kidzo - Baby & Kids */}
+                <Route path="wasil/kidzo" element={<KidzoHome />} />
+                <Route path="wasil/kidzo/home" element={<KidzoHome />} />
+
+                {/* Luxora - Premium Luxury */}
+                <Route path="wasil/luxora" element={<LuxoraHome />} />
+                <Route path="wasil/luxora/home" element={<LuxoraHome />} />
+
+                {/* Elitezy - Elite Memberships */}
+                <Route path="wasil/elitezy" element={<ElitezyHome />} />
+                <Route path="wasil/elitezy/home" element={<ElitezyHome />} />
+
+                {/* Royale+ - Ultra-Premium Concierge */}
+                <Route path="wasil/royale" element={<RoyaleHome />} />
+                <Route path="wasil/royale/home" element={<RoyaleHome />} />
+
+                {/* Washzy - Laundry & Dry Cleaning */}
+                <Route path="wasil/washzy" element={<WashzyHome />} />
+                <Route path="wasil/washzy/home" element={<WashzyHome />} />
+
+                {/* Maidzy - Home Help & Cleaning */}
+                <Route path="wasil/maidzy" element={<MaidzyHome />} />
+                <Route path="wasil/maidzy/home" element={<MaidzyHome />} />
+
+                {/* Essentia+ - Home Essentials */}
+                <Route path="wasil/essentia" element={<EssentiaHome />} />
+                <Route path="wasil/essentia/home" element={<EssentiaHome />} />
+
+                {/* Society+ - Gated Community */}
+                <Route path="wasil/society" element={<SocietyHome />} />
+                <Route path="wasil/society/home" element={<SocietyHome />} />
+
+                {/* Bizora - B2B Bulk Orders */}
+                <Route path="wasil/bizora" element={<BizoraHome />} />
+                <Route path="wasil/bizora/home" element={<BizoraHome />} />
+
+                {/* Gamezy - Gaming & Esports */}
+                <Route path="wasil/gamezy" element={<GamezyHome />} />
+                <Route path="wasil/gamezy/home" element={<GamezyHome />} />
+
+                {/* Wellnez - Health & Wellness */}
+                <Route path="wasil/wellnez" element={<WellnezHome />} />
+                <Route path="wasil/wellnez/home" element={<WellnezHome />} />
+
+                {/* TravoPay - Travel Bookings */}
+                <Route path="wasil/travopay" element={<TravoPayHome />} />
+                <Route path="wasil/travopay/home" element={<TravoPayHome />} />
+
+                {/* Learnly - E-Learning */}
+                <Route path="wasil/learnly" element={<LearnlyHome />} />
+                <Route path="wasil/learnly/home" element={<LearnlyHome />} />
 
                 {/* User Gap Feature Routes */}
                 <Route path="trust-passport" element={<TrustPassport />} />
