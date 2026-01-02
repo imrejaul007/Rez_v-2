@@ -178,19 +178,27 @@ import AIRHome from './pages/air/AIRHome';
 import AIRChat from './pages/air/AIRChat';
 import AIRDiscover from './pages/air/AIRDiscover';
 import AIRProfile from './pages/air/AIRProfile';
+import AIRWallet from './pages/air/AIRWallet';
+import AIRSaved from './pages/air/AIRSaved';
 
 // BuzzLoop (Social/UGC Feed) Pages
 import BuzzLoopHome from './pages/buzzloop/BuzzLoopHome';
 import BuzzLoopCreate from './pages/buzzloop/BuzzLoopCreate';
 import BuzzLoopProfile from './pages/buzzloop/BuzzLoopProfile';
+import BuzzLoopExplore from './pages/buzzloop/BuzzLoopExplore';
+import BuzzLoopNotifications from './pages/buzzloop/BuzzLoopNotifications';
 
 // CoinHunt (Deals & Coupons) Pages
 import CoinHuntHome from './pages/coinhunt/CoinHuntHome';
 import CoinHuntMap from './pages/coinhunt/CoinHuntMap';
+import CoinHuntMyDeals from './pages/coinhunt/CoinHuntMyDeals';
+import CoinHuntWallet from './pages/coinhunt/CoinHuntWallet';
 
 // LocalEdge (Hyperlocal Check-ins) Pages
 import LocalEdgeHome from './pages/localedge/LocalEdgeHome';
 import LocalEdgeCheckin from './pages/localedge/LocalEdgeCheckin';
+import LocalEdgeExplore from './pages/localedge/LocalEdgeExplore';
+import LocalEdgeProfile from './pages/localedge/LocalEdgeProfile';
 
 // User Gap Pages
 import TrustPassport from './pages/TrustPassport';
@@ -1246,23 +1254,31 @@ function App() {
                 <Route path="air/chat" element={<AIRChat />} />
                 <Route path="air/discover" element={<AIRDiscover />} />
                 <Route path="air/profile" element={<AIRProfile />} />
+                <Route path="air/wallet" element={<AIRWallet />} />
+                <Route path="air/saved" element={<AIRSaved />} />
 
                 {/* BuzzLoop (Social/UGC Feed) Routes */}
                 <Route path="buzzloop" element={<BuzzLoopHome />} />
                 <Route path="buzzloop/home" element={<BuzzLoopHome />} />
                 <Route path="buzzloop/create" element={<BuzzLoopCreate />} />
                 <Route path="buzzloop/profile" element={<BuzzLoopProfile />} />
+                <Route path="buzzloop/explore" element={<BuzzLoopExplore />} />
+                <Route path="buzzloop/notifications" element={<BuzzLoopNotifications />} />
 
                 {/* CoinHunt (Deals & Coupons) Routes */}
                 <Route path="coinhunt" element={<CoinHuntHome />} />
                 <Route path="coinhunt/home" element={<CoinHuntHome />} />
                 <Route path="coinhunt/map" element={<CoinHuntMap />} />
+                <Route path="coinhunt/my-deals" element={<CoinHuntMyDeals />} />
+                <Route path="coinhunt/wallet" element={<CoinHuntWallet />} />
 
                 {/* LocalEdge (Hyperlocal Check-ins) Routes */}
                 <Route path="localedge" element={<LocalEdgeHome />} />
                 <Route path="localedge/home" element={<LocalEdgeHome />} />
                 <Route path="localedge/checkin" element={<LocalEdgeCheckin />} />
                 <Route path="localedge/checkin/:placeId" element={<LocalEdgeCheckin />} />
+                <Route path="localedge/explore" element={<LocalEdgeExplore />} />
+                <Route path="localedge/profile" element={<LocalEdgeProfile />} />
 
                 {/* User Gap Feature Routes */}
                 <Route path="trust-passport" element={<TrustPassport />} />

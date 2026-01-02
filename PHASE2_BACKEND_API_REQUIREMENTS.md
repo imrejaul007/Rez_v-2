@@ -85,6 +85,56 @@ Response: {
 }
 ```
 
+### Wallet APIs (Shared from Rabtul)
+
+```
+GET  /api/air/wallet/:userId
+Response: {
+  rezCoins: number,
+  brandCoins: number,
+  promoCoins: number,
+  totalValue: number,
+  pendingCoins: number,
+  expiringCoins: number,
+  expiringIn: string
+}
+
+GET  /api/air/wallet/:userId/transactions
+Query: { page, limit, type?: 'earned'|'spent'|'expired' }
+Response: { transactions: Array<Transaction> }
+
+GET  /api/air/wallet/:userId/insights
+Response: {
+  aiInsights: Array<{ text, action }>,
+  savingsTips: Array<string>
+}
+```
+
+### Saved Items APIs
+
+```
+GET  /api/air/saved/:userId
+Query: { type?: 'all'|'merchants'|'deals', page, limit }
+Response: {
+  items: Array<SavedItem>,
+  collections: Array<Collection>
+}
+
+POST /api/air/saved
+Request: { userId, itemId, itemType: 'merchant'|'deal'|'place' }
+
+DELETE /api/air/saved/:itemId
+
+GET  /api/air/saved/collections/:userId
+Response: { collections: Array<Collection> }
+
+POST /api/air/saved/collections
+Request: { userId, name, icon, color }
+
+PUT  /api/air/saved/collections/:collectionId
+Request: { name?, icon?, itemIds? }
+```
+
 ### Data Models
 
 ```typescript
@@ -198,6 +248,50 @@ Response: { topics: Array<{ tag, posts, growth }> }
 
 GET  /api/buzzloop/trending/creators
 Response: { creators: Array<Creator> }
+```
+
+### Explore APIs
+
+```
+GET  /api/buzzloop/explore
+Query: { userId, tab: 'foryou'|'trending'|'creators'|'hashtags', page, limit }
+Response: {
+  categories: Array<Category>,
+  trendingPosts: Array<Post>,
+  hotTopics: Array<{ name, posts, icon }>,
+  risingStars: Array<Creator>
+}
+
+GET  /api/buzzloop/explore/categories
+Response: { categories: Array<{ id, name, icon, color }> }
+
+GET  /api/buzzloop/explore/hashtags/:tag
+Query: { page, limit }
+Response: { posts: Array<Post>, totalPosts: number }
+```
+
+### Notifications APIs
+
+```
+GET  /api/buzzloop/notifications/:userId
+Query: { type?: 'all'|'engagement'|'coins'|'system', page, limit }
+Response: {
+  notifications: Array<Notification>,
+  unreadCount: number,
+  todayStats: { likes, coinsEarned }
+}
+
+PUT  /api/buzzloop/notifications/:notificationId/read
+
+PUT  /api/buzzloop/notifications/:userId/mark-all-read
+
+DELETE /api/buzzloop/notifications/:notificationId
+
+GET  /api/buzzloop/notifications/:userId/settings
+Response: { settings: NotificationSettings }
+
+PUT  /api/buzzloop/notifications/:userId/settings
+Request: { pushEnabled, emailEnabled, types: string[] }
 ```
 
 ### Merchant Search
@@ -342,6 +436,63 @@ Response: {
 }
 ```
 
+### My Deals APIs
+
+```
+GET  /api/coinhunt/my-deals/:userId
+Query: { status: 'active'|'used'|'expired', page, limit }
+Response: {
+  active: Array<ClaimedDeal>,
+  used: Array<UsedDeal>,
+  expired: Array<ExpiredDeal>,
+  stats: { totalSaved, totalCoins, dealsUsed }
+}
+
+GET  /api/coinhunt/my-deals/:userId/:dealId
+Response: {
+  deal: ClaimedDealDetail,
+  qrCode: string,
+  couponCode: string,
+  expiresAt: Date
+}
+
+POST /api/coinhunt/my-deals/:dealId/redeem
+Request: { userId, merchantId }
+Response: { success: boolean, savedAmount: number }
+```
+
+### Wallet & Gamification APIs
+
+```
+GET  /api/coinhunt/wallet/:userId
+Response: {
+  totalCoins: number,
+  lifetimeEarned: number,
+  level: number,
+  levelName: string,
+  nextLevel: string,
+  xpCurrent: number,
+  xpRequired: number,
+  streak: number,
+  rank: number,
+  weeklyChange: string
+}
+
+GET  /api/coinhunt/wallet/:userId/history
+Query: { page, limit, type?: 'earned'|'spent'|'bonus' }
+Response: { activity: Array<CoinActivity> }
+
+GET  /api/coinhunt/wallet/:userId/achievements
+Response: {
+  earned: Array<Achievement>,
+  inProgress: Array<{ achievement, progress, total }>
+}
+
+POST /api/coinhunt/wallet/:userId/redeem
+Request: { coins, redeemType: 'voucher'|'cashback', value }
+Response: { success: boolean, voucherCode?: string }
+```
+
 ### Data Models
 
 ```typescript
@@ -483,6 +634,67 @@ Response: {
   earned: Array<Badge>,
   inProgress: Array<{ badge: Badge, progress: number, target: number }>
 }
+```
+
+### Explore APIs
+
+```
+GET  /api/localedge/explore
+Query: { lat, lng, category?: string, page, limit }
+Response: {
+  trending: Array<Place>,
+  nearby: Array<Place>,
+  topMayors: Array<MayorEntry>,
+  categories: Array<Category>
+}
+
+GET  /api/localedge/explore/categories
+Response: { categories: Array<{ id, name, icon, color }> }
+
+GET  /api/localedge/explore/trending
+Query: { lat, lng, radius }
+Response: { places: Array<TrendingPlace> }
+
+GET  /api/localedge/explore/photo-spots
+Query: { lat, lng, radius }
+Response: { spots: Array<PhotoSpot> }
+```
+
+### Profile APIs
+
+```
+GET  /api/localedge/profile/:userId
+Response: {
+  user: UserProfile,
+  stats: {
+    totalCheckins, uniquePlaces, mayorships,
+    coins, streak, rank, followers, following
+  },
+  level: { level, name, xpCurrent, xpRequired }
+}
+
+GET  /api/localedge/profile/:userId/checkins
+Query: { page, limit }
+Response: { checkins: Array<Checkin> }
+
+GET  /api/localedge/profile/:userId/badges
+Response: {
+  earned: Array<Badge>,
+  inProgress: Array<{ badge, progress, total }>
+}
+
+GET  /api/localedge/profile/:userId/mayorships
+Response: { mayorships: Array<Mayorship> }
+
+GET  /api/localedge/profile/:userId/almost-mayor
+Query: { lat, lng, radius }
+Response: { places: Array<{ place, checksNeeded, currentMayor }> }
+
+PUT  /api/localedge/profile/:userId
+Request: { name?, avatar?, bio? }
+
+POST /api/localedge/profile/:userId/follow
+POST /api/localedge/profile/:userId/unfollow
 ```
 
 ### Data Models
@@ -737,12 +949,23 @@ CREATE TABLE user_badges (
 
 | App | New Endpoints | Primary Features |
 |-----|---------------|------------------|
-| **AI-R** | 8 | Chat, Discovery Feed, AI Insights |
-| **BuzzLoop** | 18 | Posts, Stories, Feed, Profile |
-| **CoinHunt** | 12 | Deals, Flash Deals, Map, Challenges |
-| **LocalEdge** | 14 | Check-ins, Places, Leaderboard, Badges |
+| **AI-R** | 16 | Chat, Discovery Feed, AI Insights, Wallet, Saved Items |
+| **BuzzLoop** | 28 | Posts, Stories, Feed, Profile, Explore, Notifications |
+| **CoinHunt** | 22 | Deals, Flash Deals, Map, Challenges, My Deals, Wallet |
+| **LocalEdge** | 24 | Check-ins, Places, Leaderboard, Badges, Explore, Profile |
 
-**Total New Endpoints: 52**
+**Total New Endpoints: 90**
+
+### Pages per App
+
+| App | Pages | Routes |
+|-----|-------|--------|
+| **AI-R** | 6 | /air, /air/chat, /air/discover, /air/profile, /air/wallet, /air/saved |
+| **BuzzLoop** | 5 | /buzzloop, /buzzloop/create, /buzzloop/profile, /buzzloop/explore, /buzzloop/notifications |
+| **CoinHunt** | 4 | /coinhunt, /coinhunt/map, /coinhunt/my-deals, /coinhunt/wallet |
+| **LocalEdge** | 4 | /localedge, /localedge/checkin, /localedge/explore, /localedge/profile |
+
+**Total New Pages: 19**
 
 All endpoints integrate with:
 - Rabtul Auth (SSO)
@@ -752,6 +975,6 @@ All endpoints integrate with:
 
 ---
 
-*Document Version: 1.0*
-*Phase: 2 - Discovery Clones*
-*Created: January 2026*
+*Document Version: 2.0*
+*Phase: 2 - Discovery Clones (Expanded)*
+*Updated: January 2026*
