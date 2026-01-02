@@ -200,6 +200,35 @@ import LocalEdgeCheckin from './pages/localedge/LocalEdgeCheckin';
 import LocalEdgeExplore from './pages/localedge/LocalEdgeExplore';
 import LocalEdgeProfile from './pages/localedge/LocalEdgeProfile';
 
+// ============================================
+// PHASE 3: VERTICAL EXPANSION APPS
+// ============================================
+
+// StyleSync (Fashion/Beauty) Pages
+import StyleSyncHome from './pages/stylesync/StyleSyncHome';
+import StyleSyncLooks from './pages/stylesync/StyleSyncLooks';
+import StyleSyncCloset from './pages/stylesync/StyleSyncCloset';
+import StyleSyncShop from './pages/stylesync/StyleSyncShop';
+
+// FitCircle (Health/Fitness) Pages
+import FitCircleHome from './pages/fitcircle/FitCircleHome';
+import FitCircleWorkouts from './pages/fitcircle/FitCircleWorkouts';
+import FitCircleChallenges from './pages/fitcircle/FitCircleChallenges';
+import FitCircleNutrition from './pages/fitcircle/FitCircleNutrition';
+import FitCircleProfile from './pages/fitcircle/FitCircleProfile';
+
+// TechHunt (Electronics) Pages
+import TechHuntHome from './pages/techhunt/TechHuntHome';
+import TechHuntDeals from './pages/techhunt/TechHuntDeals';
+import TechHuntCompare from './pages/techhunt/TechHuntCompare';
+import TechHuntWishlist from './pages/techhunt/TechHuntWishlist';
+
+// HomeHub (Home & Living) Pages
+import HomeHubHome from './pages/homehub/HomeHubHome';
+import HomeHubRoomPlanner from './pages/homehub/HomeHubRoomPlanner';
+import HomeHubServices from './pages/homehub/HomeHubServices';
+import HomeHubShop from './pages/homehub/HomeHubShop';
+
 // User Gap Pages
 import TrustPassport from './pages/TrustPassport';
 import DisputeCenter from './pages/DisputeCenter';
@@ -1279,6 +1308,39 @@ function App() {
                 <Route path="localedge/checkin/:placeId" element={<LocalEdgeCheckin />} />
                 <Route path="localedge/explore" element={<LocalEdgeExplore />} />
                 <Route path="localedge/profile" element={<LocalEdgeProfile />} />
+
+                {/* ============================================ */}
+                {/* PHASE 3: VERTICAL EXPANSION APPS ROUTES */}
+                {/* ============================================ */}
+
+                {/* StyleSync (Fashion/Beauty) Routes */}
+                <Route path="stylesync" element={<StyleSyncHome />} />
+                <Route path="stylesync/home" element={<StyleSyncHome />} />
+                <Route path="stylesync/looks" element={<StyleSyncLooks />} />
+                <Route path="stylesync/closet" element={<StyleSyncCloset />} />
+                <Route path="stylesync/shop" element={<StyleSyncShop />} />
+
+                {/* FitCircle (Health/Fitness) Routes */}
+                <Route path="fitcircle" element={<FitCircleHome />} />
+                <Route path="fitcircle/home" element={<FitCircleHome />} />
+                <Route path="fitcircle/workouts" element={<FitCircleWorkouts />} />
+                <Route path="fitcircle/challenges" element={<FitCircleChallenges />} />
+                <Route path="fitcircle/nutrition" element={<FitCircleNutrition />} />
+                <Route path="fitcircle/profile" element={<FitCircleProfile />} />
+
+                {/* TechHunt (Electronics) Routes */}
+                <Route path="techhunt" element={<TechHuntHome />} />
+                <Route path="techhunt/home" element={<TechHuntHome />} />
+                <Route path="techhunt/deals" element={<TechHuntDeals />} />
+                <Route path="techhunt/compare" element={<TechHuntCompare />} />
+                <Route path="techhunt/wishlist" element={<TechHuntWishlist />} />
+
+                {/* HomeHub (Home & Living) Routes */}
+                <Route path="homehub" element={<HomeHubHome />} />
+                <Route path="homehub/home" element={<HomeHubHome />} />
+                <Route path="homehub/room-planner" element={<HomeHubRoomPlanner />} />
+                <Route path="homehub/services" element={<HomeHubServices />} />
+                <Route path="homehub/shop" element={<HomeHubShop />} />
 
                 {/* User Gap Feature Routes */}
                 <Route path="trust-passport" element={<TrustPassport />} />
