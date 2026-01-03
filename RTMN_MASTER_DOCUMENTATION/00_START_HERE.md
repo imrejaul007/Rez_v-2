@@ -53,16 +53,33 @@ RTMN_MASTER_DOCUMENTATION/
 
 **Purpose:** Understand the RTMN ecosystem architecture
 
+### 🔒 CRITICAL ARCHITECTURE SPECS (MUST READ BEFORE CODING)
+
 | Document | Description | Size |
 |----------|-------------|------|
-| **[TECHNICAL_BOUNDARIES_AND_HARD_RULES.md](1_ARCHITECTURE/TECHNICAL_BOUNDARIES_AND_HARD_RULES.md)** ⭐⭐⭐ | **🔒 MUST READ - Technical boundaries** | 30 KB |
-| **[RTMN_BUSINESS_RULES_FOR_DEVELOPERS.md](../RTMN_BUSINESS_RULES_FOR_DEVELOPERS.md)** ⭐⭐⭐ | **Governance & Authority Rules** | 25 KB |
+| **[TECHNICAL_BOUNDARIES_AND_HARD_RULES.md](1_ARCHITECTURE/TECHNICAL_BOUNDARIES_AND_HARD_RULES.md)** ⭐⭐⭐ | **🔒 Data isolation, SDK authority, Phase boundaries** | 30 KB |
+| **[DOMAIN_OWNERSHIP_CONTRACT.md](1_ARCHITECTURE/DOMAIN_OWNERSHIP_CONTRACT.md)** ⭐⭐⭐ | **🔒 Read/write/forbidden boundaries with enforcement** | 28 KB |
+| **[RULE_ENGINE_SPECIFICATION.md](1_ARCHITECTURE/RULE_ENGINE_SPECIFICATION.md)** ⭐⭐⭐ | **🔒 Deterministic rule evaluation, versioning** | 25 KB |
+| **[EVENT_SCHEMA_REGISTRY.md](1_ARCHITECTURE/EVENT_SCHEMA_REGISTRY.md)** ⭐⭐⭐ | **🔒 Canonical events, ordering, idempotency** | 22 KB |
+| **[ORDER_STATE_MACHINE.md](1_ARCHITECTURE/ORDER_STATE_MACHINE.md)** ⭐⭐⭐ | **🔒 Order states, transitions, finality rules** | 20 KB |
+| **[SDK_BOUNDARY_ENFORCEMENT.md](1_ARCHITECTURE/SDK_BOUNDARY_ENFORCEMENT.md)** ⭐⭐⭐ | **🔒 3-layer SDK enforcement, version control** | 24 KB |
+| **[FAILURE_AND_DEGRADED_MODES.md](1_ARCHITECTURE/FAILURE_AND_DEGRADED_MODES.md)** ⭐⭐⭐ | **🔒 Service failure handling, circuit breakers** | 21 KB |
+
+### 📐 General Architecture Docs
+
+| Document | Description | Size |
+|----------|-------------|------|
+| **[RTMN_BUSINESS_RULES_FOR_DEVELOPERS.md](../RTMN_BUSINESS_RULES_FOR_DEVELOPERS.md)** ⭐⭐ | Governance & Authority Rules | 25 KB |
 | [RTMN_MASTER_ARCHITECTURE.md](1_ARCHITECTURE/RTMN_MASTER_ARCHITECTURE.md) | Complete system architecture | 45 KB |
 | [RTMN_HOLDING_COMPANY_STRUCTURE.md](1_ARCHITECTURE/RTMN_HOLDING_COMPANY_STRUCTURE.md) | Corporate structure (10 companies) | - |
 | [RABTUL_AS_TECH_PROVIDER.md](1_ARCHITECTURE/RABTUL_AS_TECH_PROVIDER.md) | Rabtul infrastructure layer | - |
 | [CROSS_APP_NAVIGATION_AND_INTEGRATION_MAP.md](1_ARCHITECTURE/CROSS_APP_NAVIGATION_AND_INTEGRATION_MAP.md) | Integration architecture | 17 KB |
 
-**Start with:** 🔒 TECHNICAL_BOUNDARIES_AND_HARD_RULES.md (MANDATORY)
+**Start with (in order):**
+1. 🔒 TECHNICAL_BOUNDARIES_AND_HARD_RULES.md
+2. 🔒 DOMAIN_OWNERSHIP_CONTRACT.md
+3. 🔒 ORDER_STATE_MACHINE.md
+4. 🔒 SDK_BOUNDARY_ENFORCEMENT.md
 
 ---
 
@@ -244,8 +261,16 @@ RTMN_MASTER_DOCUMENTATION/
 | Testing Guide | 100% ✅ |
 | Error Codes | 100% ✅ |
 | Business Rules | 100% ✅ |
+| **🔒 Domain Ownership Contract** | **100% ✅** |
+| **🔒 Rule Engine Specification** | **100% ✅** |
+| **🔒 Event Schema Registry** | **100% ✅** |
+| **🔒 Order State Machine** | **100% ✅** |
+| **🔒 SDK Enforcement** | **100% ✅** |
+| **🔒 Failure & Degraded Modes** | **100% ✅** |
 
 **Overall Readiness:** 🎉 **100% COMPLETE** ✅
+
+**Critical Architecture Specs:** 🔒 **ALL 6 MUST-FIX ITEMS COMPLETE** ✅
 
 ---
 
