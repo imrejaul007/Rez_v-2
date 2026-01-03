@@ -87,7 +87,7 @@ RTMN_MASTER_DOCUMENTATION/
 
 | Document | Description | Size |
 |----------|-------------|------|
-| **[RTMN_BUSINESS_RULES_FOR_DEVELOPERS.md](../RTMN_BUSINESS_RULES_FOR_DEVELOPERS.md)** ⭐⭐ | Governance & Authority Rules | 25 KB |
+| **[RTMN_BUSINESS_RULES_FOR_DEVELOPERS.md](1_ARCHITECTURE/RTMN_BUSINESS_RULES_FOR_DEVELOPERS.md)** ⭐⭐ | Governance & Authority Rules | 25 KB |
 | [RTMN_MASTER_ARCHITECTURE.md](1_ARCHITECTURE/RTMN_MASTER_ARCHITECTURE.md) | Complete system architecture | 45 KB |
 | [RTMN_HOLDING_COMPANY_STRUCTURE.md](1_ARCHITECTURE/RTMN_HOLDING_COMPANY_STRUCTURE.md) | Corporate structure (10 companies) | - |
 | [RABTUL_AS_TECH_PROVIDER.md](1_ARCHITECTURE/RABTUL_AS_TECH_PROVIDER.md) | Rabtul infrastructure layer | - |
