@@ -19,9 +19,10 @@
 ## 🚀 QUICK START
 
 ### **For Developers (Start Here):**
-1. Read: [BACKEND_DEVELOPER_PORTAL.md](3_BACKEND_API/BACKEND_DEVELOPER_PORTAL.md)
-2. Setup: Follow quick start guide (5 minutes)
-3. Build: Pick a feature and start!
+1. **📖 Read:** [REFERENCE_IMPLEMENTATION_PLAN.md](REFERENCE_IMPLEMENTATION_PLAN.md) ⭐⭐⭐ (Gold standard flow)
+2. **🧪 Test:** [ARCHITECTURE_TEST_CASES.md](ARCHITECTURE_TEST_CASES.md) ⭐⭐⭐ (Enforce rules)
+3. **🔧 Setup:** [BACKEND_DEVELOPER_PORTAL.md](3_BACKEND_API/BACKEND_DEVELOPER_PORTAL.md)
+4. **🚀 Build:** Follow reference flow template
 
 ### **For Product Managers:**
 1. Read: [SCREEN_ANALYSIS_COMPLETE_SUMMARY.md](6_PROGRESS_TRACKING/SCREEN_ANALYSIS_COMPLETE_SUMMARY.md)
@@ -46,6 +47,19 @@ RTMN_MASTER_DOCUMENTATION/
 ├── 7_REFERENCE/             # Quick references & guides
 └── 8_DATA/                  # JSON data & scripts
 ```
+
+---
+
+## 🎯 EXECUTION GUIDES (START HERE FOR IMPLEMENTATION)
+
+**Purpose:** Bridge from documentation to production code
+
+| Document | Description | Size |
+|----------|-------------|------|
+| **[REFERENCE_IMPLEMENTATION_PLAN.md](REFERENCE_IMPLEMENTATION_PLAN.md)** ⭐⭐⭐ | **🚀 Gold standard flow: ReZ → Merchant → Wallet → Settlement** | 45 KB |
+| **[ARCHITECTURE_TEST_CASES.md](ARCHITECTURE_TEST_CASES.md)** ⭐⭐⭐ | **🧪 System-level contract tests that enforce rules** | 38 KB |
+
+**These 2 documents show developers EXACTLY how to build + EXACTLY how to test.**
 
 ---
 
