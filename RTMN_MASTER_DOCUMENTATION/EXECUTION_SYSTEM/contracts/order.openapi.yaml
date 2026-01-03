@@ -1,0 +1,472 @@
+openapi: 3.0.3
+info:
+  title: Rabtul Order Service API
+  version: 1.0.0
+  description: |
+    Order service for managing order lifecycle.
+
+    **RULES:**
+    - Order creation + Wallet debit MUST be atomic
+    - State transitions MUST follow state machine
+    - Only allowed transitions permitted
+    - Merchant can only update orders for their merchant_id
+
+servers:
+  - url: https://api.rabtul.com/v1
+  - url: http://localhost:3000/v1
+
+security:
+  - BearerAuth: []
+  - SDKAuth: []
+
+paths:
+  /orders:
+    post:
+      summary: Create new order
+      description: |
+        Create order and debit wallet atomically.
+
+        **Process:**
+        1. Validate cart and calculate totals
+        2. Check wallet balance
+        3. Create order (status: initiated)
+        4. Debit wallet (atomic transaction)
+        5. Update order (status: created)
+        6. Publish order.created event
+        7. Return order + wallet debit breakdown
+      operationId: createOrder
+      tags:
+        - Orders
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateOrderRequest'
+      responses:
+        '201':
+          description: Order created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateOrderResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/SDKRequired'
+
+  /orders/{orderId}:
+    get:
+      summary: Get order by ID
+      operationId: getOrder
+      tags:
+        - Orders
+      parameters:
+        - $ref: '#/components/parameters/OrderIdParam'
+      responses:
+        '200':
+          description: Order retrieved
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    $ref: '#/components/schemas/Order'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /orders/{orderId}/status:
+    patch:
+      summary: Update order status
+      description: |
+        Update order status following state machine rules.
+
+        **State machine transitions:**
+        - initiated → [created, failed_wallet]
+        - created → [paid, cancelled]
+        - paid → [confirmed, refund_requested]
+        - confirmed → [preparing, cancelled]
+        - preparing → [ready, cancelled]
+        - ready → [shipped, cancelled]
+        - shipped → [delivered, return_requested]
+        - delivered → [completed, refund_requested]
+      operationId: updateOrderStatus
+      tags:
+        - Orders
+      parameters:
+        - $ref: '#/components/parameters/OrderIdParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateOrderStatusRequest'
+      responses:
+        '200':
+          description: Status updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    $ref: '#/components/schemas/Order'
+        '400':
+          $ref: '#/components/responses/InvalidTransition'
+
+  /orders/{orderId}/cancel:
+    post:
+      summary: Cancel order
+      description: |
+        Cancel order and initiate refund if already paid.
+
+        **Rules:**
+        - Can cancel if status in: [initiated, created, paid, confirmed]
+        - Cannot cancel if: [preparing, ready, shipped, delivered]
+        - Refund amount depends on cancellation timing
+      operationId: cancelOrder
+      tags:
+        - Orders
+      parameters:
+        - $ref: '#/components/parameters/OrderIdParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - reason
+              properties:
+                reason:
+                  type: string
+                  maxLength: 500
+      responses:
+        '200':
+          description: Order cancelled
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    $ref: '#/components/schemas/Order'
+
+  /orders/user/{userId}:
+    get:
+      summary: Get user's orders
+      operationId: getUserOrders
+      tags:
+        - Orders
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: status
+          in: query
+          schema:
+            $ref: '#/components/schemas/OrderStatus'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 20
+        - name: offset
+          in: query
+          schema:
+            type: integer
+            default: 0
+      responses:
+        '200':
+          description: Orders retrieved
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Order'
+                  pagination:
+                    $ref: '#/components/schemas/Pagination'
+
+components:
+  parameters:
+    OrderIdParam:
+      name: orderId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+
+  schemas:
+    CreateOrderRequest:
+      type: object
+      required:
+        - user_id
+        - merchant_id
+        - items
+        - delivery_address
+        - payment_method
+      properties:
+        user_id:
+          type: string
+          format: uuid
+        merchant_id:
+          type: string
+          format: uuid
+        items:
+          type: array
+          items:
+            type: object
+            required:
+              - product_id
+              - quantity
+              - unit_price
+            properties:
+              product_id:
+                type: string
+                format: uuid
+              quantity:
+                type: integer
+                minimum: 1
+              unit_price:
+                type: number
+                format: double
+        delivery_address:
+          $ref: '#/components/schemas/Address'
+        payment_method:
+          type: string
+          enum: [wallet, razorpay, cod, upi]
+        notes:
+          type: string
+          maxLength: 500
+
+    CreateOrderResponse:
+      type: object
+      required:
+        - success
+        - data
+      properties:
+        success:
+          type: boolean
+        data:
+          type: object
+          required:
+            - order
+          properties:
+            order:
+              $ref: '#/components/schemas/Order'
+            wallet_debit:
+              type: object
+              properties:
+                transaction_id:
+                  type: string
+                  format: uuid
+                breakdown:
+                  type: object
+                  properties:
+                    promo_coins_used:
+                      type: number
+                    branded_coins_used:
+                      type: number
+                    rez_coins_used:
+                      type: number
+                    cash_used:
+                      type: number
+
+    Order:
+      type: object
+      required:
+        - id
+        - user_id
+        - merchant_id
+        - status
+        - subtotal
+        - tax_amount
+        - delivery_fee
+        - total_amount
+        - payment_method
+        - created_at
+      properties:
+        id:
+          type: string
+          format: uuid
+        user_id:
+          type: string
+          format: uuid
+        merchant_id:
+          type: string
+          format: uuid
+        status:
+          $ref: '#/components/schemas/OrderStatus'
+        subtotal:
+          type: number
+          format: double
+        tax_amount:
+          type: number
+          format: double
+        delivery_fee:
+          type: number
+          format: double
+        discount_amount:
+          type: number
+          format: double
+        total_amount:
+          type: number
+          format: double
+        promo_coins_used:
+          type: number
+          format: double
+        branded_coins_used:
+          type: number
+          format: double
+        rez_coins_used:
+          type: number
+          format: double
+        cash_paid:
+          type: number
+          format: double
+        payment_method:
+          type: string
+          enum: [wallet, razorpay, cod, upi]
+        delivery_address:
+          $ref: '#/components/schemas/Address'
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    UpdateOrderStatusRequest:
+      type: object
+      required:
+        - new_status
+        - changed_by
+      properties:
+        new_status:
+          $ref: '#/components/schemas/OrderStatus'
+        changed_by:
+          type: string
+          format: uuid
+        notes:
+          type: string
+
+    OrderStatus:
+      type: string
+      enum:
+        - initiated
+        - created
+        - paid
+        - confirmed
+        - preparing
+        - ready
+        - shipped
+        - delivered
+        - completed
+        - cancelled
+        - failed_wallet
+        - refund_requested
+        - refunded
+
+    Address:
+      type: object
+      required:
+        - line1
+        - city
+        - state
+        - pincode
+        - phone
+      properties:
+        line1:
+          type: string
+        line2:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        pincode:
+          type: string
+        country:
+          type: string
+          default: India
+        phone:
+          type: string
+
+    Pagination:
+      type: object
+      properties:
+        total:
+          type: integer
+        limit:
+          type: integer
+        offset:
+          type: integer
+        has_more:
+          type: boolean
+
+  responses:
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+              error:
+                type: string
+              code:
+                type: string
+
+    InvalidTransition:
+      description: Invalid state transition
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+              error:
+                type: string
+              code:
+                type: string
+                example: ORDER_INVALID_TRANSITION
+              message:
+                type: string
+
+    Unauthorized:
+      description: Unauthorized
+    SDKRequired:
+      description: SDK Required
+    NotFound:
+      description: Not Found
+
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+    SDKAuth:
+      type: apiKey
+      in: header
+      name: X-SDK-Signature

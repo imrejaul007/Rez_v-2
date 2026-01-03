@@ -1,0 +1,549 @@
+openapi: 3.0.3
+info:
+  title: Rabtul Wallet Service API
+  version: 1.0.0
+  description: |
+    Wallet service for managing user coins and transactions.
+
+    **RULES:**
+    - All endpoints require SDK usage (SDK headers mandatory)
+    - All mutations are atomic (use database transactions)
+    - Coin priority MUST be enforced: Promo → Branded → ReZ → Cash
+    - Balance is COMPUTED from transactions (not stored)
+
+servers:
+  - url: https://api.rabtul.com/v1
+    description: Production
+  - url: http://localhost:3000/v1
+    description: Development
+
+security:
+  - BearerAuth: []
+  - SDKAuth: []
+
+paths:
+  /wallet/{userId}/balance:
+    get:
+      summary: Get wallet balance
+      description: Returns current balance for all coin types
+      operationId: getWalletBalance
+      tags:
+        - Wallet
+      parameters:
+        - $ref: '#/components/parameters/UserIdParam'
+      responses:
+        '200':
+          description: Wallet balance retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - success
+                  - data
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  data:
+                    $ref: '#/components/schemas/WalletBalance'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/SDKRequired'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /wallet/debit:
+    post:
+      summary: Debit coins from wallet
+      description: |
+        Atomically debit coins from user wallet.
+
+        **Rules:**
+        - Coins are used in priority order: Promo → Branded → ReZ → Cash
+        - Insufficient balance returns 400 error
+        - Creates wallet transaction with status 'completed'
+        - Operation is atomic (all or nothing)
+      operationId: debitWallet
+      tags:
+        - Wallet
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DebitRequest'
+      responses:
+        '200':
+          description: Wallet debited successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - success
+                  - data
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  data:
+                    $ref: '#/components/schemas/DebitResponse'
+        '400':
+          $ref: '#/components/responses/InsufficientFunds'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/SDKRequired'
+
+  /wallet/credit:
+    post:
+      summary: Credit coins to wallet
+      description: |
+        Add coins to user wallet.
+
+        **Rules:**
+        - Only specific transaction types allowed
+        - Promo/Branded coins can have expiry
+        - Creates wallet transaction with status 'completed'
+      operationId: creditWallet
+      tags:
+        - Wallet
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreditRequest'
+      responses:
+        '200':
+          description: Wallet credited successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - success
+                  - data
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  data:
+                    $ref: '#/components/schemas/CreditResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/SDKRequired'
+
+  /wallet/{userId}/transactions:
+    get:
+      summary: Get transaction history
+      description: Returns paginated transaction history for user
+      operationId: getTransactionHistory
+      tags:
+        - Wallet
+      parameters:
+        - $ref: '#/components/parameters/UserIdParam'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+            default: 20
+        - name: offset
+          in: query
+          schema:
+            type: integer
+            minimum: 0
+            default: 0
+        - name: coin_type
+          in: query
+          schema:
+            $ref: '#/components/schemas/CoinType'
+        - name: transaction_type
+          in: query
+          schema:
+            $ref: '#/components/schemas/TransactionType'
+      responses:
+        '200':
+          description: Transaction history retrieved
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - success
+                  - data
+                  - pagination
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/WalletTransaction'
+                  pagination:
+                    $ref: '#/components/schemas/Pagination'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/SDKRequired'
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+    SDKAuth:
+      type: apiKey
+      in: header
+      name: X-SDK-Signature
+      description: SDK request signature (HMAC-SHA256)
+
+  parameters:
+    UserIdParam:
+      name: userId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+      description: User ID
+
+  schemas:
+    WalletBalance:
+      type: object
+      required:
+        - user_id
+        - promo_coins
+        - branded_coins
+        - rez_coins
+        - cash
+        - total
+        - last_updated
+      properties:
+        user_id:
+          type: string
+          format: uuid
+        promo_coins:
+          type: number
+          format: double
+          minimum: 0
+          description: Promo coins balance
+        branded_coins:
+          type: number
+          format: double
+          minimum: 0
+          description: Branded coins balance
+        rez_coins:
+          type: number
+          format: double
+          minimum: 0
+          description: ReZ coins balance
+        cash:
+          type: number
+          format: double
+          minimum: 0
+          description: Cash balance
+        total:
+          type: number
+          format: double
+          minimum: 0
+          description: Total balance (sum of all types)
+        last_updated:
+          type: string
+          format: date-time
+
+    DebitRequest:
+      type: object
+      required:
+        - user_id
+        - amount
+        - reason
+      properties:
+        user_id:
+          type: string
+          format: uuid
+        amount:
+          type: number
+          format: double
+          minimum: 0.01
+          description: Amount to debit
+        merchant_id:
+          type: string
+          format: uuid
+          description: Merchant ID (required for order payments)
+        order_id:
+          type: string
+          format: uuid
+          description: Order ID (required for order payments)
+        reason:
+          type: string
+          enum:
+            - ORDER_PAYMENT
+            - TRANSFER
+            - OTHER
+          description: Reason for debit
+
+    DebitResponse:
+      type: object
+      required:
+        - success
+        - transaction_id
+        - breakdown
+        - balance_after
+      properties:
+        success:
+          type: boolean
+        transaction_id:
+          type: string
+          format: uuid
+        breakdown:
+          type: object
+          required:
+            - promo_coins_used
+            - branded_coins_used
+            - rez_coins_used
+            - cash_used
+            - total
+          properties:
+            promo_coins_used:
+              type: number
+              format: double
+            branded_coins_used:
+              type: number
+              format: double
+            rez_coins_used:
+              type: number
+              format: double
+            cash_used:
+              type: number
+              format: double
+            total:
+              type: number
+              format: double
+        balance_after:
+          $ref: '#/components/schemas/WalletBalance'
+
+    CreditRequest:
+      type: object
+      required:
+        - user_id
+        - amount
+        - coin_type
+        - reason
+      properties:
+        user_id:
+          type: string
+          format: uuid
+        amount:
+          type: number
+          format: double
+          minimum: 0.01
+        coin_type:
+          $ref: '#/components/schemas/CoinType'
+        reason:
+          type: string
+          enum:
+            - SIGNUP_BONUS
+            - REFERRAL_REWARD
+            - CASHBACK
+            - CAMPAIGN_REWARD
+            - REFUND
+        expires_at:
+          type: string
+          format: date-time
+          description: Expiry timestamp (only for promo/branded coins)
+        metadata:
+          type: object
+          description: Additional metadata
+          properties:
+            campaign_id:
+              type: string
+              format: uuid
+            order_id:
+              type: string
+              format: uuid
+
+    CreditResponse:
+      type: object
+      required:
+        - success
+        - transaction_id
+        - balance_after
+      properties:
+        success:
+          type: boolean
+        transaction_id:
+          type: string
+          format: uuid
+        balance_after:
+          $ref: '#/components/schemas/WalletBalance'
+
+    WalletTransaction:
+      type: object
+      required:
+        - id
+        - user_id
+        - transaction_type
+        - coin_type
+        - amount
+        - balance_before
+        - balance_after
+        - status
+        - created_at
+      properties:
+        id:
+          type: string
+          format: uuid
+        user_id:
+          type: string
+          format: uuid
+        transaction_type:
+          $ref: '#/components/schemas/TransactionType'
+        coin_type:
+          $ref: '#/components/schemas/CoinType'
+        amount:
+          type: number
+          format: double
+        balance_before:
+          type: number
+          format: double
+        balance_after:
+          type: number
+          format: double
+        status:
+          type: string
+          enum:
+            - pending
+            - completed
+            - failed
+            - reversed
+        reason:
+          type: string
+        metadata:
+          type: object
+        expires_at:
+          type: string
+          format: date-time
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+
+    TransactionType:
+      type: string
+      enum:
+        - credit_signup_bonus
+        - credit_referral_reward
+        - credit_cashback
+        - credit_campaign_reward
+        - credit_refund
+        - debit_order_payment
+        - debit_transfer
+        - debit_expiry
+        - debit_clawback
+
+    CoinType:
+      type: string
+      enum:
+        - promo_coins
+        - branded_coins
+        - rez_coins
+        - cash
+
+    Pagination:
+      type: object
+      required:
+        - total
+        - limit
+        - offset
+        - has_more
+      properties:
+        total:
+          type: integer
+        limit:
+          type: integer
+        offset:
+          type: integer
+        has_more:
+          type: boolean
+
+    Error:
+      type: object
+      required:
+        - success
+        - error
+        - message
+        - code
+      properties:
+        success:
+          type: boolean
+          example: false
+        error:
+          type: string
+        message:
+          type: string
+        code:
+          type: string
+          description: Error code from ERROR_CODES enum
+        details:
+          type: object
+          description: Additional error details
+
+  responses:
+    Unauthorized:
+      description: Unauthorized - Invalid or missing token
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            success: false
+            error: "UNAUTHORIZED"
+            message: "Invalid or missing authentication token"
+            code: "AUTH_TOKEN_INVALID"
+
+    SDKRequired:
+      description: SDK Required - Direct API calls not allowed
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            success: false
+            error: "SDK_REQUIRED"
+            message: "This endpoint requires SDK usage. Direct API calls are not allowed."
+            code: "SDK_REQUIRED"
+
+    InsufficientFunds:
+      description: Insufficient balance
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            success: false
+            error: "INSUFFICIENT_FUNDS"
+            message: "Insufficient balance. Please add money to your wallet."
+            code: "WALLET_INSUFFICIENT_FUNDS"
+            details:
+              required: 500
+              available: 300
+
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            success: false
+            error: "NOT_FOUND"
+            message: "User not found"
+            code: "USER_NOT_FOUND"
