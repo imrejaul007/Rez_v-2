@@ -39,11 +39,13 @@ Developers should:
 **Rule**: If it's not in the schema → it doesn't exist.
 
 Contains:
-- `user.schema.ts` - User domain
-- `wallet.schema.ts` - Wallet/transactions domain
-- `order.schema.ts` - Order domain
-- `merchant.schema.ts` - Merchant domain (coming soon)
-- `campaign.schema.ts` - Campaign domain (coming soon)
+- `user.schema.ts` - User domain ✅
+- `wallet.schema.ts` - Wallet/transactions domain ✅
+- `order.schema.ts` - Order domain ✅
+- `order_items.schema.ts` - Order items domain ✅
+- `merchant.schema.ts` - Merchant domain ✅
+- `product.schema.ts` - Product domain ✅
+- `campaign.schema.ts` - Campaign domain ✅
 
 Each schema includes:
 - Field definitions (type, required, allowed values)
@@ -118,29 +120,140 @@ Contains templates for:
 
 ---
 
-### 5. **contracts/** (COMING SOON)
+### 5. **contracts/** (OpenAPI Specifications)
 
-Will contain OpenAPI specifications for:
-- Auth service
-- Wallet service
-- Order service
-- Rules service
-- Campaign service
+**Rule**: API contracts are law. Response format cannot change.
 
-Generated artifacts:
-- SDK clients (auto-generated)
-- API mocks (auto-generated)
-- Postman collections (auto-generated)
+Contains:
+- `wallet.openapi.yaml` - Wallet service API ✅
+- `order.openapi.yaml` - Order service API ✅
+- `auth.openapi.yaml` - Auth service API (coming soon)
+- `rules.openapi.yaml` - Rules service API (coming soon)
+- `merchant.openapi.yaml` - Merchant service API (coming soon)
+- `campaign.openapi.yaml` - Campaign service API (coming soon)
+
+**Auto-generated from these**:
+- SDK clients (via `npm run generate:sdk`)
+- TypeScript types (auto-generated)
 - API documentation (auto-generated)
 
 ---
 
-### 6. **view-models/** (COMING SOON)
+### 6. **view-models/** (UI-Ready Data)
 
-Will contain UI-ready data transformations:
-- Backend data → ViewModel → Frontend rendering
-- No business logic in frontend
-- All computed values done server-side
+**Rule**: Frontend receives ViewModels, not raw API data.
+
+Contains:
+- `WalletViewModel.ts` - Wallet balance → UI format ✅
+- `OrderViewModel.ts` - Order data → UI states ✅
+- `CheckoutViewModel.ts` - Checkout eligibility → UI ready ✅
+- `MerchantViewModel.ts` - Merchant data → UI format (coming soon)
+- `CampaignViewModel.ts` - Campaign data → UI format (coming soon)
+
+**What ViewModels provide**:
+- All calculations done server-side
+- UI state mapping (status → color, icon, text)
+- Action eligibility (can user cancel? request refund?)
+- Error reasons (why is button disabled?)
+- No business logic needed in frontend
+
+---
+
+### 7. **sdks/** (MANDATORY - Frontend's Only Entry Point)
+
+**Rule**: Frontend MUST use SDK. Direct API calls are blocked.
+
+Contains:
+- `WalletSDK.ts` - Wallet operations ✅
+- `middleware/sdk-validator.middleware.ts` - Enforces SDK usage ✅
+- `generated/` - Auto-generated SDKs from OpenAPI (via `npm run generate:sdk`)
+
+**How SDK works**:
+- Signs all requests with HMAC-SHA256
+- Includes SDK headers (X-SDK-Name, X-SDK-Version, X-SDK-Signature)
+- API middleware validates signature
+- Rejects requests without valid SDK headers
+
+**Usage**:
+```typescript
+// ✅ CORRECT
+const balance = await walletSDK.getBalance(userId, token);
+
+// ❌ WRONG - Will be rejected with 403 SDK_REQUIRED
+const response = await fetch('/api/wallet/balance');
+```
+
+---
+
+### 8. **generators/** (Auto-Generation Scripts)
+
+**Rule**: Never write what can be generated.
+
+Contains:
+- `schema-to-model.generator.ts` - Schema → Sequelize models ✅
+- `openapi-to-sdk.generator.ts` - OpenAPI → TypeScript SDK ✅
+- `package.json` - Generator scripts ✅
+
+**Commands**:
+```bash
+npm run generate:models      # Generate ORM models from schemas
+npm run generate:sdk          # Generate SDK from OpenAPI specs
+npm run generate:all          # Generate everything
+```
+
+---
+
+### 9. **rules/** (Business Logic Engine)
+
+**Rule**: All business rules live here, not in controllers/frontend.
+
+Contains:
+- `wallet-rules.ts` - Coin priority, withdrawal limits, expiry ✅
+- `campaign-rules.ts` - Eligibility, budget limits (coming soon)
+- `order-rules.ts` - Min order value, delivery zone (coming soon)
+
+**What rules do**:
+- Calculate coin breakdown (Promo → Branded → ReZ → Cash)
+- Validate eligibility (KYC, tier, time windows)
+- Enforce limits (daily withdrawal, max campaign uses)
+- Calculate refunds (reverse of debit)
+
+---
+
+### 10. **migrations/** (Database Schema Versions)
+
+**Rule**: Never edit database directly. Always use migrations.
+
+Contains:
+- `001_create_users_table.sql` - Users table with triggers ✅
+- `002_create_wallet_transactions_table.sql` - Append-only ledger ✅
+- More migrations (coming soon)
+
+**Features**:
+- Auto-update timestamps (triggers)
+- Prevent mutations (wallet is append-only)
+- Computed views (balance from transactions)
+- Full rollback support (DOWN migrations)
+
+---
+
+### 11. **.github/workflows/** (CI/CD Enforcement)
+
+**Rule**: If tests fail → PR cannot merge.
+
+Contains:
+- `architecture-tests.yml` - Runs all enforcement checks ✅
+- `pre-commit-config.yaml` - Pre-commit hooks ✅
+
+**What gets enforced**:
+1. Architecture tests pass (SDK usage, state machine, coin priority)
+2. Schema validation (all schemas are valid TypeScript)
+3. OpenAPI validation (all contracts are valid)
+4. No direct database access in frontend
+5. No direct API calls (must use SDK)
+6. No free-text errors (must use ErrorCode enum)
+
+**If ANY check fails → PR blocked**
 
 ---
 
@@ -351,13 +464,23 @@ order.status = 'delivered';  // Skipped intermediate states
 
 ## 🔮 FUTURE ENHANCEMENTS
 
+### Completed ✅:
+- [x] OpenAPI contracts (wallet, order)
+- [x] Auto-generated SDK clients (generators + WalletSDK)
+- [x] ViewModel specifications (Wallet, Order, Checkout)
+- [x] Complete domain schemas (7 schemas)
+- [x] CI/CD enforcement (architecture tests, pre-commit hooks)
+- [x] Business rules engine (wallet-rules)
+- [x] Database migrations (users, wallet_transactions)
+- [x] SDK middleware (HMAC signing, validation)
+
 ### Coming Soon:
-- [ ] OpenAPI contracts for all services
-- [ ] Auto-generated SDK clients
-- [ ] ViewModel specifications
+- [ ] Remaining OpenAPI contracts (auth, rules, merchant, campaign)
+- [ ] More ViewModels (Merchant, Campaign)
 - [ ] More task templates (for edge cases)
 - [ ] Visual schema browser
 - [ ] Task estimator tool
+- [ ] Real-time validation dashboard
 
 ---
 

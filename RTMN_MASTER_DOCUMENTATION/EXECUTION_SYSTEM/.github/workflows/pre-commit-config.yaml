@@ -1,0 +1,95 @@
+# Pre-commit hooks configuration
+# Install: pip install pre-commit
+# Setup: pre-commit install
+#
+# These hooks run BEFORE every commit to enforce rules
+
+repos:
+  # General file checks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-json
+      - id: check-merge-conflict
+      - id: no-commit-to-branch
+        args: ['--branch', 'main', '--branch', 'production']
+
+  # TypeScript/JavaScript linting
+  - repo: local
+    hooks:
+      - id: eslint
+        name: ESLint
+        entry: npx eslint
+        language: node
+        files: \.(ts|tsx|js|jsx)$
+        args: ['--fix']
+
+      - id: prettier
+        name: Prettier
+        entry: npx prettier --write
+        language: node
+        files: \.(ts|tsx|js|jsx|json|yaml|yml|md)$
+
+  # Architecture enforcement hooks
+  - repo: local
+    hooks:
+      - id: no-direct-api-calls
+        name: Prevent Direct API Calls (Must Use SDK)
+        entry: bash -c 'if grep -r "fetch.*['\''\"]/api/" frontend/src --include="*.ts" --include="*.tsx"; then echo "❌ Direct API calls found! Must use SDK."; exit 1; fi'
+        language: system
+        pass_filenames: false
+
+      - id: no-direct-sql
+        name: Prevent Direct SQL in Frontend
+        entry: bash -c 'if grep -r "SELECT\|INSERT\|UPDATE\|DELETE" frontend/src --include="*.ts" --include="*.tsx"; then echo "❌ SQL found in frontend! Use SDK only."; exit 1; fi'
+        language: system
+        pass_filenames: false
+
+      - id: check-error-codes
+        name: Enforce ErrorCode Enum Usage
+        entry: bash -c 'if grep -r "throw new Error(['\''\"']" backend/src --include="*.ts" | grep -v "ErrorCode\."; then echo "❌ Free-text errors found! Use ErrorCode enum."; exit 1; fi'
+        language: system
+        pass_filenames: false
+
+      - id: architecture-tests
+        name: Run Architecture Tests
+        entry: npm run test:architecture
+        language: node
+        pass_filenames: false
+        stages: [push]
+
+  # Schema validation
+  - repo: local
+    hooks:
+      - id: validate-schemas
+        name: Validate Schema Files
+        entry: bash -c 'npx tsc --noEmit schemas/*.schema.ts'
+        language: system
+        files: \.schema\.ts$
+        pass_filenames: false
+
+  # OpenAPI validation
+  - repo: local
+    hooks:
+      - id: validate-openapi
+        name: Validate OpenAPI Contracts
+        entry: bash -c 'for file in contracts/*.openapi.yaml; do npx @ibm/openapi-validator "$file"; done'
+        language: system
+        files: \.openapi\.ya?ml$
+        pass_filenames: false
+
+  # Commit message format
+  - repo: https://github.com/commitizen-tools/commitizen
+    rev: v3.13.0
+    hooks:
+      - id: commitizen
+        stages: [commit-msg]
+
+# Global settings
+default_language_version:
+  node: '18'
+
+fail_fast: true
