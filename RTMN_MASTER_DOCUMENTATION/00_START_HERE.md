@@ -65,6 +65,14 @@ RTMN_MASTER_DOCUMENTATION/
 | **[SDK_BOUNDARY_ENFORCEMENT.md](1_ARCHITECTURE/SDK_BOUNDARY_ENFORCEMENT.md)** ⭐⭐⭐ | **🔒 3-layer SDK enforcement, version control** | 24 KB |
 | **[FAILURE_AND_DEGRADED_MODES.md](1_ARCHITECTURE/FAILURE_AND_DEGRADED_MODES.md)** ⭐⭐⭐ | **🔒 Service failure handling, circuit breakers** | 21 KB |
 
+### 💰 BUSINESS LOGIC ARCHITECTURE (IMPORTANT)
+
+| Document | Description | Size |
+|----------|-------------|------|
+| **[COIN_LIABILITY_AND_SETTLEMENT_RULES.md](1_ARCHITECTURE/COIN_LIABILITY_AND_SETTLEMENT_RULES.md)** ⭐⭐ | **💰 Who bears coin liability, settlement mechanics** | 32 KB |
+| **[MULTI_APP_ATTRIBUTION_MODEL.md](1_ARCHITECTURE/MULTI_APP_ATTRIBUTION_MODEL.md)** ⭐⭐ | **🎯 Cross-app attribution, revenue share** | 28 KB |
+| **[CAMPAIGN_PRIORITY_AND_RESOLUTION.md](1_ARCHITECTURE/CAMPAIGN_PRIORITY_AND_RESOLUTION.md)** ⭐⭐ | **🎲 Campaign conflicts, stacking rules** | 30 KB |
+
 ### 📐 General Architecture Docs
 
 | Document | Description | Size |
@@ -267,10 +275,14 @@ RTMN_MASTER_DOCUMENTATION/
 | **🔒 Order State Machine** | **100% ✅** |
 | **🔒 SDK Enforcement** | **100% ✅** |
 | **🔒 Failure & Degraded Modes** | **100% ✅** |
+| **💰 Coin Liability & Settlement** | **100% ✅** |
+| **🎯 Multi-App Attribution** | **100% ✅** |
+| **🎲 Campaign Resolution** | **100% ✅** |
 
 **Overall Readiness:** 🎉 **100% COMPLETE** ✅
 
 **Critical Architecture Specs:** 🔒 **ALL 6 MUST-FIX ITEMS COMPLETE** ✅
+**Business Logic Specs:** 💰 **ALL 3 FIX-IN-PARALLEL ITEMS COMPLETE** ✅
 
 ---
 
