@@ -1,0 +1,168 @@
+# RTMN Development Environment
+# One command to rule them all: docker-compose up
+
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:14-alpine
+    container_name: rtmn-postgres
+    environment:
+      POSTGRES_DB: rtmn_development
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_HOST_AUTH_METHOD: trust
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./scripts/init-db.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - rtmn-network
+
+  # Redis Cache & Session Store
+  redis:
+    image: redis:7-alpine
+    container_name: rtmn-redis
+    command: redis-server --appendonly yes
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+    networks:
+      - rtmn-network
+
+  # Backend API Server
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: rtmn-api
+    command: npm run dev
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: development
+      PORT: 3000
+
+      # Database
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      DB_NAME: rtmn_development
+
+      # Redis
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+
+      # JWT
+      JWT_SECRET: dev-secret-change-in-production
+      JWT_REFRESH_SECRET: dev-refresh-secret-change-in-production
+
+      # Frontend URL (for CORS)
+      FRONTEND_URL: http://localhost:5173
+
+      # API Keys (dev/test mode - not real)
+      RAZORPAY_KEY_ID: rzp_test_dummy
+      RAZORPAY_KEY_SECRET: dummy_secret
+      TWILIO_ACCOUNT_SID: dummy_sid
+      TWILIO_AUTH_TOKEN: dummy_token
+    volumes:
+      - ./src:/app/src
+      - ./tests:/app/tests
+      - ./package.json:/app/package.json
+      - ./package-lock.json:/app/package-lock.json
+      - /app/node_modules
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - rtmn-network
+
+  # Frontend (ReZ App)
+  frontend:
+    build:
+      context: ./rez-app
+      dockerfile: Dockerfile.dev
+    container_name: rtmn-frontend
+    command: npm run dev -- --host
+    ports:
+      - "5173:5173"
+    environment:
+      VITE_API_URL: http://localhost:3000/api
+      VITE_WS_URL: ws://localhost:3000
+    volumes:
+      - ./rez-app/src:/app/src
+      - ./rez-app/public:/app/public
+      - ./rez-app/package.json:/app/package.json
+      - /app/node_modules
+    depends_on:
+      - api
+    networks:
+      - rtmn-network
+
+  # Database Admin UI (pgAdmin)
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: rtmn-pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@rtmn.local
+      PGADMIN_DEFAULT_PASSWORD: admin
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    ports:
+      - "5050:80"
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    depends_on:
+      - postgres
+    networks:
+      - rtmn-network
+
+  # Redis Commander (Redis Admin UI)
+  redis-commander:
+    image: rediscommander/redis-commander:latest
+    container_name: rtmn-redis-commander
+    environment:
+      REDIS_HOSTS: local:redis:6379
+    ports:
+      - "8081:8081"
+    depends_on:
+      - redis
+    networks:
+      - rtmn-network
+
+  # Mailhog (Email Testing - catches all emails)
+  mailhog:
+    image: mailhog/mailhog:latest
+    container_name: rtmn-mailhog
+    ports:
+      - "1025:1025" # SMTP
+      - "8025:8025" # Web UI
+    networks:
+      - rtmn-network
+
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+  pgadmin_data:
+    driver: local
+
+networks:
+  rtmn-network:
+    driver: bridge
