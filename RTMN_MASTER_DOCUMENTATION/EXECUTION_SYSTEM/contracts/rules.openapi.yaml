@@ -1,0 +1,204 @@
+openapi: 3.0.3
+
+info:
+  title: Rabtul Rules Service API
+  version: 1.0.0
+  description: |
+    Business rules validation and eligibility checks
+
+    Features:
+    - Campaign eligibility validation
+    - Order validation (min value, delivery zone)
+    - Coin usage rules
+    - User tier benefits
+
+servers:
+  - url: https://api.rabtul.com
+    description: Production
+
+paths:
+  /rules/validate-checkout:
+    post:
+      summary: Validate checkout eligibility
+      description: |
+        Checks all business rules before order creation:
+        - Min order value
+        - Delivery zone
+        - Merchant accepting orders
+        - Wallet balance
+        - Campaign eligibility
+      operationId: validateCheckout
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [user_id, merchant_id, order_total, delivery_address]
+              properties:
+                user_id:
+                  type: string
+                  format: uuid
+                merchant_id:
+                  type: string
+                  format: uuid
+                order_total:
+                  type: number
+                  format: double
+                delivery_address:
+                  type: object
+                  properties:
+                    lat:
+                      type: number
+                    lng:
+                      type: number
+      responses:
+        '200':
+          description: Validation result
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  can_checkout:
+                    type: boolean
+                  blockers:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                        message:
+                          type: string
+                        action:
+                          type: string
+                          enum: [FIX_CART, ADD_MONEY, COMPLETE_KYC, NONE]
+
+  /rules/check-campaign-eligibility:
+    post:
+      summary: Check if user is eligible for campaign
+      operationId: checkCampaignEligibility
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [user_id, campaign_id, order_value]
+              properties:
+                user_id:
+                  type: string
+                  format: uuid
+                campaign_id:
+                  type: string
+                  format: uuid
+                order_value:
+                  type: number
+                  format: double
+                merchant_id:
+                  type: string
+                  format: uuid
+                  nullable: true
+      responses:
+        '200':
+          description: Eligibility result
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  eligible:
+                    type: boolean
+                  reason:
+                    type: string
+                    nullable: true
+                  reward_amount:
+                    type: number
+                    format: double
+                    nullable: true
+
+  /rules/calculate-coin-breakdown:
+    post:
+      summary: Calculate coin usage breakdown
+      description: |
+        Returns how coins will be used for given amount.
+        Priority: Promo → Branded → ReZ → Cash
+      operationId: calculateCoinBreakdown
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [user_id, amount]
+              properties:
+                user_id:
+                  type: string
+                  format: uuid
+                amount:
+                  type: number
+                  format: double
+      responses:
+        '200':
+          description: Coin breakdown
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  promo_coins_used:
+                    type: number
+                  branded_coins_used:
+                    type: number
+                  rez_coins_used:
+                    type: number
+                  cash_used:
+                    type: number
+                  shortfall:
+                    type: number
+
+  /rules/tier-benefits/{tier}:
+    get:
+      summary: Get benefits for loyalty tier
+      operationId: getTierBenefits
+      parameters:
+        - name: tier
+          in: path
+          required: true
+          schema:
+            type: string
+            enum: [basic, silver, gold, prive]
+      responses:
+        '200':
+          description: Tier benefits
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tier:
+                    type: string
+                  coin_multiplier:
+                    type: number
+                    format: double
+                  benefits:
+                    type: array
+                    items:
+                      type: string
+                  min_spend_required:
+                    type: number
+                    nullable: true
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

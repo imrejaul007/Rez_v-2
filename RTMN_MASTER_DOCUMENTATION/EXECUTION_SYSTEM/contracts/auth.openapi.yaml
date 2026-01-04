@@ -1,0 +1,248 @@
+openapi: 3.0.3
+
+info:
+  title: Rabtul Auth Service API
+  version: 1.0.0
+  description: |
+    Authentication and user management API
+
+    Features:
+    - OTP-based login (no passwords)
+    - JWT access + refresh tokens
+    - Phone number verification
+    - Session management
+
+servers:
+  - url: https://api.rabtul.com
+    description: Production
+  - url: https://staging-api.rabtul.com
+    description: Staging
+
+paths:
+  /auth/send-otp:
+    post:
+      summary: Send OTP to phone number
+      description: |
+        Sends 6-digit OTP via SMS.
+        Rate limit: 3 OTPs per 5 minutes per phone number.
+      operationId: sendOTP
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [phone]
+              properties:
+                phone:
+                  type: string
+                  pattern: '^\+91-\d{10}$'
+                  example: '+91-9876543210'
+      responses:
+        '200':
+          description: OTP sent successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  otp_id:
+                    type: string
+                    format: uuid
+                  expires_at:
+                    type: string
+                    format: date-time
+                  retry_after:
+                    type: integer
+                    description: Seconds until next OTP can be requested
+        '429':
+          $ref: '#/components/responses/RateLimitExceeded'
+
+  /auth/verify-otp:
+    post:
+      summary: Verify OTP and get tokens
+      description: |
+        Verifies OTP and returns JWT access + refresh tokens.
+        Creates user if first login.
+      operationId: verifyOTP
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [phone, otp, otp_id]
+              properties:
+                phone:
+                  type: string
+                  pattern: '^\+91-\d{10}$'
+                otp:
+                  type: string
+                  pattern: '^\d{6}$'
+                otp_id:
+                  type: string
+                  format: uuid
+      responses:
+        '200':
+          description: OTP verified, tokens issued
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthTokens'
+        '400':
+          $ref: '#/components/responses/InvalidOTP'
+
+  /auth/refresh-token:
+    post:
+      summary: Refresh access token
+      description: |
+        Exchanges refresh token for new access token.
+        Refresh tokens valid for 30 days.
+      operationId: refreshToken
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [refresh_token]
+              properties:
+                refresh_token:
+                  type: string
+      responses:
+        '200':
+          description: New access token issued
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthTokens'
+        '401':
+          $ref: '#/components/responses/InvalidToken'
+
+  /auth/logout:
+    post:
+      summary: Logout and invalidate tokens
+      operationId: logout
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: Logout successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: 'Logged out successfully'
+
+  /auth/me:
+    get:
+      summary: Get current user profile
+      operationId: getCurrentUser
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: User profile
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+    AuthTokens:
+      type: object
+      required: [access_token, refresh_token, expires_in, user]
+      properties:
+        access_token:
+          type: string
+          description: JWT access token (15 min expiry)
+        refresh_token:
+          type: string
+          description: Refresh token (30 day expiry)
+        expires_in:
+          type: integer
+          description: Access token expiry in seconds
+          example: 900
+        user:
+          $ref: '#/components/schemas/User'
+
+    User:
+      type: object
+      required: [id, phone, name, loyalty_tier, status]
+      properties:
+        id:
+          type: string
+          format: uuid
+        phone:
+          type: string
+        email:
+          type: string
+          nullable: true
+        name:
+          type: string
+        loyalty_tier:
+          type: string
+          enum: [basic, silver, gold, prive]
+        status:
+          type: string
+          enum: [active, suspended, banned, deleted]
+        phone_verified:
+          type: boolean
+        kyc_status:
+          type: string
+          enum: [pending, submitted, verified, rejected]
+        created_at:
+          type: string
+          format: date-time
+
+  responses:
+    RateLimitExceeded:
+      description: Too many OTP requests
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+                example: 'AUTH_OTP_MAX_ATTEMPTS'
+              message:
+                type: string
+              retry_after:
+                type: integer
+
+    InvalidOTP:
+      description: Invalid or expired OTP
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+                enum: [AUTH_OTP_INVALID, AUTH_OTP_EXPIRED]
+              message:
+                type: string
+
+    InvalidToken:
+      description: Invalid or expired token
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+                enum: [AUTH_TOKEN_INVALID, AUTH_TOKEN_EXPIRED]
+              message:
+                type: string

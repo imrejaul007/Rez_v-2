@@ -1,0 +1,269 @@
+openapi: 3.0.3
+
+info:
+  title: Rabtul Merchant Service API
+  version: 1.0.0
+  description: |
+    Merchant and product management API
+
+    Features:
+    - Merchant CRUD
+    - Product catalog management
+    - Order fulfillment
+    - Settlement tracking
+
+servers:
+  - url: https://api.rabtul.com
+    description: Production
+
+paths:
+  /merchants:
+    get:
+      summary: List merchants
+      operationId: listMerchants
+      parameters:
+        - name: category
+          in: query
+          schema:
+            type: string
+        - name: lat
+          in: query
+          description: User latitude for nearby search
+          schema:
+            type: number
+        - name: lng
+          in: query
+          description: User longitude for nearby search
+          schema:
+            type: number
+        - name: page
+          in: query
+          schema:
+            type: integer
+            default: 1
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 20
+      responses:
+        '200':
+          description: Merchant list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  merchants:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Merchant'
+                  pagination:
+                    $ref: '#/components/schemas/Pagination'
+
+  /merchants/{merchantId}:
+    get:
+      summary: Get merchant details
+      operationId: getMerchant
+      parameters:
+        - $ref: '#/components/parameters/MerchantIdParam'
+      responses:
+        '200':
+          description: Merchant details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Merchant'
+
+  /merchants/{merchantId}/products:
+    get:
+      summary: Get merchant products
+      operationId: getMerchantProducts
+      parameters:
+        - $ref: '#/components/parameters/MerchantIdParam'
+        - name: category
+          in: query
+          schema:
+            type: string
+        - name: page
+          in: query
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Product list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  products:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Product'
+                  pagination:
+                    $ref: '#/components/schemas/Pagination'
+
+  /merchants/{merchantId}/orders:
+    get:
+      summary: Get merchant orders (Merchant only)
+      operationId: getMerchantOrders
+      security:
+        - BearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/MerchantIdParam'
+        - name: status
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Order list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  orders:
+                    type: array
+                    items:
+                      type: object
+
+  /merchants/{merchantId}/orders/{orderId}/update-status:
+    post:
+      summary: Update order status (Merchant only)
+      operationId: updateOrderStatus
+      security:
+        - BearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/MerchantIdParam'
+        - name: orderId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [status]
+              properties:
+                status:
+                  type: string
+                  enum: [confirmed, preparing, ready, shipped]
+      responses:
+        '200':
+          description: Status updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  order_id:
+                    type: string
+                  status:
+                    type: string
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  parameters:
+    MerchantIdParam:
+      name: merchantId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+
+  schemas:
+    Merchant:
+      type: object
+      required: [id, display_name, category, status, rating]
+      properties:
+        id:
+          type: string
+          format: uuid
+        display_name:
+          type: string
+        slug:
+          type: string
+        category:
+          type: string
+        status:
+          type: string
+          enum: [active, suspended, closed]
+        rating:
+          type: number
+          format: double
+        total_ratings:
+          type: integer
+        logo_url:
+          type: string
+          nullable: true
+        address:
+          type: object
+          properties:
+            city:
+              type: string
+            pincode:
+              type: string
+        min_order_value:
+          type: number
+        delivery_radius_km:
+          type: integer
+        avg_preparation_time_mins:
+          type: integer
+
+    Product:
+      type: object
+      required: [id, name, selling_price, status]
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        slug:
+          type: string
+        description:
+          type: string
+        selling_price:
+          type: number
+          format: double
+        mrp:
+          type: number
+          format: double
+          nullable: true
+        status:
+          type: string
+          enum: [active, archived]
+        is_available:
+          type: boolean
+        images:
+          type: object
+          properties:
+            thumbnail:
+              type: string
+            main:
+              type: string
+        rating:
+          type: number
+          format: double
+
+    Pagination:
+      type: object
+      properties:
+        page:
+          type: integer
+        limit:
+          type: integer
+        total:
+          type: integer

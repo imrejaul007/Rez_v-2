@@ -1,0 +1,295 @@
+openapi: 3.0.3
+
+info:
+  title: Rabtul Campaign Service API
+  version: 1.0.0
+  description: |
+    Campaign management and offer tracking API
+
+    Features:
+    - Active campaigns listing
+    - Coupon code validation
+    - Claim tracking
+    - User-specific offers
+
+servers:
+  - url: https://api.rabtul.com
+    description: Production
+
+paths:
+  /campaigns/active:
+    get:
+      summary: Get active campaigns
+      description: |
+        Returns campaigns that are:
+        - Status = active
+        - Within start/end date window
+        - Budget not exhausted
+      operationId: getActiveCampaigns
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: user_id
+          in: query
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: merchant_id
+          in: query
+          description: Filter by merchant
+          schema:
+            type: string
+            format: uuid
+        - name: category
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Active campaigns
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  campaigns:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Campaign'
+
+  /campaigns/validate-coupon:
+    post:
+      summary: Validate coupon code
+      operationId: validateCoupon
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [user_id, coupon_code, order_value]
+              properties:
+                user_id:
+                  type: string
+                  format: uuid
+                coupon_code:
+                  type: string
+                order_value:
+                  type: number
+                  format: double
+                merchant_id:
+                  type: string
+                  format: uuid
+                  nullable: true
+      responses:
+        '200':
+          description: Coupon validation result
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  valid:
+                    type: boolean
+                  campaign:
+                    $ref: '#/components/schemas/Campaign'
+                    nullable: true
+                  discount_amount:
+                    type: number
+                    format: double
+                    nullable: true
+                  error_code:
+                    type: string
+                    nullable: true
+                  error_message:
+                    type: string
+                    nullable: true
+
+  /campaigns/claim:
+    post:
+      summary: Claim campaign reward
+      description: |
+        Records campaign claim and credits coins.
+        Checks:
+        - Budget availability
+        - User eligibility
+        - Max uses per user
+      operationId: claimCampaign
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [user_id, campaign_id, order_id]
+              properties:
+                user_id:
+                  type: string
+                  format: uuid
+                campaign_id:
+                  type: string
+                  format: uuid
+                order_id:
+                  type: string
+                  format: uuid
+                order_value:
+                  type: number
+                  format: double
+      responses:
+        '200':
+          description: Claim successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  claim_id:
+                    type: string
+                    format: uuid
+                  reward_amount:
+                    type: number
+                  coin_type:
+                    type: string
+                  transaction_id:
+                    type: string
+                    format: uuid
+
+  /campaigns/{campaignId}:
+    get:
+      summary: Get campaign details
+      operationId: getCampaign
+      parameters:
+        - name: campaignId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Campaign details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Campaign'
+
+  /campaigns/{campaignId}/claims:
+    get:
+      summary: Get user's campaign claims (Admin/User)
+      operationId: getCampaignClaims
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: campaignId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: user_id
+          in: query
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Claim history
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  claims:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        claim_id:
+                          type: string
+                        claimed_at:
+                          type: string
+                          format: date-time
+                        reward_amount:
+                          type: number
+                        order_id:
+                          type: string
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+    Campaign:
+      type: object
+      required: [id, display_name, status, reward_type, reward_value]
+      properties:
+        id:
+          type: string
+          format: uuid
+        display_name:
+          type: string
+        slug:
+          type: string
+        description:
+          type: string
+        campaign_type:
+          type: string
+          enum: [signup_bonus, referral_reward, cashback, first_order_bonus, loyalty_reward, festival_offer, merchant_sponsored, category_boost]
+        status:
+          type: string
+          enum: [active, paused, completed]
+        starts_at:
+          type: string
+          format: date-time
+        ends_at:
+          type: string
+          format: date-time
+        reward_type:
+          type: string
+          enum: [fixed_coins, percentage_cashback, multiplier]
+        reward_coin_type:
+          type: string
+          enum: [promo_coins, branded_coins, rez_coins]
+        reward_value:
+          type: number
+          format: double
+        max_reward_per_transaction:
+          type: number
+          format: double
+          nullable: true
+        coupon_code:
+          type: string
+          nullable: true
+        auto_apply:
+          type: boolean
+        banner_image_url:
+          type: string
+          nullable: true
+        terms_and_conditions:
+          type: string
+        eligibility_rules:
+          type: object
+          properties:
+            loyalty_tiers:
+              type: array
+              items:
+                type: string
+            min_order_value:
+              type: number
+              nullable: true
+            categories:
+              type: array
+              items:
+                type: string
+            merchant_ids:
+              type: array
+              items:
+                type: string
